@@ -10,13 +10,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\rapid_str.c">
-      <Filter>src</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\include\rapid_str.h">
+    <ClInclude Include="..\include\rapid_string.h">
       <Filter>include</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\rapid_string.c">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,6 @@
+[submodule "test/lib/Unity"]
+	path = test/lib/Unity
+	url = https://github.com/ThrowTheSwitch/Unity
+[submodule "benchmark/lib/sds"]
+	path = benchmark/lib/sds
+	url = https://github.com/antirez/sds
