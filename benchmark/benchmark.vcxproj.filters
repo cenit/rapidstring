@@ -5,14 +5,8 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>c;h</Extensions>
     </Filter>
-    <Filter Include="lib">
-      <UniqueIdentifier>{c0645b3d-fb9d-4fe4-b567-f338835b26dc}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lib\sds\sds.c">
-      <Filter>lib</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -21,12 +15,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lib\sds\sds.h">
-      <Filter>lib</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\sds\sdsalloc.h">
-      <Filter>lib</Filter>
-    </ClInclude>
     <ClInclude Include="concat.hpp">
       <Filter>src</Filter>
     </ClInclude>

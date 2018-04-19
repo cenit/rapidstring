@@ -1,7 +1,6 @@
 #pragma once
 
 #include "rapid_string.h"
-#include "sds.h"
 #include <benchmark\benchmark.h>
 #include <string>
 
@@ -15,14 +14,6 @@ inline void rs_12_byte_construct(benchmark::State& state)
 		rapid_string s;
 		rs_init_w_n(&s, STR_12, 12);
 		rs_free(&s);
-	}
-}
-
-inline void sds_12_byte_construct(benchmark::State& state)
-{
-	for (auto _ : state) {
-		sds s = sdsnewlen(STR_12, 12);
-		sdsfree(s);
 	}
 }
 
@@ -41,14 +32,6 @@ inline void rs_24_byte_construct(benchmark::State& state)
 	}
 }
 
-inline void sds_24_byte_construct(benchmark::State& state)
-{
-	for (auto _ : state) {
-		sds s = sdsnewlen(STR_24, 24);
-		sdsfree(s);
-	}
-}
-
 inline void std_24_byte_construct(benchmark::State& state)
 {
 	for (auto _ : state)
@@ -61,14 +44,6 @@ inline void rs_48_byte_construct(benchmark::State& state)
 		rapid_string s;
 		rs_init_w_n(&s, STR_48, 48);
 		rs_free(&s);
-	}
-}
-
-inline void sds_48_byte_construct(benchmark::State& state)
-{
-	for (auto _ : state) {
-		sds s = sdsnewlen(STR_48, 48);
-		sdsfree(s);
 	}
 }
 

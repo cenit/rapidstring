@@ -7,12 +7,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="concat.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="construct.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="copy.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="unit_tests.h">
+    <ClInclude Include="utility.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

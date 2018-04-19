@@ -2,20 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifndef RS_MALLOC
-#define RS_MALLOC malloc
-#endif // !RS_MALLOC
-
-#ifndef RS_REALLOC
-#define RS_REALLOC realloc
-#endif // !RS_REALLOC
-
-#ifndef RS_FREE
-#define RS_FREE free
-#endif // !RS_FREE
-
-enum { RS_HEAP_FLAG = 0xFF };
-enum { RS_GROWTH_FACTOR = 2 };
+#define RS_HEAP_FLAG 0xFF
+#define RS_GROWTH_FACTOR 2
 
 static size_t rs_stack_size(const rapid_string *str)
 {
@@ -65,13 +53,25 @@ static void rs_cpy_stack(rapid_string *str, const char *input, size_t len)
 }
 
 static int rs_init_heap(rapid_string *str, size_t len) {
-	str->heap.buff = RS_MALLOC((len * RS_GROWTH_FACTOR) + 1);
+	str->heap.buff = malloc((len * RS_GROWTH_FACTOR) + 1);
 
 	if (!str->heap.buff)
 		return RS_ERR_ALLOC;
 
 	str->heap.cap = len;
 	str->heap.flag = RS_HEAP_FLAG;
+
+	return 0;
+}
+
+static int rs_realloc(rapid_string *str, size_t len) {
+	char *new_buff = (char*)realloc(str->heap.buff, len + 1);
+
+	if (!new_buff)
+		return RS_ERR_ALLOC;
+
+	str->heap.buff = new_buff;
+	str->heap.cap = len;
 
 	return 0;
 }
@@ -119,6 +119,16 @@ size_t rs_cap(const rapid_string *str)
 	return str->heap.flag == RS_HEAP_FLAG ? 
 		str->heap.cap :
 		RS_STACK_CAPACITY;
+}
+
+int rs_is_heap(const rapid_string * str)
+{
+	return str->heap.flag == RS_HEAP_FLAG;
+}
+
+int rs_is_stack(const rapid_string * str)
+{
+	return str->heap.flag != RS_HEAP_FLAG;
 }
 
 char rs_at(const rapid_string *str, size_t i)
@@ -204,25 +214,13 @@ void rs_steal(rapid_string *str, char *buffer)
 void rs_steal_n(rapid_string *str, char *buffer, size_t len)
 {
 	if (str->heap.flag == RS_HEAP_FLAG)
-		RS_FREE(str->heap.buff);
+		free(str->heap.buff);
 	else
 		str->heap.flag = RS_HEAP_FLAG;
 
 	str->heap.buff = buffer;
 	str->heap.len = len;
 	str->heap.cap = len;
-}
-
-int rs_realloc(rapid_string *str, size_t len) {
-	char *new_buff = RS_REALLOC(str->heap.buff, len + 1);
-
-	if (!new_buff)
-		return RS_ERR_ALLOC;
-
-	str->heap.buff = new_buff;
-	str->heap.cap = len;
-
-	return 0;
 }
 
 int rs_reserve(rapid_string *str, size_t len) {
@@ -261,5 +259,5 @@ int rs_shrink_to_fit(rapid_string *str)
 void rs_free(rapid_string *str)
 {
 	if (str->heap.flag == RS_HEAP_FLAG)
-		RS_FREE(str->heap.buff);
+		free(str->heap.buff);
 }

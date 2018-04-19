@@ -1,11 +1,10 @@
-#ifndef RAPID_STRING_H
-#define RAPID_STRING_H
+#pragma once
 
 #include <stddef.h>
 
 // TODO: other stl-like stuff?
 // TODO: docs & comments
-// TODO: some def for validating inputs
+// TODO: some define for validating inputs
 
 #ifdef __cplusplus
 extern "C" {
@@ -20,7 +19,6 @@ enum {
  * Accessing packed data structures incurs a performance penalty, therefore the 
  * alignment will be used to allow for a larger stack string.
  */
-#define RS_ALIGNMENT sizeof(void*)
 
 typedef struct {
 	char *buff;
@@ -31,7 +29,7 @@ typedef struct {
 	 * explicitly storing the flag and the padding inside one of the union 
 	 * members allows the stack string to be larger.
 	 */
-	unsigned char align[RS_ALIGNMENT - 1];
+	unsigned char align[sizeof(void*) - 1];
 	/*
 	 * The following flag is used to store the state of the union as well 
 	 * as the remaining cap of the stack string. They may be shared as 
@@ -65,6 +63,10 @@ size_t rs_len(const rapid_string *str);
 
 size_t rs_cap(const rapid_string *str);
 
+int rs_is_heap(const rapid_string *str);
+
+int rs_is_stack(const rapid_string *str);
+
 char rs_at(const rapid_string *str, size_t i);
 
 const char *rs_buff(const rapid_string *str);
@@ -82,8 +84,6 @@ void rs_steal(rapid_string *str, char *buffer);
 
 void rs_steal_n(rapid_string *str, char *buffer, size_t cap);
 
-int rs_realloc(rapid_string *str, size_t len);
-
 int rs_reserve(rapid_string *str, size_t len);
 
 int rs_resize(rapid_string *str, size_t len);
@@ -95,5 +95,3 @@ void rs_free(rapid_string *str);
 #ifdef __cplusplus
 }
 #endif // __cplusplus
-
-#endif // !RAPID_STRING_H
