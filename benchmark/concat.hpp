@@ -8,6 +8,12 @@
 #define CAT_STR "A fairly long string for concatenation"
 #define CAT_STR_LEN (sizeof(CAT_STR) - 1)
 
+/*
+ * No benchmarks are done for concatenation without specifying the length as
+ * this would be identicle to adding the execution time of strlen() to the
+ * benchmarks bellow.
+ */
+
 inline void rs_concat(benchmark::State& state)
 {
 	for (auto _ : state) {

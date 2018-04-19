@@ -13,9 +13,15 @@
     <ClInclude Include="..\include\rapid_string.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\rpmalloc.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\rapid_string.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\rpmalloc.c">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,11 +1,31 @@
 #include "rapid_string.h"
 #include <string.h>
-#include <stdlib.h>
 
 #define RS_HEAP_FLAG 0xFF
-#define RS_GROWTH_FACTOR 2
 
-static size_t rs_stack_size(const rapid_string *str)
+#ifndef RS_GROWTH_FACTOR
+#define RS_GROWTH_FACTOR 2
+#endif
+
+#ifdef RS_RPMALLOC
+#include <rpmalloc.h>
+#define RS_MALLOC rpmalloc
+#define RS_REALLOC rprealloc
+#define RS_FREE rpfree
+#else
+#include <stdlib.h>
+#define RS_MALLOC malloc
+#define RS_REALLOC realloc
+#define RS_FREE free
+#endif
+
+#if RS_GCC_INLINE
+#define RS_INLINE_DEF RS_INLINE inline
+#else
+#define RS_INLINE_DEF RS_INLINE
+#endif
+
+static RS_INLINE_DEF size_t rs_stack_size(const rapid_string *str)
 {
 	/*
 	* The last element in the stack union member stores the remaining
@@ -15,45 +35,49 @@ static size_t rs_stack_size(const rapid_string *str)
 	return RS_STACK_CAPACITY - str->stack.left;
 }
 
-static void rs_resize_stack(rapid_string *str, size_t len)
+static RS_INLINE_DEF void rs_resize_stack(rapid_string *str, size_t len)
 {
 	str->stack.buff[len] = '\0';
 	str->stack.left = (unsigned char)(RS_STACK_CAPACITY - len);
 }
 
-static void rs_resize_heap(rapid_string *str, size_t len)
+static RS_INLINE_DEF void rs_resize_heap(rapid_string *str, size_t len)
 {
 	str->heap.buff[len] = '\0';
 	str->heap.len = len;
 }
 
-static void rs_cat_heap(rapid_string *str, const char *input, size_t len)
+static RS_INLINE_DEF void rs_cat_heap(rapid_string *str, const char *input,
+				      size_t len)
 {
 	memcpy(str->heap.buff + str->heap.len, input, len);
 	rs_resize_heap(str, str->heap.len + len);
 }
 
-static void rs_cat_stack(rapid_string *str, const char *input, size_t len)
+static RS_INLINE_DEF void rs_cat_stack(rapid_string *str, const char *input,
+				       size_t len)
 {
 	const size_t stack_size = rs_stack_size(str);
 	memcpy(str->stack.buff + stack_size, input, len);
 	rs_resize_stack(str, stack_size + len);
 }
 
-static void rs_cpy_heap(rapid_string *str, const char *input, size_t len)
+static RS_INLINE_DEF void rs_cpy_heap(rapid_string *str, const char *input,
+				      size_t len)
 {
 	memcpy(str->heap.buff, input, len);
 	rs_resize_heap(str, len);
 }
 
-static void rs_cpy_stack(rapid_string *str, const char *input, size_t len)
+static RS_INLINE_DEF void rs_cpy_stack(rapid_string *str, const char *input,
+				       size_t len)
 {
 	memcpy(str->stack.buff, input, len);
 	rs_resize_stack(str, len);
 }
 
-static int rs_init_heap(rapid_string *str, size_t len) {
-	str->heap.buff = malloc((len * RS_GROWTH_FACTOR) + 1);
+static RS_INLINE_DEF int rs_init_heap(rapid_string *str, size_t len) {
+	str->heap.buff = RS_MALLOC((len * RS_GROWTH_FACTOR) + 1);
 
 	if (!str->heap.buff)
 		return RS_ERR_ALLOC;
@@ -64,8 +88,8 @@ static int rs_init_heap(rapid_string *str, size_t len) {
 	return 0;
 }
 
-static int rs_realloc(rapid_string *str, size_t len) {
-	char *new_buff = (char*)realloc(str->heap.buff, len + 1);
+static RS_INLINE_DEF int rs_realloc(rapid_string *str, size_t len) {
+	char *new_buff = RS_REALLOC(str->heap.buff, len + 1);
 
 	if (!new_buff)
 		return RS_ERR_ALLOC;
@@ -76,7 +100,7 @@ static int rs_realloc(rapid_string *str, size_t len) {
 	return 0;
 }
 
-static int rs_reserve_growth(rapid_string *str, size_t len)
+static RS_INLINE_DEF int rs_reserve_growth(rapid_string *str, size_t len)
 {
 	if (str->heap.cap >= len)
 		return 0;
@@ -160,7 +184,7 @@ int rs_cat_n(rapid_string *str, const char *input, size_t len)
 	} else if (str->stack.left < len) {
 		const size_t stack_size = rs_stack_size(str);
 
-		/* Create a temporary buffer for the stack string. */
+		// Create a temporary buffer for the stack string.
 		char tmp[RS_STACK_CAPACITY];
 		memcpy(tmp, str->stack.buff, stack_size);
 
@@ -169,7 +193,7 @@ int rs_cat_n(rapid_string *str, const char *input, size_t len)
 		if (rc)
 			return rc;
 
-		/* Copy the stack buffer to the new heap buffer. */
+		// Copy the stack buffer to the new heap buffer.
 		rs_cpy_heap(str, tmp, stack_size);
 		rs_cat_heap(str, input, len);
 	} else {
@@ -214,7 +238,7 @@ void rs_steal(rapid_string *str, char *buffer)
 void rs_steal_n(rapid_string *str, char *buffer, size_t len)
 {
 	if (str->heap.flag == RS_HEAP_FLAG)
-		free(str->heap.buff);
+		RS_FREE(str->heap.buff);
 	else
 		str->heap.flag = RS_HEAP_FLAG;
 
@@ -259,5 +283,5 @@ int rs_shrink_to_fit(rapid_string *str)
 void rs_free(rapid_string *str)
 {
 	if (str->heap.flag == RS_HEAP_FLAG)
-		free(str->heap.buff);
+		RS_FREE(str->heap.buff);
 }
