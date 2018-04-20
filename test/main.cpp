@@ -1,16 +1,2 @@
-#define CATCH_CONFIG_RUNNER
+#define CATCH_CONFIG_MAIN
 #include <catch.hpp>
-#include <rpmalloc.h>
-
-int main() {
-	auto rc = rpmalloc_initialize();
-
-	if (rc)
-		return rc;
-
-	rc = Catch::Session().run();
-
-	rpmalloc_finalize();
-
-	return rc;
-}

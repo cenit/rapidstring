@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONSTRUCT_HPP_7DFD4B503BE48168
+#define CONSTRUCT_HPP_7DFD4B503BE48168
 
 #include "rapid_string.h"
 #include <benchmark\benchmark.h>
@@ -52,3 +53,5 @@ inline void std_48_byte_construct(benchmark::State& state)
 	for (auto _ : state)
 		std::string s{ STR_48, 48 };
 }
+
+#endif // !CONSTRUCT_HPP_7DFD4B503BE48168

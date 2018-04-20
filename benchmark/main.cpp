@@ -1,7 +1,6 @@
 #include "concat.hpp"
 #include "construct.hpp"
 #include "resize.hpp"
-#include "rpmalloc.h"
 #include <benchmark/benchmark.h>
 
 // Concatenation
@@ -29,12 +28,5 @@ int main(int argc, char *argv[])
 	if (benchmark::ReportUnrecognizedArguments(argc, argv))
 		return 1;
 
-	auto rc = rpmalloc_initialize();
-
-	if (rc)
-		return rc;
-
 	benchmark::RunSpecifiedBenchmarks();
-
-	rpmalloc_finalize();
 }

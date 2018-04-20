@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UTILITY_HPP_ECB97D42D011D625
+#define UTILITY_HPP_ECB97D42D011D625
 
 #include "rapid_string.h"
 #include <catch.hpp>
@@ -15,3 +16,5 @@
 #define CMP_STR_RC(rc, s, cmp) \
 	REQUIRE(!rc);	       \
 	CMP_STR(s, cmp)
+
+#endif // !UTILITY_HPP_ECB97D42D011D625

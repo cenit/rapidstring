@@ -20,11 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\rapid_string.h" />
-    <ClInclude Include="..\include\rpmalloc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\rapid_string.c" />
-    <ClCompile Include="..\src\rpmalloc.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -108,7 +106,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>RS_RPMALLOC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeaderFile>
@@ -141,7 +140,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>RS_RPMALLOC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeaderFile>
@@ -177,7 +177,8 @@
       <SDLCheck>
       </SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>RS_RPMALLOC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeaderFile>
@@ -216,7 +217,8 @@
       <SDLCheck>
       </SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>RS_RPMALLOC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
       <LanguageStandard>
       </LanguageStandard>
       <PrecompiledHeaderFile>

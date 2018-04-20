@@ -1,27 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>c;h</Extensions>
-    </Filter>
     <Filter Include="include">
       <UniqueIdentifier>{ce9d33c4-5484-4e24-846e-1fe3ad55dc8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{928654b2-30bb-44c8-b296-5447c616a65b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\rapid_string.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\rpmalloc.h">
-      <Filter>include</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\rapid_string.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\rpmalloc.c">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

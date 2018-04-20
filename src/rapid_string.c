@@ -1,82 +1,101 @@
 #include "rapid_string.h"
 #include <string.h>
 
-#define RS_HEAP_FLAG 0xFF
+#define RS_HEAP_FLAG (0xFF)
 
 #ifndef RS_GROWTH_FACTOR
-#define RS_GROWTH_FACTOR 2
+	#define RS_GROWTH_FACTOR (2)
 #endif
 
-#ifdef RS_RPMALLOC
-#include <rpmalloc.h>
-#define RS_MALLOC rpmalloc
-#define RS_REALLOC rprealloc
-#define RS_FREE rpfree
+/* If all three allocation methods aren't defined, redefine them. */
+#if !defined(RS_MALLOC) || !defined(RS_REALLOC) || !defined(RS_FREE)
+	#ifdef RS_MALLOC
+		#undef RS_MALLOC
+	#endif
+	#ifdef RS_REALLOC
+		#undef RS_REALLOC
+	#endif
+	#ifdef RS_FREE
+		#undef RS_FREE
+	#endif
+
+	/* Define the allocation methods. */
+	#include <stdlib.h>
+	#define RS_MALLOC (malloc)
+	#define RS_REALLOC (realloc)
+	#define RS_FREE (free)
+#endif
+
+#if RS_GCC_VERSION >= 30100 && RS_C99
+	#define RS_INLINE_DEF RS_INLINE inline
+#elif defined(__INTEL_COMPILER)
+	#define RS_INLINE_DEF
 #else
-#include <stdlib.h>
-#define RS_MALLOC malloc
-#define RS_REALLOC realloc
-#define RS_FREE free
+	#define RS_INLINE_DEF RS_INLINE
 #endif
 
-#if RS_GCC_INLINE
-#define RS_INLINE_DEF RS_INLINE inline
-#else
-#define RS_INLINE_DEF RS_INLINE
+#if RS_GCC_VERSION >= 40700 && !RS_C99
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wattributes"
 #endif
 
-static RS_INLINE_DEF size_t rs_stack_size(const rapid_string *str)
+static RS_INLINE_DEF size_t
+rs_stack_size(const rapid_string *str)
 {
 	/*
-	* The last element in the stack union member stores the remaining
-	* cap. Once the remaining cap reaches 0, it becomes the null
-	* terminator.
-	*/
+	 * The last element in the stack union member stores the remaining
+	 * cap. Once the remaining cap reaches 0, it becomes the null
+	 * terminator.
+	 */
 	return RS_STACK_CAPACITY - str->stack.left;
 }
 
-static RS_INLINE_DEF void rs_resize_stack(rapid_string *str, size_t len)
+static RS_INLINE_DEF void
+rs_resize_stack(rapid_string *str, size_t len)
 {
 	str->stack.buff[len] = '\0';
 	str->stack.left = (unsigned char)(RS_STACK_CAPACITY - len);
 }
 
-static RS_INLINE_DEF void rs_resize_heap(rapid_string *str, size_t len)
+static RS_INLINE_DEF void
+rs_resize_heap(rapid_string *str, size_t len)
 {
 	str->heap.buff[len] = '\0';
 	str->heap.len = len;
 }
 
-static RS_INLINE_DEF void rs_cat_heap(rapid_string *str, const char *input,
-				      size_t len)
+static RS_INLINE_DEF void
+rs_cat_heap_n(rapid_string *str, const char *input, size_t len)
 {
 	memcpy(str->heap.buff + str->heap.len, input, len);
 	rs_resize_heap(str, str->heap.len + len);
 }
 
-static RS_INLINE_DEF void rs_cat_stack(rapid_string *str, const char *input,
-				       size_t len)
+static RS_INLINE_DEF void
+rs_cat_stack_n(rapid_string *str, const char *input, size_t len)
 {
 	const size_t stack_size = rs_stack_size(str);
 	memcpy(str->stack.buff + stack_size, input, len);
 	rs_resize_stack(str, stack_size + len);
 }
 
-static RS_INLINE_DEF void rs_cpy_heap(rapid_string *str, const char *input,
-				      size_t len)
+static RS_INLINE_DEF void
+rs_cpy_heap_n(rapid_string *str, const char *input, size_t len)
 {
 	memcpy(str->heap.buff, input, len);
 	rs_resize_heap(str, len);
 }
 
-static RS_INLINE_DEF void rs_cpy_stack(rapid_string *str, const char *input,
-				       size_t len)
+static RS_INLINE_DEF void
+rs_cpy_stack_n(rapid_string *str, const char *input, size_t len)
 {
 	memcpy(str->stack.buff, input, len);
 	rs_resize_stack(str, len);
 }
 
-static RS_INLINE_DEF int rs_init_heap(rapid_string *str, size_t len) {
+static RS_INLINE_DEF int
+rs_init_heap(rapid_string *str, size_t len)
+{
 	str->heap.buff = RS_MALLOC((len * RS_GROWTH_FACTOR) + 1);
 
 	if (!str->heap.buff)
@@ -88,7 +107,9 @@ static RS_INLINE_DEF int rs_init_heap(rapid_string *str, size_t len) {
 	return 0;
 }
 
-static RS_INLINE_DEF int rs_realloc(rapid_string *str, size_t len) {
+static RS_INLINE_DEF int
+rs_realloc(rapid_string *str, size_t len)
+{
 	char *new_buff = RS_REALLOC(str->heap.buff, len + 1);
 
 	if (!new_buff)
@@ -100,7 +121,8 @@ static RS_INLINE_DEF int rs_realloc(rapid_string *str, size_t len) {
 	return 0;
 }
 
-static RS_INLINE_DEF int rs_reserve_growth(rapid_string *str, size_t len)
+static RS_INLINE_DEF int
+rs_reserve_growth(rapid_string *str, size_t len)
 {
 	if (str->heap.cap >= len)
 		return 0;
@@ -108,7 +130,8 @@ static RS_INLINE_DEF int rs_reserve_growth(rapid_string *str, size_t len)
 	return rs_realloc(str, len * RS_GROWTH_FACTOR);
 }
 
-rapid_string rs_empty(void) {
+rapid_string rs_empty(void)
+{
 	rapid_string str;
 	rs_init(&str);
 	return str;
@@ -180,24 +203,25 @@ int rs_cat_n(rapid_string *str, const char *input, size_t len)
 		if (rc)
 			return rc;
 
-		rs_cat_heap(str, input, len);
+		rs_cat_heap_n(str, input, len);
 	} else if (str->stack.left < len) {
+		int rc;
 		const size_t stack_size = rs_stack_size(str);
 
-		// Create a temporary buffer for the stack string.
+		/* Create a temporary buffer for the stack string. */
 		char tmp[RS_STACK_CAPACITY];
 		memcpy(tmp, str->stack.buff, stack_size);
 
-		const int rc = rs_init_heap(str, stack_size + len);
+		rc = rs_init_heap(str, stack_size + len);
 
 		if (rc)
 			return rc;
 
-		// Copy the stack buffer to the new heap buffer.
-		rs_cpy_heap(str, tmp, stack_size);
-		rs_cat_heap(str, input, len);
+		/* Copy the stack buffer to the new heap buffer. */
+		rs_cpy_heap_n(str, tmp, stack_size);
+		rs_cat_heap_n(str, input, len);
 	} else {
-		rs_cat_stack(str, input, len);
+		rs_cat_stack_n(str, input, len);
 	}
 
 	return 0;
@@ -215,16 +239,16 @@ int rs_cpy_n(rapid_string *str, const char *input, size_t len) {
 		if (rc)
 			return rc;
 
-		rs_cpy_heap(str, input, len);
+		rs_cpy_heap_n(str, input, len);
 	} else if (len > RS_STACK_CAPACITY) {
 		const int rc = rs_init_heap(str, len);
 
 		if (rc)
 			return rc;
 
-		rs_cpy_heap(str, input, len);
+		rs_cpy_heap_n(str, input, len);
 	} else {
-		rs_cpy_stack(str, input, len);
+		rs_cpy_stack_n(str, input, len);
 	}
 
 	return 0;
@@ -237,6 +261,7 @@ void rs_steal(rapid_string *str, char *buffer)
 
 void rs_steal_n(rapid_string *str, char *buffer, size_t len)
 {
+	/* Manual free as using rs_free creates an additional branch. */
 	if (str->heap.flag == RS_HEAP_FLAG)
 		RS_FREE(str->heap.buff);
 	else
@@ -285,3 +310,7 @@ void rs_free(rapid_string *str)
 	if (str->heap.flag == RS_HEAP_FLAG)
 		RS_FREE(str->heap.buff);
 }
+
+#if RS_GCC_VERSION >= 40700 && !RS_C99
+	#pragma GCC diagnostic pop
+#endif
