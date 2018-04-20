@@ -28,8 +28,6 @@
 
 #if RS_GCC_VERSION >= 30100 && RS_C99
 	#define RS_INLINE_DEF RS_INLINE inline
-#elif defined(__INTEL_COMPILER)
-	#define RS_INLINE_DEF
 #else
 	#define RS_INLINE_DEF RS_INLINE
 #endif

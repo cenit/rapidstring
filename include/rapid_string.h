@@ -23,7 +23,7 @@
 #define RC_C11 (0)
 #endif
 
-#if defined(_MSC_VER) && _MSC_VER >= 1500
+#if (defined(_MSC_VER) && _MSC_VER >= 1500) || defined (__INTEL_COMPILER)
 	#define RS_INLINE __forceinline
 #elif RS_GCC_VERSION >= 30100
 	#define RS_INLINE __attribute__((always_inline))
