@@ -17,6 +17,7 @@
 /* TODO: rs_resize_w for filler character */
 /* TODO: travis (gcc and clang) & appveyor builds */
 /* TODO: add coveralls */
+/* TODO: group benchmarks by test, not compiler */
 
 #define RS_HEAP_FLAG (0xFF)
 
