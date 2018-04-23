@@ -7,6 +7,8 @@
 /* TODO: other stl-like stuff? */
 /* TODO: docs & comments */
 /* TODO: some define for validating inputs */
+/* TODO: rs_cat_rs & co */
+/* TODO: rs_search, rs_erase, rs_substring */
 
 #define RS_HEAP_FLAG (0xFF)
 
@@ -44,7 +46,7 @@
 #if (defined(_MSC_VER) && _MSC_VER >= 1500) || defined (__INTEL_COMPILER)
 	#define RS_API __forceinline
 #elif RS_GCC_VERSION >= 30100
-	#define RS_API __attribute__((always_inline)) __inline__
+	#define RS_API __attribute__((always_inline)) inline
 #else
 	#define RS_API inline
 #endif

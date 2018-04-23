@@ -3,6 +3,8 @@
 #include "resize.hpp"
 #include <benchmark/benchmark.h>
 
+// TODO: add fbstring to benchmarks
+
 // Concatenation
 BENCHMARK(rs_concat);
 BENCHMARK(std_concat);
