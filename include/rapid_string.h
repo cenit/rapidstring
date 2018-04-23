@@ -1,6 +1,10 @@
 #ifndef RAPID_STRING_H_962AB5F800398A34
 #define RAPID_STRING_H_962AB5F800398A34
 
+#ifndef __cplusplus
+	#include <stdbool.h>
+#endif
+
 #include <stddef.h>
 #include <string.h>
 
@@ -137,9 +141,9 @@ RS_API size_t rs_len(const rapid_string *str);
 
 RS_API size_t rs_cap(const rapid_string *str);
 
-RS_API int rs_is_heap(const rapid_string *str);
+RS_API bool rs_is_heap(const rapid_string *str);
 
-RS_API int rs_is_stack(const rapid_string *str);
+RS_API bool rs_is_stack(const rapid_string *str);
 
 RS_API char rs_at(const rapid_string *str, size_t i);
 
@@ -323,12 +327,12 @@ RS_API size_t rs_cap(const rapid_string *str)
 		RS_STACK_CAPACITY;
 }
 
-RS_API int rs_is_heap(const rapid_string * str)
+RS_API bool rs_is_heap(const rapid_string * str)
 {
 	return str->heap.flag == RS_HEAP_FLAG;
 }
 
-RS_API int rs_is_stack(const rapid_string * str)
+RS_API bool rs_is_stack(const rapid_string * str)
 {
 	return str->heap.flag != RS_HEAP_FLAG;
 }
