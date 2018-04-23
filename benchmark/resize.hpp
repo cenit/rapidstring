@@ -13,16 +13,17 @@ inline void rs_resize(benchmark::State& state)
 	for (auto _ : state) {
 		auto s = rs_empty();
 		rs_resize(&s, resize_count);
+		benchmark::DoNotOptimize(s);
 		rs_free(&s);
 	}
 }
-
 
 inline void std_resize(benchmark::State& state)
 {
 	for (auto _ : state) {
 		std::string s;
 		s.resize(resize_count);
+		benchmark::DoNotOptimize(s);
 	}
 }
 

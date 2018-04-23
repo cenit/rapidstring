@@ -1,0 +1,6 @@
+[submodule "test/lib/Catch2"]
+	path = test/lib/Catch2
+	url = https://github.com/catchorg/Catch2
+[submodule "benchmark/lib/benchmark"]
+	path = benchmark/lib/benchmark
+	url = https://github.com/google/benchmark

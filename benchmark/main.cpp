@@ -7,6 +7,9 @@
 BENCHMARK(rs_concat);
 BENCHMARK(std_concat);
 
+BENCHMARK(rs_reserve_concat);
+BENCHMARK(std_reserve_concat);
+
 // Construction
 BENCHMARK(rs_12_byte_construct);
 BENCHMARK(std_12_byte_construct);

@@ -14,6 +14,7 @@ inline void rs_12_byte_construct(benchmark::State& state)
 	for (auto _ : state) {
 		rapid_string s;
 		rs_init_w_n(&s, STR_12, 12);
+		benchmark::DoNotOptimize(s);
 		rs_free(&s);
 	}
 }
@@ -21,7 +22,7 @@ inline void rs_12_byte_construct(benchmark::State& state)
 inline void std_12_byte_construct(benchmark::State& state)
 {
 	for (auto _ : state)
-		std::string s{ STR_12, 12 };
+		benchmark::DoNotOptimize(std::string{ STR_12, 12 });
 }
 
 inline void rs_24_byte_construct(benchmark::State& state)
@@ -29,6 +30,7 @@ inline void rs_24_byte_construct(benchmark::State& state)
 	for (auto _ : state) {
 		rapid_string s;
 		rs_init_w_n(&s, STR_24, 24);
+		benchmark::DoNotOptimize(s);
 		rs_free(&s);
 	}
 }
@@ -36,7 +38,7 @@ inline void rs_24_byte_construct(benchmark::State& state)
 inline void std_24_byte_construct(benchmark::State& state)
 {
 	for (auto _ : state)
-		std::string s{ STR_24, 24 };
+		benchmark::DoNotOptimize(std::string{ STR_24, 24 });
 }
 
 inline void rs_48_byte_construct(benchmark::State& state)
@@ -44,6 +46,7 @@ inline void rs_48_byte_construct(benchmark::State& state)
 	for (auto _ : state) {
 		rapid_string s;
 		rs_init_w_n(&s, STR_48, 48);
+		benchmark::DoNotOptimize(s);
 		rs_free(&s);
 	}
 }
@@ -51,7 +54,7 @@ inline void rs_48_byte_construct(benchmark::State& state)
 inline void std_48_byte_construct(benchmark::State& state)
 {
 	for (auto _ : state)
-		std::string s{ STR_48, 48 };
+		benchmark::DoNotOptimize(std::string{ STR_48, 48 });
 }
 
 #endif // !CONSTRUCT_HPP_7DFD4B503BE48168
