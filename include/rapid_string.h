@@ -9,6 +9,7 @@
 /* TODO: some define for validating inputs */
 /* TODO: rs_cat_rs & co */
 /* TODO: rs_search, rs_erase, rs_substring */
+/* TODO: forward declares for all functions */
 
 #define RS_HEAP_FLAG (0xFF)
 
