@@ -10,6 +10,7 @@
 /* TODO: rs_cat_rs & co */
 /* TODO: rs_search, rs_erase, rs_substring */
 /* TODO: forward declares for all functions */
+/* TODO: travis (gcc and clang) & appveyor builds*/
 
 #define RS_HEAP_FLAG (0xFF)
 

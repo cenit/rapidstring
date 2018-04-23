@@ -4,6 +4,7 @@
 #include <benchmark/benchmark.h>
 
 // TODO: add fbstring to benchmarks
+// TODO: add intel compiler to benchmarks
 
 // Concatenation
 BENCHMARK(rs_concat);
