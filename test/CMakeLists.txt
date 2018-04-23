@@ -1,9 +1,9 @@
 project(rapid_string_test LANGUAGES CXX)
 add_executable(rapid_string_test
-	concat.cpp
-	construct.cpp
-	copy.cpp
-	main.cpp
+	src/concat.cpp
+	src/construct.cpp
+	src/copy.cpp
+	src/main.cpp
 )
 
 target_compile_features(rapid_string_test PRIVATE cxx_std_11)

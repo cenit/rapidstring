@@ -1,6 +1,6 @@
 project(rapid_string_benchmark LANGUAGES CXX)
 add_executable(rapid_string_benchmark
-	main.cpp
+	src/main.cpp
 )
 
 set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "Suppressing benchmark's tests" FORCE)
