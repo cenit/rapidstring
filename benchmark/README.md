@@ -3,7 +3,7 @@ This library is built for performance and efficiency. The `rapid_string`'s small
 
 Furthermore, reserved concatenations are very efficient with `rapid_string` as you may use the fact that the string is guarenteed to have enough space available. The method `rs_cat_heap_n` assumes that the string is already on the heap and has enough space to perform the concatenation, effectively making it as fast as `memset()`. It beats the standard implementations by **a factor of two, three and four** on MSVC++, GCC and Clang respectively.
 
-The following benchmarks were run on an 64 bit machine with an Intel Core i7-6700HQ @ 2.60GHz processor. All benchmarks measure the execution time in nanoseconds, therefore, **lower is better**.
+The following benchmarks were run on a 64 bit machine with an Intel Core i7-6700HQ @ 2.60GHz processor. All benchmarks measure the execution time in nanoseconds, therefore, **lower is better**.
 
 ## MSVC++ 19.13
 <div align="center"><img src="https://i.imgur.com/Cem9wvJ.png"/></div>
