@@ -5,8 +5,8 @@ Furthermore, reserved concatenations are very efficient with `rapid_string` as y
 
 The following benchmarks were run on a 64 bit machine with an Intel Core i7-6700HQ @ 2.60GHz processor. All benchmarks measure the execution time in nanoseconds, therefore, **lower is better**.
 
-## MSVC++ 19.13
-<div align="center"><img src="https://i.imgur.com/Cem9wvJ.png"/></div>
+## MSVC++ 14.14
+<div align="center"><img src="https://i.imgur.com/kBm8tLK.png"/></div>
 
 ## GCC 7.3
 <div align="center"><img src="https://i.imgur.com/Wt7AsF3.png"/></div>
