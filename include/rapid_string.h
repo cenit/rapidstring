@@ -12,6 +12,7 @@
 /* TODO: forward declares for all functions */
 /* TODO: rs_resize_w for filler character */
 /* TODO: travis (gcc and clang) & appveyor builds */
+/* TODO: add coveralls */
 
 #define RS_HEAP_FLAG (0xFF)
 
@@ -87,16 +88,16 @@ typedef struct {
 	size_t len;
 	size_t cap;
 	/*
-	 * Bytes will always be lost due to alignment. However, explicitly storing 
-	 * the flag and the padding inside one of the union members allows the stack 
-	 * string to be larger.
+	 * Bytes will always be lost due to alignment. However, explicitly 
+	 * storing the flag and the padding inside one of the union members 
+	 * allows the stack string to be larger.
 	 */
 	unsigned char align[RS_ALIGNMENT - 1];
 	/*
-	 * The following flag is used to store the state of the union as well as the 
-	 * remaining capacity of the stack string. They may be shared as said cap of 
-	 * a stack string will always be smaller than the heap flag, which 
-	 * guarentees unambiguity between the two states.
+	 * The following flag is used to store the state of the union as well as 
+	 * the remaining capacity of the stack string. They may be shared as 
+	 * said cap of a stack string will always be smaller than the heap flag, 
+	 * which guarentees unambiguity between the two states.
 	 */
 	unsigned char flag;
 } rs_heap;
