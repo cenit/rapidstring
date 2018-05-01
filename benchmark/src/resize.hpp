@@ -11,7 +11,7 @@ constexpr const std::size_t resize_count{ 1000 };
 inline void rs_resize(benchmark::State& state)
 {
 	for (auto _ : state) {
-		auto s = rs_empty();
+		auto s = rs_new();
 		rs_resize(&s, resize_count);
 		benchmark::DoNotOptimize(s);
 		rs_free(&s);

@@ -18,10 +18,10 @@
 inline void rs_concat(benchmark::State& state)
 {
 	for (auto _ : state) {
-		rapid_string s = rs_empty();
+		rapid_string s = rs_new();
 
 		for (size_t i = 0; i < CAT_COUNT; i++)
-			rs_cat_n(&s, CAT_STR, CAT_STR_LEN);
+			rs_append_n(&s, CAT_STR, CAT_STR_LEN);
 
 		benchmark::DoNotOptimize(s);
 		rs_free(&s);
@@ -40,7 +40,7 @@ inline void rs_reserve_concat(benchmark::State& state)
 		 * enough capacity.
 		 */
 		for (size_t i = 0; i < CAT_COUNT; i++)
-			rs_cat_heap_n(&s, CAT_STR, CAT_STR_LEN);
+			rs_heap_append_n(&s, CAT_STR, CAT_STR_LEN);
 
 		benchmark::DoNotOptimize(s);
 		rs_free(&s);

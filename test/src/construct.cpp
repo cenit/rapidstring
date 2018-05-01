@@ -6,7 +6,7 @@ TEST_CASE("Stack construction")
 	const std::string first;
 	const std::string second{ "Hello World!" };
 
-	auto s1{ rs_empty() };
+	auto s1{ rs_new() };
 
 	CMP_STR(&s1, first);
 
