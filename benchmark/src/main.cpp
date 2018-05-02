@@ -27,13 +27,4 @@ BENCHMARK(std_48_byte_construct);
 BENCHMARK(rs_resize);
 BENCHMARK(std_resize);
 
-// TODO: use benchmark main?
-int main(int argc, char *argv[])
-{
-	benchmark::Initialize(&argc, argv); 
-
-	if (benchmark::ReportUnrecognizedArguments(argc, argv))
-		return 1;
-
-	benchmark::RunSpecifiedBenchmarks();
-}
+BENCHMARK_MAIN();

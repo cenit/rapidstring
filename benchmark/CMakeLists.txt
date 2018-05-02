@@ -15,9 +15,18 @@ target_include_directories(rapid_string_benchmark
 target_compile_features(rapid_string_benchmark PRIVATE cxx_std_11)
 
 if (MSVC)
-	target_compile_options(rapid_string_benchmark PRIVATE /W4)
+	target_compile_options(rapid_string_benchmark 
+		PRIVATE 
+			/W4
+			/Ox
+	)
 elseif(AppleClang OR Clang OR GNU OR Intel)
-	target_compile_options(rapid_string_benchmark PRIVATE -Wall -Wextra -pedantic)
+	target_compile_options(rapid_string_benchmark 
+		PRIVATE 
+			-Wall
+			-Wextra
+			-pedantic
+	)
 endif()
 
 target_link_libraries(rapid_string_benchmark

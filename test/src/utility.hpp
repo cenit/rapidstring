@@ -13,8 +13,4 @@
 	else						   \
 		REQUIRE(rs_capacity(s) == RS_STACK_CAPACITY)
 
-#define CMP_STR_RC(rc, s, cmp) \
-	REQUIRE(!rc);	       \
-	CMP_STR(s, cmp)
-
 #endif // !UTILITY_HPP_ECB97D42D011D625

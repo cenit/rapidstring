@@ -120,11 +120,6 @@ typedef union {
 	rs_heap heap;
 } rapid_string;
 
-enum {
-	RS_ERR_SUCCESS,
-	RS_ERR_ALLOC
-};
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -132,15 +127,13 @@ extern "C" {
 /*
  * Construction
  */
-RS_API rapid_string rs_new(void);
-
 RS_API void rs_init(rapid_string *s);
 
-RS_API int rs_init_w(rapid_string *s, const char *input);
+RS_API void rs_init_w(rapid_string *s, const char *input);
 
-RS_API int rs_init_w_n(rapid_string *s, const char *input, size_t n);
+RS_API void rs_init_w_n(rapid_string *s, const char *input, size_t n);
 
-RS_API int rs_init_w_cap(rapid_string *s, size_t n);
+RS_API void rs_init_w_cap(rapid_string *s, size_t n);
 
 /*
  * Destruction
@@ -158,9 +151,9 @@ RS_API void rs_heap_assign(rapid_string *s, const char *input);
 
 RS_API void rs_heap_assign_n(rapid_string *s, const char *input, size_t n);
 
-RS_API int rs_assign(rapid_string *s, const char *input);
+RS_API void rs_assign(rapid_string *s, const char *input);
 
-RS_API int rs_assign_n(rapid_string *s, const char *input, size_t n);
+RS_API void rs_assign_n(rapid_string *s, const char *input, size_t n);
 
 /*
  * Element access
@@ -199,9 +192,9 @@ RS_API size_t rs_size(const rapid_string *s);
 
 RS_API size_t rs_capacity(const rapid_string *s);
 
-RS_API int rs_reserve(rapid_string *s, size_t n);
+RS_API void rs_reserve(rapid_string *s, size_t n);
 
-RS_API int rs_shrink_to_fit(rapid_string *s);
+RS_API void rs_shrink_to_fit(rapid_string *s);
 
 RS_API bool rs_is_heap(const rapid_string *s);
 
@@ -218,9 +211,9 @@ RS_API void rs_heap_append(rapid_string *s, const char *input);
 
 RS_API void rs_heap_append_n(rapid_string *s, const char *input, size_t n);
 
-RS_API int rs_append(rapid_string *s, const char *input);
+RS_API void rs_append(rapid_string *s, const char *input);
 
-RS_API int rs_append_n(rapid_string *s, const char *input, size_t n);
+RS_API void rs_append_n(rapid_string *s, const char *input, size_t n);
 
 RS_API void rs_steal(rapid_string *s, char *buffer);
 
@@ -230,22 +223,22 @@ RS_API void rs_stack_resize(rapid_string *s, size_t n);
 
 RS_API void rs_heap_resize(rapid_string *s, size_t n);
 
-RS_API int rs_resize(rapid_string *s, size_t n);
+RS_API void rs_resize(rapid_string *s, size_t n);
 
 /*
  * Heap operations
  */
-RS_API int rs_heap_init(rapid_string *s, size_t n);
+RS_API void rs_heap_init(rapid_string *s, size_t n);
 
-RS_API int rs_heap_init_g(rapid_string *s, size_t n);
+RS_API void rs_heap_init_g(rapid_string *s, size_t n);
 
-RS_API int rs_stack_to_heap(rapid_string *s, size_t n);
+RS_API void rs_stack_to_heap(rapid_string *s, size_t n);
 
-RS_API int rs_stack_to_heap_g(rapid_string *s, size_t n);
+RS_API void rs_stack_to_heap_g(rapid_string *s, size_t n);
 
-RS_API int rs_realloc(rapid_string *s, size_t n);
+RS_API void rs_realloc(rapid_string *s, size_t n);
 
-RS_API int rs_grow_heap(rapid_string *s, size_t n);
+RS_API void rs_grow_heap(rapid_string *s, size_t n);
 
 /*
  * ===============================================================
@@ -254,41 +247,27 @@ RS_API int rs_grow_heap(rapid_string *s, size_t n);
  *
  * ===============================================================
  */
-RS_API rapid_string rs_new(void)
-{
-	rapid_string s;
-	rs_init(&s);
-	return s;
-}
-
 RS_API void rs_init(rapid_string *s)
 {
 	s->stack.buffer[0] = '\0';
 	s->stack.left = RS_STACK_CAPACITY;
 }
 
-RS_API int rs_init_w(rapid_string *s, const char *input)
+RS_API void rs_init_w(rapid_string *s, const char *input)
 {
-	return rs_init_w_n(s, input, strlen(input));
+	rs_init_w_n(s, input, strlen(input));
 }
 
-RS_API int rs_init_w_n(rapid_string *s, const char *input, size_t n)
+RS_API void rs_init_w_n(rapid_string *s, const char *input, size_t n)
 {
 	rs_init(s);
-	return rs_assign_n(s, input, n);
+	rs_assign_n(s, input, n);
 }
 
-RS_API int rs_init_w_cap(rapid_string *s, size_t n)
+RS_API void rs_init_w_cap(rapid_string *s, size_t n)
 {
-	rs_init(s);
-	
-	int rc = rs_heap_init(s, n);
-
-	if (rc)
-		return rc;
-
+	rs_heap_init(s, n);
 	rs_heap_resize(s, 0);
-	return 0;
 }
 
 /*
@@ -333,31 +312,21 @@ RS_API void rs_heap_assign_n(rapid_string *s, const char *input, size_t n)
 	rs_heap_resize(s, n);
 }
 
-RS_API int rs_assign(rapid_string *s, const char *input)
+RS_API void rs_assign(rapid_string *s, const char *input)
 {
-	return rs_assign_n(s, input, strlen(input));
+	rs_assign_n(s, input, strlen(input));
 }
 
-RS_API int rs_assign_n(rapid_string *s, const char *input, size_t n) {
+RS_API void rs_assign_n(rapid_string *s, const char *input, size_t n) {
 	if (rs_is_heap(s)) {
-		const int rc = rs_grow_heap(s, n);
-
-		if (rc)
-			return rc;
-
+		rs_grow_heap(s, n);
 		rs_heap_assign_n(s, input, n);
 	} else if (n > RS_STACK_CAPACITY) {
-		const int rc = rs_heap_init_g(s, n);
-
-		if (rc)
-			return rc;
-
+		rs_heap_init_g(s, n);
 		rs_heap_assign_n(s, input, n);
 	} else {
 		rs_stack_assign_n(s, input, n);
 	}
-
-	return 0;
 }
 
 /*
@@ -459,24 +428,20 @@ RS_API size_t rs_capacity(const rapid_string *s)
 		RS_STACK_CAPACITY;
 }
 
-RS_API int rs_reserve(rapid_string *s, size_t n) 
+RS_API void rs_reserve(rapid_string *s, size_t n) 
 {
 	if (rs_is_heap(s)) {
-		if (s->heap.capacity >= n)
-			return 0;
-
-		return rs_realloc(s, n);
+		if (s->heap.capacity < n)
+			rs_realloc(s, n);
 	} else {
-		return rs_stack_to_heap(s, n);
+		rs_stack_to_heap(s, n);
 	}
 }
 
-RS_API int rs_shrink_to_fit(rapid_string *s)
+RS_API void rs_shrink_to_fit(rapid_string *s)
 {
 	if (rs_is_heap(s))
-		return rs_realloc(s, rs_heap_size(s));
-
-	return 0;
+		rs_realloc(s, rs_heap_size(s));
 }
 
 RS_API bool rs_is_heap(const rapid_string * s)
@@ -498,7 +463,7 @@ RS_API bool rs_is_stack(const rapid_string * s)
  */
 RS_API void rs_stack_append(rapid_string *s, const char *input)
 {
-	return rs_stack_append_n(s, input, strlen(input));
+	rs_stack_append_n(s, input, strlen(input));
 }
 
 RS_API void rs_stack_append_n(rapid_string *s, const char *input, size_t n)
@@ -510,7 +475,7 @@ RS_API void rs_stack_append_n(rapid_string *s, const char *input, size_t n)
 
 RS_API void rs_heap_append(rapid_string *s, const char *input)
 {
-	return rs_heap_append_n(s, input, strlen(input));
+	rs_heap_append_n(s, input, strlen(input));
 }
 
 RS_API void rs_heap_append_n(rapid_string *s, const char *input, size_t n)
@@ -519,32 +484,22 @@ RS_API void rs_heap_append_n(rapid_string *s, const char *input, size_t n)
 	rs_heap_resize(s, rs_heap_size(s) + n);
 }
 
-RS_API int rs_append(rapid_string *s, const char *input)
+RS_API void rs_append(rapid_string *s, const char *input)
 {
-	return rs_append_n(s, input, strlen(input));
+	rs_append_n(s, input, strlen(input));
 }
 
-RS_API int rs_append_n(rapid_string *s, const char *input, size_t n)
+RS_API void rs_append_n(rapid_string *s, const char *input, size_t n)
 {
 	if (rs_is_heap(s)) {
-		const int rc = rs_grow_heap(s, rs_heap_size(s) + n);
-
-		if (rc)
-			return rc;
-
+		rs_grow_heap(s, rs_heap_size(s) + n);
 		rs_heap_append_n(s, input, n);
 	} else if (s->stack.left < n) {
-		int rc = rs_stack_to_heap_g(s, n);
-
-		if (rc)
-			return rc;
-
+		rs_stack_to_heap_g(s, n);
 		rs_heap_append_n(s, input, n);
 	} else {
 		rs_stack_append_n(s, input, n);
 	}
-
-	return 0;
 }
 
 RS_API void rs_steal(rapid_string *s, char *buffer)
@@ -577,22 +532,18 @@ RS_API void rs_heap_resize(rapid_string *s, size_t n)
 	s->heap.size = n;
 }
 
-RS_API int rs_resize(rapid_string *s, size_t n)
+RS_API void rs_resize(rapid_string *s, size_t n)
 {
 	if (n > RS_STACK_CAPACITY) {
-		const int rc = rs_is_heap(s) ?
-			rs_reserve(s, n) :
+		if (rs_is_heap(s))
+			rs_reserve(s, n);
+		else
 			rs_heap_init(s, n);
-
-		if (rc)
-			return rc;
 
 		rs_heap_resize(s, n);
 	} else {
 		rs_stack_resize(s, n);
 	}
-
-	return 0;
 }
 
 /*
@@ -602,64 +553,45 @@ RS_API int rs_resize(rapid_string *s, size_t n)
  *
  * ===============================================================
  */
-RS_API int rs_heap_init(rapid_string *s, size_t n)
+RS_API void rs_heap_init(rapid_string *s, size_t n)
 {
 	s->heap.buffer = (char*)RS_MALLOC(n + 1);
-
-	if (!s->heap.buffer)
-		return RS_ERR_ALLOC;
-
 	s->heap.capacity = n;
 	s->heap.flag = RS_HEAP_FLAG;
-
-	return 0;
 }
 
-RS_API int rs_heap_init_g(rapid_string *s, size_t n) 
+RS_API void rs_heap_init_g(rapid_string *s, size_t n) 
 {
-	return rs_heap_init(s, n * RS_GROWTH_FACTOR);
+	rs_heap_init(s, n * RS_GROWTH_FACTOR);
 }
 
-RS_API int rs_stack_to_heap(rapid_string *s, size_t n) 
+RS_API void rs_stack_to_heap(rapid_string *s, size_t n) 
 {
 	const size_t stack_size = rs_stack_size(s);
 
 	char tmp[RS_STACK_CAPACITY];
 	memcpy(tmp, s->stack.buffer, stack_size);
 
-	int rc = rs_heap_init(s, stack_size + n);
-
-	if (rc)
-		return rc;
-
+	rs_heap_init(s, stack_size + n);
 	rs_heap_assign_n(s, tmp, stack_size);
-	return 0;
 }
 
-RS_API int rs_stack_to_heap_g(rapid_string *s, size_t n) 
+RS_API void rs_stack_to_heap_g(rapid_string *s, size_t n) 
 {
-	return rs_stack_to_heap(s, n * RS_GROWTH_FACTOR);
+	rs_stack_to_heap(s, n * RS_GROWTH_FACTOR);
 }
 
-RS_API int rs_realloc(rapid_string *s, size_t n)
+RS_API void rs_realloc(rapid_string *s, size_t n)
 {
-	char *new_buff = (char*)RS_REALLOC(s->heap.buffer, n + 1);
-
-	if (!new_buff)
-		return RS_ERR_ALLOC;
-
-	s->heap.buffer = new_buff;
+	// TODO: assert valid buffer
+	s->heap.buffer = (char*)RS_REALLOC(s->heap.buffer, n + 1);
 	s->heap.capacity = n;
-
-	return 0;
 }
 
-RS_API int rs_grow_heap(rapid_string *s, size_t n)
+RS_API void rs_grow_heap(rapid_string *s, size_t n)
 {
-	if (s->heap.capacity >= n)
-		return 0;
-
-	return rs_realloc(s, n * RS_GROWTH_FACTOR);
+	if (s->heap.capacity < n)
+		rs_realloc(s, n * RS_GROWTH_FACTOR);
 }
 
 #ifdef __cplusplus

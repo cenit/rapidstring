@@ -2,11 +2,11 @@
 #define CONCAT_HPP_23EF09BE616AE9A8
 
 #include "rapid_string.h"
-#include <benchmark\benchmark.h>
+#include <benchmark/benchmark.h>
 #include <string>
 
-#define CAT_COUNT 100
-#define CAT_STR "A fairly long string for concatenation"
+#define CAT_COUNT (100)
+#define CAT_STR ("A fairly long string for concatenation")
 #define CAT_STR_LEN (sizeof(CAT_STR) - 1)
 
 /*
@@ -18,7 +18,8 @@
 inline void rs_concat(benchmark::State& state)
 {
 	for (auto _ : state) {
-		rapid_string s = rs_new();
+		rapid_string s;
+		rs_init(&s);
 
 		for (size_t i = 0; i < CAT_COUNT; i++)
 			rs_append_n(&s, CAT_STR, CAT_STR_LEN);
