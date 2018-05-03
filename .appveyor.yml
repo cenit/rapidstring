@@ -5,9 +5,8 @@ configuration:
   - Release
 
 environment:
-  matrix:
-    - solution: build\rapid_string.sln
-    - additional_flags: "/permissive- /std:c++latest /utf-8"
+  - solution: C:\Projects\rapid-string\build\rapid_string.sln
+  - additional_flags: "/permissive- /std:c++latest /utf-8"
 
 install:
   - git submodule update --init --recursive
