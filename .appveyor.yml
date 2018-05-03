@@ -5,7 +5,7 @@ configuration:
   - Release
 
 build:
-  project: rapid_string.sln
+  project: C:\Projects\rapid-string\build\rapid_string.sln
 
 environment:
   additional_flags: "/permissive- /std:c++latest /utf-8"
