@@ -4,8 +4,10 @@ image:
 configuration:
   - Release
 
+build:
+  project: rapid_string.sln
+
 environment:
-  solution: C:\Projects\rapid-string\build\rapid_string.sln
   additional_flags: "/permissive- /std:c++latest /utf-8"
 
 install:
