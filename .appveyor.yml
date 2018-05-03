@@ -19,4 +19,4 @@ before_build:
 - cmake .. -G "Visual Studio 15 2017 Win64"
 
 test_script:
-- .\test\rapid_string_test.exe
+- C:\Projects\rapid-string\build\test\rapid_string_test.exe
