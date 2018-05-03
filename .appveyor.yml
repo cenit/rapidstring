@@ -4,7 +4,9 @@ image:
 configuration:
   - Release
 
-solution: rapid_string.sln
+environment:
+  matrix:
+    - solution: rapid_string.sln
 
 install:
   - git submodule update --init --recursive
