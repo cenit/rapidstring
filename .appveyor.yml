@@ -6,7 +6,8 @@ configuration:
 
 environment:
   matrix:
-    - solution: rapid_string.sln
+    - solution: C:\Projects\rapid_string\build\rapid_string.sln
+    - additional_flags: "/permissive- /std:c++latest /utf-8"
 
 install:
   - git submodule update --init --recursive
