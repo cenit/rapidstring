@@ -33,6 +33,4 @@ before_install:
     
 script:
 - make
-- pwd
-- ls
-- ls test
+- ./test/rapid_string_test
