@@ -12,10 +12,7 @@
 /* TODO: other stl-like stuff? */
 /* TODO: docs & comments */
 /* TODO: some define for validating inputs */
-/* TODO: rs_append_rs & co */
 /* TODO: rs_search, rs_erase, rs_substring */
-/* TODO: forward declares for all functions */
-/* TODO: rs_resize_w for filler character */
 /* TODO: travis (gcc and clang) & appveyor builds */
 /* TODO: add coveralls */
 
@@ -43,6 +40,13 @@
   #define RS_REALLOC (realloc)
   #define RS_FREE (free)
 #endif
+
+#define RS_SIZE_DATA(f, s, input) do {                           \
+	if (rs_is_heap(s))                                       \
+		f(s, input->heap.buffer, rs_heap_size(input));   \
+	else                                                     \
+		f(s, input->stack.buffer, rs_stack_size(input)); \
+} while (0)
 
 #if defined(__GNUC__) && !defined(__INTEL_COMPILER)
   #define RS_GCC_VERSION (__GNUC__       * 10000 + \
@@ -125,7 +129,7 @@ extern "C" {
 #endif
 
 /*
- * Construction
+ * Construction & destruction
  */
 RS_API void rs_init(rapid_string *s);
 
@@ -135,9 +139,8 @@ RS_API void rs_init_w_n(rapid_string *s, const char *input, size_t n);
 
 RS_API void rs_init_w_cap(rapid_string *s, size_t n);
 
-/*
- * Destruction
- */
+RS_API void rs_init_w_rs(rapid_string *s, const rapid_string *input);
+
 RS_API void rs_free(rapid_string *s);
 
 /*
@@ -154,6 +157,8 @@ RS_API void rs_heap_assign_n(rapid_string *s, const char *input, size_t n);
 RS_API void rs_assign(rapid_string *s, const char *input);
 
 RS_API void rs_assign_n(rapid_string *s, const char *input, size_t n);
+
+RS_API void rs_assign_rs(rapid_string *s, const rapid_string *input);
 
 /*
  * Element access
@@ -215,6 +220,8 @@ RS_API void rs_append(rapid_string *s, const char *input);
 
 RS_API void rs_append_n(rapid_string *s, const char *input, size_t n);
 
+RS_API void rs_append_rs(rapid_string *s, const rapid_string *input);
+
 RS_API void rs_steal(rapid_string *s, char *buffer);
 
 RS_API void rs_steal_n(rapid_string *s, char *buffer, size_t cap);
@@ -224,6 +231,8 @@ RS_API void rs_stack_resize(rapid_string *s, size_t n);
 RS_API void rs_heap_resize(rapid_string *s, size_t n);
 
 RS_API void rs_resize(rapid_string *s, size_t n);
+
+RS_API void rs_resize_w(rapid_string *s, size_t n, char c);
 
 /*
  * Heap operations
@@ -243,7 +252,7 @@ RS_API void rs_grow_heap(rapid_string *s, size_t n);
 /*
  * ===============================================================
  *
- *                          CONSTRUCTION
+ *                   CONSTRUCTION & DESTRUCTION
  *
  * ===============================================================
  */
@@ -270,13 +279,11 @@ RS_API void rs_init_w_cap(rapid_string *s, size_t n)
 	rs_heap_resize(s, 0);
 }
 
-/*
- * ===============================================================
- *
- *                           DESTRUCTION
- *
- * ===============================================================
- */
+RS_API void rs_init_w_rs(rapid_string *s, const rapid_string *input)
+{
+	RS_SIZE_DATA(rs_init_w_n, s, input);
+}
+
 RS_API void rs_free(rapid_string *s)
 {
 	if (rs_is_heap(s))
@@ -329,6 +336,11 @@ RS_API void rs_assign_n(rapid_string *s, const char *input, size_t n) {
 	}
 }
 
+RS_API void rs_assign_rs(rapid_string *s, const rapid_string *input)
+{
+	RS_SIZE_DATA(rs_assign_n, s, input);
+}
+
 /*
  * ===============================================================
  *
@@ -358,7 +370,9 @@ RS_API char *rs_data(rapid_string *s)
 
 RS_API const char *rs_data_c(const rapid_string *s)
 {
-	return rs_is_heap(s) ? s->heap.buffer : s->stack.buffer;
+	return rs_is_heap(s) ? 
+		s->heap.buffer : 
+		s->stack.buffer;
 }
 
 /*
@@ -385,11 +399,9 @@ RS_API char *rs_end(rapid_string *s)
 
 RS_API const char *rs_end_c(const rapid_string *s) 
 {
-	/* Manually check the flag to prevent an additional branch. */
-	if (rs_is_heap(s))
-		return s->heap.buffer + rs_heap_size(s);
-	else
-		return s->stack.buffer + rs_stack_size(s);
+	return rs_is_heap(s) ?
+		s->heap.buffer + rs_heap_size(s) :
+		s->stack.buffer + rs_stack_size(s);
 }
 
 /*
@@ -502,6 +514,11 @@ RS_API void rs_append_n(rapid_string *s, const char *input, size_t n)
 	}
 }
 
+RS_API void rs_append_rs(rapid_string *s, const rapid_string *input)
+{
+	RS_SIZE_DATA(rs_append_n, s, input);
+}
+
 RS_API void rs_steal(rapid_string *s, char *buffer)
 {
 	rs_steal_n(s, buffer, strlen(buffer));
@@ -543,6 +560,18 @@ RS_API void rs_resize(rapid_string *s, size_t n)
 		rs_heap_resize(s, n);
 	} else {
 		rs_stack_resize(s, n);
+	}
+}
+
+RS_API void rs_resize_w(rapid_string *s, size_t n, char c)
+{
+	size_t sz = rs_size(s);
+
+	rs_resize(s, n);
+
+	if (sz < n) {
+		size_t diff = n - sz;
+		memset(rs_data(s) + sz, c, diff);
 	}
 }
 
