@@ -1,20 +1,16 @@
 #ifndef RAPID_STRING_H_962AB5F800398A34
 #define RAPID_STRING_H_962AB5F800398A34
 
-#ifndef __cplusplus
-  #include <stdbool.h>
-#endif
-
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
 
-/* TODO: other stl-like stuff? */
-/* TODO: docs & comments */
-/* TODO: some define for validating inputs */
-/* TODO: rs_search, rs_erase, rs_substring */
-/* TODO: travis (gcc and clang) & appveyor builds */
-/* TODO: add coveralls */
+// TODO: other stl-like stuff?
+// TODO: docs & comments
+// TODO: some define for validating inputs
+// TODO: rs_search, rs_erase, rs_substring
+// TODO: add coveralls
 
 #define RS_HEAP_FLAG (0xFF)
 
@@ -22,7 +18,7 @@
   #define RS_GROWTH_FACTOR (2)
 #endif
 
-/* If all three allocation methods aren't defined, redefine them. */
+// If all three allocation methods aren't defined, redefine them.
 #if !defined(RS_MALLOC) || !defined(RS_REALLOC) || !defined(RS_FREE)
   #ifdef RS_MALLOC
    #undef RS_MALLOC
@@ -34,7 +30,7 @@
     #undef RS_FREE
   #endif
 
-  /* Define the allocation methods. */
+  // Define the allocation methods.
   #include <stdlib.h>
   #define RS_MALLOC (malloc)
   #define RS_REALLOC (realloc)
@@ -56,7 +52,7 @@
   #define RS_GCC_VERSION (0)
 #endif
 
-#if defined(_MSC_VER) || defined (__INTEL_COMPILER)
+#if defined(_MSC_VER)
   #define RS_API __forceinline
 #elif RS_GCC_VERSION >= 30100
   #define RS_API __attribute__((always_inline)) inline
@@ -76,7 +72,7 @@ typedef struct { void *a; size_t b; } rs_align_dummy;
   #define RS_ALIGNMENT (_Alignof(rs_align_dummy))
 #elif defined(_MSC_VER)
   #define RS_ALIGNMENT (__alignof(rs_align_dummy))
-#elif __GNUC__
+#elif defined(__GNUC__)
   #define RS_ALIGNMENT (__alignof__(rs_align_dummy))
 #else
   /*
@@ -627,4 +623,4 @@ RS_API void rs_grow_heap(rapid_string *s, size_t n)
 }
 #endif
 
-#endif /* !RAPID_STRING_H_962AB5F800398A34 */
+#endif // !RAPID_STRING_H_962AB5F800398A34
