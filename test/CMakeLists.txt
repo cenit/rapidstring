@@ -21,3 +21,9 @@ target_include_directories(rapid_string_test
 		../include
 		lib/Catch2/single_include
 )
+
+target_compile_definitions(rapid_string_test
+	PRIVATE
+		RS_ASSERTS
+)
+

@@ -37,28 +37,30 @@
   #define RS_FREE (free)
 #endif
 
-#define RS_SIZE_DATA(f, s, input) do {                           \
-	if (rs_is_heap(s))                                       \
-		f(s, input->heap.buffer, rs_heap_size(input));   \
-	else                                                     \
-		f(s, input->stack.buffer, rs_stack_size(input)); \
+#ifdef RS_ASSERTS
+  #include <assert.h>
+  #define RS_ASSERT(expr) do { assert(expr); } while (0)
+#else
+  #define RS_ASSERT(expr)
+#endif
+
+#define RS_ASSERT_PTR(ptr) do { RS_ASSERT(ptr != NULL); } while (0)
+#define RS_ASSERT_RS(s) do {					\
+	RS_ASSERT_PTR(s);					\
+	RS_ASSERT(s->heap.flag == RS_HEAP_FLAG ||		\
+		  s->heap.flag <= RS_STACK_CAPACITY);		\
+} while (0)
+#define RS_ASSERT_HEAP(s) do { RS_ASSERT(rs_is_heap(s)); } while (0)
+#define RS_ASSERT_STACK(s) do { RS_ASSERT(rs_is_stack(s)); } while (0)
+
+#define RS_SIZE_DATA(f, s, input) do {					\
+	if (rs_is_heap(s))						\
+		f(s, input->heap.buffer, rs_heap_size(input));		\
+	else								\
+		f(s, input->stack.buffer, rs_stack_size(input));	\
 } while (0)
 
-#if defined(__GNUC__) && !defined(__INTEL_COMPILER)
-  #define RS_GCC_VERSION (__GNUC__       * 10000 + \
-			  __GNUC_MINOR__ *   100 + \
-			  __GNUC_PATCHLEVEL__)
-#else
-  #define RS_GCC_VERSION (0)
-#endif
-
-#if defined(_MSC_VER)
-  #define RS_API __forceinline
-#elif RS_GCC_VERSION >= 30100
-  #define RS_API __attribute__((always_inline)) inline
-#else
-  #define RS_API inline
-#endif
+#define RS_API inline
 
 #ifdef __STDC_VERSION__
   #define RS_C11 (__STDC_VERSION__ >= 201112L)
@@ -254,6 +256,8 @@ RS_API void rs_grow_heap(rapid_string *s, size_t n);
  */
 RS_API void rs_init(rapid_string *s)
 {
+	RS_ASSERT_PTR(s);
+
 	s->stack.buffer[0] = '\0';
 	s->stack.left = RS_STACK_CAPACITY;
 }
@@ -282,6 +286,8 @@ RS_API void rs_init_w_rs(rapid_string *s, const rapid_string *input)
 
 RS_API void rs_free(rapid_string *s)
 {
+	RS_ASSERT_RS(s);
+
 	if (rs_is_heap(s))
 		RS_FREE(s->heap.buffer);
 }
@@ -295,28 +301,42 @@ RS_API void rs_free(rapid_string *s)
  */
 RS_API void rs_stack_assign(rapid_string *s, const char *input) 
 {
+	RS_ASSERT_PTR(input);
+
 	rs_stack_assign_n(s, input, strlen(input));
 }
 
 RS_API void rs_stack_assign_n(rapid_string *s, const char *input, size_t n)
 {
+	RS_ASSERT_STACK(s);
+	RS_ASSERT_PTR(input);
+	RS_ASSERT(RS_STACK_CAPACITY >= n);
+
 	memcpy(s->stack.buffer, input, n);
 	rs_stack_resize(s, n);
 }
 
 RS_API void rs_heap_assign(rapid_string *s, const char *input)
 {
+	RS_ASSERT_PTR(input);
+
 	rs_heap_assign_n(s, input, strlen(input));
 }
 
 RS_API void rs_heap_assign_n(rapid_string *s, const char *input, size_t n)
 {
+	RS_ASSERT_HEAP(s);
+	RS_ASSERT_PTR(input);
+	RS_ASSERT(s->heap.capacity >= n);
+
 	memcpy(s->heap.buffer, input, n);
 	rs_heap_resize(s, n);
 }
 
 RS_API void rs_assign(rapid_string *s, const char *input)
 {
+	RS_ASSERT_PTR(input);
+
 	rs_assign_n(s, input, strlen(input));
 }
 
@@ -346,16 +366,22 @@ RS_API void rs_assign_rs(rapid_string *s, const rapid_string *input)
  */
 RS_API char rs_at(const rapid_string *s, size_t i)
 {
+	RS_ASSERT(rs_size(s) > i);
+
 	return rs_data_c(s)[i];
 }
 
 RS_API char rs_front(const rapid_string *s)
 {
+	RS_ASSERT(rs_size(s) > 0);
+
 	return *rs_begin_c(s);
 }
 
 RS_API char rs_back(const rapid_string *s)
 {
+	RS_ASSERT(rs_size(s) > 0);
+
 	return *rs_end_c(s);
 }
 
@@ -366,6 +392,8 @@ RS_API char *rs_data(rapid_string *s)
 
 RS_API const char *rs_data_c(const rapid_string *s)
 {
+	RS_ASSERT_RS(s);
+
 	return rs_is_heap(s) ? 
 		s->heap.buffer : 
 		s->stack.buffer;
@@ -395,6 +423,8 @@ RS_API char *rs_end(rapid_string *s)
 
 RS_API const char *rs_end_c(const rapid_string *s) 
 {
+	RS_ASSERT_RS(s);
+
 	return rs_is_heap(s) ?
 		s->heap.buffer + rs_heap_size(s) :
 		s->stack.buffer + rs_stack_size(s);
@@ -414,11 +444,15 @@ RS_API bool rs_empty(const rapid_string *s)
 
 RS_API size_t rs_stack_size(const rapid_string *s)
 {
+	RS_ASSERT_STACK(s);
+
 	return RS_STACK_CAPACITY - s->stack.left;
 }
 
 RS_API size_t rs_heap_size(const rapid_string *s)
 {
+	RS_ASSERT_HEAP(s);
+
 	return s->heap.size;
 }
 
@@ -452,8 +486,10 @@ RS_API void rs_shrink_to_fit(rapid_string *s)
 		rs_realloc(s, rs_heap_size(s));
 }
 
-RS_API bool rs_is_heap(const rapid_string * s)
+RS_API bool rs_is_heap(const rapid_string *s)
 {
+	RS_ASSERT_RS(s);
+
 	return s->heap.flag == RS_HEAP_FLAG;
 }
 
@@ -471,11 +507,16 @@ RS_API bool rs_is_stack(const rapid_string * s)
  */
 RS_API void rs_stack_append(rapid_string *s, const char *input)
 {
+	RS_ASSERT_PTR(input);
+
 	rs_stack_append_n(s, input, strlen(input));
 }
 
 RS_API void rs_stack_append_n(rapid_string *s, const char *input, size_t n)
 {
+	RS_ASSERT_PTR(input);
+	RS_ASSERT(RS_STACK_CAPACITY >= rs_stack_size(s) + n);
+
 	const size_t stack_size = rs_stack_size(s);
 	memcpy(s->stack.buffer + stack_size, input, n);
 	rs_stack_resize(s, stack_size + n);
@@ -483,17 +524,25 @@ RS_API void rs_stack_append_n(rapid_string *s, const char *input, size_t n)
 
 RS_API void rs_heap_append(rapid_string *s, const char *input)
 {
+	RS_ASSERT_PTR(input);
+
 	rs_heap_append_n(s, input, strlen(input));
 }
 
 RS_API void rs_heap_append_n(rapid_string *s, const char *input, size_t n)
 {
+	RS_ASSERT_RS(s);
+	RS_ASSERT_PTR(input);
+	RS_ASSERT(s->heap.capacity >= s->heap.size + n);
+
 	memcpy(s->heap.buffer + rs_heap_size(s), input, n);
 	rs_heap_resize(s, rs_heap_size(s) + n);
 }
 
 RS_API void rs_append(rapid_string *s, const char *input)
 {
+	RS_ASSERT_PTR(input);
+
 	rs_append_n(s, input, strlen(input));
 }
 
@@ -535,12 +584,17 @@ RS_API void rs_steal_n(rapid_string *s, char *buffer, size_t n)
 
 RS_API void rs_stack_resize(rapid_string *s, size_t n)
 {
+	RS_ASSERT(RS_STACK_CAPACITY >= n);
+	
 	s->stack.buffer[n] = '\0';
 	s->stack.left = (uint8_t)(RS_STACK_CAPACITY - n);
 }
 
 RS_API void rs_heap_resize(rapid_string *s, size_t n)
 {
+	RS_ASSERT_HEAP(s);
+	RS_ASSERT(s->heap.capacity >= n);
+
 	s->heap.buffer[n] = '\0';
 	s->heap.size = n;
 }
@@ -581,6 +635,9 @@ RS_API void rs_resize_w(rapid_string *s, size_t n, char c)
 RS_API void rs_heap_init(rapid_string *s, size_t n)
 {
 	s->heap.buffer = (char*)RS_MALLOC(n + 1);
+	
+	RS_ASSERT_PTR(s->heap.buffer);
+
 	s->heap.capacity = n;
 	s->heap.flag = RS_HEAP_FLAG;
 }
@@ -608,8 +665,10 @@ RS_API void rs_stack_to_heap_g(rapid_string *s, size_t n)
 
 RS_API void rs_realloc(rapid_string *s, size_t n)
 {
-	// TODO: assert valid buffer
 	s->heap.buffer = (char*)RS_REALLOC(s->heap.buffer, n + 1);
+	
+	RS_ASSERT_PTR(s->heap.buffer);
+
 	s->heap.capacity = n;
 }
 
