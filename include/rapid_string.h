@@ -8,7 +8,6 @@
 #include <string.h>
 
 // TODO: other stl-like stuff?
-// TODO: some define for validating inputs
 // TODO: rs_search, rs_erase, rs_substring
 // TODO: add coveralls
 
