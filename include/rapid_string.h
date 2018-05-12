@@ -88,7 +88,6 @@ typedef struct {
 	uint8_t flag;
 } rs_heap;
 
-#define RS_MAX_SIZE (~(size_t)0)
 #define RS_STACK_CAPACITY (sizeof(rs_heap) - 1)
 
 typedef struct {
