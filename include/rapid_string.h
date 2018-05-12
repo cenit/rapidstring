@@ -1,3 +1,8 @@
+/**
+ * @file rapid_string.h
+ * The header only rapid_string library.
+ */
+
 #ifndef RAPID_STRING_H_962AB5F800398A34
 #define RAPID_STRING_H_962AB5F800398A34
 
@@ -65,7 +70,7 @@ typedef struct { void *a; size_t b; } rs_align_dummy;
 			       sizeof(size_t))
 #endif
 
-/*
+/**
  * Accessing packed data structures incurs a performance penalty, therefore the
  * alignment will be used to allow for a larger stack string.
  */
@@ -262,7 +267,7 @@ inline char rs_back(const rapid_string *s);
 /**
  * Access the buffer.
  * @param s An initialized string.
- * returns The buffer.
+ * @returns The buffer.
  */
 inline char *rs_data(rapid_string *s);
 
