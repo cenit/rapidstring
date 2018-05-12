@@ -157,10 +157,10 @@ RS_API void rs_init_w_rs(rapid_string *s, const rapid_string *input);
  * Frees a string. The string is in an invalid state after
  * freeing. You must call `rs_init(s)` if you wish to reuse the same
  * string after freeing.
-
+ *
  * A jump may be avoided by directly calling `RS_FREE(s->heap.buffer);` if
  * the string is known to be on the heap.
-
+ *
  * Calling this fuction is unecessary if the string size is always smaller
  * or equal to `RS_STACK_CAPACITY`.
  * @param s The string to free.
