@@ -1,7 +1,7 @@
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = rapid_string
 PROJECT_NUMBER         = 1.0.0
-PROJECT_BRIEF          = "The a fast string library."
+PROJECT_BRIEF          = "A fast string library."
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = docs/
 CREATE_SUBDIRS         = NO
