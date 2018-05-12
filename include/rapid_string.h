@@ -8,7 +8,6 @@
 #include <string.h>
 
 // TODO: other stl-like stuff?
-// TODO: docs & comments
 // TODO: some define for validating inputs
 // TODO: rs_search, rs_erase, rs_substring
 // TODO: add coveralls
@@ -396,7 +395,7 @@ RS_API bool rs_is_stack(const rapid_string *s);
  * Appends characters to a stack string.
  * Identicle to `rs_stack_append_n(s, input, strlen(input));`.
  * @param s An initialized stack string.
- * @param The input to append.
+ * @param input The input to append.
  */
 RS_API void rs_stack_append(rapid_string *s, const char *input);
 
