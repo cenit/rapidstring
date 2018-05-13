@@ -887,7 +887,7 @@ inline void rs_stack_resize(rapid_string *s, size_t n)
 	RS_ASSERT(RS_STACK_CAPACITY >= n);
 	
 	s->stack.buffer[n] = '\0';
-	s->stack.left = RS_STACK_CAPACITY - n;
+	s->stack.left = (uint8_t)(RS_STACK_CAPACITY - n);
 }
 
 inline void rs_heap_resize(rapid_string *s, size_t n)
