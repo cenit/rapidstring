@@ -2,7 +2,7 @@ image:
   - Visual Studio 2017
 
 configuration:
-  - Release
+  - Debug
 
 build:
   project: C:\Projects\rapid-string\build\rapid_string.sln

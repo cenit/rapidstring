@@ -40,7 +40,7 @@
 #define RS_ASSERT_STACK(s) do { RS_ASSERT(rs_is_stack(s)); } while (0)
 
 #define RS_SIZE_DATA(f, s, input) do {					\
-	if (rs_is_heap(s))						\
+	if (rs_is_heap(input))						\
 		f(s, input->heap.buffer, rs_heap_size(input));		\
 	else								\
 		f(s, input->stack.buffer, rs_stack_size(input));	\
@@ -228,7 +228,7 @@ inline void rs_assign(rapid_string *s, const char *input);
 inline void rs_assign_n(rapid_string *s, const char *input, size_t n);
 
 /**
- * Assigns a rapid_string to another rapid_string.
+ * Assigns a string to another string.
  * @param s An initialized string.
  * @param input The input string used to initialize `s`.
  */
@@ -334,7 +334,7 @@ inline bool rs_empty(const rapid_string *s);
  * @param s An initialized stack string.
  * @returns The stack string length.
  */
-inline size_t rs_stack_size(const rapid_string *s);
+inline uint8_t rs_stack_size(const rapid_string *s);
 
 /**
  * Returns the length of a heap string.
@@ -471,7 +471,7 @@ inline void rs_steal_n(rapid_string *s, char *buffer, size_t cap);
  * @param s An initialized stack string.
  * @param n The new size.
  */
-inline void rs_stack_resize(rapid_string *s, size_t n);
+inline void rs_stack_resize(rapid_string *s, uint8_t n);
 
 /**
  * Resizes a heap string. The new size must be smaller than `s->heap.capacity`.
@@ -742,7 +742,7 @@ inline bool rs_empty(const rapid_string *s)
 	return rs_size(s) == 0;
 }
 
-inline size_t rs_stack_size(const rapid_string *s)
+inline uint8_t rs_stack_size(const rapid_string *s)
 {
 	RS_ASSERT_STACK(s);
 
@@ -793,7 +793,7 @@ inline bool rs_is_heap(const rapid_string *s)
 	return s->heap.flag == RS_HEAP_FLAG;
 }
 
-inline bool rs_is_stack(const rapid_string * s)
+inline bool rs_is_stack(const rapid_string *s)
 {
 	return !rs_is_heap(s);
 }
@@ -817,7 +817,7 @@ inline void rs_stack_append_n(rapid_string *s, const char *input, size_t n)
 	RS_ASSERT_PTR(input);
 	RS_ASSERT(RS_STACK_CAPACITY >= rs_stack_size(s) + n);
 
-	const size_t stack_size = rs_stack_size(s);
+	const uint8_t stack_size = rs_stack_size(s);
 	memcpy(s->stack.buffer + stack_size, input, n);
 	rs_stack_resize(s, stack_size + n);
 }
@@ -882,12 +882,12 @@ inline void rs_steal_n(rapid_string *s, char *buffer, size_t n)
 	s->heap.capacity = n;
 }
 
-inline void rs_stack_resize(rapid_string *s, size_t n)
+inline void rs_stack_resize(rapid_string *s, uint8_t n)
 {
 	RS_ASSERT(RS_STACK_CAPACITY >= n);
 	
 	s->stack.buffer[n] = '\0';
-	s->stack.left = (uint8_t)(RS_STACK_CAPACITY - n);
+	s->stack.left = RS_STACK_CAPACITY - n;
 }
 
 inline void rs_heap_resize(rapid_string *s, size_t n)
@@ -949,7 +949,7 @@ inline void rs_heap_init_g(rapid_string *s, size_t n)
 
 inline void rs_stack_to_heap(rapid_string *s, size_t n)
 {
-	const size_t stack_size = rs_stack_size(s);
+	const uint8_t stack_size = rs_stack_size(s);
 
 	char tmp[RS_STACK_CAPACITY];
 	memcpy(tmp, s->stack.buffer, stack_size);

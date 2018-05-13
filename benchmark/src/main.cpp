@@ -1,4 +1,4 @@
-#include "concat.hpp"
+#include "append.hpp"
 #include "construct.hpp"
 #include "resize.hpp"
 #include <benchmark/benchmark.h>
@@ -7,11 +7,11 @@
 // TODO: add intel compiler to benchmarks
 
 // Concatenation
-BENCHMARK(rs_concat);
-BENCHMARK(std_concat);
+BENCHMARK(rs_append);
+BENCHMARK(std_append);
 
-BENCHMARK(rs_reserve_concat);
-BENCHMARK(std_reserve_concat);
+BENCHMARK(rs_reserve_append);
+BENCHMARK(std_reserve_append);
 
 // Construction
 BENCHMARK(rs_12_byte_construct);

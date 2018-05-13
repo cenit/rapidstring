@@ -1,8 +1,11 @@
 project(rapid_string_test LANGUAGES CXX)
 add_executable(rapid_string_test
-	src/concat.cpp
+	src/access.cpp
+	src/assign.cpp
+	src/append.cpp
 	src/construct.cpp
 	src/copy.cpp
+	src/iterator.cpp
 	src/main.cpp
 )
 
