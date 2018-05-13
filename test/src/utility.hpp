@@ -12,6 +12,6 @@
 		REQUIRE(rs_capacity(s) >= cmp.length());	\
 	else							\
 		REQUIRE(rs_capacity(s) == RS_STACK_CAPACITY);	\
-while (0)
+} while (0)
 
 #endif // !UTILITY_HPP_ECB97D42D011D625
