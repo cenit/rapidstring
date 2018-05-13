@@ -105,10 +105,6 @@ typedef union {
 	rs_heap heap;
 } rapid_string;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /*
  * ===============================================================
  *
@@ -977,9 +973,5 @@ inline void rs_grow_heap(rapid_string *s, size_t n)
 	if (s->heap.capacity < n)
 		rs_realloc(s, n * RS_GROWTH_FACTOR);
 }
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif // !RAPID_STRING_H_962AB5F800398A34
