@@ -18,7 +18,6 @@ if (MSVC)
 	target_compile_options(rapid_string_benchmark 
 		PRIVATE 
 			/W4
-			/Ox
 	)
 elseif(AppleClang OR Clang OR GNU OR Intel)
 	target_compile_options(rapid_string_benchmark 
