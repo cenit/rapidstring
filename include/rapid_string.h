@@ -65,8 +65,8 @@ typedef struct { void *a; size_t b; } rs_align_dummy;
    * No other way to find the alignment than assuming structs are aligned
    * by the largest member.
    */
-  #define RS_ALIGNMENT (sizeof(void*) > sizeof(size_t) ? \
-			       sizeof(void*) :           \
+  #define RS_ALIGNMENT (sizeof(void*) > sizeof(size_t) ?	\
+			       sizeof(void*) :			\
 			       sizeof(size_t))
 #endif
 
