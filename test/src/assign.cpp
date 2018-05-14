@@ -3,13 +3,15 @@
 
 TEST_CASE("Stack assignment")
 {
-	const std::string first{ "Short!" };
+	const std::string first{ "Very " };
+	const std::string second{ "short!" };
 
 	rapid_string s;
 	rs_init(&s);
 	rs_stack_assign(&s, first.data());
+	rs_stack_assign(&s, second.data());
 
-	CMP_STR(&s, first);
+	CMP_STR(&s, first + second);
 
 	rs_free(&s);
 }
@@ -17,6 +19,7 @@ TEST_CASE("Stack assignment")
 TEST_CASE("Heap assignment")
 {
 	const std::string first{ "A very long string to get around SSO!" };
+	const std::string second{ "Today is a fine day. Let's go." };
 
 	rapid_string s;
 
@@ -24,12 +27,15 @@ TEST_CASE("Heap assignment")
 	rs_init_w_cap(&s, first.length());
 	rs_heap_assign(&s, first.data());
 
+	rs_reserve(&s, rs_size(&s) + second.length());
+	rs_heap_assign(&s, second.data());
+
 	CMP_STR(&s, first);
 
 	rs_free(&s);
 }
 
-TEST_CASE("Assignment")
+TEST_CASE("Stack and heap assignment")
 {
 	const std::string first{ "Short!" };
 	const std::string second{ "A very long string to get around SSO!" };
@@ -49,4 +55,3 @@ TEST_CASE("Assignment")
 	rs_free(&s1);
 	rs_free(&s2);
 }
-
