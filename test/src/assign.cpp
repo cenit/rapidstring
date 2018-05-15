@@ -5,13 +5,17 @@ TEST_CASE("Stack assignment")
 {
 	const std::string first{ "Very " };
 	const std::string second{ "short!" };
+	const std::string result{ first + second };
 
 	rapid_string s;
 	rs_init(&s);
 	rs_stack_assign(&s, first.data());
+
+	CMP_STR(&s, first);
+
 	rs_stack_assign(&s, second.data());
 
-	CMP_STR(&s, first + second);
+	CMP_STR(&s, result);
 
 	rs_free(&s);
 }
