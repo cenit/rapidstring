@@ -5,5 +5,5 @@
     <a href="https://github.com/boyerjohn/rapid_string/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a>
 </div>
 
-# rapid_string
+# rapidstring
 A fast string library written in C.
