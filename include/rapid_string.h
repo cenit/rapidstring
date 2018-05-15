@@ -44,9 +44,9 @@
 #define RS_ASSERT_STACK(s) do { RS_ASSERT(rs_is_stack(s)); } while (0)
 
 #ifdef __GNUC__
-  #define RS_GCC_VERSION (__GNUC__ * 10000 +	\
-		       __GNUC_MINOR__ * 100 +	\
-		       __GNUC_PATCHLEVEL__)
+  #define RS_GCC_VERSION (__GNUC__ * 10000 +		\
+			  __GNUC_MINOR__ * 100 +	\
+			  __GNUC_PATCHLEVEL__)
 #else
   #define RS_GCC_VERSION (0)
 #endif
