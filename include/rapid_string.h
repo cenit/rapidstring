@@ -16,10 +16,12 @@
 // TODO: rs_search, rs_erase, rs_substring
 // TODO: add coveralls
 
-#define RS_HEAP_FLAG (0xFF)
-
 #ifndef RS_GROWTH_FACTOR
   #define RS_GROWTH_FACTOR (2)
+#endif
+
+#ifndef RS_AVERAGE_SIZE
+  #define RS_AVERAGE_SIZE (50)
 #endif
 
 #if !defined(RS_MALLOC) && !defined(RS_REALLOC) && !defined(RS_FREE)
@@ -28,6 +30,8 @@
   #define RS_REALLOC (realloc)
   #define RS_FREE (free)
 #endif
+
+#define RS_HEAP_FLAG (0xFF)
 
 #define RS_ASSERT(expr) do { assert(expr); } while (0)
 #define RS_ASSERT_PTR(ptr) do { RS_ASSERT(ptr != NULL); } while (0)
@@ -39,12 +43,22 @@
 #define RS_ASSERT_HEAP(s) do { RS_ASSERT(rs_is_heap(s)); } while (0)
 #define RS_ASSERT_STACK(s) do { RS_ASSERT(rs_is_stack(s)); } while (0)
 
-#define RS_SIZE_DATA(f, s, input) do {					\
-	if (rs_is_heap(input))						\
-		f(s, input->heap.buffer, rs_heap_size(input));		\
-	else								\
-		f(s, input->stack.buffer, rs_stack_size(input));	\
-} while (0)
+#ifdef __GNUC__
+  #define RS_GCC_VERSION (__GNUC__ * 10000 +	\
+		       __GNUC_MINOR__ * 100 +	\
+		       __GNUC_PATCHLEVEL__)
+#else
+  #define RS_GCC_VERSION (0)
+#endif
+
+#if RS_GCC_VERSION > 29600
+  #define RS_LIKELY(expr) __builtin_expect((expr), 1)
+  #define RS_UNLIKELY(expr) __builtin_expect((expr), 0)
+  #define RS_EXPECT(expr, val) __builtin_expect((expr), val)
+#else
+  #define RS_LIKELY(expr) expr
+  #define RS_UNLIKELY(expr) expr
+#endif
 
 #ifdef __STDC_VERSION__
   #define RS_C11 (__STDC_VERSION__ >= 201112L)
@@ -104,6 +118,27 @@ typedef union {
 	rs_stack stack;
 	rs_heap heap;
 } rapid_string;
+
+// Based off the average string size, allow for more efficient branching.
+enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
+
+#define RS_HEAP_LIKELY(expr) RS_EXPECT(expr, RS_HEAP_LIKELY_V)
+#define RS_STACK_LIKELY(expr) RS_EXPECT(expr, !RS_HEAP_LIKELY_V)
+
+/**
+ * Forwards the buffer and size of a string to the provided function.
+ * Retrieving both the buffer and the size of a string requires a flag check,
+ * which would result in an additional branch if not done manually.
+ * @param f A function.
+ * @param s An initialized string.
+ * @param input The input to forward the function.
+ */
+#define RS_DATA_SIZE(f, s, input) do {					\
+	if (RS_HEAP_LIKELY(rs_is_heap(input)))				\
+		f(s, input->heap.buffer, rs_heap_size(input));		\
+	else								\
+		f(s, input->stack.buffer, rs_stack_size(input));	\
+} while (0)
 
 /*
  * ===============================================================
@@ -577,14 +612,14 @@ inline void rs_init_w_cap(rapid_string *s, size_t n)
 
 inline void rs_init_w_rs(rapid_string *s, const rapid_string *input)
 {
-	RS_SIZE_DATA(rs_init_w_n, s, input);
+	RS_DATA_SIZE(rs_init_w_n, s, input);
 }
 
 inline void rs_free(rapid_string *s)
 {
 	RS_ASSERT_RS(s);
 
-	if (rs_is_heap(s))
+	if (RS_HEAP_LIKELY(rs_is_heap(s)))
 		RS_FREE(s->heap.buffer);
 }
 
@@ -637,10 +672,10 @@ inline void rs_assign(rapid_string *s, const char *input)
 }
 
 inline void rs_assign_n(rapid_string *s, const char *input, size_t n) {
-	if (rs_is_heap(s)) {
+	if (RS_HEAP_LIKELY(rs_is_heap(s))) {
 		rs_grow_heap(s, n);
 		rs_heap_assign_n(s, input, n);
-	} else if (n > RS_STACK_CAPACITY) {
+	} else if (RS_HEAP_LIKELY(n > RS_STACK_CAPACITY)) {
 		rs_heap_init_g(s, n);
 		rs_heap_assign_n(s, input, n);
 	} else {
@@ -650,7 +685,7 @@ inline void rs_assign_n(rapid_string *s, const char *input, size_t n) {
 
 inline void rs_assign_rs(rapid_string *s, const rapid_string *input)
 {
-	RS_SIZE_DATA(rs_assign_n, s, input);
+	RS_DATA_SIZE(rs_assign_n, s, input);
 }
 
 /*
@@ -768,8 +803,8 @@ inline size_t rs_capacity(const rapid_string *s)
 
 inline void rs_reserve(rapid_string *s, size_t n)
 {
-	if (rs_is_heap(s)) {
-		if (s->heap.capacity < n)
+	if (RS_HEAP_LIKELY(rs_is_heap(s))) {
+		if (RS_LIKELY(s->heap.capacity < n))
 			rs_realloc(s, n);
 	} else {
 		rs_stack_to_heap(s, n);
@@ -778,7 +813,7 @@ inline void rs_reserve(rapid_string *s, size_t n)
 
 inline void rs_shrink_to_fit(rapid_string *s)
 {
-	if (rs_is_heap(s))
+	if (RS_LIKELY(rs_is_heap(s)))
 		rs_realloc(s, rs_heap_size(s));
 }
 
@@ -844,10 +879,10 @@ inline void rs_append(rapid_string *s, const char *input)
 
 inline void rs_append_n(rapid_string *s, const char *input, size_t n)
 {
-	if (rs_is_heap(s)) {
+	if (RS_HEAP_LIKELY(rs_is_heap(s))) {
 		rs_grow_heap(s, rs_heap_size(s) + n);
 		rs_heap_append_n(s, input, n);
-	} else if (s->stack.left < n) {
+	} else if (RS_HEAP_LIKELY(s->stack.left < n)) {
 		rs_stack_to_heap_g(s, n);
 		rs_heap_append_n(s, input, n);
 	} else {
@@ -857,7 +892,7 @@ inline void rs_append_n(rapid_string *s, const char *input, size_t n)
 
 inline void rs_append_rs(rapid_string *s, const rapid_string *input)
 {
-	RS_SIZE_DATA(rs_append_n, s, input);
+	RS_DATA_SIZE(rs_append_n, s, input);
 }
 
 inline void rs_steal(rapid_string *s, char *buffer)
@@ -868,7 +903,7 @@ inline void rs_steal(rapid_string *s, char *buffer)
 inline void rs_steal_n(rapid_string *s, char *buffer, size_t n)
 {
 	/* Manual free as using rs_free creates an additional branch. */
-	if (rs_is_heap(s))
+	if (RS_HEAP_LIKELY(rs_is_heap(s)))
 		RS_FREE(s->heap.buffer);
 	else
 		s->heap.flag = RS_HEAP_FLAG;
@@ -897,8 +932,8 @@ inline void rs_heap_resize(rapid_string *s, size_t n)
 
 inline void rs_resize(rapid_string *s, size_t n)
 {
-	if (n > RS_STACK_CAPACITY) {
-		if (rs_is_heap(s))
+	if (RS_HEAP_LIKELY(n > RS_STACK_CAPACITY)) {
+		if (RS_HEAP_LIKELY(rs_is_heap(s)))
 			rs_reserve(s, n);
 		else
 			rs_heap_init(s, n);
@@ -915,7 +950,7 @@ inline void rs_resize_w(rapid_string *s, size_t n, char c)
 
 	rs_resize(s, n);
 
-	if (sz < n) {
+	if (RS_LIKELY(sz < n)) {
 		size_t diff = n - sz;
 		memset(rs_data(s) + sz, c, diff);
 	}
@@ -970,7 +1005,7 @@ inline void rs_realloc(rapid_string *s, size_t n)
 
 inline void rs_grow_heap(rapid_string *s, size_t n)
 {
-	if (s->heap.capacity < n)
+	if (RS_UNLIKELY(s->heap.capacity < n))
 		rs_realloc(s, n * RS_GROWTH_FACTOR);
 }
 
