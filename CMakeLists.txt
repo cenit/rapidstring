@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
-project(rapid_string LANGUAGES C)
+project(rapidstring LANGUAGES C)
 
 # TODO: installation?
 

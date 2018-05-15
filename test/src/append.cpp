@@ -7,7 +7,7 @@ TEST_CASE("Stack concatenation")
 	const std::string second{ " World!" };
 	const auto sum{ first + second };
 
-	rapid_string s;
+	rapidstring s;
 	rs_init(&s);
 
 	rs_append(&s, first.data());
@@ -27,7 +27,7 @@ TEST_CASE("Stack and heap concatenation")
 	const std::string second{ " to this very long string to avoid SSO!" };
 	const std::string sum{ first + second };
 
-	rapid_string s;
+	rapidstring s;
 	rs_init(&s);
 
 	rs_append(&s, first.data());
@@ -47,7 +47,7 @@ TEST_CASE("Heap concatenation")
 	const std::string second{ " to ensure all concats are on the heap!" };
 	const auto sum{ first + second };
 
-	rapid_string s;
+	rapidstring s;
 	rs_init(&s);
 	
 	rs_append(&s, first.data());

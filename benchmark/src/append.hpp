@@ -1,7 +1,7 @@
 #ifndef CONCAT_HPP_23EF09BE616AE9A8
 #define CONCAT_HPP_23EF09BE616AE9A8
 
-#include "rapid_string.h"
+#include "rapidstring.h"
 #include <benchmark/benchmark.h>
 #include <string>
 
@@ -18,7 +18,7 @@
 inline void rs_append(benchmark::State& state)
 {
 	for (auto _ : state) {
-		rapid_string s;
+		rapidstring s;
 		rs_init(&s);
 
 		for (size_t i = 0; i < CAT_COUNT; i++)
@@ -32,7 +32,7 @@ inline void rs_append(benchmark::State& state)
 inline void rs_reserve_append(benchmark::State& state) 
 {
 	for (auto _ : state) {
-		rapid_string s;
+		rapidstring s;
 		rs_init_w_cap(&s, CAT_STR_LEN * CAT_COUNT);
 
 		/* 

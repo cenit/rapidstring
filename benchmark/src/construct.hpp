@@ -1,7 +1,7 @@
 #ifndef CONSTRUCT_HPP_7DFD4B503BE48168
 #define CONSTRUCT_HPP_7DFD4B503BE48168
 
-#include "rapid_string.h"
+#include "rapidstring.h"
 #include <benchmark/benchmark.h>
 #include <string>
 
@@ -11,7 +11,7 @@
 
 inline void rs_12_byte_construct(benchmark::State& state)
 {
-	rapid_string s;
+	rapidstring s;
 
 	for (auto _ : state) {
 		rs_init(&s);
@@ -29,7 +29,7 @@ inline void std_12_byte_construct(benchmark::State& state)
 
 inline void rs_24_byte_construct(benchmark::State& state)
 {
-	rapid_string s;
+	rapidstring s;
 
 	for (auto _ : state) {
 		rs_init(&s);
@@ -47,7 +47,7 @@ inline void std_24_byte_construct(benchmark::State& state)
 
 inline void rs_48_byte_construct(benchmark::State& state)
 {
-	rapid_string s;
+	rapidstring s;
 
 	for (auto _ : state) {
 		rs_init_w_n(&s, STR_48, 48);

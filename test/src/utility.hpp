@@ -1,7 +1,7 @@
 #ifndef UTILITY_HPP_ECB97D42D011D625
 #define UTILITY_HPP_ECB97D42D011D625
 
-#include "rapid_string.h"
+#include "rapidstring.h"
 #include <catch.hpp>
 
 #define CMP_STR(s, cmp) do {					\

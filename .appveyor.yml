@@ -5,7 +5,7 @@ configuration:
   - Debug
 
 build:
-  project: C:\Projects\rapid-string\build\rapid_string.sln
+  project: C:\Projects\rapid-string\build\rapidstring.sln
 
 environment:
   additional_flags: "/permissive- /std:c++latest /utf-8"
@@ -19,5 +19,5 @@ before_build:
 - cmake .. -G "Visual Studio 15 2017 Win64"
 
 test_script:
-- cd C:\Projects\rapid-string\build\test\Debug
-- .\rapid_string_test.exe
+- cd C:\Projects\rapidstring\build\test\Debug
+- .\rapidstring_test.exe
