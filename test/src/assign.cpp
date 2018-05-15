@@ -5,7 +5,6 @@ TEST_CASE("Stack assignment")
 {
 	const std::string first{ "Very " };
 	const std::string second{ "short!" };
-	const std::string result{ first + second };
 
 	rapid_string s;
 	rs_init(&s);
@@ -15,7 +14,7 @@ TEST_CASE("Stack assignment")
 
 	rs_stack_assign(&s, second.data());
 
-	CMP_STR(&s, result);
+	CMP_STR(&s, second);
 
 	rs_free(&s);
 }
@@ -31,10 +30,12 @@ TEST_CASE("Heap assignment")
 	rs_init_w_cap(&s, first.length());
 	rs_heap_assign(&s, first.data());
 
-	rs_reserve(&s, rs_size(&s) + second.length());
+	CMP_STR(&s, first);
+
+	rs_reserve(&s, second.length());
 	rs_heap_assign(&s, second.data());
 
-	CMP_STR(&s, first);
+	CMP_STR(&s, second);
 
 	rs_free(&s);
 }
