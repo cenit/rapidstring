@@ -45,18 +45,15 @@ TEST_CASE("Stack and heap assignment")
 	const std::string first{ "Short!" };
 	const std::string second{ "A very long string to get around SSO!" };
 
-	rapid_string s1;
-	rs_init(&s1);
-	rs_assign(&s1, first.data());
+	rapid_string s;
+	rs_init(&s);
+	rs_assign(&s, first.data());
 
-	CMP_STR(&s1, first);
+	CMP_STR(&s, first);
 
-	rapid_string s2;
-	rs_init(&s2);
-	rs_assign(&s2, second.data());
+	rs_assign(&s, second.data());
 	
-	CMP_STR(&s2, second);
+	CMP_STR(&s, second);
 
-	rs_free(&s1);
-	rs_free(&s2);
+	rs_free(&s);
 }
