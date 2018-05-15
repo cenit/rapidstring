@@ -52,13 +52,13 @@
 #endif
 
 #if RS_GCC_VERSION > 29600
-  #define RS_LIKELY(expr) __builtin_expect((expr), 1)
-  #define RS_UNLIKELY(expr) __builtin_expect((expr), 0)
   #define RS_EXPECT(expr, val) __builtin_expect((expr), val)
 #else
-  #define RS_LIKELY(expr) expr
-  #define RS_UNLIKELY(expr) expr
+  #define RS_EXPECT(expr, val) (expr)
 #endif
+
+#define RS_LIKELY(expr) RS_EXPECT(expr, 1)
+#define RS_UNLIKELY(expr) RS_EXPECT(expr, 0)
 
 #ifdef __STDC_VERSION__
   #define RS_C11 (__STDC_VERSION__ >= 201112L)
