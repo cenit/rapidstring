@@ -1,6 +1,8 @@
 #include "utility.hpp"
 #include <string>
 
+// TODO: stack assignment with stack_assign and assign, same for heap.
+
 TEST_CASE("Stack assignment")
 {
 	const std::string first{ "Very " };
