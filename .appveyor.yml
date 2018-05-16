@@ -5,7 +5,7 @@ configuration:
   - Debug
 
 build:
-  project: C:\Projects\rapid-string\build\rapidstring.sln
+  project: C:\Projects\rapidstring\build\rapidstring.sln
 
 environment:
   additional_flags: "/permissive- /std:c++latest /utf-8"
