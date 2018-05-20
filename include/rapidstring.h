@@ -1198,10 +1198,10 @@ static inline void *rsa_stack_alloc(size_t n)
 
 static inline void *rsa_stack_realloc(void *p, size_t sz, size_t n)
 {
-	assert(rsa_stack_owns(p));
-
 	if (RS_UNLIKELY(!p))
 		return rsa_stack_alloc(n);
+
+	assert(rsa_stack_owns(p));
 
 	uint8_t *end = rsa_stack.ptr - sz;
 	bool shrink = sz > n;
@@ -1223,6 +1223,8 @@ static inline void *rsa_stack_realloc(void *p, size_t sz, size_t n)
 
 static inline bool rsa_stack_owns(void *p)
 {
+	RS_ASSERT_PTR(p);
+
 	uint8_t *ptr = (uint8_t*)p;
 
 	return ptr >= rsa_stack.buff &&
