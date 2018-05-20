@@ -619,8 +619,8 @@ static inline void *rsa_stack_alloc(size_t n);
 /**
  * Reallocates the given area of memory. It must have been previously allocated
  * with `rsa_stack_alloc()` or `rsa_stack_realloc()` and not yet freed with
- * `rsa_stack_free()`. If the size is zero, the buffer will not be freed and a
- * valid pointer with no usable storage is returned.
+ * `rsa_stack_free()`. If the size is zero, `p` will not be freed and a
+ * valid pointer with no usable storage will be returned.
  * @param p Pointer to an area of memory to reallocate.
  * @param sz Current size of the area of memory in bytes.
  * @param n New size of the area of memory in bytes.
