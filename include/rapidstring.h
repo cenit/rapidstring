@@ -25,6 +25,10 @@
   #define RS_AVERAGE_SIZE (50)
 #endif
 
+#ifndef RSA_STACK_SIZE
+  #define RSA_STACK_SIZE 16384
+#endif
+
 #if !defined(RS_ALLOC) && !defined(RS_REALLOC) && !defined(RS_FREE)
   #define RS_ALLOC (rsa_alloc)
   #define RS_REALLOC (rsa_realloc)
@@ -119,6 +123,13 @@ typedef union {
 	rs_heap heap;
 } rapidstring;
 
+typedef struct {
+	uint8_t buff[RSA_STACK_SIZE];
+	uint8_t* ptr;
+} rsa_stack_t;
+
+static rsa_stack_t rsa_stack = { {}, rsa_stack.buff };
+
 // Based off the average string size, allow for more efficient branching.
 enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
 
@@ -139,120 +150,6 @@ enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
 	else								\
 		f(s, input->stack.buffer, rs_stack_size(input));	\
 } while (0)
-
-/*
- * ===============================================================
- *
- *                         STACK ALLOCATOR
- *
- * ===============================================================
- */
-
-#ifndef RSA_STACK_SIZE
-  #define RSA_STACK_SIZE 16384
-#endif
-
-typedef struct {
-	uint8_t buff[RSA_STACK_SIZE];
-	uint8_t* ptr;
-} rsa_stack_t;
-
-static rsa_stack_t rsa_stack = { {}, rsa_stack.buff };
-
-static inline bool rsa_stack_can_alloc(size_t n)
-{
-	const uint8_t *end = rsa_stack.buff + RSA_STACK_SIZE;
-	return n <= (size_t)(end - rsa_stack.ptr);
-}
-
-static inline void *rsa_stack_alloc(size_t n)
-{
-	if (!rsa_stack_can_alloc(n))
-		return NULL;
-
-	void *tmp = rsa_stack.ptr;
-	rsa_stack.ptr += n;
-	return tmp;
-}
-
-static inline void *rsa_stack_realloc(void *p, size_t prev, size_t n)
-{
-	if (!rsa_stack_can_alloc(n))
-		return NULL;
-	else if (!p)
-		return rsa_stack_alloc(n);
-
-	uint8_t *end = rsa_stack.ptr - prev;
-
-	if ((uint8_t*)p == end) {
-		rsa_stack.ptr = end + n;
-		return p;
-	} else {
-		void *buff = rsa_stack_alloc(n);
-		memcpy(buff, p, prev);
-		return buff;
-	}
-}
-
-static inline bool rsa_stack_owns(void *p)
-{
-	uint8_t *ptr = (uint8_t*)p;
-	return ptr >= rsa_stack.buff &&
-	       ptr < rsa_stack.buff + RSA_STACK_SIZE;
-}
-
-static inline void rsa_stack_free(void *p, size_t n)
-{
-	uint8_t *ptr = (uint8_t*)p;
-
-	if (n + ptr == rsa_stack.ptr)
-		rsa_stack.ptr = ptr;
-}
-
-/*
- * ===============================================================
- *
- *                        DEFAULT ALLOCATOR
- *
- * ===============================================================
- */
-
-static inline void *rsa_alloc(size_t n)
-{
-	void *p = rsa_stack_alloc(n);
-
-	if (!p)
-		return malloc(n);
-
-	return p;
-}
-
-static inline void *rsa_realloc(void *p, size_t prev, size_t n)
-{
-	if (rsa_stack_owns(p)) {
-		if (rsa_stack_realloc(p, prev, n))
-			return p;
-
-		void *buff = malloc(n);
-
-		if (!buff)
-			return NULL;
-
-		memcpy(buff, p, prev);
-		return buff;
-	} else {
-		return realloc(p, n);
-	}
-}
-
-static inline void rsa_free(void *p, size_t n)
-{
-	if (rsa_stack_owns(p)) {
-		rsa_stack_free(p, n);
-	} else {
-		free(p);
-	}
-}
 
 /*
  * ===============================================================
@@ -649,14 +546,14 @@ static inline void rs_resize_w(rapidstring *s, size_t n, char c);
  */
 
 /**
- * Initializes the heap.
+ * Initializes the heap. Intended for internal use.
  * @param s A string.
  * @param n The heap capacity.
  */
 static inline void rs_heap_init(rapidstring *s, size_t n);
 
 /**
- * Initializes the heap with growth.
+ * Initializes the heap with growth. Intended for internal use.
  * Identicle to `rs_heap_init(s, n * RS_GROWTH_FACTOR);`.
  * @param s A string.
  * @param n The heap capacity.
@@ -664,14 +561,14 @@ static inline void rs_heap_init(rapidstring *s, size_t n);
 static inline void rs_heap_init_g(rapidstring *s, size_t n);
 
 /**
- * Moves a stack string to the heap.
+ * Moves a stack string to the heap. Intended for internal use.
  * @param s A initialized stack string.
  * @param n The heap capacity.
  */
 static inline void rs_stack_to_heap(rapidstring *s, size_t n);
 
 /**
- * Moves a stack string to the heap with growth.
+ * Moves a stack string to the heap with growth. Intended for internal use.
  * Identicle to `rs_stack_to_heap(s, n * RS_GROWTH_FACTOR);`.
  * @param s A initialized stack string.
  * @param n The heap capacity.
@@ -679,18 +576,113 @@ static inline void rs_stack_to_heap(rapidstring *s, size_t n);
 static inline void rs_stack_to_heap_g(rapidstring *s, size_t n);
 
 /**
- * Reallocates a heap buffer.
+ * Reallocates the heap buffer. This method may grow or shrink the heap
+ * capacity. The size will remain the same, even if the new capacity is smaller
+ * than the current size. Intended for internal use.
  * @param s An initialized heap string.
  * @param n The new heap capacity.
  */
 static inline void rs_realloc(rapidstring *s, size_t n);
 
 /**
- * Allocates growth for a heap string.
+ * Allocates growth for a heap string. Intended for internal use.
  * @param s An initialized heap string.
  * @param n The new heap capacity.
  */
 static inline void rs_grow_heap(rapidstring *s, size_t n);
+
+/*
+ * ===============================================================
+ *
+ *                         STACK ALLOCATOR
+ *
+ * ===============================================================
+ */
+
+/**
+ * Checks whether `n` bytes can be allocated.
+ * @param n Number of bytes.
+ * @return `true` if `n` bytes can be allocated, `false` otherwise.
+ */
+static inline bool rsa_stack_can_alloc(size_t n);
+
+/**
+ * Allocates bytes of zero initialized storage on the stack. If the size is
+ * zero, a valid pointer with no usable storage is returned.
+ * @param n Number of bytes.
+ * @return On success, returns a pointer to the first byte of allocated memory.
+ * This pointer must be passed to `rsa_stack_free()`. On failure, returns a
+ * null pointer.
+ */
+static inline void *rsa_stack_alloc(size_t n);
+
+/**
+ * Reallocates the given area of memory. It must have been previously allocated
+ * with `rsa_stack_alloc()` or `rsa_stack_realloc()` and not yet freed with
+ * `rsa_stack_free()`. If the size is zero, the buffer will not be freed and a
+ * valid pointer with no usable storage is returned.
+ * @param p Pointer to an area of memory to reallocate.
+ * @param sz Current size of the area of memory in bytes.
+ * @param n New size of the area of memory in bytes.
+ * @return On success, returns a pointer to the first byte of allocated memory.
+ * This pointer must be passed to `rsa_stack_free()`. On failure, returns a
+ * null pointer.
+ */
+static inline void *rsa_stack_realloc(void *p, size_t sz, size_t n);
+
+/**
+ * Checks whether `p` is owned by this stack allocator.
+ * @param p Pointer to an area of memory.
+ * @return `true` if `p` is owned by this stack allocator, `false` otherwise.
+ */
+static inline bool rsa_stack_owns(void *p);
+
+/**
+ * Deallocates the space previously allocated by `rsa_stack_alloc()` or
+ * `rsa_stack_realloc()`. If the pointer is null, the function does nothing.
+ * The behavior is undefined if the same pointer is freed more than once.
+ * @param p Pointer to the memory to deallocate.
+ * @param n Size of the memory.
+ */
+static inline void rsa_stack_free(void *p, size_t n);
+
+/*
+ * ===============================================================
+ *
+ *                        DEFAULT ALLOCATOR
+ *
+ * ===============================================================
+ */
+
+/**
+ * Allocates bytes of uninitialized storage.
+ * @param n Number of bytes.
+ * @return On success, returns a pointer to the first byte of allocated memory.
+ * This pointer must be passed to `rs_free`. On failure, returns a null
+ * pointer.
+ */
+static inline void *rsa_alloc(size_t n);
+
+/**
+ * Reallocates the given area of memory. It must have been previously allocated
+ * with `rsa_alloc()` or `rsa_realloc()` and not yet freed with `rsa_free()`.
+ * @param p Pointer to an area of memory to reallocate.
+ * @param sz Current size of the area of memory in bytes.
+ * @param n New size of the area of memory in bytes.
+ * @return On success, returns a pointer to the first byte of allocated memory.
+ * This pointer must be passed to `rsa_free()`. On failure, returns a null
+ * pointer.
+ */
+static inline void *rsa_realloc(void *p, size_t sz, size_t n);
+
+/**
+ * Deallocates the space previously allocated by `rsa_alloc()` or
+ * `rsa_realloc()`. If the pointer is null, the function does nothing.
+ * The behavior is undefined if the same pointer is freed more than once.
+ * @param p Pointer to the memory to deallocate.
+ * @param n Size of the memory.
+ */
+static inline void rsa_free(void *p, size_t n);
 
 /*
  * ===============================================================
@@ -1122,6 +1114,119 @@ static inline void rs_grow_heap(rapidstring *s, size_t n)
 {
 	if (RS_UNLIKELY(s->heap.capacity < n))
 		rs_realloc(s, n * RS_GROWTH_FACTOR);
+}
+
+/*
+ * ===============================================================
+ *
+ *                         STACK ALLOCATOR
+ *
+ * ===============================================================
+ */
+static inline bool rsa_stack_can_alloc(size_t n)
+{
+	const uint8_t *end = rsa_stack.buff + RSA_STACK_SIZE;
+	return n <= (size_t)(end - rsa_stack.ptr);
+}
+
+static inline void *rsa_stack_alloc(size_t n)
+{
+	if (RS_UNLIKELY(!rsa_stack_can_alloc(n)))
+		return NULL;
+
+	void *tmp = rsa_stack.ptr;
+	rsa_stack.ptr += n;
+	return tmp;
+}
+
+static inline void *rsa_stack_realloc(void *p, size_t sz, size_t n)
+{
+	RS_ASSERT(rsa_stack_owns(p));
+
+	if (RS_UNLIKELY(!p))
+		return rsa_stack_alloc(n);
+
+	uint8_t *end = rsa_stack.ptr - sz;
+	bool shrink = sz > n;
+	bool is_end = (uint8_t*)p == end;
+
+	if (RS_LIKELY(is_end && (shrink || rsa_stack_can_alloc(n - sz)))) {
+		rsa_stack.ptr = end + n;
+		return p;
+	} else {
+		void *buff = rsa_stack_alloc(n);
+
+		if (!buff)
+			return NULL;
+
+		memcpy(buff, p, sz);
+		return buff;
+	}
+}
+
+static inline bool rsa_stack_owns(void *p)
+{
+	uint8_t *ptr = (uint8_t*)p;
+
+	return ptr >= rsa_stack.buff &&
+	       ptr < rsa_stack.buff + RSA_STACK_SIZE;
+}
+
+static inline void rsa_stack_free(void *p, size_t n)
+{
+	if (RS_UNLIKELY(!p))
+		return;
+
+	uint8_t *ptr = (uint8_t*)p;
+
+	if (RS_LIKELY(n + ptr == rsa_stack.ptr))
+		rsa_stack.ptr = ptr;
+}
+
+/*
+ * ===============================================================
+ *
+ *                        DEFAULT ALLOCATOR
+ *
+ * ===============================================================
+ */
+
+static inline void *rsa_alloc(size_t n)
+{
+	void *p = rsa_stack_alloc(n);
+
+	if (!p)
+		return malloc(n);
+
+	return p;
+}
+
+static inline void *rsa_realloc(void *p, size_t sz, size_t n)
+{
+	if (rsa_stack_owns(p)) {
+		if (rsa_stack_realloc(p, sz, n))
+			return p;
+
+		void *buff = malloc(n);
+
+		if (!buff)
+			return NULL;
+
+		memcpy(buff, p, sz);
+		rsa_stack_free(p, sz);
+		return buff;
+	} else {
+		return realloc(p, n);
+	}
+}
+
+static inline void rsa_free(void *p, size_t n)
+{
+	if (rsa_stack_owns(p)) {
+		rsa_stack_free(p, n);
+	} else {
+		free(p);
+	}
 }
 
 #endif // !RAPID_STRING_H_962AB5F800398A34
