@@ -2,7 +2,7 @@ from collections import OrderedDict
 
 header = """/*
  * rapidstring - A fast string library.
- * version 1.0.0
+ * version 0.1.0
  * https://github.com/boyerjohn/rapidstring
  *
  * Licensed under the MIT License <http://opensource.org/licenses/MIT>.
@@ -29,7 +29,12 @@ pos = 1
 for key, value in elems.items():
 	toc += ' * ' + str(pos) + '. ' + key + '\n'
 	toc += ' * - Declarations:	line ' + str(value[0]) + '\n'
-	toc += ' * - Defintions:	line ' + str(value[1]) + '\n *\n'
+
+	if len(value) == 2:
+		toc += ' * - Defintions:	line ' + str(value[1]) + '\n'
+	
+	toc += ' *\n'
+
 	pos += 1
 
 toc = toc[:-3]

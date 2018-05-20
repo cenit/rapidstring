@@ -1,6 +1,6 @@
 /*
  * rapidstring - A fast string library.
- * version 1.0.0
+ * version 0.1.0
  * https://github.com/boyerjohn/rapidstring
  *
  * Licensed under the MIT License <http://opensource.org/licenses/MIT>.
@@ -10,49 +10,48 @@
 /*
  *       TABLE OF CONTENTS
  *
- * 1. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 212
- * - Defintions:	line 745
+ * 1. STRUCTURES & MACROS
+ * - Declarations:	line 78
  *
- * 2. ASSIGNMENT
- * - Declarations:	line 270
- * - Defintions:	line 791
+ * 2. CONSTRUCTION & DESTRUCTION
+ * - Declarations:	line 288
+ * - Defintions:	line 823
  *
- * 3. ELEMENT ACCESS
- * - Declarations:	line 337
- * - Defintions:	line 857
+ * 3. ASSIGNMENT
+ * - Declarations:	line 348
+ * - Defintions:	line 869
  *
- * 4. ITERATORS
- * - Declarations:	line 381
- * - Defintions:	line 900
+ * 4. ELEMENT ACCESS
+ * - Declarations:	line 415
+ * - Defintions:	line 935
  *
- * 5. CAPACITY
- * - Declarations:	line 417
- * - Defintions:	line 932
+ * 5. ITERATORS
+ * - Declarations:	line 459
+ * - Defintions:	line 978
  *
- * 6. MODIFIERS
- * - Declarations:	line 487
- * - Defintions:	line 1001
+ * 6. CAPACITY
+ * - Declarations:	line 495
+ * - Defintions:	line 1010
  *
- * 7. HEAP OPERATIONS
- * - Declarations:	line 598
- * - Defintions:	line 1129
+ * 7. MODIFIERS
+ * - Declarations:	line 565
+ * - Defintions:	line 1079
  *
- * 8. STACK ALLOCATOR
- * - Declarations:	line 652
- * - Defintions:	line 1184
+ * 8. HEAP OPERATIONS
+ * - Declarations:	line 676
+ * - Defintions:	line 1207
  *
- * 9. DEFAULT ALLOCATOR
- * - Declarations:	line 707
- * - Defintions:	line 1252
+ * 9. STACK ALLOCATOR
+ * - Declarations:	line 730
+ * - Defintions:	line 1262
+ *
+ * 10. DEFAULT ALLOCATOR
+ * - Declarations:	line 785
+ * - Defintions:	line 1332
  */
 
 #ifndef RAPID_STRING_H_962AB5F800398A34
 #define RAPID_STRING_H_962AB5F800398A34
-
-#define RS_VERSION_MAJOR 0
-#define RS_VERSION_MINOR 1
-#define RS_VERSION_PATCH 0
 
 #include <assert.h>
 #include <stdbool.h>
@@ -61,11 +60,24 @@
 #include <stdlib.h>
 #include <string.h>
 
+// TODO: add complexity and versions to all functions
 // TODO: organize macros & structs in toc
 // TODO: rename to c like methods
 // TODO: other stl-like stuff?
 // TODO: rs_search, rs_erase, rs_substring
 // TODO: add coveralls
+
+/*
+ * ===============================================================
+ *
+ *                       STRUCTURES & MACROS
+ *
+ * ===============================================================
+ */
+
+#define RS_VERSION_MAJOR 0
+#define RS_VERSION_MINOR 1
+#define RS_VERSION_PATCH 0
 
 #ifndef RS_GROWTH_FACTOR
   #define RS_GROWTH_FACTOR (2)
@@ -138,37 +150,102 @@ typedef struct { void *a; size_t b; } rs_align_dummy;
 #endif
 
 /**
+ * @brief Struct that stores the heap data.
+ *
+ * A struct that stores the heap data and a flag with explicit alignment.
  * Accessing packed data structures incurs a performance penalty, therefore the
  * alignment will be used to allow for a larger stack string.
  */
 typedef struct {
+	/**
+	 * @brief Buffer of a heap string.
+	 *
+	 * The buffer of a heap string allocated using `RS_ALLOC` or
+	 * `RS_REALLOC`. This buffer may be manually freed by directly calling
+	 * `RS_FREE(s->buffer, s->capacity + 1)`. Doing so will avoid a flag
+	 * check. The additional one is for the null terminator, which is
+	 * subtracted upon initial allocation.
+	 */
 	char *buffer;
+	/**
+	 * @brief Size of a heap string.
+	 *
+	 * The number of characters in a heap string. The null terminator is
+	 * not included.
+	 */
 	size_t size;
+	/**
+	 * @brief Capacity of a heap string.
+	 *
+	 * The capacity of a heap string. The null terminator is not included.
+	 */
 	size_t capacity;
-	/*
-	 * Bytes will always be lost due to alignment. However, explicitly
-	 * storing the flag and the padding inside one of the union members
-	 * allows the stack string to be larger.
+	/**
+	 * @breif Alignnment of a heap string.
+	 *
+	 * An explicit alignment to ensure `flag` and `left` are stored in the
+	 * same location.
 	 */
 	uint8_t align[RS_ALIGNMENT - 1];
-	/*
-	 * The following flag is used to store the state of the union as well as
-	 * the remaining capacity of the stack string. They may be shared as
-	 * said cap of a stack string will always be smaller than the heap flag,
-	 * which guarentees unambiguity between the two states.
+	/**
+	 * @brief Flag of the rapidstring union.
+	 *
+	 * The following flag is used to store the state of the union as well
+	 * as the remaining capacity of the stack string. They may be shared as
+	 * the capacity of a stack string will always be smaller than
+	 * `RS_HEAP_FLAG`, which guarentees unambiguity between the two states.
 	 */
 	uint8_t flag;
 } rs_heap;
 
 #define RS_STACK_CAPACITY (sizeof(rs_heap) - 1)
 
+/**
+ * @brief Struct that stores the stack data.
+ *
+ * A struct that stores the stack buffer and capacity left.
+ */
 typedef struct {
+	/**
+	 * @brief Buffer of a stack string.
+	 *
+	 * An array of characters the size of `RS_STACK_CAPACITY` exlcuding the
+	 * null terminator.
+	 */
 	char buffer[RS_STACK_CAPACITY];
+	/**
+	 * @brief The capacity left in the buffer of a stack string.
+	 *
+	 * The capacity left in the buffer of stack string. Once the stack
+	 * string runs out of space, zero will be written to this member,
+	 * effectively becoming the null terminator.
+	 */
 	uint8_t left;
 } rs_stack;
 
+/**
+ * @brief Union that stores a rapidstring.
+ *
+ * A union that stores a rapidstring which is either on the heap or the stack.
+ * All API methods are prefixed with `rs_heap_x()` or `rs_stack_x()`. These
+ * methods are to be used only when a string is guarenteed to be in either
+ * state, as mismatching these methods results in undefined behavior. There
+ * will always be the `rs_x()` alternative which automatically handles the
+ * state of the string. These methods should be used if optimization isn't a
+ * necessity or if strings have highly variable sizes.
+ */
 typedef union {
+	/**
+	 * @brief Stack state of the rapidstring union.
+	 *
+	 * The stack state of the rapidstring union.
+	 */
 	rs_stack stack;
+	/**
+	 * @brief Heap state of the rapidstring union.
+	 *
+	 * The heap state of the rapidstring union.
+	 */
 	rs_heap heap;
 } rapidstring;
 
@@ -179,7 +256,7 @@ typedef struct {
 
 static rsa_stack_t rsa_stack = { {}, rsa_stack.buff };
 
-// Based off the average string size, allow for more efficient branching.
+/* Based off the average string size, allow for more efficient branching. */
 enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
 
 #define RS_HEAP_LIKELY(expr) RS_EXPECT(expr, RS_HEAP_LIKELY_V)
@@ -249,8 +326,10 @@ static inline void rs_init_w_rs(rapidstring *s, const rapidstring *input);
  * freeing. You must call `rs_init(s)` if you wish to reuse the same
  * string after freeing.
  *
- * A jump may be avoided by directly calling `RS_FREE(s->heap.buffer);` if
- * the string is known to be on the heap.
+ * A jump may be avoided by directly calling
+ * `RS_FREE(s->heap.buffer, s->heap.capacity + 1);` if the string is known to
+ * be on the heap. The additional one is for the null terminator, which is
+ * subtracted upon initial allocation.
  *
  * Calling this fuction is unecessary if the string size is always smaller
  * or equal to `RS_STACK_CAPACITY`.
