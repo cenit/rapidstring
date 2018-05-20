@@ -25,6 +25,8 @@ elseif(AppleClang OR Clang OR GNU OR Intel)
 			-Wall
 			-Wextra
 			-pedantic
+			-O3
+			-Ofast
 	)
 endif()
 

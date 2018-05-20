@@ -46,7 +46,7 @@ TEST_CASE("Capacity construction")
 	rs_init_w_cap(&s, cap);
 
 	REQUIRE(rs_is_heap(&s));
-	REQUIRE(rs_capacity(&s) == cap);
+	REQUIRE(rs_capacity(&s) >= cap);
 
 	rs_free(&s);
 }
@@ -68,8 +68,8 @@ TEST_CASE("rapidstring construction")
 
 	CMP_STR(&s4, second);
 
-	rs_free(&s1);
-	rs_free(&s2);
-	rs_free(&s3);
 	rs_free(&s4);
+	rs_free(&s3);
+	rs_free(&s2);
+	rs_free(&s1);
 }
