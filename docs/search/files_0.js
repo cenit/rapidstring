@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rapid_5fstring_2eh',['rapid_string.h',['../rapid__string_8h.html',1,'']]]
+  ['rapidstring_2eh',['rapidstring.h',['../rapidstring_8h.html',1,'']]]
 ];

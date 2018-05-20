@@ -1,10 +1,58 @@
-/**
- * @file rapidstring.h
- * The header only rapidstring library.
+/*
+ * rapidstring - A fast string library.
+ * version 1.0.0
+ * https://github.com/boyerjohn/rapidstring
+ *
+ * Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+ * Copyright (c) 2018 John Boyer <john.boyer@tutanota.com>.
+ */
+
+/*
+ *       TABLE OF CONTENTS
+ *
+ * 1. CONSTRUCTION & DESTRUCTION
+ * - Declarations:	line 212
+ * - Defintions:	line 745
+ *
+ * 2. ASSIGNMENT
+ * - Declarations:	line 270
+ * - Defintions:	line 791
+ *
+ * 3. ELEMENT ACCESS
+ * - Declarations:	line 337
+ * - Defintions:	line 857
+ *
+ * 4. ITERATORS
+ * - Declarations:	line 381
+ * - Defintions:	line 900
+ *
+ * 5. CAPACITY
+ * - Declarations:	line 417
+ * - Defintions:	line 932
+ *
+ * 6. MODIFIERS
+ * - Declarations:	line 487
+ * - Defintions:	line 1001
+ *
+ * 7. HEAP OPERATIONS
+ * - Declarations:	line 598
+ * - Defintions:	line 1129
+ *
+ * 8. STACK ALLOCATOR
+ * - Declarations:	line 652
+ * - Defintions:	line 1184
+ *
+ * 9. DEFAULT ALLOCATOR
+ * - Declarations:	line 707
+ * - Defintions:	line 1252
  */
 
 #ifndef RAPID_STRING_H_962AB5F800398A34
 #define RAPID_STRING_H_962AB5F800398A34
+
+#define RS_VERSION_MAJOR 0
+#define RS_VERSION_MINOR 1
+#define RS_VERSION_PATCH 0
 
 #include <assert.h>
 #include <stdbool.h>
@@ -13,6 +61,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// TODO: organize macros & structs in toc
+// TODO: rename to c like methods
 // TODO: other stl-like stuff?
 // TODO: rs_search, rs_erase, rs_substring
 // TODO: add coveralls
@@ -691,6 +741,7 @@ static inline void rsa_free(void *p, size_t n);
  *
  * ===============================================================
  */
+
 static inline void rs_init(rapidstring *s)
 {
 	RS_ASSERT_PTR(s);
@@ -736,6 +787,7 @@ static inline void rs_free(rapidstring *s)
  *
  * ===============================================================
  */
+
 static inline void rs_stack_assign(rapidstring *s, const char *input)
 {
 	RS_ASSERT_PTR(input);
@@ -801,6 +853,7 @@ static inline void rs_assign_rs(rapidstring *s, const rapidstring *input)
  *
  * ===============================================================
  */
+
 static inline char rs_at(const rapidstring *s, size_t i)
 {
 	RS_ASSERT(rs_size(s) > i);
@@ -843,6 +896,7 @@ static inline const char *rs_data_c(const rapidstring *s)
  *
  * ===============================================================
  */
+
 static inline char *rs_begin(rapidstring *s)
 {
 	return rs_data(s);
@@ -874,6 +928,7 @@ static inline const char *rs_end_c(const rapidstring *s)
  *
  * ===============================================================
  */
+
 static inline bool rs_empty(const rapidstring *s)
 {
 	return rs_size(s) == 0;
@@ -942,6 +997,7 @@ static inline bool rs_is_stack(const rapidstring *s)
  *
  * ===============================================================
  */
+
 static inline void rs_stack_append(rapidstring *s, const char *input)
 {
 	RS_ASSERT_PTR(input);
@@ -1069,10 +1125,11 @@ static inline void rs_resize_w(rapidstring *s, size_t n, char c)
  *
  * ===============================================================
  */
+
 static inline void rs_heap_init(rapidstring *s, size_t n)
 {
 	s->heap.buffer = (char*)RS_ALLOC(n + 1);
-	
+
 	RS_ASSERT_PTR(s->heap.buffer);
 
 	s->heap.capacity = n;
@@ -1104,7 +1161,7 @@ static inline void rs_realloc(rapidstring *s, size_t n)
 {
 	s->heap.buffer = (char*)RS_REALLOC(s->heap.buffer,
 					   s->heap.capacity + 1, n + 1);
-	
+
 	RS_ASSERT_PTR(s->heap.buffer);
 
 	s->heap.capacity = n;
@@ -1123,6 +1180,7 @@ static inline void rs_grow_heap(rapidstring *s, size_t n)
  *
  * ===============================================================
  */
+
 static inline bool rsa_stack_can_alloc(size_t n)
 {
 	const uint8_t *end = rsa_stack.buff + RSA_STACK_SIZE;
