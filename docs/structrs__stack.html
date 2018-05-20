@@ -77,7 +77,10 @@ Data Fields</h2></td></tr>
 <tr class="memitem:ab644d551d4000cbac0ca0dfcfb857207"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__stack.html#ab644d551d4000cbac0ca0dfcfb857207">left</a></td></tr>
 <tr class="separator:ab644d551d4000cbac0ca0dfcfb857207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struct that stores the stack data. </p>
+<p>A struct that stores the stack buffer and capacity left. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="acc2df8b210bd30e031fc813c618daecf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc2df8b210bd30e031fc813c618daecf">&#9670;&nbsp;</a></span>buffer</h2>
 
@@ -89,6 +92,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Buffer of a stack string. </p>
+<p>An array of characters the size of <code>RS_STACK_CAPACITY</code> exlcuding the null terminator. </p>
 
 </div>
 </div>
@@ -104,6 +110,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The capacity left in the buffer of a stack string. </p>
+<p>The capacity left in the buffer of stack string. Once the stack string runs out of space, zero will be written to this member, effectively becoming the null terminator. </p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
@@ -112,7 +121,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 20 2018 13:53:19 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 20 2018 18:48:24 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

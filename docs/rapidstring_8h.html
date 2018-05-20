@@ -113,15 +113,13 @@ Macros</h2></td></tr>
 <tr class="separator:aadbca3e5f15f1d660f5d0363d3a6bed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad868e846186b15629b1a1e47b7e1bb09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a>&#160;&#160;&#160;(0xFF)</td></tr>
 <tr class="separator:ad868e846186b15629b1a1e47b7e1bb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78c40729ad585973443785de5abf6eab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a78c40729ad585973443785de5abf6eab">RS_ASSERT</a>(expr)&#160;&#160;&#160;do { assert(expr); } while (0)</td></tr>
-<tr class="separator:a78c40729ad585973443785de5abf6eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdc96b73bdcf2744c283e23e25772573"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abdc96b73bdcf2744c283e23e25772573">RS_ASSERT_PTR</a>(ptr)&#160;&#160;&#160;do { <a class="el" href="rapidstring_8h.html#a78c40729ad585973443785de5abf6eab">RS_ASSERT</a>(ptr != NULL); } while (0)</td></tr>
+<tr class="memitem:abdc96b73bdcf2744c283e23e25772573"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abdc96b73bdcf2744c283e23e25772573">RS_ASSERT_PTR</a>(ptr)&#160;&#160;&#160;do { assert(ptr != NULL); } while (0)</td></tr>
 <tr class="separator:abdc96b73bdcf2744c283e23e25772573"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade4ed5f4cb91b63dd30e55d47d3c4890"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ade4ed5f4cb91b63dd30e55d47d3c4890">RS_ASSERT_RS</a>(s)</td></tr>
 <tr class="separator:ade4ed5f4cb91b63dd30e55d47d3c4890"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3514fc11fe089c9bb6e2d9ea00561862"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a3514fc11fe089c9bb6e2d9ea00561862">RS_ASSERT_HEAP</a>(s)&#160;&#160;&#160;do { <a class="el" href="rapidstring_8h.html#a78c40729ad585973443785de5abf6eab">RS_ASSERT</a>(rs_is_heap(s)); } while (0)</td></tr>
+<tr class="memitem:a3514fc11fe089c9bb6e2d9ea00561862"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a3514fc11fe089c9bb6e2d9ea00561862">RS_ASSERT_HEAP</a>(s)&#160;&#160;&#160;do { assert(rs_is_heap(s)); } while (0)</td></tr>
 <tr class="separator:a3514fc11fe089c9bb6e2d9ea00561862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abde6b796fee3381ec75c961985a38c95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abde6b796fee3381ec75c961985a38c95">RS_ASSERT_STACK</a>(s)&#160;&#160;&#160;do { <a class="el" href="rapidstring_8h.html#a78c40729ad585973443785de5abf6eab">RS_ASSERT</a>(rs_is_stack(s)); } while (0)</td></tr>
+<tr class="memitem:abde6b796fee3381ec75c961985a38c95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abde6b796fee3381ec75c961985a38c95">RS_ASSERT_STACK</a>(s)&#160;&#160;&#160;do { assert(rs_is_stack(s)); } while (0)</td></tr>
 <tr class="separator:abde6b796fee3381ec75c961985a38c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa628200ab2331199c0df8ab2f8c2e4fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aa628200ab2331199c0df8ab2f8c2e4fe">RS_GCC_VERSION</a>&#160;&#160;&#160;(0)</td></tr>
 <tr class="separator:aa628200ab2331199c0df8ab2f8c2e4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,24 +190,6 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="a78c40729ad585973443785de5abf6eab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78c40729ad585973443785de5abf6eab">&#9670;&nbsp;</a></span>RS_ASSERT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_ASSERT</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">expr</td><td>)</td>
-          <td>&#160;&#160;&#160;do { assert(expr); } while (0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a3514fc11fe089c9bb6e2d9ea00561862"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3514fc11fe089c9bb6e2d9ea00561862">&#9670;&nbsp;</a></span>RS_ASSERT_HEAP</h2>
 
@@ -221,7 +201,7 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">s</td><td>)</td>
-          <td>&#160;&#160;&#160;do { <a class="el" href="rapidstring_8h.html#a78c40729ad585973443785de5abf6eab">RS_ASSERT</a>(rs_is_heap(s)); } while (0)</td>
+          <td>&#160;&#160;&#160;do { assert(rs_is_heap(s)); } while (0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -239,7 +219,7 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">ptr</td><td>)</td>
-          <td>&#160;&#160;&#160;do { <a class="el" href="rapidstring_8h.html#a78c40729ad585973443785de5abf6eab">RS_ASSERT</a>(ptr != NULL); } while (0)</td>
+          <td>&#160;&#160;&#160;do { assert(ptr != NULL); } while (0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -261,8 +241,8 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        RS_ASSERT_PTR(s);                                       \</div><div class="line">        RS_ASSERT(s-&gt;heap.flag == <a class="code" href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a> ||               \</div><div class="line">                  s-&gt;heap.flag &lt;= <a class="code" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>);           \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_aab93be554f576e050c48d50986ade7dd"><div class="ttname"><a href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a></div><div class="ttdeci">#define RS_STACK_CAPACITY</div><div class="ttdef"><b>Definition:</b> rapidstring.h:164</div></div>
-<div class="ttc" id="rapidstring_8h_html_ad868e846186b15629b1a1e47b7e1bb09"><div class="ttname"><a href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a></div><div class="ttdeci">#define RS_HEAP_FLAG</div><div class="ttdef"><b>Definition:</b> rapidstring.h:88</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        RS_ASSERT_PTR(s);                                       \</div><div class="line">        assert(s-&gt;heap.flag == <a class="code" href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a> ||                  \</div><div class="line">                  s-&gt;heap.flag &lt;= <a class="code" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>);           \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_aab93be554f576e050c48d50986ade7dd"><div class="ttname"><a href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a></div><div class="ttdeci">#define RS_STACK_CAPACITY</div><div class="ttdef"><b>Definition:</b> rapidstring.h:201</div></div>
+<div class="ttc" id="rapidstring_8h_html_ad868e846186b15629b1a1e47b7e1bb09"><div class="ttname"><a href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a></div><div class="ttdeci">#define RS_HEAP_FLAG</div><div class="ttdef"><b>Definition:</b> rapidstring.h:100</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -277,7 +257,7 @@ Enumerations</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">s</td><td>)</td>
-          <td>&#160;&#160;&#160;do { <a class="el" href="rapidstring_8h.html#a78c40729ad585973443785de5abf6eab">RS_ASSERT</a>(rs_is_stack(s)); } while (0)</td>
+          <td>&#160;&#160;&#160;do { assert(rs_is_stack(s)); } while (0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -329,7 +309,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (<a class="code" href="rapidstring_8h.html#a3c9bab261254a25f7eb2482043ce2cf9">RS_HEAP_LIKELY</a>(rs_is_heap(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, rs_heap_size(input));          \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, rs_stack_size(input));        \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_a3c9bab261254a25f7eb2482043ce2cf9"><div class="ttname"><a href="rapidstring_8h.html#a3c9bab261254a25f7eb2482043ce2cf9">RS_HEAP_LIKELY</a></div><div class="ttdeci">#define RS_HEAP_LIKELY(expr)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:186</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (<a class="code" href="rapidstring_8h.html#a3c9bab261254a25f7eb2482043ce2cf9">RS_HEAP_LIKELY</a>(rs_is_heap(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, rs_heap_size(input));          \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, rs_stack_size(input));        \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_a3c9bab261254a25f7eb2482043ce2cf9"><div class="ttname"><a href="rapidstring_8h.html#a3c9bab261254a25f7eb2482043ce2cf9">RS_HEAP_LIKELY</a></div><div class="ttdeci">#define RS_HEAP_LIKELY(expr)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:262</div></div>
 </div><!-- fragment --><p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>A function. </td></tr>
@@ -599,7 +579,7 @@ Enumerations</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 20 2018 13:53:19 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 20 2018 18:48:24 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

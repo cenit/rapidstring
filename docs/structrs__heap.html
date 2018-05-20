@@ -84,7 +84,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a1d5db030bd52a055ed9b2afd545b0a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Accessing packed data structures incurs a performance penalty, therefore the alignment will be used to allow for a larger stack string. </p>
+<div class="textblock"><p>Struct that stores the heap data. </p>
+<p>A struct that stores the heap data and a flag with explicit alignment. Accessing packed data structures incurs a performance penalty, therefore the alignment will be used to allow for a larger stack string. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="aa434711a7335220a54a60f83fe27a88d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa434711a7335220a54a60f83fe27a88d">&#9670;&nbsp;</a></span>align</h2>
@@ -97,6 +98,8 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Alignnment of a heap string.</p>
+<p>An explicit alignment to ensure <code>flag</code> and <code>left</code> are stored in the same location. </p>
 
 </div>
 </div>
@@ -112,6 +115,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Buffer of a heap string. </p>
+<p>The buffer of a heap string allocated using <code>RS_ALLOC</code> or <code>RS_REALLOC</code>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;buffer, s-&gt;capacity + 1)</code>. Doing so will avoid a flag check. The additional one is for the null terminator, which is subtracted upon initial allocation. </p>
+
 </div>
 </div>
 <a id="af66462c6d85924b4dd5c7c6a7bdc628c"></a>
@@ -125,6 +131,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Capacity of a heap string. </p>
+<p>The capacity of a heap string. The null terminator is not included. </p>
 
 </div>
 </div>
@@ -140,6 +149,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Flag of the rapidstring union. </p>
+<p>The following flag is used to store the state of the union as well as the remaining capacity of the stack string. They may be shared as the capacity of a stack string will always be smaller than <code>RS_HEAP_FLAG</code>, which guarentees unambiguity between the two states. </p>
+
 </div>
 </div>
 <a id="adc8fa8d4977c0cb92d85d245f7ad7747"></a>
@@ -154,6 +166,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Size of a heap string. </p>
+<p>The number of characters in a heap string. The null terminator is not included. </p>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
@@ -162,7 +177,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 20 2018 13:53:19 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 20 2018 18:48:24 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

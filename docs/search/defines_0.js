@@ -3,7 +3,6 @@ var searchData=
   ['rc_5fc11',['RC_C11',['../rapidstring_8h.html#a15ad237ee2529352b8a0189c9cd523d4',1,'rapidstring.h']]],
   ['rs_5falignment',['RS_ALIGNMENT',['../rapidstring_8h.html#ad9eff696775ee265be0cc5fea14e6982',1,'rapidstring.h']]],
   ['rs_5falloc',['RS_ALLOC',['../rapidstring_8h.html#a09971ad538cd908261cbbcc5459481b0',1,'rapidstring.h']]],
-  ['rs_5fassert',['RS_ASSERT',['../rapidstring_8h.html#a78c40729ad585973443785de5abf6eab',1,'rapidstring.h']]],
   ['rs_5fassert_5fheap',['RS_ASSERT_HEAP',['../rapidstring_8h.html#a3514fc11fe089c9bb6e2d9ea00561862',1,'rapidstring.h']]],
   ['rs_5fassert_5fptr',['RS_ASSERT_PTR',['../rapidstring_8h.html#abdc96b73bdcf2744c283e23e25772573',1,'rapidstring.h']]],
   ['rs_5fassert_5frs',['RS_ASSERT_RS',['../rapidstring_8h.html#ade4ed5f4cb91b63dd30e55d47d3c4890',1,'rapidstring.h']]],

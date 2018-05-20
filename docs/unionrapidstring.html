@@ -77,7 +77,10 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a3e6cff738cc8a5233d9aa968823ca2e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structrs__heap.html">rs_heap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionrapidstring.html#a3e6cff738cc8a5233d9aa968823ca2e9">heap</a></td></tr>
 <tr class="separator:a3e6cff738cc8a5233d9aa968823ca2e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Field Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Union that stores a rapidstring. </p>
+<p>A union that stores a rapidstring which is either on the heap or the stack. All API methods are prefixed with <code>rs_heap_x()</code> or <code>rs_stack_x()</code>. These methods are to be used only when a string is guarenteed to be in either state, as mismatching these methods results in undefined behavior. There will always be the <code>rs_x()</code> alternative which automatically handles the state of the string. These methods should be used if optimization isn't a necessity or if strings have highly variable sizes. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
 <a id="a3e6cff738cc8a5233d9aa968823ca2e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e6cff738cc8a5233d9aa968823ca2e9">&#9670;&nbsp;</a></span>heap</h2>
 
@@ -89,6 +92,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Heap state of the rapidstring union. </p>
+<p>The heap state of the rapidstring union. </p>
 
 </div>
 </div>
@@ -104,6 +110,9 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Stack state of the rapidstring union. </p>
+<p>The stack state of the rapidstring union. </p>
+
 </div>
 </div>
 <hr/>The documentation for this union was generated from the following file:<ul>
@@ -112,7 +121,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 20 2018 13:53:19 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 20 2018 18:48:24 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

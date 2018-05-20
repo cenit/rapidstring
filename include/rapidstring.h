@@ -181,7 +181,7 @@ typedef struct {
 	 */
 	size_t capacity;
 	/**
-	 * @breif Alignnment of a heap string.
+	 * @brief Alignnment of a heap string.
 	 *
 	 * An explicit alignment to ensure `flag` and `left` are stored in the
 	 * same location.
