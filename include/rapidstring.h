@@ -102,7 +102,7 @@
 #define RS_ASSERT_PTR(ptr) do { assert(ptr != NULL); } while (0)
 #define RS_ASSERT_RS(s) do {					\
 	RS_ASSERT_PTR(s);					\
-	assert(s->heap.flag == RS_HEAP_FLAG ||		\
+	assert(s->heap.flag == RS_HEAP_FLAG ||			\
 		  s->heap.flag <= RS_STACK_CAPACITY);		\
 } while (0)
 #define RS_ASSERT_HEAP(s) do { assert(rs_is_heap(s)); } while (0)
