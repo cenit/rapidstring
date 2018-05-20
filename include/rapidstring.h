@@ -157,13 +157,7 @@ typedef struct {
 	uint8_t* ptr;
 } rsa_stack_t;
 
-static rsa_stack_t rsa_stack = { .ptr = rsa_stack.buff };
-
-static inline size_t rsa_align_up(size_t n)
-{
-	const size_t align = sizeof(size_t);
-	return (n + align - 1) & -align;
-}
+static rsa_stack_t rsa_stack = { {}, rsa_stack.buff };
 
 static inline bool rsa_stack_can_alloc(size_t n)
 {
@@ -227,7 +221,7 @@ static inline void *rsa_alloc(size_t n)
 {
 	void *p = rsa_stack_alloc(n);
 
-	if (p == NULL)
+	if (!p)
 		return malloc(n);
 
 	return p;
@@ -241,7 +235,7 @@ static inline void *rsa_realloc(void *p, size_t prev, size_t n)
 
 		void *buff = malloc(n);
 
-		if (buff == NULL)
+		if (!buff)
 			return NULL;
 
 		memcpy(buff, p, prev);
@@ -1085,12 +1079,11 @@ static inline void rs_resize_w(rapidstring *s, size_t n, char c)
  */
 static inline void rs_heap_init(rapidstring *s, size_t n)
 {
-	n = rsa_align_up(n + 1);
-	s->heap.buffer = (char*)RS_ALLOC(n);
+	s->heap.buffer = (char*)RS_ALLOC(n + 1);
 	
 	RS_ASSERT_PTR(s->heap.buffer);
 
-	s->heap.capacity = n - 1;
+	s->heap.capacity = n;
 	s->heap.flag = RS_HEAP_FLAG;
 }
 
@@ -1117,13 +1110,12 @@ static inline void rs_stack_to_heap_g(rapidstring *s, size_t n)
 
 static inline void rs_realloc(rapidstring *s, size_t n)
 {
-	n = rsa_align_up(n + 1);
 	s->heap.buffer = (char*)RS_REALLOC(s->heap.buffer,
-					   s->heap.capacity + 1, n);
+					   s->heap.capacity + 1, n + 1);
 	
 	RS_ASSERT_PTR(s->heap.buffer);
 
-	s->heap.capacity = n - 1;
+	s->heap.capacity = n;
 }
 
 static inline void rs_grow_heap(rapidstring *s, size_t n)
