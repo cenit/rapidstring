@@ -11,43 +11,43 @@
  *       TABLE OF CONTENTS
  *
  * 1. STRUCTURES & MACROS
- * - Declarations:	line 88
+ * - Declarations:	line 89
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 300
- * - Defintions:	line 835
+ * - Declarations:	line 306
+ * - Defintions:	line 844
  *
  * 3. ASSIGNMENT
- * - Declarations:	line 360
- * - Defintions:	line 881
+ * - Declarations:	line 366
+ * - Defintions:	line 890
  *
  * 4. ELEMENT ACCESS
- * - Declarations:	line 427
- * - Defintions:	line 947
+ * - Declarations:	line 433
+ * - Defintions:	line 956
  *
  * 5. ITERATORS
- * - Declarations:	line 471
- * - Defintions:	line 990
+ * - Declarations:	line 477
+ * - Defintions:	line 999
  *
  * 6. CAPACITY
- * - Declarations:	line 507
- * - Defintions:	line 1022
+ * - Declarations:	line 513
+ * - Defintions:	line 1031
  *
  * 7. MODIFIERS
- * - Declarations:	line 577
- * - Defintions:	line 1091
+ * - Declarations:	line 583
+ * - Defintions:	line 1100
  *
  * 8. HEAP OPERATIONS
- * - Declarations:	line 688
- * - Defintions:	line 1219
+ * - Declarations:	line 694
+ * - Defintions:	line 1228
  *
  * 9. STACK ALLOCATOR
- * - Declarations:	line 742
- * - Defintions:	line 1274
+ * - Declarations:	line 748
+ * - Defintions:	line 1283
  *
  * 10. DEFAULT ALLOCATOR
- * - Declarations:	line 797
- * - Defintions:	line 1344
+ * - Declarations:	line 803
+ * - Defintions:	line 1353
  */
 
 /**
