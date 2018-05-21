@@ -11,43 +11,53 @@
  *       TABLE OF CONTENTS
  *
  * 1. STRUCTURES & MACROS
- * - Declarations:	line 78
+ * - Declarations:	line 88
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 288
- * - Defintions:	line 823
+ * - Declarations:	line 300
+ * - Defintions:	line 835
  *
  * 3. ASSIGNMENT
- * - Declarations:	line 348
- * - Defintions:	line 869
+ * - Declarations:	line 360
+ * - Defintions:	line 881
  *
  * 4. ELEMENT ACCESS
- * - Declarations:	line 415
- * - Defintions:	line 935
+ * - Declarations:	line 427
+ * - Defintions:	line 947
  *
  * 5. ITERATORS
- * - Declarations:	line 459
- * - Defintions:	line 978
+ * - Declarations:	line 471
+ * - Defintions:	line 990
  *
  * 6. CAPACITY
- * - Declarations:	line 495
- * - Defintions:	line 1010
+ * - Declarations:	line 507
+ * - Defintions:	line 1022
  *
  * 7. MODIFIERS
- * - Declarations:	line 565
- * - Defintions:	line 1079
+ * - Declarations:	line 577
+ * - Defintions:	line 1091
  *
  * 8. HEAP OPERATIONS
- * - Declarations:	line 676
- * - Defintions:	line 1207
+ * - Declarations:	line 688
+ * - Defintions:	line 1219
  *
  * 9. STACK ALLOCATOR
- * - Declarations:	line 730
- * - Defintions:	line 1262
+ * - Declarations:	line 742
+ * - Defintions:	line 1274
  *
  * 10. DEFAULT ALLOCATOR
- * - Declarations:	line 785
- * - Defintions:	line 1332
+ * - Declarations:	line 797
+ * - Defintions:	line 1344
+ */
+
+/**
+ * @file rapidstring.h
+ * @brief The single header of the rapidstring library.
+ */
+
+/**
+ * @mainpage rapidstring
+ * The documentation of the rapidstring library.
  */
 
 #ifndef RAPID_STRING_H_962AB5F800398A34
@@ -60,7 +70,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-// TODO: add complexity and versions to all functions
+// TODO: add complexity, briefs and versions to all functions
+// TODO: make all functions properly link in documentation
 // TODO: organize macros & structs in toc
 // TODO: rename to c like methods
 // TODO: other stl-like stuff?
@@ -198,6 +209,11 @@ typedef struct {
 	uint8_t flag;
 } rs_heap;
 
+/**
+ * @brief Capacity of a stack string.
+ *
+ * The maximum capacity of a stack string.
+ */
 #define RS_STACK_CAPACITY (sizeof(rs_heap) - 1)
 
 /**
@@ -209,7 +225,7 @@ typedef struct {
 	/**
 	 * @brief Buffer of a stack string.
 	 *
-	 * An array of characters the size of `RS_STACK_CAPACITY` exlcuding the
+	 * An array of characters the size of #RS_STACK_CAPACITY exlcuding the
 	 * null terminator.
 	 */
 	char buffer[RS_STACK_CAPACITY];
@@ -265,10 +281,12 @@ enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
 /**
  * Forwards the buffer and size of a string to the provided function.
  * Retrieving both the buffer and the size of a string requires a flag check,
- * which would result in an additional branch if not done manually.
- * @param f A function.
- * @param s An initialized string.
- * @param input The input to forward the function.
+ * which would result in an additional branch if not done manually. Intended
+ * for internal use.
+ *
+ * @param[in] f A function.
+ * @param[in,out] s An initialized string.
+ * @param[in] input The input to forward the function.
  */
 #define RS_DATA_SIZE(f, s, input) do {					\
 	if (RS_HEAP_LIKELY(rs_is_heap(input)))				\
@@ -287,37 +305,37 @@ enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
 
 /**
  * Initializes a string.
- * @param s The string to initialize.
+ * @param[out] s The string to initialize.
  */
 static inline void rs_init(rapidstring *s);
 
 /**
  * Initializes a string with a character array.
- * Identicle to `rs_init_w_n(s, input, strlen(input);`.
- * @param s A string to initialize.
- * @param input The input used to initialize the string.
+ * Identicle to `rs_init_w_n(s, input, strlen(input)`.
+ * @param[out] s A string to initialize.
+ * @param[in] input The input used to initialize the string.
  */
 static inline void rs_init_w(rapidstring *s, const char *input);
 
 /**
  * Initializes a string with a character array.
- * @param s A string to initialize.
- * @param input The input used to initialize the string.
- * @param n The length of the input.
+ * @param[out] s A string to initialize.
+ * @param[in] input The input used to initialize the string.
+ * @param[in] n The length of the input.
  */
 static inline void rs_init_w_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Initializes a string with an initial capacity.
- * @param s A string to initialize.
- * @param n The new initial capacity of the string.
+ * @param[out] s A string to initialize.
+ * @param[in] n The new initial capacity of the string.
  */
 static inline void rs_init_w_cap(rapidstring *s, size_t n);
 
 /**
  * Initializes a string with another string.
- * @param s A string to initialize.
- * @param input The input string used to initialize `s`.
+ * @param[in] s A string to initialize.
+ * @param[in] input The input string used to initialize `s`.
  */
 static inline void rs_init_w_rs(rapidstring *s, const rapidstring *input);
 
@@ -332,8 +350,8 @@ static inline void rs_init_w_rs(rapidstring *s, const rapidstring *input);
  * subtracted upon initial allocation.
  *
  * Calling this fuction is unecessary if the string size is always smaller
- * or equal to `RS_STACK_CAPACITY`.
- * @param s The string to free.
+ * or equal to #RS_STACK_CAPACITY.
+ * @param[in] s The string to free.
  */
 static inline void rs_free(rapidstring *s);
 
@@ -347,60 +365,60 @@ static inline void rs_free(rapidstring *s);
 
 /**
  * Assigns characters to a stack string. The input length must be
- * smaller or equal to `RS_STACK_CAPACITY`.
- * Identicle to `rs_stack_assign_n(s, input, strlen(input));`.
- * @param s An intialized stack string.
- * @param input the input to assign to the stack string.
+ * smaller or equal to #RS_STACK_CAPACITY.
+ * Identicle to `rs_stack_assign_n(s, input, strlen(input))`.
+ * @param[in,out] s An intialized stack string.
+ * @param[in] input the input to assign to the stack string.
  */
 static inline void rs_stack_assign(rapidstring *s, const char *input);
 
 /**
  * Assigns characters to a stack string. The input length must be
- * smaller or equal to `RS_STACK_CAPACITY`.
- * @param s An initialized stack string.
- * @param input The input to assign to the stack string.
- * @param n The length of the input.
+ * smaller or equal to #RS_STACK_CAPACITY.
+ * @param[in,out] s An initialized stack string.
+ * @param[in] input The input to assign to the stack string.
+ * @param[in] n The length of the input.
  */
 static inline void rs_stack_assign_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Assigns characters to a heap string. The input length must be
  * smaller or equal to the string's capacity.
- * Identicle to `rs_heap_assign_n(s, input, strlen(input));`.
- * @param s An initialized heap string.
- * @param input The input to assign to the heap string.
+ * Identicle to `rs_heap_assign_n(s, input, strlen(input))`.
+ * @param[in,out] s An initialized heap string.
+ * @param[in] input The input to assign to the heap string.
  */
 static inline void rs_heap_assign(rapidstring *s, const char *input);
 
 /**
  * Assigns characters to a heap string. The input length must be
  * smaller or equal to the string's capacity.
- * @param s An initialized heap string.
- * @param input The input to assign to the heap string.
- * @param n The length of the input.
+ * @param[in,out] s An initialized heap string.
+ * @param[in] input The input to assign to the heap string.
+ * @param[in] n The length of the input.
  */
 static inline void rs_heap_assign_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Assigns characters to a string.
- * Identicle to `rs_assign_n(s, input, strlen(input));`.
- * @param s An initialized string.
- * @param input The input to assign to the string.
+ * Identicle to `rs_assign_n(s, input, strlen(input))`.
+ * @param[in,out] s An initialized string.
+ * @param[in] input The input to assign to the string.
  */
 static inline void rs_assign(rapidstring *s, const char *input);
 
 /**
  * Assigns characters to a string.
- * @param s An initialized string.
- * @param input The input to assign to the string.
- * @param n The length of the input.
+ * @param[in,out] s An initialized string.
+ * @param[in] input The input to assign to the string.
+ * @param[in] n The length of the input.
  */
 static inline void rs_assign_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Assigns a string to another string.
- * @param s An initialized string.
- * @param input The input string used to initialize `s`.
+ * @param[in, out] s An initialized string.
+ * @param[in] input The input string used to initialize `s`.
  */
 static inline void rs_assign_rs(rapidstring *s, const rapidstring *input);
 
@@ -414,36 +432,36 @@ static inline void rs_assign_rs(rapidstring *s, const rapidstring *input);
 
 /**
  * Access a specified character.
- * @param s An initialized string.
- * @param i The index used to retrieve the character.
+ * @param[in] s An initialized string.
+ * @param[in] i The index used to retrieve the character.
  * @returns The character at the index of `i`.
  */
 static inline char rs_at(const rapidstring *s, size_t i);
 
 /**
  * Access the first character.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns The first character.
  */
 static inline char rs_front(const rapidstring *s);
 
 /**
  * Access the last character.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns The last character.
  */
 static inline char rs_back(const rapidstring *s);
 
 /**
  * Access the buffer.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns The buffer.
  */
 static inline char *rs_data(rapidstring *s);
 
 /**
  * Access the buffer.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns The buffer.
  */
 static inline const char *rs_data_c(const rapidstring *s);
@@ -458,29 +476,29 @@ static inline const char *rs_data_c(const rapidstring *s);
 
 /**
  * Returns an iterator to the beginning.
- * @param s An intialized string.
+ * @param[in] s An intialized string.
  * @returns The iterator to the first character.
  */
 static inline char *rs_begin(rapidstring *s);
 
 /**
  * Returns an iterator to the beginning.
- * @param s An intialized string.
+ * @param[in] s An intialized string.
  * @returns The iterator to the first character.
  */
 static inline const char *rs_begin_c(const rapidstring *s);
 
 /**
  * Returns an iterator to the end.
- * @param s An intialized string.
- * @returns The iterator to the last character.
+ * @param[in] s An intialized string.
+ * @returns The iterator following the last character.
  */
 static inline char *rs_end(rapidstring *s);
 
 /**
  * Returns an iterator to the end.
- * @param s An intialized string.
- * @returns The iterator to the last character.
+ * @param[in] s An intialized string.
+ * @returns The iterator following the last character.
  */
 static inline const char *rs_end_c(const rapidstring *s);
 
@@ -494,62 +512,62 @@ static inline const char *rs_end_c(const rapidstring *s);
 
 /**
  * Checks whether a string is empty.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns `true` if the string is empty, `false` otherwise.
  */
 static inline bool rs_empty(const rapidstring *s);
 
 /**
  * Returns the length of a stack string.
- * @param s An initialized stack string.
+ * @param[in] s An initialized stack string.
  * @returns The stack string length.
  */
 static inline size_t rs_stack_size(const rapidstring *s);
 
 /**
  * Returns the length of a heap string.
- * @param s An initialized heap string.
+ * @param[in] s An initialized heap string.
  * @returns The heap string length.
  */
 static inline size_t rs_heap_size(const rapidstring *s);
 
 /**
  * Returns the length.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns The string length.
  */
 static inline size_t rs_size(const rapidstring *s);
 
 /**
  * Returns the capacity.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns The string capacity.
  */
 static inline size_t rs_capacity(const rapidstring *s);
 
 /**
  * Reserves capacity.
- * @param s An initialized string.
- * @param n The capacity to reserve.
+ * @param[in,out] s An initialized string.
+ * @param[in] n The capacity to reserve.
  */
 static inline void rs_reserve(rapidstring *s, size_t n);
 
 /**
  * Frees all unused memory.
- * @param s An intialized string.
+ * @param[in,out] s An intialized string.
  */
 static inline void rs_shrink_to_fit(rapidstring *s);
 
 /**
  * Checks whether a string is on the heap.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns `true` if the string is on the heap, `false` otherwise.
  */
 static inline bool rs_is_heap(const rapidstring *s);
 
 /**
  * Checks whether a string is on the stack.
- * @param s An initialized string.
+ * @param[in] s An initialized string.
  * @returns `true` if the string is on the stack, `false` otherwise.
  */
 static inline bool rs_is_stack(const rapidstring *s);
@@ -564,104 +582,104 @@ static inline bool rs_is_stack(const rapidstring *s);
 
 /**
  * Appends characters to a stack string.
- * Identicle to `rs_stack_append_n(s, input, strlen(input));`.
- * @param s An initialized stack string.
- * @param input The input to append.
+ * Identicle to `rs_stack_append_n(s, input, strlen(input))`.
+ * @param[in,out] s An initialized stack string.
+ * @param[in] input The input to append.
  */
 static inline void rs_stack_append(rapidstring *s, const char *input);
 
 /**
  * Appends characters to a stack string.
- * @param s An initialized stack string.
- * @param input The input to append.
- * @param n The length of the input.
+ * @param[in,out] s An initialized stack string.
+ * @param[in] input The input to append.
+ * @param[in] n The length of the input.
  */
 static inline void rs_stack_append_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Appends characters to a heap string.
- * Identicle to `rs_heap_append_n(s, input, strlen(input));`.
- * @param s An initialized heap string.
- * @param input The input to append.
+ * Identicle to `rs_heap_append_n(s, input, strlen(input))`.
+ * @param[in,out] s An initialized heap string.
+ * @param[in] input The input to append.
  */
 static inline void rs_heap_append(rapidstring *s, const char *input);
 
 /**
  * Appends characters to a heap string.
- * @param s An initialized heap string.
- * @param input The input to append.
- * @param n The length of the input.
+ * @param[in,out] s An initialized heap string.
+ * @param[in] input The input to append.
+ * @param[in] n The length of the input.
  */
 static inline void rs_heap_append_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Appends characters to a string.
- * Identicle to `rs_append_n(s, input, strlen(input));`.
- * @param s An initialized  string.
- * @param input The input to append.
+ * denticle to `rs_append_n(s, input, strlen(input))`.
+ * @param[in,out] s An initialized  string.
+ * @param[in] input The input to append.
  */
 static inline void rs_append(rapidstring *s, const char *input);
 
 /**
  * Appends characters to a string.
- * @param s An initialized  string.
- * @param input The input to append.
- * @param n The length of the input.
+ * @param[in,out] s An initialized  string.
+ * @param[in] input The input to append.
+ * @param[in] n The length of the input.
  */
 static inline void rs_append_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Appends a string to another string.
- * @param s An initialized string.
- * @param input The input to append.
+ * @param[in,out] s An initialized string.
+ * @param[in] input The input to append.
  */
 static inline void rs_append_rs(rapidstring *s, const rapidstring *input);
 
 /**
  * Steals a buffer allocated on the heap. The buffer must either be allocated
  * with `RS_ALLOC`/`RS_REALLOC`, or must be manually freed.
- * Identicle to `rs_steal_n(s, buffer, strlen(buffer));
- * @param s An initialized string.
- * @param buffer The buffer to steal.
+ * Identicle to `rs_steal_n(s, buffer, strlen(buffer))
+ * @param[in,out] s An initialized string.
+ * @param[in] buffer The buffer to steal.
  */
 static inline void rs_steal(rapidstring *s, char *buffer);
 
 /**
  * Steals a buffer allocated on the heap. The buffer must either be allocated
  * with `RS_ALLOC`/`RS_REALLOC`, or must be manually freed.
- * @param s An initialized string.
- * @param buffer The buffer to steal.
- * @param cap The capacity of the buffer.
+ * @param[in,out] s An initialized string.
+ * @param[in] buffer The buffer to steal.
+ * @param[in] cap The capacity of the buffer.
  */
 static inline void rs_steal_n(rapidstring *s, char *buffer, size_t cap);
 
 /**
  * Resizes a stack string. The new size must be smaller than
- * `RS_STACK_CAPACITY`.
- * @param s An initialized stack string.
- * @param n The new size.
+ * #RS_STACK_CAPACITY.
+ * @param[in,out] s An initialized stack string.
+ * @param[in] n The new size.
  */
 static inline void rs_stack_resize(rapidstring *s, size_t n);
 
 /**
  * Resizes a heap string. The new size must be smaller than `s->heap.capacity`.
- * @param s An initialized heap string.
- * @param n The new size.
+ * @param[in,out] s An initialized heap string.
+ * @param[in] n The new size.
  */
 static inline void rs_heap_resize(rapidstring *s, size_t n);
 
 /**
  * Resizes a string.
- * @param s An initialized string.
- * @param n The new size.
+ * @param[in,out] s An initialized string.
+ * @param[in] n The new size.
  */
 static inline void rs_resize(rapidstring *s, size_t n);
 
 /**
  * Resizes a string with a filler character.
- * @param s An initialized string.
- * @param n The new size.
- * @param c The filler character.
+ * @param[in,out] s An initialized string.
+ * @param[in] n The new size.
+ * @param[in] c The filler character.
  */
 static inline void rs_resize_w(rapidstring *s, size_t n, char c);
 
@@ -675,31 +693,31 @@ static inline void rs_resize_w(rapidstring *s, size_t n, char c);
 
 /**
  * Initializes the heap. Intended for internal use.
- * @param s A string.
- * @param n The heap capacity.
+ * @param[out] s A string to initialize.
+ * @param[in] n The heap capacity.
  */
 static inline void rs_heap_init(rapidstring *s, size_t n);
 
 /**
  * Initializes the heap with growth. Intended for internal use.
- * Identicle to `rs_heap_init(s, n * RS_GROWTH_FACTOR);`.
- * @param s A string.
- * @param n The heap capacity.
+ * Identicle to `rs_heap_init(s, n * RS_GROWTH_FACTOR)`.
+ * @param[out] s A string to initialize.
+ * @param[in] n The heap capacity.
  */
 static inline void rs_heap_init_g(rapidstring *s, size_t n);
 
 /**
  * Moves a stack string to the heap. Intended for internal use.
- * @param s A initialized stack string.
- * @param n The heap capacity.
+ * @param[in,out] s An initialized stack string.
+ * @param[in] n The heap capacity.
  */
 static inline void rs_stack_to_heap(rapidstring *s, size_t n);
 
 /**
  * Moves a stack string to the heap with growth. Intended for internal use.
- * Identicle to `rs_stack_to_heap(s, n * RS_GROWTH_FACTOR);`.
- * @param s A initialized stack string.
- * @param n The heap capacity.
+ * Identicle to `rs_stack_to_heap(s, n * RS_GROWTH_FACTOR)`.
+ * @param[in,out] s An initialized stack string.
+ * @param[in] n The heap capacity.
  */
 static inline void rs_stack_to_heap_g(rapidstring *s, size_t n);
 
@@ -707,15 +725,15 @@ static inline void rs_stack_to_heap_g(rapidstring *s, size_t n);
  * Reallocates the heap buffer. This method may grow or shrink the heap
  * capacity. The size will remain the same, even if the new capacity is smaller
  * than the current size. Intended for internal use.
- * @param s An initialized heap string.
- * @param n The new heap capacity.
+ * @param[in,out] s An initialized heap string.
+ * @param[in] n The new heap capacity.
  */
 static inline void rs_realloc(rapidstring *s, size_t n);
 
 /**
  * Allocates growth for a heap string. Intended for internal use.
- * @param s An initialized heap string.
- * @param n The new heap capacity.
+ * @param[in,out] s An initialized heap string.
+ * @param[in] n The new heap capacity.
  */
 static inline void rs_grow_heap(rapidstring *s, size_t n);
 
@@ -729,7 +747,7 @@ static inline void rs_grow_heap(rapidstring *s, size_t n);
 
 /**
  * Checks whether `n` bytes can be allocated.
- * @param n Number of bytes.
+ * @param[in] n Number of bytes.
  * @return `true` if `n` bytes can be allocated, `false` otherwise.
  */
 static inline bool rsa_stack_can_alloc(size_t n);
@@ -737,7 +755,7 @@ static inline bool rsa_stack_can_alloc(size_t n);
 /**
  * Allocates bytes of zero initialized storage on the stack. If the size is
  * zero, a valid pointer with no usable storage is returned.
- * @param n Number of bytes.
+ * @param[in] n Number of bytes.
  * @return On success, returns a pointer to the first byte of allocated memory.
  * This pointer must be passed to `rsa_stack_free()`. On failure, returns a
  * null pointer.
@@ -749,9 +767,9 @@ static inline void *rsa_stack_alloc(size_t n);
  * with `rsa_stack_alloc()` or `rsa_stack_realloc()` and not yet freed with
  * `rsa_stack_free()`. If the size is zero, `p` will not be freed and a
  * valid pointer with no usable storage will be returned.
- * @param p Pointer to an area of memory to reallocate.
- * @param sz Current size of the area of memory in bytes.
- * @param n New size of the area of memory in bytes.
+ * @param[in] p Pointer to an area of memory to reallocate.
+ * @param[in] sz Current size of the area of memory in bytes.
+ * @param[in] n New size of the area of memory in bytes.
  * @return On success, returns a pointer to the first byte of allocated memory.
  * This pointer must be passed to `rsa_stack_free()`. On failure, returns a
  * null pointer.
@@ -760,7 +778,7 @@ static inline void *rsa_stack_realloc(void *p, size_t sz, size_t n);
 
 /**
  * Checks whether `p` is owned by this stack allocator.
- * @param p Pointer to an area of memory.
+ * @param[in] p Pointer to an area of memory.
  * @return `true` if `p` is owned by this stack allocator, `false` otherwise.
  */
 static inline bool rsa_stack_owns(void *p);
@@ -769,8 +787,8 @@ static inline bool rsa_stack_owns(void *p);
  * Deallocates the space previously allocated by `rsa_stack_alloc()` or
  * `rsa_stack_realloc()`. If the pointer is null, the function does nothing.
  * The behavior is undefined if the same pointer is freed more than once.
- * @param p Pointer to the memory to deallocate.
- * @param n Size of the memory.
+ * @param[in] p Pointer to the memory to deallocate.
+ * @param[in] n Size of the memory.
  */
 static inline void rsa_stack_free(void *p, size_t n);
 
@@ -784,7 +802,8 @@ static inline void rsa_stack_free(void *p, size_t n);
 
 /**
  * Allocates bytes of uninitialized storage.
- * @param n Number of bytes.
+ *
+ * @param[in] n Number of bytes.
  * @return On success, returns a pointer to the first byte of allocated memory.
  * This pointer must be passed to `rs_free`. On failure, returns a null
  * pointer.
@@ -794,9 +813,10 @@ static inline void *rsa_alloc(size_t n);
 /**
  * Reallocates the given area of memory. It must have been previously allocated
  * with `rsa_alloc()` or `rsa_realloc()` and not yet freed with `rsa_free()`.
- * @param p Pointer to an area of memory to reallocate.
- * @param sz Current size of the area of memory in bytes.
- * @param n New size of the area of memory in bytes.
+ *
+ * @param[in] p Pointer to an area of memory to reallocate.
+ * @param[in] sz Current size of the area of memory in bytes.
+ * @param[in] n New size of the area of memory in bytes.
  * @return On success, returns a pointer to the first byte of allocated memory.
  * This pointer must be passed to `rsa_free()`. On failure, returns a null
  * pointer.
@@ -807,8 +827,9 @@ static inline void *rsa_realloc(void *p, size_t sz, size_t n);
  * Deallocates the space previously allocated by `rsa_alloc()` or
  * `rsa_realloc()`. If the pointer is null, the function does nothing.
  * The behavior is undefined if the same pointer is freed more than once.
- * @param p Pointer to the memory to deallocate.
- * @param n Size of the memory.
+ *
+ * @param[in] p Pointer to the memory to deallocate.
+ * @param[in] n Size of the memory.
  */
 static inline void rsa_free(void *p, size_t n);
 

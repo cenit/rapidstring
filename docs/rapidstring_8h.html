@@ -70,211 +70,169 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">rapidstring.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
+<p>The single header of the rapidstring library.  
+<a href="#details">More...</a></p>
+
 <p><a href="rapidstring_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__align__dummy.html">rs_align_dummy</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__heap.html">rs_heap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that stores the heap data.  <a href="structrs__heap.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__stack.html">rs_stack</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that stores the stack data.  <a href="structrs__stack.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionrapidstring.html">rapidstring</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrsa__stack__t.html">rsa_stack_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union that stores a rapidstring.  <a href="unionrapidstring.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0495945a8b4d277ce859668172a5a920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a0495945a8b4d277ce859668172a5a920">RS_VERSION_MAJOR</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a0495945a8b4d277ce859668172a5a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3555d3dec5ce4e64b56d434700e5c144"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a3555d3dec5ce4e64b56d434700e5c144">RS_VERSION_MINOR</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a3555d3dec5ce4e64b56d434700e5c144"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a660def17180690179acd492961f52516"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a660def17180690179acd492961f52516">RS_VERSION_PATCH</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a660def17180690179acd492961f52516"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e7465ffe80028e3eb1b5505d1682e03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a2e7465ffe80028e3eb1b5505d1682e03">RS_GROWTH_FACTOR</a>&#160;&#160;&#160;(2)</td></tr>
-<tr class="separator:a2e7465ffe80028e3eb1b5505d1682e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07b42af34e7ba37594bb7622c607a454"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a07b42af34e7ba37594bb7622c607a454">RS_AVERAGE_SIZE</a>&#160;&#160;&#160;(50)</td></tr>
-<tr class="separator:a07b42af34e7ba37594bb7622c607a454"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad853f2ef6a1573c0e32a2f65cc3db978"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad853f2ef6a1573c0e32a2f65cc3db978">RSA_STACK_SIZE</a>&#160;&#160;&#160;16384</td></tr>
-<tr class="separator:ad853f2ef6a1573c0e32a2f65cc3db978"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09971ad538cd908261cbbcc5459481b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a09971ad538cd908261cbbcc5459481b0">RS_ALLOC</a>&#160;&#160;&#160;(rsa_alloc)</td></tr>
-<tr class="separator:a09971ad538cd908261cbbcc5459481b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78dc589aac4383a54ea851e9115aec0b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a78dc589aac4383a54ea851e9115aec0b">RS_REALLOC</a>&#160;&#160;&#160;(rsa_realloc)</td></tr>
-<tr class="separator:a78dc589aac4383a54ea851e9115aec0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadbca3e5f15f1d660f5d0363d3a6bed9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aadbca3e5f15f1d660f5d0363d3a6bed9">RS_FREE</a>&#160;&#160;&#160;(rsa_free)</td></tr>
-<tr class="separator:aadbca3e5f15f1d660f5d0363d3a6bed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad868e846186b15629b1a1e47b7e1bb09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a>&#160;&#160;&#160;(0xFF)</td></tr>
-<tr class="separator:ad868e846186b15629b1a1e47b7e1bb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdc96b73bdcf2744c283e23e25772573"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abdc96b73bdcf2744c283e23e25772573">RS_ASSERT_PTR</a>(ptr)&#160;&#160;&#160;do { assert(ptr != NULL); } while (0)</td></tr>
-<tr class="separator:abdc96b73bdcf2744c283e23e25772573"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade4ed5f4cb91b63dd30e55d47d3c4890"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ade4ed5f4cb91b63dd30e55d47d3c4890">RS_ASSERT_RS</a>(s)</td></tr>
-<tr class="separator:ade4ed5f4cb91b63dd30e55d47d3c4890"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3514fc11fe089c9bb6e2d9ea00561862"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a3514fc11fe089c9bb6e2d9ea00561862">RS_ASSERT_HEAP</a>(s)&#160;&#160;&#160;do { assert(rs_is_heap(s)); } while (0)</td></tr>
-<tr class="separator:a3514fc11fe089c9bb6e2d9ea00561862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abde6b796fee3381ec75c961985a38c95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abde6b796fee3381ec75c961985a38c95">RS_ASSERT_STACK</a>(s)&#160;&#160;&#160;do { assert(rs_is_stack(s)); } while (0)</td></tr>
-<tr class="separator:abde6b796fee3381ec75c961985a38c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa628200ab2331199c0df8ab2f8c2e4fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aa628200ab2331199c0df8ab2f8c2e4fe">RS_GCC_VERSION</a>&#160;&#160;&#160;(0)</td></tr>
-<tr class="separator:aa628200ab2331199c0df8ab2f8c2e4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e43b85abfade31a7a2046705e58b0e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr,  val)&#160;&#160;&#160;(expr)</td></tr>
-<tr class="separator:a9e43b85abfade31a7a2046705e58b0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4a172e763e49c55eb1da13b3a8f9724"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#af4a172e763e49c55eb1da13b3a8f9724">RS_LIKELY</a>(expr)&#160;&#160;&#160;<a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr, 1)</td></tr>
-<tr class="separator:af4a172e763e49c55eb1da13b3a8f9724"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0103cd0ff77e301c383863698842e0df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a0103cd0ff77e301c383863698842e0df">RS_UNLIKELY</a>(expr)&#160;&#160;&#160;<a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr, 0)</td></tr>
-<tr class="separator:a0103cd0ff77e301c383863698842e0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15ad237ee2529352b8a0189c9cd523d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a15ad237ee2529352b8a0189c9cd523d4">RC_C11</a>&#160;&#160;&#160;(0)</td></tr>
-<tr class="separator:a15ad237ee2529352b8a0189c9cd523d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9eff696775ee265be0cc5fea14e6982"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad9eff696775ee265be0cc5fea14e6982">RS_ALIGNMENT</a></td></tr>
-<tr class="separator:ad9eff696775ee265be0cc5fea14e6982"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab93be554f576e050c48d50986ade7dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td></tr>
+<tr class="memdesc:aab93be554f576e050c48d50986ade7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a stack string.  <a href="#aab93be554f576e050c48d50986ade7dd">More...</a><br /></td></tr>
 <tr class="separator:aab93be554f576e050c48d50986ade7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c9bab261254a25f7eb2482043ce2cf9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a3c9bab261254a25f7eb2482043ce2cf9">RS_HEAP_LIKELY</a>(expr)&#160;&#160;&#160;<a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr, RS_HEAP_LIKELY_V)</td></tr>
-<tr class="separator:a3c9bab261254a25f7eb2482043ce2cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a720a58f100607c47f91869e4349753b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a720a58f100607c47f91869e4349753b9">RS_STACK_LIKELY</a>(expr)&#160;&#160;&#160;<a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr, !RS_HEAP_LIKELY_V)</td></tr>
-<tr class="separator:a720a58f100607c47f91869e4349753b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af90863ca72d60da08071272c477e20b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#af90863ca72d60da08071272c477e20b3">RS_DATA_SIZE</a>(f,  s,  input)</td></tr>
 <tr class="separator:af90863ca72d60da08071272c477e20b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac84774604313a0254305b74212b0ae06"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac84774604313a0254305b74212b0ae06">rs_init</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:ac84774604313a0254305b74212b0ae06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ae856f9a38e7b457d061239d932adb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a81ae856f9a38e7b457d061239d932adb">rs_init_w</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="separator:a81ae856f9a38e7b457d061239d932adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c7bb033b6a8480417d4a4eabb71afe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#af8c7bb033b6a8480417d4a4eabb71afe">rs_init_w_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="separator:af8c7bb033b6a8480417d4a4eabb71afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67ddb6eaffb3ff24478e849a7cb43140"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a67ddb6eaffb3ff24478e849a7cb43140">rs_init_w_cap</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:a67ddb6eaffb3ff24478e849a7cb43140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82e440bad2469581c004eb78570bad14"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a82e440bad2469581c004eb78570bad14">rs_init_w_rs</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const <a class="el" href="unionrapidstring.html">rapidstring</a> *input)</td></tr>
+<tr class="separator:a82e440bad2469581c004eb78570bad14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a03b2ccd3f7a75c2c2aa966a18b28a8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a0a03b2ccd3f7a75c2c2aa966a18b28a8">rs_free</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a0a03b2ccd3f7a75c2c2aa966a18b28a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6419ba7037832839f0015d661b01b9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a6c6419ba7037832839f0015d661b01b9">rs_stack_assign</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="separator:a6c6419ba7037832839f0015d661b01b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae54c13923a15b6488824761475137797"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ae54c13923a15b6488824761475137797">rs_stack_assign_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="separator:ae54c13923a15b6488824761475137797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ddcc6c8f5dfef017e287db13b74eaab"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a7ddcc6c8f5dfef017e287db13b74eaab">rs_heap_assign</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="separator:a7ddcc6c8f5dfef017e287db13b74eaab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae624cac632013c79beba3e9851e98b4b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ae624cac632013c79beba3e9851e98b4b">rs_heap_assign_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="separator:ae624cac632013c79beba3e9851e98b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d95c982e2cd0a8bd9d1c39138554afa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a2d95c982e2cd0a8bd9d1c39138554afa">rs_assign</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="separator:a2d95c982e2cd0a8bd9d1c39138554afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb25985027fe90377032397f6f97197"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a7bb25985027fe90377032397f6f97197">rs_assign_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="separator:a7bb25985027fe90377032397f6f97197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60d2021b45cfadb0ff7f5616744b07b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ae60d2021b45cfadb0ff7f5616744b07b">rs_assign_rs</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const <a class="el" href="unionrapidstring.html">rapidstring</a> *input)</td></tr>
+<tr class="separator:ae60d2021b45cfadb0ff7f5616744b07b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57ef518f4128224e88a73d078166635"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aa57ef518f4128224e88a73d078166635">rs_at</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t i)</td></tr>
+<tr class="separator:aa57ef518f4128224e88a73d078166635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd87bcca59363272d931116e14d2c04"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a4dd87bcca59363272d931116e14d2c04">rs_front</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a4dd87bcca59363272d931116e14d2c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75a4127c7409f37447bf87090e410840"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a75a4127c7409f37447bf87090e410840">rs_back</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a75a4127c7409f37447bf87090e410840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2c9839260c7d7870fbef3be291c0458"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac2c9839260c7d7870fbef3be291c0458">rs_data</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:ac2c9839260c7d7870fbef3be291c0458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a71f3431bc04180986382e3997cabf"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a53a71f3431bc04180986382e3997cabf">rs_data_c</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a53a71f3431bc04180986382e3997cabf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f6a12dee60ffa7ebe838125169c514"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a20f6a12dee60ffa7ebe838125169c514">rs_begin</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a20f6a12dee60ffa7ebe838125169c514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b90e5faccf62b52f101af2d7f6bf3c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a04b90e5faccf62b52f101af2d7f6bf3c">rs_begin_c</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a04b90e5faccf62b52f101af2d7f6bf3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba735d5f114b93bf7d1d7a75eaa64dca"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aba735d5f114b93bf7d1d7a75eaa64dca">rs_end</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:aba735d5f114b93bf7d1d7a75eaa64dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67de053e7992ef7c395c09cd4c97746a"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a67de053e7992ef7c395c09cd4c97746a">rs_end_c</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a67de053e7992ef7c395c09cd4c97746a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdfb5f36770945b063fbfa95448715f7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#afdfb5f36770945b063fbfa95448715f7">rs_empty</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:afdfb5f36770945b063fbfa95448715f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df5da7ae3f524bdc8cc4c603747fbd4"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a6df5da7ae3f524bdc8cc4c603747fbd4">rs_stack_size</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a6df5da7ae3f524bdc8cc4c603747fbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402a9e381f9bc7ba3ed93decc2ae0944"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a402a9e381f9bc7ba3ed93decc2ae0944">rs_heap_size</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a402a9e381f9bc7ba3ed93decc2ae0944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc1b755e0b27217cad6114503f69a87d"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#afc1b755e0b27217cad6114503f69a87d">rs_size</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:afc1b755e0b27217cad6114503f69a87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ccaf03032226a6a7626f03207f441e"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a35ccaf03032226a6a7626f03207f441e">rs_capacity</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a35ccaf03032226a6a7626f03207f441e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8b4e443e82bebb50c7e3e77ac3f1779"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac8b4e443e82bebb50c7e3e77ac3f1779">rs_reserve</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:ac8b4e443e82bebb50c7e3e77ac3f1779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9900a15fc60c641a4d7af870025ee7e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad9900a15fc60c641a4d7af870025ee7e">rs_shrink_to_fit</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:ad9900a15fc60c641a4d7af870025ee7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f78eaa322bfca9287e610baff8fcd7d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a9f78eaa322bfca9287e610baff8fcd7d">rs_is_heap</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a9f78eaa322bfca9287e610baff8fcd7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a7adee08e51985c828fb604a9e4be71"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a5a7adee08e51985c828fb604a9e4be71">rs_is_stack</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="separator:a5a7adee08e51985c828fb604a9e4be71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48558d2b2a8a112fa16ba43121b2c606"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a48558d2b2a8a112fa16ba43121b2c606">rs_stack_append</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="separator:a48558d2b2a8a112fa16ba43121b2c606"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee1d32845014d004dc51fe63364f5a48"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aee1d32845014d004dc51fe63364f5a48">rs_stack_append_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="separator:aee1d32845014d004dc51fe63364f5a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96cba4f4ceb2d2541053401c1ecfb6e3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a96cba4f4ceb2d2541053401c1ecfb6e3">rs_heap_append</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="separator:a96cba4f4ceb2d2541053401c1ecfb6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afee044616d2f92c602330c88b6acd22d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#afee044616d2f92c602330c88b6acd22d">rs_heap_append_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="separator:afee044616d2f92c602330c88b6acd22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a115e9d44fc619e79bebea8c7a88203c5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a115e9d44fc619e79bebea8c7a88203c5">rs_append</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="separator:a115e9d44fc619e79bebea8c7a88203c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a230a15daaa66c6abb02d80d6f1ceb37e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a230a15daaa66c6abb02d80d6f1ceb37e">rs_append_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="separator:a230a15daaa66c6abb02d80d6f1ceb37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7550475cb09536a01c2d2891a73b0dc7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a7550475cb09536a01c2d2891a73b0dc7">rs_append_rs</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const <a class="el" href="unionrapidstring.html">rapidstring</a> *input)</td></tr>
+<tr class="separator:a7550475cb09536a01c2d2891a73b0dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e07d02fde879b82014197a341cef701"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a7e07d02fde879b82014197a341cef701">rs_steal</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, char *buffer)</td></tr>
+<tr class="separator:a7e07d02fde879b82014197a341cef701"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1822434a1470ea15322aab87a26b5c8e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a1822434a1470ea15322aab87a26b5c8e">rs_steal_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, char *buffer, size_t cap)</td></tr>
+<tr class="separator:a1822434a1470ea15322aab87a26b5c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add09d860a2b4e9f8ba45012e4814dc36"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#add09d860a2b4e9f8ba45012e4814dc36">rs_stack_resize</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:add09d860a2b4e9f8ba45012e4814dc36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2324a6d4a73f53482e3b245e5b8ed32f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a2324a6d4a73f53482e3b245e5b8ed32f">rs_heap_resize</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:a2324a6d4a73f53482e3b245e5b8ed32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f5fef8052071ac0bc78e30a2849b5d5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a5f5fef8052071ac0bc78e30a2849b5d5">rs_resize</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:a5f5fef8052071ac0bc78e30a2849b5d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a638f5fba5359b2e6c8d678fadfc6eb35"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a638f5fba5359b2e6c8d678fadfc6eb35">rs_resize_w</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n, char c)</td></tr>
+<tr class="separator:a638f5fba5359b2e6c8d678fadfc6eb35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfe453e7962d5c70502f867ca861db43"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#adfe453e7962d5c70502f867ca861db43">rs_heap_init</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:adfe453e7962d5c70502f867ca861db43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd65f6426b0bc1727f26de86e504fff"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a4cd65f6426b0bc1727f26de86e504fff">rs_heap_init_g</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:a4cd65f6426b0bc1727f26de86e504fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaf0c6f9d5123349861e838d69aeaa64"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abaf0c6f9d5123349861e838d69aeaa64">rs_stack_to_heap</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:abaf0c6f9d5123349861e838d69aeaa64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c9be34e8b62fc446ddb5ef02dbf9d14"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a3c9be34e8b62fc446ddb5ef02dbf9d14">rs_stack_to_heap_g</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:a3c9be34e8b62fc446ddb5ef02dbf9d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2039c08060b4d23d51954e00651fe767"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a2039c08060b4d23d51954e00651fe767">rs_realloc</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:a2039c08060b4d23d51954e00651fe767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a788620814d34a1ae1548c38e5422771c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a788620814d34a1ae1548c38e5422771c">rs_grow_heap</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="separator:a788620814d34a1ae1548c38e5422771c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0565b576d815511a0279ce67a017b33b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a0565b576d815511a0279ce67a017b33b">rsa_stack_can_alloc</a> (size_t n)</td></tr>
+<tr class="separator:a0565b576d815511a0279ce67a017b33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad46c39363bf3253cc7427cce3a333a97"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad46c39363bf3253cc7427cce3a333a97">rsa_stack_alloc</a> (size_t n)</td></tr>
+<tr class="separator:ad46c39363bf3253cc7427cce3a333a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d1febad5b2d760592f2f8130f75f090"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a9d1febad5b2d760592f2f8130f75f090">rsa_stack_realloc</a> (void *p, size_t sz, size_t n)</td></tr>
+<tr class="separator:a9d1febad5b2d760592f2f8130f75f090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf1b67e865e1caeff4a7024797887122"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#acf1b67e865e1caeff4a7024797887122">rsa_stack_owns</a> (void *p)</td></tr>
+<tr class="separator:acf1b67e865e1caeff4a7024797887122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd5d6a9917b73d04112ff8c14c011f1d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#acd5d6a9917b73d04112ff8c14c011f1d">rsa_stack_free</a> (void *p, size_t n)</td></tr>
+<tr class="separator:acd5d6a9917b73d04112ff8c14c011f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76a006b8d2068427214f5ecbb1473ac"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ae76a006b8d2068427214f5ecbb1473ac">rsa_alloc</a> (size_t n)</td></tr>
+<tr class="separator:ae76a006b8d2068427214f5ecbb1473ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a268c8d412b4ac259459731dfef793441"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a268c8d412b4ac259459731dfef793441">rsa_realloc</a> (void *p, size_t sz, size_t n)</td></tr>
+<tr class="separator:a268c8d412b4ac259459731dfef793441"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac178763f6fa8dd1fc7ef33b8448fc845"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac178763f6fa8dd1fc7ef33b8448fc845">rsa_free</a> (void *p, size_t n)</td></tr>
+<tr class="separator:ac178763f6fa8dd1fc7ef33b8448fc845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a15ad237ee2529352b8a0189c9cd523d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15ad237ee2529352b8a0189c9cd523d4">&#9670;&nbsp;</a></span>RC_C11</h2>
+<a id="aab93be554f576e050c48d50986ade7dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab93be554f576e050c48d50986ade7dd">&#9670;&nbsp;</a></span>RS_STACK_CAPACITY</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define RC_C11&#160;&#160;&#160;(0)</td>
+          <td class="memname">#define RS_STACK_CAPACITY&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad9eff696775ee265be0cc5fea14e6982"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9eff696775ee265be0cc5fea14e6982">&#9670;&nbsp;</a></span>RS_ALIGNMENT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_ALIGNMENT</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span>*) &gt; <span class="keyword">sizeof</span>(<span class="keywordtype">size_t</span>) ?       \</div><div class="line">                               sizeof(<span class="keywordtype">void</span>*) :                  \</div><div class="line">                               sizeof(size_t))</div></div><!-- fragment -->
-</div>
-</div>
-<a id="a09971ad538cd908261cbbcc5459481b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09971ad538cd908261cbbcc5459481b0">&#9670;&nbsp;</a></span>RS_ALLOC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_ALLOC&#160;&#160;&#160;(rsa_alloc)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3514fc11fe089c9bb6e2d9ea00561862"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3514fc11fe089c9bb6e2d9ea00561862">&#9670;&nbsp;</a></span>RS_ASSERT_HEAP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_ASSERT_HEAP</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">s</td><td>)</td>
-          <td>&#160;&#160;&#160;do { assert(rs_is_heap(s)); } while (0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="abdc96b73bdcf2744c283e23e25772573"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdc96b73bdcf2744c283e23e25772573">&#9670;&nbsp;</a></span>RS_ASSERT_PTR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_ASSERT_PTR</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">ptr</td><td>)</td>
-          <td>&#160;&#160;&#160;do { assert(ptr != NULL); } while (0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ade4ed5f4cb91b63dd30e55d47d3c4890"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade4ed5f4cb91b63dd30e55d47d3c4890">&#9670;&nbsp;</a></span>RS_ASSERT_RS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_ASSERT_RS</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">s</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        RS_ASSERT_PTR(s);                                       \</div><div class="line">        assert(s-&gt;heap.flag == <a class="code" href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a> ||                  \</div><div class="line">                  s-&gt;heap.flag &lt;= <a class="code" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>);           \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_aab93be554f576e050c48d50986ade7dd"><div class="ttname"><a href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a></div><div class="ttdeci">#define RS_STACK_CAPACITY</div><div class="ttdef"><b>Definition:</b> rapidstring.h:201</div></div>
-<div class="ttc" id="rapidstring_8h_html_ad868e846186b15629b1a1e47b7e1bb09"><div class="ttname"><a href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a></div><div class="ttdeci">#define RS_HEAP_FLAG</div><div class="ttdef"><b>Definition:</b> rapidstring.h:100</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="abde6b796fee3381ec75c961985a38c95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abde6b796fee3381ec75c961985a38c95">&#9670;&nbsp;</a></span>RS_ASSERT_STACK</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_ASSERT_STACK</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">s</td><td>)</td>
-          <td>&#160;&#160;&#160;do { assert(rs_is_stack(s)); } while (0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a07b42af34e7ba37594bb7622c607a454"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07b42af34e7ba37594bb7622c607a454">&#9670;&nbsp;</a></span>RS_AVERAGE_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_AVERAGE_SIZE&#160;&#160;&#160;(50)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>The maximum capacity of a stack string. </p>
 
 </div>
 </div>
@@ -309,277 +267,2382 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (<a class="code" href="rapidstring_8h.html#a3c9bab261254a25f7eb2482043ce2cf9">RS_HEAP_LIKELY</a>(rs_is_heap(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, rs_heap_size(input));          \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, rs_stack_size(input));        \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_a3c9bab261254a25f7eb2482043ce2cf9"><div class="ttname"><a href="rapidstring_8h.html#a3c9bab261254a25f7eb2482043ce2cf9">RS_HEAP_LIKELY</a></div><div class="ttdeci">#define RS_HEAP_LIKELY(expr)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:262</div></div>
-</div><!-- fragment --><p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. </p><dl class="params"><dt>Parameters</dt><dd>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#a9f78eaa322bfca9287e610baff8fcd7d">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a402a9e381f9bc7ba3ed93decc2ae0944">rs_heap_size</a>(input));          \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a6df5da7ae3f524bdc8cc4c603747fbd4">rs_stack_size</a>(input));        \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_a6df5da7ae3f524bdc8cc4c603747fbd4"><div class="ttname"><a href="rapidstring_8h.html#a6df5da7ae3f524bdc8cc4c603747fbd4">rs_stack_size</a></div><div class="ttdeci">static size_t rs_stack_size(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1035</div></div>
+<div class="ttc" id="rapidstring_8h_html_a402a9e381f9bc7ba3ed93decc2ae0944"><div class="ttname"><a href="rapidstring_8h.html#a402a9e381f9bc7ba3ed93decc2ae0944">rs_heap_size</a></div><div class="ttdeci">static size_t rs_heap_size(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1042</div></div>
+<div class="ttc" id="rapidstring_8h_html_a9f78eaa322bfca9287e610baff8fcd7d"><div class="ttname"><a href="rapidstring_8h.html#a9f78eaa322bfca9287e610baff8fcd7d">rs_is_heap</a></div><div class="ttdeci">static bool rs_is_heap(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1079</div></div>
+</div><!-- fragment --><p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. Intended for internal use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">f</td><td>A function. </td></tr>
-    <tr><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramname">input</td><td>The input to forward the function. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A function. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to forward the function. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a9e43b85abfade31a7a2046705e58b0e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e43b85abfade31a7a2046705e58b0e1">&#9670;&nbsp;</a></span>RS_EXPECT</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ac84774604313a0254305b74212b0ae06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac84774604313a0254305b74212b0ae06">&#9670;&nbsp;</a></span>rs_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_EXPECT</td>
+          <td class="memname">static void rs_init </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">expr, </td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initializes a string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>The string to initialize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a81ae856f9a38e7b457d061239d932adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81ae856f9a38e7b457d061239d932adb">&#9670;&nbsp;</a></span>rs_init_w()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_init_w </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(expr)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Initializes a string with a character array. Identicle to <code>rs_init_w_n(s, input, strlen(input)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input used to initialize the string. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="aadbca3e5f15f1d660f5d0363d3a6bed9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadbca3e5f15f1d660f5d0363d3a6bed9">&#9670;&nbsp;</a></span>RS_FREE</h2>
+<a id="af8c7bb033b6a8480417d4a4eabb71afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8c7bb033b6a8480417d4a4eabb71afe">&#9670;&nbsp;</a></span>rs_init_w_n()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_FREE&#160;&#160;&#160;(rsa_free)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa628200ab2331199c0df8ab2f8c2e4fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa628200ab2331199c0df8ab2f8c2e4fe">&#9670;&nbsp;</a></span>RS_GCC_VERSION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_GCC_VERSION&#160;&#160;&#160;(0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2e7465ffe80028e3eb1b5505d1682e03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e7465ffe80028e3eb1b5505d1682e03">&#9670;&nbsp;</a></span>RS_GROWTH_FACTOR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_GROWTH_FACTOR&#160;&#160;&#160;(2)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad868e846186b15629b1a1e47b7e1bb09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad868e846186b15629b1a1e47b7e1bb09">&#9670;&nbsp;</a></span>RS_HEAP_FLAG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_HEAP_FLAG&#160;&#160;&#160;(0xFF)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3c9bab261254a25f7eb2482043ce2cf9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c9bab261254a25f7eb2482043ce2cf9">&#9670;&nbsp;</a></span>RS_HEAP_LIKELY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_HEAP_LIKELY</td>
+          <td class="memname">static void rs_init_w_n </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">expr</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr, RS_HEAP_LIKELY_V)</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Initializes a string with a character array. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input used to initialize the string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="af4a172e763e49c55eb1da13b3a8f9724"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4a172e763e49c55eb1da13b3a8f9724">&#9670;&nbsp;</a></span>RS_LIKELY</h2>
+<a id="a67ddb6eaffb3ff24478e849a7cb43140"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67ddb6eaffb3ff24478e849a7cb43140">&#9670;&nbsp;</a></span>rs_init_w_cap()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_LIKELY</td>
+          <td class="memname">static void rs_init_w_cap </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">expr</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr, 1)</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Initializes a string with an initial capacity. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new initial capacity of the string. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a78dc589aac4383a54ea851e9115aec0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78dc589aac4383a54ea851e9115aec0b">&#9670;&nbsp;</a></span>RS_REALLOC</h2>
+<a id="a82e440bad2469581c004eb78570bad14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82e440bad2469581c004eb78570bad14">&#9670;&nbsp;</a></span>rs_init_w_rs()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_REALLOC&#160;&#160;&#160;(rsa_realloc)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aab93be554f576e050c48d50986ade7dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab93be554f576e050c48d50986ade7dd">&#9670;&nbsp;</a></span>RS_STACK_CAPACITY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_STACK_CAPACITY&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a720a58f100607c47f91869e4349753b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a720a58f100607c47f91869e4349753b9">&#9670;&nbsp;</a></span>RS_STACK_LIKELY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_STACK_LIKELY</td>
+          <td class="memname">static void rs_init_w_rs </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">expr</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr, !RS_HEAP_LIKELY_V)</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Initializes a string with another string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize <code>s</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a0103cd0ff77e301c383863698842e0df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0103cd0ff77e301c383863698842e0df">&#9670;&nbsp;</a></span>RS_UNLIKELY</h2>
+<a id="a0a03b2ccd3f7a75c2c2aa966a18b28a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a03b2ccd3f7a75c2c2aa966a18b28a8">&#9670;&nbsp;</a></span>rs_free()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_UNLIKELY</td>
+          <td class="memname">static void rs_free </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">expr</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="rapidstring_8h.html#a9e43b85abfade31a7a2046705e58b0e1">RS_EXPECT</a>(expr, 0)</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Frees a string. The string is in an invalid state after freeing. You must call <code>rs_init(s)</code> if you wish to reuse the same string after freeing.</p>
+<p>A jump may be avoided by directly calling <code>RS_FREE(s-&gt;heap.buffer, s-&gt;heap.capacity + 1);</code> if the string is known to be on the heap. The additional one is for the null terminator, which is subtracted upon initial allocation.</p>
+<p>Calling this fuction is unecessary if the string size is always smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string to free. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a0495945a8b4d277ce859668172a5a920"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0495945a8b4d277ce859668172a5a920">&#9670;&nbsp;</a></span>RS_VERSION_MAJOR</h2>
+<a id="a6c6419ba7037832839f0015d661b01b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c6419ba7037832839f0015d661b01b9">&#9670;&nbsp;</a></span>rs_stack_assign()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_VERSION_MAJOR&#160;&#160;&#160;0</td>
+          <td class="memname">static void rs_stack_assign </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Assigns characters to a stack string. The input length must be smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. Identicle to <code>rs_stack_assign_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>the input to assign to the stack string. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a3555d3dec5ce4e64b56d434700e5c144"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3555d3dec5ce4e64b56d434700e5c144">&#9670;&nbsp;</a></span>RS_VERSION_MINOR</h2>
+<a id="ae54c13923a15b6488824761475137797"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae54c13923a15b6488824761475137797">&#9670;&nbsp;</a></span>rs_stack_assign_n()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_VERSION_MINOR&#160;&#160;&#160;1</td>
+          <td class="memname">static void rs_stack_assign_n </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Assigns characters to a stack string. The input length must be smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a660def17180690179acd492961f52516"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a660def17180690179acd492961f52516">&#9670;&nbsp;</a></span>RS_VERSION_PATCH</h2>
+<a id="a7ddcc6c8f5dfef017e287db13b74eaab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ddcc6c8f5dfef017e287db13b74eaab">&#9670;&nbsp;</a></span>rs_heap_assign()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_VERSION_PATCH&#160;&#160;&#160;0</td>
+          <td class="memname">static void rs_heap_assign </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Assigns characters to a heap string. The input length must be smaller or equal to the string's capacity. Identicle to <code>rs_heap_assign_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the heap string. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="ad853f2ef6a1573c0e32a2f65cc3db978"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad853f2ef6a1573c0e32a2f65cc3db978">&#9670;&nbsp;</a></span>RSA_STACK_SIZE</h2>
+<a id="ae624cac632013c79beba3e9851e98b4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae624cac632013c79beba3e9851e98b4b">&#9670;&nbsp;</a></span>rs_heap_assign_n()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define RSA_STACK_SIZE&#160;&#160;&#160;16384</td>
+          <td class="memname">static void rs_heap_assign_n </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Assigns characters to a heap string. The input length must be smaller or equal to the string's capacity. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06fc87d81c62e9abb8790b6e5713c55b">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="a2d95c982e2cd0a8bd9d1c39138554afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d95c982e2cd0a8bd9d1c39138554afa">&#9670;&nbsp;</a></span>rs_assign()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">anonymous enum</td>
+          <td class="memname">static void rs_assign </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+<p>Assigns characters to a string. Identicle to <code>rs_assign_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the string. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7bb25985027fe90377032397f6f97197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bb25985027fe90377032397f6f97197">&#9670;&nbsp;</a></span>rs_assign_n()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_assign_n </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Assigns characters to a string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae60d2021b45cfadb0ff7f5616744b07b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae60d2021b45cfadb0ff7f5616744b07b">&#9670;&nbsp;</a></span>rs_assign_rs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_assign_rs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Assigns a string to another string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize <code>s</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa57ef518f4128224e88a73d078166635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa57ef518f4128224e88a73d078166635">&#9670;&nbsp;</a></span>rs_at()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char rs_at </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Access a specified character. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>The index used to retrieve the character. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The character at the index of <code>i</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a4dd87bcca59363272d931116e14d2c04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dd87bcca59363272d931116e14d2c04">&#9670;&nbsp;</a></span>rs_front()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char rs_front </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Access the first character. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The first character. </dd></dl>
+
+</div>
+</div>
+<a id="a75a4127c7409f37447bf87090e410840"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75a4127c7409f37447bf87090e410840">&#9670;&nbsp;</a></span>rs_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char rs_back </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Access the last character. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The last character. </dd></dl>
+
+</div>
+</div>
+<a id="ac2c9839260c7d7870fbef3be291c0458"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2c9839260c7d7870fbef3be291c0458">&#9670;&nbsp;</a></span>rs_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * rs_data </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Access the buffer. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The buffer. </dd></dl>
+
+</div>
+</div>
+<a id="a53a71f3431bc04180986382e3997cabf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a71f3431bc04180986382e3997cabf">&#9670;&nbsp;</a></span>rs_data_c()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char * rs_data_c </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Access the buffer. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The buffer. </dd></dl>
+
+</div>
+</div>
+<a id="a20f6a12dee60ffa7ebe838125169c514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f6a12dee60ffa7ebe838125169c514">&#9670;&nbsp;</a></span>rs_begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * rs_begin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns an iterator to the beginning. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An intialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the first character. </dd></dl>
+
+</div>
+</div>
+<a id="a04b90e5faccf62b52f101af2d7f6bf3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b90e5faccf62b52f101af2d7f6bf3c">&#9670;&nbsp;</a></span>rs_begin_c()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char * rs_begin_c </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns an iterator to the beginning. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An intialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The iterator to the first character. </dd></dl>
+
+</div>
+</div>
+<a id="aba735d5f114b93bf7d1d7a75eaa64dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba735d5f114b93bf7d1d7a75eaa64dca">&#9670;&nbsp;</a></span>rs_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * rs_end </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns an iterator to the end. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An intialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The iterator following the last character. </dd></dl>
+
+</div>
+</div>
+<a id="a67de053e7992ef7c395c09cd4c97746a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67de053e7992ef7c395c09cd4c97746a">&#9670;&nbsp;</a></span>rs_end_c()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char * rs_end_c </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns an iterator to the end. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An intialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The iterator following the last character. </dd></dl>
+
+</div>
+</div>
+<a id="afdfb5f36770945b063fbfa95448715f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdfb5f36770945b063fbfa95448715f7">&#9670;&nbsp;</a></span>rs_empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool rs_empty </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks whether a string is empty. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the string is empty, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a6df5da7ae3f524bdc8cc4c603747fbd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6df5da7ae3f524bdc8cc4c603747fbd4">&#9670;&nbsp;</a></span>rs_stack_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static size_t rs_stack_size </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the length of a stack string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The stack string length. </dd></dl>
+
+</div>
+</div>
+<a id="a402a9e381f9bc7ba3ed93decc2ae0944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402a9e381f9bc7ba3ed93decc2ae0944">&#9670;&nbsp;</a></span>rs_heap_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static size_t rs_heap_size </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the length of a heap string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The heap string length. </dd></dl>
+
+</div>
+</div>
+<a id="afc1b755e0b27217cad6114503f69a87d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc1b755e0b27217cad6114503f69a87d">&#9670;&nbsp;</a></span>rs_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static size_t rs_size </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the length. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string length. </dd></dl>
+
+</div>
+</div>
+<a id="a35ccaf03032226a6a7626f03207f441e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35ccaf03032226a6a7626f03207f441e">&#9670;&nbsp;</a></span>rs_capacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static size_t rs_capacity </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the capacity. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string capacity. </dd></dl>
+
+</div>
+</div>
+<a id="ac8b4e443e82bebb50c7e3e77ac3f1779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8b4e443e82bebb50c7e3e77ac3f1779">&#9670;&nbsp;</a></span>rs_reserve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_reserve </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reserves capacity. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The capacity to reserve. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad9900a15fc60c641a4d7af870025ee7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9900a15fc60c641a4d7af870025ee7e">&#9670;&nbsp;</a></span>rs_shrink_to_fit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_shrink_to_fit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Frees all unused memory. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9f78eaa322bfca9287e610baff8fcd7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f78eaa322bfca9287e610baff8fcd7d">&#9670;&nbsp;</a></span>rs_is_heap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool rs_is_heap </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks whether a string is on the heap. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the string is on the heap, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a5a7adee08e51985c828fb604a9e4be71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a7adee08e51985c828fb604a9e4be71">&#9670;&nbsp;</a></span>rs_is_stack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool rs_is_stack </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks whether a string is on the stack. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the string is on the stack, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a48558d2b2a8a112fa16ba43121b2c606"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48558d2b2a8a112fa16ba43121b2c606">&#9670;&nbsp;</a></span>rs_stack_append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_stack_append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Appends characters to a stack string. Identicle to <code>rs_stack_append_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aee1d32845014d004dc51fe63364f5a48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee1d32845014d004dc51fe63364f5a48">&#9670;&nbsp;</a></span>rs_stack_append_n()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_stack_append_n </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Appends characters to a stack string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96cba4f4ceb2d2541053401c1ecfb6e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96cba4f4ceb2d2541053401c1ecfb6e3">&#9670;&nbsp;</a></span>rs_heap_append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_heap_append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Appends characters to a heap string. Identicle to <code>rs_heap_append_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afee044616d2f92c602330c88b6acd22d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afee044616d2f92c602330c88b6acd22d">&#9670;&nbsp;</a></span>rs_heap_append_n()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_heap_append_n </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Appends characters to a heap string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a115e9d44fc619e79bebea8c7a88203c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a115e9d44fc619e79bebea8c7a88203c5">&#9670;&nbsp;</a></span>rs_append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Appends characters to a string. denticle to <code>rs_append_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a230a15daaa66c6abb02d80d6f1ceb37e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a230a15daaa66c6abb02d80d6f1ceb37e">&#9670;&nbsp;</a></span>rs_append_n()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_append_n </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Appends characters to a string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7550475cb09536a01c2d2891a73b0dc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7550475cb09536a01c2d2891a73b0dc7">&#9670;&nbsp;</a></span>rs_append_rs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_append_rs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Appends a string to another string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7e07d02fde879b82014197a341cef701"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e07d02fde879b82014197a341cef701">&#9670;&nbsp;</a></span>rs_steal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_steal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Steals a buffer allocated on the heap. The buffer must either be allocated with <code>RS_ALLOC</code>/<code>RS_REALLOC</code>, or must be manually freed. Identicle to `rs_steal_n(s, buffer, strlen(buffer)) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1822434a1470ea15322aab87a26b5c8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1822434a1470ea15322aab87a26b5c8e">&#9670;&nbsp;</a></span>rs_steal_n()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_steal_n </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>cap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Steals a buffer allocated on the heap. The buffer must either be allocated with <code>RS_ALLOC</code>/<code>RS_REALLOC</code>, or must be manually freed. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cap</td><td>The capacity of the buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="add09d860a2b4e9f8ba45012e4814dc36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add09d860a2b4e9f8ba45012e4814dc36">&#9670;&nbsp;</a></span>rs_stack_resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_stack_resize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Resizes a stack string. The new size must be smaller than <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2324a6d4a73f53482e3b245e5b8ed32f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2324a6d4a73f53482e3b245e5b8ed32f">&#9670;&nbsp;</a></span>rs_heap_resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_heap_resize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Resizes a heap string. The new size must be smaller than <code>s-&gt;heap.capacity</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5f5fef8052071ac0bc78e30a2849b5d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f5fef8052071ac0bc78e30a2849b5d5">&#9670;&nbsp;</a></span>rs_resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_resize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Resizes a string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a638f5fba5359b2e6c8d678fadfc6eb35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638f5fba5359b2e6c8d678fadfc6eb35">&#9670;&nbsp;</a></span>rs_resize_w()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_resize_w </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Resizes a string with a filler character. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The filler character. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adfe453e7962d5c70502f867ca861db43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe453e7962d5c70502f867ca861db43">&#9670;&nbsp;</a></span>rs_heap_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_heap_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initializes the heap. Intended for internal use. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4cd65f6426b0bc1727f26de86e504fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cd65f6426b0bc1727f26de86e504fff">&#9670;&nbsp;</a></span>rs_heap_init_g()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_heap_init_g </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Initializes the heap with growth. Intended for internal use. Identicle to <code>rs_heap_init(s, n * RS_GROWTH_FACTOR)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abaf0c6f9d5123349861e838d69aeaa64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaf0c6f9d5123349861e838d69aeaa64">&#9670;&nbsp;</a></span>rs_stack_to_heap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_stack_to_heap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Moves a stack string to the heap. Intended for internal use. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3c9be34e8b62fc446ddb5ef02dbf9d14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c9be34e8b62fc446ddb5ef02dbf9d14">&#9670;&nbsp;</a></span>rs_stack_to_heap_g()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_stack_to_heap_g </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Moves a stack string to the heap with growth. Intended for internal use. Identicle to <code>rs_stack_to_heap(s, n * RS_GROWTH_FACTOR)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2039c08060b4d23d51954e00651fe767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2039c08060b4d23d51954e00651fe767">&#9670;&nbsp;</a></span>rs_realloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_realloc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reallocates the heap buffer. This method may grow or shrink the heap capacity. The size will remain the same, even if the new capacity is smaller than the current size. Intended for internal use. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new heap capacity. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a788620814d34a1ae1548c38e5422771c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a788620814d34a1ae1548c38e5422771c">&#9670;&nbsp;</a></span>rs_grow_heap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rs_grow_heap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Allocates growth for a heap string. Intended for internal use. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new heap capacity. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0565b576d815511a0279ce67a017b33b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0565b576d815511a0279ce67a017b33b">&#9670;&nbsp;</a></span>rsa_stack_can_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool rsa_stack_can_alloc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks whether <code>n</code> bytes can be allocated. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>n</code> bytes can be allocated, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ad46c39363bf3253cc7427cce3a333a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad46c39363bf3253cc7427cce3a333a97">&#9670;&nbsp;</a></span>rsa_stack_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void * rsa_stack_alloc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Allocates bytes of zero initialized storage on the stack. If the size is zero, a valid pointer with no usable storage is returned. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, returns a pointer to the first byte of allocated memory. This pointer must be passed to <code><a class="el" href="rapidstring_8h.html#acd5d6a9917b73d04112ff8c14c011f1d">rsa_stack_free()</a></code>. On failure, returns a null pointer. </dd></dl>
+
+</div>
+</div>
+<a id="a9d1febad5b2d760592f2f8130f75f090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d1febad5b2d760592f2f8130f75f090">&#9670;&nbsp;</a></span>rsa_stack_realloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void * rsa_stack_realloc </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reallocates the given area of memory. It must have been previously allocated with <code><a class="el" href="rapidstring_8h.html#ad46c39363bf3253cc7427cce3a333a97">rsa_stack_alloc()</a></code> or <code><a class="el" href="rapidstring_8h.html#a9d1febad5b2d760592f2f8130f75f090">rsa_stack_realloc()</a></code> and not yet freed with <code><a class="el" href="rapidstring_8h.html#acd5d6a9917b73d04112ff8c14c011f1d">rsa_stack_free()</a></code>. If the size is zero, <code>p</code> will not be freed and a valid pointer with no usable storage will be returned. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Pointer to an area of memory to reallocate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sz</td><td>Current size of the area of memory in bytes. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>New size of the area of memory in bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, returns a pointer to the first byte of allocated memory. This pointer must be passed to <code><a class="el" href="rapidstring_8h.html#acd5d6a9917b73d04112ff8c14c011f1d">rsa_stack_free()</a></code>. On failure, returns a null pointer. </dd></dl>
+
+</div>
+</div>
+<a id="acf1b67e865e1caeff4a7024797887122"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf1b67e865e1caeff4a7024797887122">&#9670;&nbsp;</a></span>rsa_stack_owns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool rsa_stack_owns </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks whether <code>p</code> is owned by this stack allocator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Pointer to an area of memory. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>p</code> is owned by this stack allocator, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="acd5d6a9917b73d04112ff8c14c011f1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd5d6a9917b73d04112ff8c14c011f1d">&#9670;&nbsp;</a></span>rsa_stack_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rsa_stack_free </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Deallocates the space previously allocated by <code><a class="el" href="rapidstring_8h.html#ad46c39363bf3253cc7427cce3a333a97">rsa_stack_alloc()</a></code> or <code><a class="el" href="rapidstring_8h.html#a9d1febad5b2d760592f2f8130f75f090">rsa_stack_realloc()</a></code>. If the pointer is null, the function does nothing. The behavior is undefined if the same pointer is freed more than once. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Pointer to the memory to deallocate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Size of the memory. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae76a006b8d2068427214f5ecbb1473ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae76a006b8d2068427214f5ecbb1473ac">&#9670;&nbsp;</a></span>rsa_alloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void * rsa_alloc </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Allocates bytes of uninitialized storage.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, returns a pointer to the first byte of allocated memory. This pointer must be passed to <code>rs_free</code>. On failure, returns a null pointer. </dd></dl>
+
+</div>
+</div>
+<a id="a268c8d412b4ac259459731dfef793441"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a268c8d412b4ac259459731dfef793441">&#9670;&nbsp;</a></span>rsa_realloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void * rsa_realloc </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reallocates the given area of memory. It must have been previously allocated with <code><a class="el" href="rapidstring_8h.html#ae76a006b8d2068427214f5ecbb1473ac">rsa_alloc()</a></code> or <code><a class="el" href="rapidstring_8h.html#a268c8d412b4ac259459731dfef793441">rsa_realloc()</a></code> and not yet freed with <code><a class="el" href="rapidstring_8h.html#ac178763f6fa8dd1fc7ef33b8448fc845">rsa_free()</a></code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Pointer to an area of memory to reallocate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sz</td><td>Current size of the area of memory in bytes. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>New size of the area of memory in bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, returns a pointer to the first byte of allocated memory. This pointer must be passed to <code><a class="el" href="rapidstring_8h.html#ac178763f6fa8dd1fc7ef33b8448fc845">rsa_free()</a></code>. On failure, returns a null pointer. </dd></dl>
+
+</div>
+</div>
+<a id="ac178763f6fa8dd1fc7ef33b8448fc845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac178763f6fa8dd1fc7ef33b8448fc845">&#9670;&nbsp;</a></span>rsa_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rsa_free </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Deallocates the space previously allocated by <code><a class="el" href="rapidstring_8h.html#ae76a006b8d2068427214f5ecbb1473ac">rsa_alloc()</a></code> or <code><a class="el" href="rapidstring_8h.html#a268c8d412b4ac259459731dfef793441">rsa_realloc()</a></code>. If the pointer is null, the function does nothing. The behavior is undefined if the same pointer is freed more than once.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Pointer to the memory to deallocate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Size of the memory. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 20 2018 18:48:24 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 20 2018 20:14:25 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

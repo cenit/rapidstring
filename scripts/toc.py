@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-header = """/*
+header = '''/*
  * rapidstring - A fast string library.
  * version 0.1.0
  * https://github.com/boyerjohn/rapidstring
@@ -8,13 +8,24 @@ header = """/*
  * Licensed under the MIT License <http://opensource.org/licenses/MIT>.
  * Copyright (c) 2018 John Boyer <john.boyer@tutanota.com>.
  */\n
-"""
+'''
+
+docs = '''/**
+ * @file rapidstring.h
+ * @brief The single header of the rapidstring library.
+ */
+
+/**
+ * @mainpage rapidstring
+ * The documentation of the rapidstring library.
+ */\n
+'''
 
 file = open('include/rapidstring.h', 'r+')
 lines = [line for line in file]
 elems = OrderedDict()
 
-for i in range(3, len(lines)):
+for i in range(0, len(lines)):
 	if lines[i].startswith(' * =') and not lines[i + 1].startswith(' */'):
 		name = lines[i + 2].replace('*', ' ').strip()
 
@@ -42,6 +53,6 @@ toc += ' */\n\n'
 
 file.seek(0)
 contents = file.read()
-contents = header + toc + contents[contents.find('#ifndef'):]
+contents = header + toc + docs + contents[contents.find('#ifndef'):]
 file.seek(0)
 file.write(contents)
