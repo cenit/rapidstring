@@ -95,6 +95,8 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a0495945a8b4d277ce859668172a5a920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a0495945a8b4d277ce859668172a5a920">RS_VERSION_MAJOR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a0495945a8b4d277ce859668172a5a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab93be554f576e050c48d50986ade7dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td></tr>
 <tr class="memdesc:aab93be554f576e050c48d50986ade7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a stack string.  <a href="#aab93be554f576e050c48d50986ade7dd">More...</a><br /></td></tr>
 <tr class="separator:aab93be554f576e050c48d50986ade7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,6 +223,28 @@ Functions</h2></td></tr>
 <tr class="separator:ac178763f6fa8dd1fc7ef33b8448fc845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a0495945a8b4d277ce859668172a5a920"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0495945a8b4d277ce859668172a5a920">&#9670;&nbsp;</a></span>RS_VERSION_MAJOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RS_VERSION_MAJOR&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Add complexity, briefs and versions to all function documentation.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Make "Intended for internal use." a warning in Doxygen.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Make the stack allocator thread safe with RSA_THREADSAFE defined.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Make all functions properly link in documentation.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Rename to c like methods, rs_cat instead of rs_append, etc.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Make sure all std::string methods are added (if applicable).</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Create rs_search, rs_erase, rs_substring.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Add coveralls. </dd></dl>
+
+</div>
+</div>
 <a id="aab93be554f576e050c48d50986ade7dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab93be554f576e050c48d50986ade7dd">&#9670;&nbsp;</a></span>RS_STACK_CAPACITY</h2>
 
@@ -267,9 +291,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#a9f78eaa322bfca9287e610baff8fcd7d">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a402a9e381f9bc7ba3ed93decc2ae0944">rs_heap_size</a>(input));          \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a6df5da7ae3f524bdc8cc4c603747fbd4">rs_stack_size</a>(input));        \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_a6df5da7ae3f524bdc8cc4c603747fbd4"><div class="ttname"><a href="rapidstring_8h.html#a6df5da7ae3f524bdc8cc4c603747fbd4">rs_stack_size</a></div><div class="ttdeci">static size_t rs_stack_size(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1035</div></div>
-<div class="ttc" id="rapidstring_8h_html_a402a9e381f9bc7ba3ed93decc2ae0944"><div class="ttname"><a href="rapidstring_8h.html#a402a9e381f9bc7ba3ed93decc2ae0944">rs_heap_size</a></div><div class="ttdeci">static size_t rs_heap_size(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1042</div></div>
-<div class="ttc" id="rapidstring_8h_html_a9f78eaa322bfca9287e610baff8fcd7d"><div class="ttname"><a href="rapidstring_8h.html#a9f78eaa322bfca9287e610baff8fcd7d">rs_is_heap</a></div><div class="ttdeci">static bool rs_is_heap(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1079</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#a9f78eaa322bfca9287e610baff8fcd7d">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a402a9e381f9bc7ba3ed93decc2ae0944">rs_heap_size</a>(input));          \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a6df5da7ae3f524bdc8cc4c603747fbd4">rs_stack_size</a>(input));        \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_a6df5da7ae3f524bdc8cc4c603747fbd4"><div class="ttname"><a href="rapidstring_8h.html#a6df5da7ae3f524bdc8cc4c603747fbd4">rs_stack_size</a></div><div class="ttdeci">static size_t rs_stack_size(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1046</div></div>
+<div class="ttc" id="rapidstring_8h_html_a402a9e381f9bc7ba3ed93decc2ae0944"><div class="ttname"><a href="rapidstring_8h.html#a402a9e381f9bc7ba3ed93decc2ae0944">rs_heap_size</a></div><div class="ttdeci">static size_t rs_heap_size(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1053</div></div>
+<div class="ttc" id="rapidstring_8h_html_a9f78eaa322bfca9287e610baff8fcd7d"><div class="ttname"><a href="rapidstring_8h.html#a9f78eaa322bfca9287e610baff8fcd7d">rs_is_heap</a></div><div class="ttdeci">static bool rs_is_heap(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:1090</div></div>
 </div><!-- fragment --><p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. Intended for internal use.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -2642,7 +2666,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 20 2018 20:14:25 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 21 2018 07:32:17 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -63,20 +63,30 @@
 #ifndef RAPID_STRING_H_962AB5F800398A34
 #define RAPID_STRING_H_962AB5F800398A34
 
+/**
+ * @todo Add complexity, briefs and versions to all function documentation.
+ *
+ * @todo Make "Intended for internal use." a warning in Doxygen.
+ *
+ * @todo Make the stack allocator thread safe with RSA_THREADSAFE defined.
+ *
+ * @todo Make all functions properly link in documentation.
+ *
+ * @todo Rename to c like methods, rs_cat instead of rs_append, etc.
+ *
+ * @todo Make sure all std::string methods are added (if applicable).
+ *
+ * @todo Create rs_search, rs_erase, rs_substring.
+ *
+ * @todo Add coveralls.
+ */
+
 #include <assert.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-
-// TODO: add complexity, briefs and versions to all functions
-// TODO: make all functions properly link in documentation
-// TODO: organize macros & structs in toc
-// TODO: rename to c like methods
-// TODO: other stl-like stuff?
-// TODO: rs_search, rs_erase, rs_substring
-// TODO: add coveralls
 
 /*
  * ===============================================================

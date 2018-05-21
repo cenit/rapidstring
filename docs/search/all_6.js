@@ -57,6 +57,7 @@ var searchData=
   ['rs_5fstack_5fto_5fheap_5fg',['rs_stack_to_heap_g',['../rapidstring_8h.html#a3c9be34e8b62fc446ddb5ef02dbf9d14',1,'rapidstring.h']]],
   ['rs_5fsteal',['rs_steal',['../rapidstring_8h.html#a7e07d02fde879b82014197a341cef701',1,'rapidstring.h']]],
   ['rs_5fsteal_5fn',['rs_steal_n',['../rapidstring_8h.html#a1822434a1470ea15322aab87a26b5c8e',1,'rapidstring.h']]],
+  ['rs_5fversion_5fmajor',['RS_VERSION_MAJOR',['../rapidstring_8h.html#a0495945a8b4d277ce859668172a5a920',1,'rapidstring.h']]],
   ['rsa_5falloc',['rsa_alloc',['../rapidstring_8h.html#ae76a006b8d2068427214f5ecbb1473ac',1,'rapidstring.h']]],
   ['rsa_5ffree',['rsa_free',['../rapidstring_8h.html#ac178763f6fa8dd1fc7ef33b8448fc845',1,'rapidstring.h']]],
   ['rsa_5frealloc',['rsa_realloc',['../rapidstring_8h.html#a268c8d412b4ac259459731dfef793441',1,'rapidstring.h']]],
