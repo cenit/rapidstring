@@ -344,7 +344,7 @@ static inline void rs_init_w_cap(rapidstring *s, size_t n);
 
 /**
  * Initializes a string with another string.
- * @param[in] s A string to initialize.
+ * @param[out] s A string to initialize.
  * @param[in] input The input string used to initialize `s`.
  */
 static inline void rs_init_w_rs(rapidstring *s, const rapidstring *input);
