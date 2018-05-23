@@ -5,7 +5,7 @@
 #include <catch.hpp>
 
 #define CMP_STR(s, cmp) do {					\
-	REQUIRE(rs_size(s) == cmp.length());			\
+	REQUIRE(rs_len(s) == cmp.length());			\
 	REQUIRE(rs_data(s) == cmp);				\
 								\
 	if (rs_is_heap(s))					\

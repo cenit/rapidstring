@@ -72,7 +72,7 @@
  *
  * @todo Make all functions properly link in documentation.
  *
- * @todo Rename to c like methods, rs_cat instead of rs_append, etc.
+ * @todo Rename to c like methods, rs_cat instead of rs_cat, etc.
  *
  * @todo Make sure all std::string methods are added (if applicable).
  *
@@ -289,6 +289,8 @@ enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
 #define RS_STACK_LIKELY(expr) RS_EXPECT(expr, !RS_HEAP_LIKELY_V)
 
 /**
+ * @brief Pass the string data and size to a function.
+ *
  * Forwards the buffer and size of a string to the provided function.
  * Retrieving both the buffer and the size of a string requires a flag check,
  * which would result in an additional branch if not done manually. Intended
@@ -300,9 +302,9 @@ enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
  */
 #define RS_DATA_SIZE(f, s, input) do {					\
 	if (RS_HEAP_LIKELY(rs_is_heap(input)))				\
-		f(s, input->heap.buffer, rs_heap_size(input));		\
+		f(s, input->heap.buffer, rs_heap_len(input));		\
 	else								\
-		f(s, input->stack.buffer, rs_stack_size(input));	\
+		f(s, input->stack.buffer, rs_stack_len(input));		\
 } while (0)
 
 /*
@@ -361,6 +363,7 @@ static inline void rs_init_w_rs(rapidstring *s, const rapidstring *input);
  *
  * Calling this fuction is unecessary if the string size is always smaller
  * or equal to #RS_STACK_CAPACITY.
+ *
  * @param[in] s The string to free.
  */
 static inline void rs_free(rapidstring *s);
@@ -374,63 +377,64 @@ static inline void rs_free(rapidstring *s);
  */
 
 /**
- * Assigns characters to a stack string. The input length must be
- * smaller or equal to #RS_STACK_CAPACITY.
- * Identicle to `rs_stack_assign_n(s, input, strlen(input))`.
+ * Copies characters to a stack string, overwriting any existing data. The
+ * input length must be smaller or equal to #RS_STACK_CAPACITY.
+ * Identicle to `rs_stack_cpy_n(s, input, strlen(input))`.
  * @param[in,out] s An intialized stack string.
  * @param[in] input the input to assign to the stack string.
  */
-static inline void rs_stack_assign(rapidstring *s, const char *input);
+static inline void rs_stack_cpy(rapidstring *s, const char *input);
 
 /**
- * Assigns characters to a stack string. The input length must be
- * smaller or equal to #RS_STACK_CAPACITY.
+ * Copies characters to a stack string, overwriting any existing data. The
+ * input length must be smaller or equal to #RS_STACK_CAPACITY.
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to assign to the stack string.
  * @param[in] n The length of the input.
  */
-static inline void rs_stack_assign_n(rapidstring *s, const char *input, size_t n);
+static inline void rs_stack_cpy_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Assigns characters to a heap string. The input length must be
- * smaller or equal to the string's capacity.
- * Identicle to `rs_heap_assign_n(s, input, strlen(input))`.
+ * Copies characters to a heap string, overwriting any existing data. The input
+ * length must be smaller or equal to the string's capacity. 
+ * Identicle to `rs_heap_cpy_n(s, input, strlen(input))`.
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to assign to the heap string.
  */
-static inline void rs_heap_assign(rapidstring *s, const char *input);
+static inline void rs_heap_cpy(rapidstring *s, const char *input);
 
 /**
- * Assigns characters to a heap string. The input length must be
- * smaller or equal to the string's capacity.
+ * Copies characters to a heap string, overwriting any existing data. The input
+ * length must be smaller or equal to the string's capacity.
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to assign to the heap string.
  * @param[in] n The length of the input.
  */
-static inline void rs_heap_assign_n(rapidstring *s, const char *input, size_t n);
+static inline void rs_heap_cpy_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Assigns characters to a string.
- * Identicle to `rs_assign_n(s, input, strlen(input))`.
+ * Copies characters to a string, overwriting any existing data.
+ * Identicle to `rs_cpy_n(s, input, strlen(input))`.
  * @param[in,out] s An initialized string.
  * @param[in] input The input to assign to the string.
  */
-static inline void rs_assign(rapidstring *s, const char *input);
+static inline void rs_cpy(rapidstring *s, const char *input);
 
 /**
- * Assigns characters to a string.
+ * Copies characters to a string, overwriting any existing data.
  * @param[in,out] s An initialized string.
  * @param[in] input The input to assign to the string.
  * @param[in] n The length of the input.
  */
-static inline void rs_assign_n(rapidstring *s, const char *input, size_t n);
+static inline void rs_cpy_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Assigns a string to another string.
+ * Copies characters from a string to another string, overwriting any existing
+ * data.
  * @param[in, out] s An initialized string.
  * @param[in] input The input string used to initialize `s`.
  */
-static inline void rs_assign_rs(rapidstring *s, const rapidstring *input);
+static inline void rs_cpy_rs(rapidstring *s, const rapidstring *input);
 
 /*
  * ===============================================================
@@ -532,21 +536,21 @@ static inline bool rs_empty(const rapidstring *s);
  * @param[in] s An initialized stack string.
  * @returns The stack string length.
  */
-static inline size_t rs_stack_size(const rapidstring *s);
+static inline size_t rs_stack_len(const rapidstring *s);
 
 /**
  * Returns the length of a heap string.
  * @param[in] s An initialized heap string.
  * @returns The heap string length.
  */
-static inline size_t rs_heap_size(const rapidstring *s);
+static inline size_t rs_heap_len(const rapidstring *s);
 
 /**
  * Returns the length.
  * @param[in] s An initialized string.
  * @returns The string length.
  */
-static inline size_t rs_size(const rapidstring *s);
+static inline size_t rs_len(const rapidstring *s);
 
 /**
  * Returns the capacity.
@@ -592,11 +596,11 @@ static inline bool rs_is_stack(const rapidstring *s);
 
 /**
  * Appends characters to a stack string.
- * Identicle to `rs_stack_append_n(s, input, strlen(input))`.
+ * Identicle to `rs_stack_cat_n(s, input, strlen(input))`.
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to append.
  */
-static inline void rs_stack_append(rapidstring *s, const char *input);
+static inline void rs_stack_cat(rapidstring *s, const char *input);
 
 /**
  * Appends characters to a stack string.
@@ -604,15 +608,15 @@ static inline void rs_stack_append(rapidstring *s, const char *input);
  * @param[in] input The input to append.
  * @param[in] n The length of the input.
  */
-static inline void rs_stack_append_n(rapidstring *s, const char *input, size_t n);
+static inline void rs_stack_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Appends characters to a heap string.
- * Identicle to `rs_heap_append_n(s, input, strlen(input))`.
+ * Identicle to `rs_heap_cat_n(s, input, strlen(input))`.
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to append.
  */
-static inline void rs_heap_append(rapidstring *s, const char *input);
+static inline void rs_heap_cat(rapidstring *s, const char *input);
 
 /**
  * Appends characters to a heap string.
@@ -620,15 +624,15 @@ static inline void rs_heap_append(rapidstring *s, const char *input);
  * @param[in] input The input to append.
  * @param[in] n The length of the input.
  */
-static inline void rs_heap_append_n(rapidstring *s, const char *input, size_t n);
+static inline void rs_heap_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Appends characters to a string.
- * denticle to `rs_append_n(s, input, strlen(input))`.
+ * denticle to `rs_cat_n(s, input, strlen(input))`.
  * @param[in,out] s An initialized  string.
  * @param[in] input The input to append.
  */
-static inline void rs_append(rapidstring *s, const char *input);
+static inline void rs_cat(rapidstring *s, const char *input);
 
 /**
  * Appends characters to a string.
@@ -636,14 +640,14 @@ static inline void rs_append(rapidstring *s, const char *input);
  * @param[in] input The input to append.
  * @param[in] n The length of the input.
  */
-static inline void rs_append_n(rapidstring *s, const char *input, size_t n);
+static inline void rs_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
  * Appends a string to another string.
  * @param[in,out] s An initialized string.
  * @param[in] input The input to append.
  */
-static inline void rs_append_rs(rapidstring *s, const rapidstring *input);
+static inline void rs_cat_rs(rapidstring *s, const rapidstring *input);
 
 /**
  * Steals a buffer allocated on the heap. The buffer must either be allocated
@@ -867,7 +871,7 @@ static inline void rs_init_w(rapidstring *s, const char *input)
 static inline void rs_init_w_n(rapidstring *s, const char *input, size_t n)
 {
 	rs_init(s);
-	rs_assign_n(s, input, n);
+	rs_cpy_n(s, input, n);
 }
 
 static inline void rs_init_w_cap(rapidstring *s, size_t n)
@@ -897,14 +901,14 @@ static inline void rs_free(rapidstring *s)
  * ===============================================================
  */
 
-static inline void rs_stack_assign(rapidstring *s, const char *input)
+static inline void rs_stack_cpy(rapidstring *s, const char *input)
 {
 	RS_ASSERT_PTR(input);
 
-	rs_stack_assign_n(s, input, strlen(input));
+	rs_stack_cpy_n(s, input, strlen(input));
 }
 
-static inline void rs_stack_assign_n(rapidstring *s, const char *input, size_t n)
+static inline void rs_stack_cpy_n(rapidstring *s, const char *input, size_t n)
 {
 	RS_ASSERT_STACK(s);
 	RS_ASSERT_PTR(input);
@@ -914,14 +918,14 @@ static inline void rs_stack_assign_n(rapidstring *s, const char *input, size_t n
 	rs_stack_resize(s, n);
 }
 
-static inline void rs_heap_assign(rapidstring *s, const char *input)
+static inline void rs_heap_cpy(rapidstring *s, const char *input)
 {
 	RS_ASSERT_PTR(input);
 
-	rs_heap_assign_n(s, input, strlen(input));
+	rs_heap_cpy_n(s, input, strlen(input));
 }
 
-static inline void rs_heap_assign_n(rapidstring *s, const char *input, size_t n)
+static inline void rs_heap_cpy_n(rapidstring *s, const char *input, size_t n)
 {
 	RS_ASSERT_HEAP(s);
 	RS_ASSERT_PTR(input);
@@ -931,28 +935,28 @@ static inline void rs_heap_assign_n(rapidstring *s, const char *input, size_t n)
 	rs_heap_resize(s, n);
 }
 
-static inline void rs_assign(rapidstring *s, const char *input)
+static inline void rs_cpy(rapidstring *s, const char *input)
 {
 	RS_ASSERT_PTR(input);
 
-	rs_assign_n(s, input, strlen(input));
+	rs_cpy_n(s, input, strlen(input));
 }
 
-static inline void rs_assign_n(rapidstring *s, const char *input, size_t n) {
+static inline void rs_cpy_n(rapidstring *s, const char *input, size_t n) {
 	if (RS_HEAP_LIKELY(rs_is_heap(s))) {
 		rs_grow_heap(s, n);
-		rs_heap_assign_n(s, input, n);
+		rs_heap_cpy_n(s, input, n);
 	} else if (RS_HEAP_LIKELY(n > RS_STACK_CAPACITY)) {
 		rs_heap_init_g(s, n);
-		rs_heap_assign_n(s, input, n);
+		rs_heap_cpy_n(s, input, n);
 	} else {
-		rs_stack_assign_n(s, input, n);
+		rs_stack_cpy_n(s, input, n);
 	}
 }
 
-static inline void rs_assign_rs(rapidstring *s, const rapidstring *input)
+static inline void rs_cpy_rs(rapidstring *s, const rapidstring *input)
 {
-	RS_DATA_SIZE(rs_assign_n, s, input);
+	RS_DATA_SIZE(rs_cpy_n, s, input);
 }
 
 /*
@@ -965,21 +969,21 @@ static inline void rs_assign_rs(rapidstring *s, const rapidstring *input)
 
 static inline char rs_at(const rapidstring *s, size_t i)
 {
-	assert(rs_size(s) > i);
+	assert(rs_len(s) > i);
 
 	return rs_data_c(s)[i];
 }
 
 static inline char rs_front(const rapidstring *s)
 {
-	assert(rs_size(s) > 0);
+	assert(rs_len(s) > 0);
 
 	return *rs_begin_c(s);
 }
 
 static inline char rs_back(const rapidstring *s)
 {
-	assert(rs_size(s) > 0);
+	assert(rs_len(s) > 0);
 
 	return *(rs_end_c(s) - 1);
 }
@@ -1026,8 +1030,8 @@ static inline const char *rs_end_c(const rapidstring *s)
 	RS_ASSERT_RS(s);
 
 	return rs_is_heap(s) ?
-		s->heap.buffer + rs_heap_size(s) :
-		s->stack.buffer + rs_stack_size(s);
+		s->heap.buffer + rs_heap_len(s) :
+		s->stack.buffer + rs_stack_len(s);
 }
 
 /*
@@ -1040,28 +1044,28 @@ static inline const char *rs_end_c(const rapidstring *s)
 
 static inline bool rs_empty(const rapidstring *s)
 {
-	return rs_size(s) == 0;
+	return rs_len(s) == 0;
 }
 
-static inline size_t rs_stack_size(const rapidstring *s)
+static inline size_t rs_stack_len(const rapidstring *s)
 {
 	RS_ASSERT_STACK(s);
 
 	return RS_STACK_CAPACITY - s->stack.left;
 }
 
-static inline size_t rs_heap_size(const rapidstring *s)
+static inline size_t rs_heap_len(const rapidstring *s)
 {
 	RS_ASSERT_HEAP(s);
 
 	return s->heap.size;
 }
 
-static inline size_t rs_size(const rapidstring *s)
+static inline size_t rs_len(const rapidstring *s)
 {
 	return rs_is_heap(s) ?
-		rs_heap_size(s) :
-		rs_stack_size(s);
+		rs_heap_len(s) :
+		rs_stack_len(s);
 }
 
 static inline size_t rs_capacity(const rapidstring *s)
@@ -1084,7 +1088,7 @@ static inline void rs_reserve(rapidstring *s, size_t n)
 static inline void rs_shrink_to_fit(rapidstring *s)
 {
 	if (RS_LIKELY(rs_is_heap(s)))
-		rs_realloc(s, rs_heap_size(s));
+		rs_realloc(s, rs_heap_len(s));
 }
 
 static inline bool rs_is_heap(const rapidstring *s)
@@ -1107,63 +1111,63 @@ static inline bool rs_is_stack(const rapidstring *s)
  * ===============================================================
  */
 
-static inline void rs_stack_append(rapidstring *s, const char *input)
+static inline void rs_stack_cat(rapidstring *s, const char *input)
 {
 	RS_ASSERT_PTR(input);
 
-	rs_stack_append_n(s, input, strlen(input));
+	rs_stack_cat_n(s, input, strlen(input));
 }
 
-static inline void rs_stack_append_n(rapidstring *s, const char *input, size_t n)
+static inline void rs_stack_cat_n(rapidstring *s, const char *input, size_t n)
 {
 	RS_ASSERT_PTR(input);
-	assert(RS_STACK_CAPACITY >= rs_stack_size(s) + n);
+	assert(RS_STACK_CAPACITY >= rs_stack_len(s) + n);
 
-	const size_t stack_size = rs_stack_size(s);
+	const size_t stack_size = rs_stack_len(s);
 	memcpy(s->stack.buffer + stack_size, input, n);
 	rs_stack_resize(s, stack_size + n);
 }
 
-static inline void rs_heap_append(rapidstring *s, const char *input)
+static inline void rs_heap_cat(rapidstring *s, const char *input)
 {
 	RS_ASSERT_PTR(input);
 
-	rs_heap_append_n(s, input, strlen(input));
+	rs_heap_cat_n(s, input, strlen(input));
 }
 
-static inline void rs_heap_append_n(rapidstring *s, const char *input, size_t n)
+static inline void rs_heap_cat_n(rapidstring *s, const char *input, size_t n)
 {
 	RS_ASSERT_RS(s);
 	RS_ASSERT_PTR(input);
 	assert(s->heap.capacity >= s->heap.size + n);
 
-	memcpy(s->heap.buffer + rs_heap_size(s), input, n);
-	rs_heap_resize(s, rs_heap_size(s) + n);
+	memcpy(s->heap.buffer + rs_heap_len(s), input, n);
+	rs_heap_resize(s, rs_heap_len(s) + n);
 }
 
-static inline void rs_append(rapidstring *s, const char *input)
+static inline void rs_cat(rapidstring *s, const char *input)
 {
 	RS_ASSERT_PTR(input);
 
-	rs_append_n(s, input, strlen(input));
+	rs_cat_n(s, input, strlen(input));
 }
 
-static inline void rs_append_n(rapidstring *s, const char *input, size_t n)
+static inline void rs_cat_n(rapidstring *s, const char *input, size_t n)
 {
 	if (RS_HEAP_LIKELY(rs_is_heap(s))) {
-		rs_grow_heap(s, rs_heap_size(s) + n);
-		rs_heap_append_n(s, input, n);
+		rs_grow_heap(s, rs_heap_len(s) + n);
+		rs_heap_cat_n(s, input, n);
 	} else if (RS_HEAP_LIKELY(s->stack.left < n)) {
 		rs_stack_to_heap_g(s, n);
-		rs_heap_append_n(s, input, n);
+		rs_heap_cat_n(s, input, n);
 	} else {
-		rs_stack_append_n(s, input, n);
+		rs_stack_cat_n(s, input, n);
 	}
 }
 
-static inline void rs_append_rs(rapidstring *s, const rapidstring *input)
+static inline void rs_cat_rs(rapidstring *s, const rapidstring *input)
 {
-	RS_DATA_SIZE(rs_append_n, s, input);
+	RS_DATA_SIZE(rs_cat_n, s, input);
 }
 
 static inline void rs_steal(rapidstring *s, char *buffer)
@@ -1217,7 +1221,7 @@ static inline void rs_resize(rapidstring *s, size_t n)
 
 static inline void rs_resize_w(rapidstring *s, size_t n, char c)
 {
-	size_t sz = rs_size(s);
+	size_t sz = rs_len(s);
 
 	rs_resize(s, n);
 
@@ -1252,13 +1256,13 @@ static inline void rs_heap_init_g(rapidstring *s, size_t n)
 
 static inline void rs_stack_to_heap(rapidstring *s, size_t n)
 {
-	const size_t stack_size = rs_stack_size(s);
+	const size_t stack_size = rs_stack_len(s);
 
 	char tmp[RS_STACK_CAPACITY];
 	memcpy(tmp, s->stack.buffer, stack_size);
 
 	rs_heap_init(s, stack_size + n);
-	rs_heap_assign_n(s, tmp, stack_size);
+	rs_heap_cpy_n(s, tmp, stack_size);
 }
 
 static inline void rs_stack_to_heap_g(rapidstring *s, size_t n)

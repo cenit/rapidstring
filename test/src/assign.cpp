@@ -10,11 +10,11 @@ TEST_CASE("Stack assignment")
 
 	rapidstring s;
 	rs_init(&s);
-	rs_stack_assign(&s, first.data());
+	rs_stack_cpy(&s, first.data());
 
 	CMP_STR(&s, first);
 
-	rs_stack_assign(&s, second.data());
+	rs_stack_cpy(&s, second.data());
 
 	CMP_STR(&s, second);
 
@@ -30,12 +30,12 @@ TEST_CASE("Heap assignment")
 
 	// Explicit capacity init required as heap_assign doesn't allocate.
 	rs_init_w_cap(&s, first.length());
-	rs_heap_assign(&s, first.data());
+	rs_heap_cpy(&s, first.data());
 
 	CMP_STR(&s, first);
 
 	rs_reserve(&s, second.length());
-	rs_heap_assign(&s, second.data());
+	rs_heap_cpy(&s, second.data());
 
 	CMP_STR(&s, second);
 
@@ -49,11 +49,11 @@ TEST_CASE("Stack and heap assignment")
 
 	rapidstring s;
 	rs_init(&s);
-	rs_assign(&s, first.data());
+	rs_cpy(&s, first.data());
 
 	CMP_STR(&s, first);
 
-	rs_assign(&s, second.data());
+	rs_cpy(&s, second.data());
 	
 	CMP_STR(&s, second);
 

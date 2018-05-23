@@ -15,14 +15,14 @@
  * benchmarks bellow.
  */
 
-inline void rs_append(benchmark::State& state)
+inline void rs_cat(benchmark::State& state)
 {
 	for (auto _ : state) {
 		rapidstring s;
 		rs_init(&s);
 
 		for (size_t i = 0; i < CAT_COUNT; i++)
-			rs_append_n(&s, CAT_STR, CAT_STR_LEN);
+			rs_cat_n(&s, CAT_STR, CAT_STR_LEN);
 
 		benchmark::DoNotOptimize(s);
 		rs_free(&s);
@@ -41,7 +41,7 @@ inline void rs_reserve_append(benchmark::State& state)
 		 * enough capacity.
 		 */
 		for (size_t i = 0; i < CAT_COUNT; i++)
-			rs_heap_append_n(&s, CAT_STR, CAT_STR_LEN);
+			rs_heap_cat_n(&s, CAT_STR, CAT_STR_LEN);
 
 		benchmark::DoNotOptimize(s);
 		rs_free(&s);

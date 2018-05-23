@@ -10,11 +10,11 @@ TEST_CASE("Stack concatenation")
 	rapidstring s;
 	rs_init(&s);
 
-	rs_append(&s, first.data());
+	rs_cat(&s, first.data());
 
 	CMP_STR(&s, first);
 	
-	rs_append(&s, second.data());
+	rs_cat(&s, second.data());
 
 	CMP_STR(&s, sum);
 
@@ -30,11 +30,11 @@ TEST_CASE("Stack and heap concatenation")
 	rapidstring s;
 	rs_init(&s);
 
-	rs_append(&s, first.data());
+	rs_cat(&s, first.data());
 
 	CMP_STR(&s, first);
 	
-	rs_append(&s, second.data());
+	rs_cat(&s, second.data());
 
 	CMP_STR(&s, sum);
 
@@ -50,11 +50,11 @@ TEST_CASE("Heap concatenation")
 	rapidstring s;
 	rs_init(&s);
 	
-	rs_append(&s, first.data());
+	rs_cat(&s, first.data());
 
 	CMP_STR(&s, first);
 	
-	rs_append(&s, second.data());
+	rs_cat(&s, second.data());
 
 	CMP_STR(&s, sum);
 

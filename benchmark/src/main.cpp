@@ -7,7 +7,7 @@
 // TODO: add intel compiler to benchmarks
 
 // Concatenation
-BENCHMARK(rs_append);
+BENCHMARK(rs_cat);
 BENCHMARK(std_append);
 
 BENCHMARK(rs_reserve_append);

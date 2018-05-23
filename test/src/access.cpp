@@ -10,13 +10,13 @@ TEST_CASE("at")
 	rs_init_w(&s1, first.data());
 	REQUIRE(rs_at(&s1, 0) == first.at(0));
 	REQUIRE(rs_at(&s1, 3) == first.at(3));
-	REQUIRE(rs_at(&s1, rs_size(&s1) - 1) == first.back());
+	REQUIRE(rs_at(&s1, rs_len(&s1) - 1) == first.back());
 
 	rapidstring s2;
 	rs_init_w(&s2, second.data());
 	REQUIRE(rs_at(&s2, 0) == second.at(0));
 	REQUIRE(rs_at(&s2, 3) == second.at(3));
-	REQUIRE(rs_at(&s2, rs_size(&s2) - 1) == second.back());
+	REQUIRE(rs_at(&s2, rs_len(&s2) - 1) == second.back());
 
 	rs_free(&s1);
 	rs_free(&s2);
