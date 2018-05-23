@@ -39,9 +39,12 @@ script:
 - if [[ $BUILD == Coveralls ]]; then gcov *.gcno; fi
 
 after_success:
+- pwd
+- ls
+- ls /home/travis/boyerjohn -R
 - if [[ $BUILD == Coveralls ]]; then
-- coveralls --gcov /home/travis/boyerjohn/rapidstring/include/rapidstring.h
-- fi
+  coveralls --gcov /home/travis/boyerjohn/rapidstring/include/rapidstring.h;
+  fi
 
 env:
   matrix:
