@@ -11,7 +11,7 @@ matrix:
           packages:
             - g++-7
       env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && BUILD=Coveralls"
 
     - os: linux
       compiler: clang
@@ -22,7 +22,7 @@ matrix:
           packages:
             - clang-5.0
       env:
-        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0 && BUILD=Debug"
 
 before_install:
 - eval "${MATRIX_EVAL}"
@@ -30,18 +30,17 @@ before_install:
 - git submodule update --init --recursive
 - mkdir build
 - cd build
-- cmake .. -DCMAKE_BUILD_TYPE=Coveralls
+- cmake .. -DCMAKE_BUILD_TYPE=$BUILD
 
 script:
 - make
 - ./test/rapidstring_test
 - cd test/CMakeFiles/rapidstring_test.dir/src
-- gcov *.gcno
+- if [[ $BUILD == Coveralls ]]; then gcov *.gcno
 
 after_success:
-- pwd
-- ls
-- coveralls -gcov ../../../../../include/rapidstring.h
+- if [[ $BUILD == Coveralls ]]; then
+- coveralls --gcov /home/travis/boyerjohn/rapidstring/include/rapidstring.h
 
 env:
   matrix:
