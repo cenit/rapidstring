@@ -36,11 +36,12 @@ script:
 - make
 - ./test/rapidstring_test
 - cd test/CMakeFiles/rapidstring_test.dir/src
-- if [[ $BUILD == Coveralls ]]; then gcov *.gcno
+- if [[ $BUILD == Coveralls ]]; then gcov *.gcno; fi
 
 after_success:
 - if [[ $BUILD == Coveralls ]]; then
 - coveralls --gcov /home/travis/boyerjohn/rapidstring/include/rapidstring.h
+- fi
 
 env:
   matrix:
