@@ -15,7 +15,7 @@ target_compile_features(rapidstring_test PRIVATE cxx_std_11)
 if (MSVC)
 	target_compile_options(rapidstring_test
 		PRIVATE
-			/Wall
+			/W4
 			/WX
 			/Zc
 	)
