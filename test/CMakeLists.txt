@@ -4,7 +4,6 @@ add_executable(rapidstring_test
 	src/assign.cpp
 	src/append.cpp
 	src/construct.cpp
-	src/iterator.cpp
 	src/main.cpp
 )
 
