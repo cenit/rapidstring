@@ -8,10 +8,12 @@ add_executable(rapidstring_test
 	src/main.cpp
 )
 
+# TODO: some test for ansi compliance
+
 target_compile_features(rapidstring_test PRIVATE cxx_std_11)
 
 # TODO: move to common function
-if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 	target_compile_options(rapidstring_test
 		PRIVATE
 			/W4
@@ -23,13 +25,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU|Intel")
 			-Wall
 			-Wextra
 			-Wpedantic
-			-fprofile-arcs
-			-ftest-coverage
 			-Werror
-	)
-	target_link_libraries(rapidstring_test
-		PRIVATE
-			--coverage
 	)
 endif()
 

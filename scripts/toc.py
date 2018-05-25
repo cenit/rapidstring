@@ -1,5 +1,7 @@
 from collections import OrderedDict
 
+# TODO: allow this method to be run from any working directory.
+
 header = '''/*
  * rapidstring - A fast string library.
  * version 0.1.0
