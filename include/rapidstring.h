@@ -11,39 +11,39 @@
  *       TABLE OF CONTENTS
  *
  * 1. STRUCTURES & MACROS
- * - Declarations:	line 99
+ * - Declarations:	line 95
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 338
- * - Defintions:	line 820
+ * - Declarations:	line 334
+ * - Defintions:	line 816
  *
  * 3. ASSIGNMENT
- * - Declarations:	line 399
- * - Defintions:	line 866
+ * - Declarations:	line 395
+ * - Defintions:	line 862
  *
  * 4. ELEMENT ACCESS
- * - Declarations:	line 467
- * - Defintions:	line 932
+ * - Declarations:	line 463
+ * - Defintions:	line 928
  *
  * 5. CAPACITY
- * - Declarations:	line 489
- * - Defintions:	line 954
+ * - Declarations:	line 485
+ * - Defintions:	line 950
  *
  * 6. MODIFIERS
- * - Declarations:	line 559
- * - Defintions:	line 1023
+ * - Declarations:	line 555
+ * - Defintions:	line 1019
  *
  * 7. HEAP OPERATIONS
- * - Declarations:	line 670
- * - Defintions:	line 1153
+ * - Declarations:	line 666
+ * - Defintions:	line 1149
  *
  * 8. STACK ALLOCATOR
- * - Declarations:	line 724
- * - Defintions:	line 1208
+ * - Declarations:	line 720
+ * - Defintions:	line 1204
  *
  * 9. DEFAULT ALLOCATOR
- * - Declarations:	line 779
- * - Defintions:	line 1286
+ * - Declarations:	line 775
+ * - Defintions:	line 1282
  */
 
 /**
@@ -1314,13 +1314,6 @@ RS_API void rsa_free(void *p, size_t n)
 {
 	if (rsa_stack_owns(p)) {
 		rsa_stack_free(p, n);
-	} else {
-		free(p);
-	}
-}
-
-#endif /* !RAPID_STRING_H_962AB5F800398A34 */
-;
 	} else {
 		free(p);
 	}
