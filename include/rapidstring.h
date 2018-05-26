@@ -69,9 +69,8 @@
  * @todo Add coveralls.
  */
 
-#include <assert.h>
-#include <stdint.h>
-#include <string.h>
+#include <assert.h> /* assert() */
+#include <string.h> /* memcpy() */
 
 /*
  * ===============================================================
