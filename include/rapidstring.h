@@ -11,31 +11,27 @@
  *       TABLE OF CONTENTS
  *
  * 1. STRUCTURES & MACROS
- * - Declarations:	line 84
+ * - Declarations:	line 77
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 309
- * - Defintions:	line 695
+ * - Declarations:	line 289
+ * - Defintions:	line 770
  *
  * 3. ASSIGNMENT
- * - Declarations:	line 370
- * - Defintions:	line 741
+ * - Declarations:	line 355
+ * - Defintions:	line 816
  *
- * 4. ELEMENT ACCESS
- * - Declarations:	line 438
- * - Defintions:	line 807
+ * 4. CAPACITY
+ * - Declarations:	line 450
+ * - Defintions:	line 882
  *
- * 5. CAPACITY
- * - Declarations:	line 460
- * - Defintions:	line 829
+ * 5. MODIFIERS
+ * - Declarations:	line 529
+ * - Defintions:	line 951
  *
- * 6. MODIFIERS
- * - Declarations:	line 530
- * - Defintions:	line 898
- *
- * 7. HEAP OPERATIONS
- * - Declarations:	line 641
- * - Defintions:	line 1028
+ * 6. HEAP OPERATIONS
+ * - Declarations:	line 696
+ * - Defintions:	line 1095
  */
 
 /**
@@ -103,7 +99,7 @@
 #define RS_ASSERT_RS(s) do {					\
 	RS_ASSERT_PTR(s);					\
 	assert(s->heap.flag == RS_HEAP_FLAG ||			\
-		  s->heap.flag <= RS_STACK_CAPACITY);		\
+	       s->heap.flag <= RS_STACK_CAPACITY);		\
 } while (0)
 #define RS_ASSERT_HEAP(s) do { assert(rs_is_heap(s)); } while (0)
 #define RS_ASSERT_STACK(s) do { assert(rs_is_stack(s)); } while (0)
@@ -166,7 +162,7 @@ typedef struct { void *a; size_t b; } rs_align_dummy;
 #endif
 
 /**
- * @brief A struct that stores the heap data.
+ * @brief Struct that stores the heap data.
  *
  * Accessing packed data structures incurs a performance penalty, therefore the
  * alignment will be used to allow for a larger stack string.
@@ -238,7 +234,6 @@ typedef struct {
 /**
  * @brief Union that stores a rapidstring.
  *
- * A union that stores a rapidstring which is either on the heap or the stack.
  * All API methods are prefixed with `rs_heap_x()` or `rs_stack_x()`. These
  * methods are to be used only when a string is guarenteed to be in either
  * state, as mismatching these methods results in undefined behavior. There

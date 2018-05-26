@@ -97,8 +97,9 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a0495945a8b4d277ce859668172a5a920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a0495945a8b4d277ce859668172a5a920">RS_VERSION_MAJOR</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a0495945a8b4d277ce859668172a5a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab93be554f576e050c48d50986ade7dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td></tr>
-<tr class="memdesc:aab93be554f576e050c48d50986ade7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a stack string.  <a href="#aab93be554f576e050c48d50986ade7dd">More...</a><br /></td></tr>
+<tr class="memitem:aab93be554f576e050c48d50986ade7dd"><td class="memItemLeft" align="right" valign="top"><a id="aab93be554f576e050c48d50986ade7dd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td></tr>
+<tr class="memdesc:aab93be554f576e050c48d50986ade7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a stack string. <br /></td></tr>
 <tr class="separator:aab93be554f576e050c48d50986ade7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af90863ca72d60da08071272c477e20b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#af90863ca72d60da08071272c477e20b3">RS_DATA_SIZE</a>(f,  s,  input)</td></tr>
 <tr class="memdesc:af90863ca72d60da08071272c477e20b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass the string data and size to a function.  <a href="#af90863ca72d60da08071272c477e20b3">More...</a><br /></td></tr>
@@ -107,93 +108,138 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ade25dc46a543d6c55e920b8116ef6e24"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ade25dc46a543d6c55e920b8116ef6e24">rs_init</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:ade25dc46a543d6c55e920b8116ef6e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a string.  <a href="#ade25dc46a543d6c55e920b8116ef6e24">More...</a><br /></td></tr>
 <tr class="separator:ade25dc46a543d6c55e920b8116ef6e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11155c39fe980d0db6fc9941b66fd5f8"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a11155c39fe980d0db6fc9941b66fd5f8">rs_init_w</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="memdesc:a11155c39fe980d0db6fc9941b66fd5f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a string with a character array.  <a href="#a11155c39fe980d0db6fc9941b66fd5f8">More...</a><br /></td></tr>
 <tr class="separator:a11155c39fe980d0db6fc9941b66fd5f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88465c26b9a3b5317ea6c352afb7cbe9"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a88465c26b9a3b5317ea6c352afb7cbe9">rs_init_w_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="memdesc:a88465c26b9a3b5317ea6c352afb7cbe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a string with a character array.  <a href="#a88465c26b9a3b5317ea6c352afb7cbe9">More...</a><br /></td></tr>
 <tr class="separator:a88465c26b9a3b5317ea6c352afb7cbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2364e412c5050f7ee401a0785f448a9"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad2364e412c5050f7ee401a0785f448a9">rs_init_w_cap</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:ad2364e412c5050f7ee401a0785f448a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a string with an initial capacity.  <a href="#ad2364e412c5050f7ee401a0785f448a9">More...</a><br /></td></tr>
 <tr class="separator:ad2364e412c5050f7ee401a0785f448a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9a450963ddb1a35ef58a2f4fe7ea2bc"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ae9a450963ddb1a35ef58a2f4fe7ea2bc">rs_init_w_rs</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const <a class="el" href="unionrapidstring.html">rapidstring</a> *input)</td></tr>
+<tr class="memdesc:ae9a450963ddb1a35ef58a2f4fe7ea2bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a string with another string.  <a href="#ae9a450963ddb1a35ef58a2f4fe7ea2bc">More...</a><br /></td></tr>
 <tr class="separator:ae9a450963ddb1a35ef58a2f4fe7ea2bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ee30cbfa5ef6215c0383db1ed9f2260"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a2ee30cbfa5ef6215c0383db1ed9f2260">rs_free</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:a2ee30cbfa5ef6215c0383db1ed9f2260"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees a string.  <a href="#a2ee30cbfa5ef6215c0383db1ed9f2260">More...</a><br /></td></tr>
 <tr class="separator:a2ee30cbfa5ef6215c0383db1ed9f2260"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bfebfb83d0674dc36d60b2480d7a380"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a9bfebfb83d0674dc36d60b2480d7a380">rs_stack_cpy</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="memdesc:a9bfebfb83d0674dc36d60b2480d7a380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a stack string.  <a href="#a9bfebfb83d0674dc36d60b2480d7a380">More...</a><br /></td></tr>
 <tr class="separator:a9bfebfb83d0674dc36d60b2480d7a380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f60dbd30b414b8bf8c3a6ba4488dfb6"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a4f60dbd30b414b8bf8c3a6ba4488dfb6">rs_stack_cpy_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="memdesc:a4f60dbd30b414b8bf8c3a6ba4488dfb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a stack string.  <a href="#a4f60dbd30b414b8bf8c3a6ba4488dfb6">More...</a><br /></td></tr>
 <tr class="separator:a4f60dbd30b414b8bf8c3a6ba4488dfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5196aa53485071b3f38c5bd7e6ba36fa"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a5196aa53485071b3f38c5bd7e6ba36fa">rs_heap_cpy</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="memdesc:a5196aa53485071b3f38c5bd7e6ba36fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a heap string.  <a href="#a5196aa53485071b3f38c5bd7e6ba36fa">More...</a><br /></td></tr>
 <tr class="separator:a5196aa53485071b3f38c5bd7e6ba36fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ab150e9c7dee1d8148b8bacd597af5c"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a3ab150e9c7dee1d8148b8bacd597af5c">rs_heap_cpy_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="memdesc:a3ab150e9c7dee1d8148b8bacd597af5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a heap string.  <a href="#a3ab150e9c7dee1d8148b8bacd597af5c">More...</a><br /></td></tr>
 <tr class="separator:a3ab150e9c7dee1d8148b8bacd597af5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61a6d328ac8b8383d80d532ecb695956"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a61a6d328ac8b8383d80d532ecb695956">rs_cpy</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="memdesc:a61a6d328ac8b8383d80d532ecb695956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a string.  <a href="#a61a6d328ac8b8383d80d532ecb695956">More...</a><br /></td></tr>
 <tr class="separator:a61a6d328ac8b8383d80d532ecb695956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14dc058514612893e8ff8fefc7089ac5"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a14dc058514612893e8ff8fefc7089ac5">rs_cpy_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="memdesc:a14dc058514612893e8ff8fefc7089ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a string.  <a href="#a14dc058514612893e8ff8fefc7089ac5">More...</a><br /></td></tr>
 <tr class="separator:a14dc058514612893e8ff8fefc7089ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3045fdd973f501297fbb7aff5d36f42c"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a3045fdd973f501297fbb7aff5d36f42c">rs_cpy_rs</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const <a class="el" href="unionrapidstring.html">rapidstring</a> *input)</td></tr>
+<tr class="memdesc:a3045fdd973f501297fbb7aff5d36f42c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters from a string to another string.  <a href="#a3045fdd973f501297fbb7aff5d36f42c">More...</a><br /></td></tr>
 <tr class="separator:a3045fdd973f501297fbb7aff5d36f42c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe7060d022e71f6998284f572acf86a6"><td class="memItemLeft" align="right" valign="top">RS_API char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abe7060d022e71f6998284f572acf86a6">rs_data</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
-<tr class="separator:abe7060d022e71f6998284f572acf86a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a8b393470e8a187eb0cb33daec1ba99"><td class="memItemLeft" align="right" valign="top">RS_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a2a8b393470e8a187eb0cb33daec1ba99">rs_data_c</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
-<tr class="separator:a2a8b393470e8a187eb0cb33daec1ba99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aace5104681f0749c89d2d333d08fe77b"><td class="memItemLeft" align="right" valign="top">RS_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aace5104681f0749c89d2d333d08fe77b">rs_empty</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:aace5104681f0749c89d2d333d08fe77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a string is empty.  <a href="#aace5104681f0749c89d2d333d08fe77b">More...</a><br /></td></tr>
 <tr class="separator:aace5104681f0749c89d2d333d08fe77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22be1338ac718365a274735e19815570"><td class="memItemLeft" align="right" valign="top">RS_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:a22be1338ac718365a274735e19815570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of a stack string.  <a href="#a22be1338ac718365a274735e19815570">More...</a><br /></td></tr>
 <tr class="separator:a22be1338ac718365a274735e19815570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d2125174cf16c71d9c66c7f1636fe6b"><td class="memItemLeft" align="right" valign="top">RS_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:a7d2125174cf16c71d9c66c7f1636fe6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of a heap string.  <a href="#a7d2125174cf16c71d9c66c7f1636fe6b">More...</a><br /></td></tr>
 <tr class="separator:a7d2125174cf16c71d9c66c7f1636fe6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcade1a0d73af43d1ed13ad16a3fd224"><td class="memItemLeft" align="right" valign="top">RS_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abcade1a0d73af43d1ed13ad16a3fd224">rs_len</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:abcade1a0d73af43d1ed13ad16a3fd224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length.  <a href="#abcade1a0d73af43d1ed13ad16a3fd224">More...</a><br /></td></tr>
 <tr class="separator:abcade1a0d73af43d1ed13ad16a3fd224"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a835921e3cd41522852fcf80a4d4e349b"><td class="memItemLeft" align="right" valign="top">RS_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a835921e3cd41522852fcf80a4d4e349b">rs_capacity</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:a835921e3cd41522852fcf80a4d4e349b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the capacity.  <a href="#a835921e3cd41522852fcf80a4d4e349b">More...</a><br /></td></tr>
 <tr class="separator:a835921e3cd41522852fcf80a4d4e349b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af65839adc77ee2becc87814aa1eee6a1"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#af65839adc77ee2becc87814aa1eee6a1">rs_reserve</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:af65839adc77ee2becc87814aa1eee6a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserves capacity.  <a href="#af65839adc77ee2becc87814aa1eee6a1">More...</a><br /></td></tr>
 <tr class="separator:af65839adc77ee2becc87814aa1eee6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab53d82b53781f929819d71c66380d8f9"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ab53d82b53781f929819d71c66380d8f9">rs_shrink_to_fit</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:ab53d82b53781f929819d71c66380d8f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees all unused memory.  <a href="#ab53d82b53781f929819d71c66380d8f9">More...</a><br /></td></tr>
 <tr class="separator:ab53d82b53781f929819d71c66380d8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4084b46c8635801205207de1d36a8bf"><td class="memItemLeft" align="right" valign="top">RS_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:af4084b46c8635801205207de1d36a8bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a string is on the heap.  <a href="#af4084b46c8635801205207de1d36a8bf">More...</a><br /></td></tr>
 <tr class="separator:af4084b46c8635801205207de1d36a8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6afe9e1b1c5d55959032be66030ff2a"><td class="memItemLeft" align="right" valign="top">RS_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ae6afe9e1b1c5d55959032be66030ff2a">rs_is_stack</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:ae6afe9e1b1c5d55959032be66030ff2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a string is on the stack.  <a href="#ae6afe9e1b1c5d55959032be66030ff2a">More...</a><br /></td></tr>
 <tr class="separator:ae6afe9e1b1c5d55959032be66030ff2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe7060d022e71f6998284f572acf86a6"><td class="memItemLeft" align="right" valign="top">RS_API char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#abe7060d022e71f6998284f572acf86a6">rs_data</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:abe7060d022e71f6998284f572acf86a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the buffer.  <a href="#abe7060d022e71f6998284f572acf86a6">More...</a><br /></td></tr>
+<tr class="separator:abe7060d022e71f6998284f572acf86a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a8b393470e8a187eb0cb33daec1ba99"><td class="memItemLeft" align="right" valign="top">RS_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a2a8b393470e8a187eb0cb33daec1ba99">rs_data_c</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:a2a8b393470e8a187eb0cb33daec1ba99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the buffer.  <a href="#a2a8b393470e8a187eb0cb33daec1ba99">More...</a><br /></td></tr>
+<tr class="separator:a2a8b393470e8a187eb0cb33daec1ba99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e03de3338b44aba2c8197048909ed05"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a9e03de3338b44aba2c8197048909ed05">rs_stack_cat</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="memdesc:a9e03de3338b44aba2c8197048909ed05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a stack string.  <a href="#a9e03de3338b44aba2c8197048909ed05">More...</a><br /></td></tr>
 <tr class="separator:a9e03de3338b44aba2c8197048909ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f75c1238c47dd464de855fe42feb6cb"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a8f75c1238c47dd464de855fe42feb6cb">rs_stack_cat_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="memdesc:a8f75c1238c47dd464de855fe42feb6cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a stack string.  <a href="#a8f75c1238c47dd464de855fe42feb6cb">More...</a><br /></td></tr>
 <tr class="separator:a8f75c1238c47dd464de855fe42feb6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc2ac543ace715306e6a2ad80527cf5"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aabc2ac543ace715306e6a2ad80527cf5">rs_heap_cat</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="memdesc:aabc2ac543ace715306e6a2ad80527cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a heap string.  <a href="#aabc2ac543ace715306e6a2ad80527cf5">More...</a><br /></td></tr>
 <tr class="separator:aabc2ac543ace715306e6a2ad80527cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0ee60fdd29b623d6479d157b49a2216"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac0ee60fdd29b623d6479d157b49a2216">rs_heap_cat_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="memdesc:ac0ee60fdd29b623d6479d157b49a2216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a heap string.  <a href="#ac0ee60fdd29b623d6479d157b49a2216">More...</a><br /></td></tr>
 <tr class="separator:ac0ee60fdd29b623d6479d157b49a2216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1169844bc281a312bfa7eda471fd01e"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e">rs_cat</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
+<tr class="memdesc:ae1169844bc281a312bfa7eda471fd01e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a string.  <a href="#ae1169844bc281a312bfa7eda471fd01e">More...</a><br /></td></tr>
 <tr class="separator:ae1169844bc281a312bfa7eda471fd01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f21b87365cabcf251f484ce7725767d"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a1f21b87365cabcf251f484ce7725767d">rs_cat_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
+<tr class="memdesc:a1f21b87365cabcf251f484ce7725767d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a string.  <a href="#a1f21b87365cabcf251f484ce7725767d">More...</a><br /></td></tr>
 <tr class="separator:a1f21b87365cabcf251f484ce7725767d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe58107d229b34534f7e38c9bd211fbf"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#afe58107d229b34534f7e38c9bd211fbf">rs_cat_rs</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const <a class="el" href="unionrapidstring.html">rapidstring</a> *input)</td></tr>
+<tr class="memdesc:afe58107d229b34534f7e38c9bd211fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a string to another string.  <a href="#afe58107d229b34534f7e38c9bd211fbf">More...</a><br /></td></tr>
 <tr class="separator:afe58107d229b34534f7e38c9bd211fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac874aba4870a2f06aef1193c5b460e9a"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac874aba4870a2f06aef1193c5b460e9a">rs_steal</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, char *buffer)</td></tr>
+<tr class="memdesc:ac874aba4870a2f06aef1193c5b460e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steals a buffer allocated on the heap.  <a href="#ac874aba4870a2f06aef1193c5b460e9a">More...</a><br /></td></tr>
 <tr class="separator:ac874aba4870a2f06aef1193c5b460e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4008b54e0b5b993775213cdf3a21f9b6"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a4008b54e0b5b993775213cdf3a21f9b6">rs_steal_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, char *buffer, size_t cap)</td></tr>
+<tr class="memdesc:a4008b54e0b5b993775213cdf3a21f9b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steals a buffer allocated on the heap.  <a href="#a4008b54e0b5b993775213cdf3a21f9b6">More...</a><br /></td></tr>
 <tr class="separator:a4008b54e0b5b993775213cdf3a21f9b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11078701a24a08651a1b65e1081f8ea0"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a11078701a24a08651a1b65e1081f8ea0">rs_stack_resize</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:a11078701a24a08651a1b65e1081f8ea0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a stack string.  <a href="#a11078701a24a08651a1b65e1081f8ea0">More...</a><br /></td></tr>
 <tr class="separator:a11078701a24a08651a1b65e1081f8ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ce865a656f70003bc080f2deb6e17f5"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a7ce865a656f70003bc080f2deb6e17f5">rs_heap_resize</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:a7ce865a656f70003bc080f2deb6e17f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a heap string.  <a href="#a7ce865a656f70003bc080f2deb6e17f5">More...</a><br /></td></tr>
 <tr class="separator:a7ce865a656f70003bc080f2deb6e17f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fd70f6744252ecd221761a5fa80c7ee"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a1fd70f6744252ecd221761a5fa80c7ee">rs_resize</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:a1fd70f6744252ecd221761a5fa80c7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a string.  <a href="#a1fd70f6744252ecd221761a5fa80c7ee">More...</a><br /></td></tr>
 <tr class="separator:a1fd70f6744252ecd221761a5fa80c7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a724ca013c26ce841df618baf90501068"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a724ca013c26ce841df618baf90501068">rs_resize_w</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n, char c)</td></tr>
+<tr class="memdesc:a724ca013c26ce841df618baf90501068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a string with a filler character.  <a href="#a724ca013c26ce841df618baf90501068">More...</a><br /></td></tr>
 <tr class="separator:a724ca013c26ce841df618baf90501068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29fa9c48fd7ec11b3f49900eaf864aff"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a29fa9c48fd7ec11b3f49900eaf864aff">rs_heap_init</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:a29fa9c48fd7ec11b3f49900eaf864aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the heap.  <a href="#a29fa9c48fd7ec11b3f49900eaf864aff">More...</a><br /></td></tr>
 <tr class="separator:a29fa9c48fd7ec11b3f49900eaf864aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3ce381460faf265904071a89ebdf51c"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad3ce381460faf265904071a89ebdf51c">rs_heap_init_g</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:ad3ce381460faf265904071a89ebdf51c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the heap with growth.  <a href="#ad3ce381460faf265904071a89ebdf51c">More...</a><br /></td></tr>
 <tr class="separator:ad3ce381460faf265904071a89ebdf51c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5009682bbc1cbd630361aa193b4ceef"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac5009682bbc1cbd630361aa193b4ceef">rs_stack_to_heap</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:ac5009682bbc1cbd630361aa193b4ceef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves a stack string to the heap.  <a href="#ac5009682bbc1cbd630361aa193b4ceef">More...</a><br /></td></tr>
 <tr class="separator:ac5009682bbc1cbd630361aa193b4ceef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c81289ef6835f5867b430d93c153ebc"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a5c81289ef6835f5867b430d93c153ebc">rs_stack_to_heap_g</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:a5c81289ef6835f5867b430d93c153ebc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move a stack string to the heap with growth.  <a href="#a5c81289ef6835f5867b430d93c153ebc">More...</a><br /></td></tr>
 <tr class="separator:a5c81289ef6835f5867b430d93c153ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afad99a3688f6434973defe6c2fec2ed0"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#afad99a3688f6434973defe6c2fec2ed0">rs_realloc</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:afad99a3688f6434973defe6c2fec2ed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reallocates the heap buffer.  <a href="#afad99a3688f6434973defe6c2fec2ed0">More...</a><br /></td></tr>
 <tr class="separator:afad99a3688f6434973defe6c2fec2ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c47c048cc6ea5ea0e73faf1efc9ea81"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a8c47c048cc6ea5ea0e73faf1efc9ea81">rs_grow_heap</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
+<tr class="memdesc:a8c47c048cc6ea5ea0e73faf1efc9ea81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates growth for a heap string.  <a href="#a8c47c048cc6ea5ea0e73faf1efc9ea81">More...</a><br /></td></tr>
 <tr class="separator:a8c47c048cc6ea5ea0e73faf1efc9ea81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The single header of the rapidstring library. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a0495945a8b4d277ce859668172a5a920"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0495945a8b4d277ce859668172a5a920">&#9670;&nbsp;</a></span>RS_VERSION_MAJOR</h2>
 
@@ -207,27 +253,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Add complexity, briefs and versions to all function documentation.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Make "Intended for internal use." a warning in Doxygen.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Make the stack allocator thread safe with RSA_THREADSAFE defined.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Make all functions properly link in documentation.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Make sure all std::string methods are added (if applicable).</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Create rs_search, rs_erase, rs_substring.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>int return values with errno for malloc failure.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Add coveralls. </dd></dl>
-
-</div>
-</div>
-<a id="aab93be554f576e050c48d50986ade7dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab93be554f576e050c48d50986ade7dd">&#9670;&nbsp;</a></span>RS_STACK_CAPACITY</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RS_STACK_CAPACITY&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The maximum capacity of a stack string. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Make all functions properly link in documentation.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Make sure all std::string methods are added (if applicable).</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Create rs_search, rs_erase, rs_substring.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>int return values with errno for malloc failure.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Add coveralls. </dd></dl>
 
 </div>
 </div>
@@ -262,10 +292,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));           \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a>(input));         \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_af4084b46c8635801205207de1d36a8bf"><div class="ttname"><a href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a></div><div class="ttdeci">RS_API int rs_is_heap(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:877</div></div>
-<div class="ttc" id="rapidstring_8h_html_a7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:840</div></div>
-<div class="ttc" id="rapidstring_8h_html_a22be1338ac718365a274735e19815570"><div class="ttname"><a href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdef"><b>Definition:</b> rapidstring.h:833</div></div>
-</div><!-- fragment --><p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. Intended for internal use.</p>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));           \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a>(input));         \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_af4084b46c8635801205207de1d36a8bf"><div class="ttname"><a href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a></div><div class="ttdeci">RS_API int rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:930</div></div>
+<div class="ttc" id="rapidstring_8h_html_a7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:893</div></div>
+<div class="ttc" id="rapidstring_8h_html_a22be1338ac718365a274735e19815570"><div class="ttname"><a href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:886</div></div>
+</div><!-- fragment -->
+<p>Pass the string data and size to a function. </p>
+<p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. Intended for internal use.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A function. </td></tr>
@@ -293,7 +325,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes a string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Initializes a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>The string to initialize. </td></tr>
   </table>
@@ -327,7 +361,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes a string with a character array. Identicle to <code>rs_init_w_n(s, input, strlen(input)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Initializes a string with a character array. </p>
+<p>Identicle to <code>rs_init_w_n(s, input, strlen(input)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input used to initialize the string. </td></tr>
@@ -368,7 +404,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes a string with a character array. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Initializes a string with a character array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input used to initialize the string. </td></tr>
@@ -404,7 +442,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes a string with an initial capacity. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Initializes a string with an initial capacity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new initial capacity of the string. </td></tr>
@@ -439,7 +479,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes a string with another string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Initializes a string with another string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize <code>s</code>. </td></tr>
@@ -464,8 +506,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Frees a string. The string is in an invalid state after freeing. You must call <code>rs_init(s)</code> if you wish to reuse the same string after freeing.</p>
-<p>A jump may be avoided by directly calling <code>RS_FREE(s-&gt;heap.buffer, s-&gt;heap.capacity + 1);</code> if the string is known to be on the heap. The additional one is for the null terminator, which is subtracted upon initial allocation.</p>
+
+<p>Frees a string. </p>
+<p>The string is in an invalid state after freeing. You must call <code>rs_init(s)</code> if you wish to reuse the same string after freeing.</p>
+<p>A jump may be avoided by directly calling <code>RS_FREE(s-&gt;heap.buffer);</code> if the string is known to be on the heap. The additional one is for the null terminator, which is subtracted upon initial allocation.</p>
 <p>Calling this fuction is unecessary if the string size is always smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -501,7 +545,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies characters to a stack string, overwriting any existing data. The input length must be smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. Identicle to <code>rs_stack_cpy_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Copies characters to a stack string. </p>
+<p>Overwrites any existing data. The input length must be smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#a61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</p>
+<p>Identicle to <code>rs_stack_cpy_n(s, input, strlen(input))</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>the input to assign to the stack string. </td></tr>
@@ -542,7 +590,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies characters to a stack string, overwriting any existing data. The input length must be smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Copies characters to a stack string. </p>
+<p>Overwrites any existing data. The input length must be smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#a61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the stack string. </td></tr>
@@ -578,7 +629,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies characters to a heap string, overwriting any existing data. The input length must be smaller or equal to the string's capacity. Identicle to <code>rs_heap_cpy_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Copies characters to a heap string. </p>
+<p>Overwrites any existing data. The input length must be smaller or equal to the string's capacity. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#a61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</p>
+<p>Identicle to <code>rs_heap_cpy_n(s, input, strlen(input))</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the heap string. </td></tr>
@@ -619,7 +674,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies characters to a heap string, overwriting any existing data. The input length must be smaller or equal to the string's capacity. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Copies characters to a heap string. </p>
+<p>Overwrites any existing data. The input length must be smaller or equal to the string's capacity. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#a61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the heap string. </td></tr>
@@ -655,7 +713,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies characters to a string, overwriting any existing data. Identicle to <code>rs_cpy_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Copies characters to a string. </p>
+<p>Overwrites any existing data.</p>
+<p>Identicle to <code>rs_cpy_n(s, input, strlen(input))</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the string. </td></tr>
@@ -696,7 +758,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies characters to a string, overwriting any existing data. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Copies characters to a string. </p>
+<p>Overwrites any existing data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the string. </td></tr>
@@ -732,63 +797,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies characters from a string to another string, overwriting any existing data. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Copies characters from a string to another string. </p>
+<p>Overwrites any existing data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize <code>s</code>. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="abe7060d022e71f6998284f572acf86a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe7060d022e71f6998284f572acf86a6">&#9670;&nbsp;</a></span>rs_data()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">RS_API char * rs_data </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Access the buffer. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The buffer. </dd></dl>
-
-</div>
-</div>
-<a id="a2a8b393470e8a187eb0cb33daec1ba99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a8b393470e8a187eb0cb33daec1ba99">&#9670;&nbsp;</a></span>rs_data_c()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">RS_API const char * rs_data_c </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Access the buffer. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The buffer. </dd></dl>
 
 </div>
 </div>
@@ -807,7 +825,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Checks whether a string is empty. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Checks whether a string is empty. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
   </table>
@@ -832,7 +852,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the length of a stack string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Returns the length of a stack string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
   </table>
@@ -857,7 +879,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the length of a heap string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Returns the length of a heap string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
   </table>
@@ -882,7 +906,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the length. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Returns the length. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
   </table>
@@ -907,7 +933,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the capacity. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Returns the capacity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
   </table>
@@ -942,7 +970,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Reserves capacity. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Reserves capacity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The capacity to reserve. </td></tr>
@@ -967,7 +997,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Frees all unused memory. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Frees all unused memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized string. </td></tr>
   </table>
@@ -991,7 +1023,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Checks whether a string is on the heap. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Checks whether a string is on the heap. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
   </table>
@@ -1016,13 +1050,69 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Checks whether a string is on the stack. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Checks whether a string is on the stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is on the stack, <code>0</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="abe7060d022e71f6998284f572acf86a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe7060d022e71f6998284f572acf86a6">&#9670;&nbsp;</a></span>rs_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RS_API char * rs_data </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Access the buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The buffer. </dd></dl>
+
+</div>
+</div>
+<a id="a2a8b393470e8a187eb0cb33daec1ba99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a8b393470e8a187eb0cb33daec1ba99">&#9670;&nbsp;</a></span>rs_data_c()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RS_API const char * rs_data_c </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Access the buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The buffer. </dd></dl>
 
 </div>
 </div>
@@ -1051,7 +1141,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Appends characters to a stack string. Identicle to <code>rs_stack_cat_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Appends characters to a stack string. </p>
+<p>The input length must be smaller or equal to the remaining capacity of <code>s</code>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>Identicle to <code>rs_stack_cat_n(s, input, strlen(input))</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
@@ -1092,7 +1186,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Appends characters to a stack string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Appends characters to a stack string. </p>
+<p>The input length must be smaller or equal to the remaining capacity of <code>s</code>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
@@ -1128,7 +1225,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Appends characters to a heap string. Identicle to <code>rs_heap_cat_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Appends characters to a heap string. </p>
+<p>The input length must be smaller or equal to the remaining capacity of <code>s</code>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>Identicle to <code>rs_heap_cat_n(s, input, strlen(input))</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
@@ -1169,7 +1270,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Appends characters to a heap string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Appends characters to a heap string. </p>
+<p>The input length must be smaller or equal to the remaining capacity of <code>s</code>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
@@ -1205,7 +1309,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Appends characters to a string. denticle to <code>rs_cat_n(s, input, strlen(input))</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Appends characters to a string. </p>
+<p>Identicle to <code>rs_cat_n(s, input, strlen(input))</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
@@ -1246,7 +1353,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Appends characters to a string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Appends characters to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
@@ -1282,7 +1391,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Appends a string to another string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Appends a string to another string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
@@ -1317,7 +1428,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Steals a buffer allocated on the heap. The buffer must either be allocated with <code>RS_MALLOC</code>/<code>RS_REALLOC</code>, or must be manually freed. Identicle to `rs_steal_n(s, buffer, strlen(buffer)) </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Steals a buffer allocated on the heap. </p>
+<p>The buffer must either be allocated with <code>RS_MALLOC</code>/<code>RS_REALLOC</code>, or must be manually freed.</p>
+<p>Identicle to <code>rs_steal_n(s, buffer, strlen(buffer))</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal. </td></tr>
@@ -1358,7 +1473,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Steals a buffer allocated on the heap. The buffer must either be allocated with <code>RS_MALLOC</code>/<code>RS_REALLOC</code>, or must be manually freed. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Steals a buffer allocated on the heap. </p>
+<p>The buffer must either be allocated with <code>RS_MALLOC</code>/<code>RS_REALLOC</code>, or must be manually freed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal. </td></tr>
@@ -1394,7 +1512,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resizes a stack string. The new size must be smaller than <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Resizes a stack string. </p>
+<p>The new size must be smaller than <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
@@ -1429,7 +1550,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resizes a heap string. The new size must be smaller than <code>s-&gt;heap.capacity</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Resizes a heap string. </p>
+<p>The new size must be smaller than the string's capacity.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
@@ -1464,7 +1588,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resizes a string. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Resizes a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
@@ -1505,7 +1631,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resizes a string with a filler character. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Resizes a string with a filler character. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
@@ -1541,7 +1669,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the heap. Intended for internal use. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Initializes the heap. </p>
+<p>Intended for internal use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
@@ -1576,7 +1707,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Initializes the heap with growth. Intended for internal use. Identicle to <code>rs_heap_init(s, n * RS_GROWTH_FACTOR)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Initializes the heap with growth. </p>
+<p>Intended for internal use.</p>
+<p>Identicle to <code>rs_heap_init(s, n * RS_GROWTH_FACTOR)</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
@@ -1611,7 +1746,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Moves a stack string to the heap. Intended for internal use. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Moves a stack string to the heap. </p>
+<p>Intended for internal use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
@@ -1646,7 +1784,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Moves a stack string to the heap with growth. Intended for internal use. Identicle to <code>rs_stack_to_heap(s, n * RS_GROWTH_FACTOR)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Move a stack string to the heap with growth. </p>
+<p>Intended for internal use.</p>
+<p>Identicle to <code>rs_stack_to_heap(s, n * RS_GROWTH_FACTOR)</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
@@ -1681,7 +1823,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Reallocates the heap buffer. This method may grow or shrink the heap capacity. The size will remain the same, even if the new capacity is smaller than the current size. Intended for internal use. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Reallocates the heap buffer. </p>
+<p>This method may grow or shrink the heap capacity. The size will remain the same, even if the new capacity is smaller than the current size. Intended for internal use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new heap capacity. </td></tr>
@@ -1716,7 +1861,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Allocates growth for a heap string. Intended for internal use. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Allocates growth for a heap string. </p>
+<p>Intended for internal use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new heap capacity. </td></tr>
@@ -1729,7 +1877,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 26 2018 11:36:00 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 26 2018 17:33:38 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

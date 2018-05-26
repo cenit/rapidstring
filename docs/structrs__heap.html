@@ -79,7 +79,7 @@ Data Fields</h2></td></tr>
 <tr class="memdesc:a34aedcbed9cd7d78b491b631661b2f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer of a heap string.  <a href="#a34aedcbed9cd7d78b491b631661b2f44">More...</a><br /></td></tr>
 <tr class="separator:a34aedcbed9cd7d78b491b631661b2f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc8fa8d4977c0cb92d85d245f7ad7747"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__heap.html#adc8fa8d4977c0cb92d85d245f7ad7747">size</a></td></tr>
-<tr class="memdesc:adc8fa8d4977c0cb92d85d245f7ad7747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of a heap string.  <a href="#adc8fa8d4977c0cb92d85d245f7ad7747">More...</a><br /></td></tr>
+<tr class="memdesc:adc8fa8d4977c0cb92d85d245f7ad7747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of characters in a heap string.  <a href="#adc8fa8d4977c0cb92d85d245f7ad7747">More...</a><br /></td></tr>
 <tr class="separator:adc8fa8d4977c0cb92d85d245f7ad7747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af66462c6d85924b4dd5c7c6a7bdc628c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__heap.html#af66462c6d85924b4dd5c7c6a7bdc628c">capacity</a></td></tr>
 <tr class="memdesc:af66462c6d85924b4dd5c7c6a7bdc628c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a heap string.  <a href="#af66462c6d85924b4dd5c7c6a7bdc628c">More...</a><br /></td></tr>
@@ -92,7 +92,8 @@ Data Fields</h2></td></tr>
 <tr class="separator:a92f0fea6a675aa9cb4e9db49d65a4a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A struct that stores the heap data and a flag with explicit alignment. Accessing packed data structures incurs a performance penalty, therefore the alignment will be used to allow for a larger stack string. </p>
+<div class="textblock"><p>Struct that stores the heap data. </p>
+<p>Accessing packed data structures incurs a performance penalty, therefore the alignment will be used to allow for a larger stack string. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a34aedcbed9cd7d78b491b631661b2f44"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34aedcbed9cd7d78b491b631661b2f44">&#9670;&nbsp;</a></span>buffer</h2>
@@ -105,7 +106,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The buffer of a heap string allocated using <code>RS_MALLOC</code> or <code>RS_REALLOC</code>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;buffer, s-&gt;capacity + 1)</code>. Doing so will avoid a flag check. The additional one is for the null terminator, which is subtracted upon initial allocation. </p>
+
+<p>Buffer of a heap string. </p>
+<p>Allocated using <code>RS_MALLOC</code> or <code>RS_REALLOC</code>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;buffer)</code>. Doing so will avoid the heap flag check. The additional one is for the null terminator, which is subtracted upon initial allocation. </p>
 
 </div>
 </div>
@@ -120,7 +123,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The number of characters in a heap string. The null terminator is not included. </p>
+
+<p>Number of characters in a heap string. </p>
+<p>The null terminator is not included. </p>
 
 </div>
 </div>
@@ -135,7 +140,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The capacity of a heap string. The null terminator is not included. </p>
+
+<p>Capacity of a heap string. </p>
+<p>The null terminator is not included. </p>
 
 </div>
 </div>
@@ -150,7 +157,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit alignment to ensure <code>flag</code> and <code>left</code> are stored in the same location. </p>
+
+<p>Alignnment of a heap string. </p>
+<p>Ensures <code>flag</code> and <code>left</code> are stored in the same location. </p>
 
 </div>
 </div>
@@ -165,7 +174,9 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The following flag is used to store the state of the union as well as the remaining capacity of the stack string. They may be shared as the capacity of a stack string will always be smaller than <code>RS_HEAP_FLAG</code>, which guarentees unambiguity between the two states. </p>
+
+<p>Flag of the rapidstring union. </p>
+<p>The following is used to store the state of the union as well as the remaining capacity of the stack string. They may be shared as the capacity of a stack string will always be smaller than #RS_HEAP_FLAG, which guarentees unambiguity between the two states. </p>
 
 </div>
 </div>
@@ -175,7 +186,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 26 2018 11:36:00 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 26 2018 17:33:38 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
