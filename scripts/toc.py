@@ -58,3 +58,4 @@ contents = file.read()
 contents = header + toc + docs + contents[contents.find('#ifndef'):]
 file.seek(0)
 file.write(contents)
+file.truncate()

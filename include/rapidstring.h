@@ -11,39 +11,31 @@
  *       TABLE OF CONTENTS
  *
  * 1. STRUCTURES & MACROS
- * - Declarations:	line 95
+ * - Declarations:	line 84
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 334
- * - Defintions:	line 816
+ * - Declarations:	line 309
+ * - Defintions:	line 695
  *
  * 3. ASSIGNMENT
- * - Declarations:	line 395
- * - Defintions:	line 862
+ * - Declarations:	line 370
+ * - Defintions:	line 741
  *
  * 4. ELEMENT ACCESS
- * - Declarations:	line 463
- * - Defintions:	line 928
+ * - Declarations:	line 438
+ * - Defintions:	line 807
  *
  * 5. CAPACITY
- * - Declarations:	line 485
- * - Defintions:	line 950
+ * - Declarations:	line 460
+ * - Defintions:	line 829
  *
  * 6. MODIFIERS
- * - Declarations:	line 555
- * - Defintions:	line 1019
+ * - Declarations:	line 530
+ * - Defintions:	line 898
  *
  * 7. HEAP OPERATIONS
- * - Declarations:	line 666
- * - Defintions:	line 1149
- *
- * 8. STACK ALLOCATOR
- * - Declarations:	line 720
- * - Defintions:	line 1204
- *
- * 9. DEFAULT ALLOCATOR
- * - Declarations:	line 775
- * - Defintions:	line 1282
+ * - Declarations:	line 641
+ * - Defintions:	line 1028
  */
 
 /**
@@ -68,8 +60,6 @@
  *
  * @todo Make all functions properly link in documentation.
  *
- * @todo Rename to c like methods, rs_cat instead of rs_cat, etc.
- *
  * @todo Make sure all std::string methods are added (if applicable).
  *
  * @todo Create rs_search, rs_erase, rs_substring.
@@ -81,7 +71,6 @@
 
 #include <assert.h>
 #include <stdint.h>
-#include <stdlib.h>
 #include <string.h>
 
 /*
@@ -104,14 +93,11 @@
   #define RS_AVERAGE_SIZE (50)
 #endif
 
-#ifndef RSA_STACK_SIZE
-  #define RSA_STACK_SIZE 16384
-#endif
-
-#if !defined(RS_ALLOC) && !defined(RS_REALLOC) && !defined(RS_FREE)
-  #define RS_ALLOC (rsa_alloc)
-  #define RS_REALLOC (rsa_realloc)
-  #define RS_FREE (rsa_free)
+#if !defined(RS_MALLOC) && !defined(RS_REALLOC) && !defined(RS_FREE)
+  #include <stdlib.h>
+  #define RS_MALLOC malloc
+  #define RS_REALLOC realloc
+  #define RS_FREE free
 #endif
 
 #define RS_HEAP_FLAG (0xFF)
@@ -151,21 +137,17 @@
   #define RC_C11 (0)
 #endif
 
-#ifdef NDEBUG
-  #define RS_API static
+/* GCC version 3.1 required for the always inline attribute. */
+#if RS_GCC_VERION > 30100
+  #define RS_API static __inline__ __attribute__((always_inline))
+#elif defined(__GNUC__)
+  #define RS_API static __inline__
+#elif defined(_MSC_VER)
+  #define RS_API static __forceinline
+#elif RS_C99
+  #define RS_API static inline
 #else
-  /* GCC version 3.1 required for the always inline attribute. */
-  #if RS_GCC_VERION > 30100
-    #define RS_API static __inline__ __attribute__((always_inline))
-  #elif defined(__GNUC__)
-    #define RS_API static __inline__
-  #elif defined(_MSC_VER)
-    #define RS_API static __forceinline
-  #elif RS_C99
-    #define RS_API static inline
-  #else
-    #define RS_API static
-  #endif
+  #define RS_API static
 #endif
 
 typedef struct { void *a; size_t b; } rs_align_dummy;
@@ -197,7 +179,7 @@ typedef struct {
 	/**
 	 * @brief Buffer of a heap string.
 	 *
-	 * The buffer of a heap string allocated using `RS_ALLOC` or
+	 * The buffer of a heap string allocated using `RS_MALLOC` or
 	 * `RS_REALLOC`. This buffer may be manually freed by directly calling
 	 * `RS_FREE(s->buffer, s->capacity + 1)`. Doing so will avoid a flag
 	 * check. The additional one is for the null terminator, which is
@@ -290,13 +272,6 @@ typedef union {
 	 */
 	rs_heap heap;
 } rapidstring;
-
-typedef struct {
-	unsigned char buff[RSA_STACK_SIZE];
-	unsigned char* ptr;
-} rsa_stack_t;
-
-static rsa_stack_t rsa_stack = { { 0 }, rsa_stack.buff };
 
 /* Based off the average string size, allow for more efficient branching. */
 enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
@@ -609,7 +584,7 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
 
 /**
  * Steals a buffer allocated on the heap. The buffer must either be allocated
- * with `RS_ALLOC`/`RS_REALLOC`, or must be manually freed.
+ * with `RS_MALLOC`/`RS_REALLOC`, or must be manually freed.
  * Identicle to `rs_steal_n(s, buffer, strlen(buffer))
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
@@ -618,7 +593,7 @@ RS_API void rs_steal(rapidstring *s, char *buffer);
 
 /**
  * Steals a buffer allocated on the heap. The buffer must either be allocated
- * with `RS_ALLOC`/`RS_REALLOC`, or must be manually freed.
+ * with `RS_MALLOC`/`RS_REALLOC`, or must be manually freed.
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
  * @param[in] cap The capacity of the buffer.
@@ -712,102 +687,6 @@ RS_API void rs_grow_heap(rapidstring *s, size_t n);
 /*
  * ===============================================================
  *
- *                         STACK ALLOCATOR
- *
- * ===============================================================
- */
-
-/**
- * Checks whether `n` bytes can be allocated.
- * @param[in] n Number of bytes.
- * @return `1` if `n` bytes can be allocated, `0` otherwise.
- */
-RS_API int rsa_stack_can_alloc(size_t n);
-
-/**
- * Allocates bytes of zero initialized storage on the stack. If the size is
- * zero, a valid pointer with no usable storage is returned.
- * @param[in] n Number of bytes.
- * @return On success, returns a pointer to the first byte of allocated memory.
- * This pointer must be passed to `rsa_stack_free()`. On failure, returns a
- * null pointer.
- */
-RS_API void *rsa_stack_alloc(size_t n);
-
-/**
- * Reallocates the given area of memory. It must have been previously allocated
- * with `rsa_stack_alloc()` or `rsa_stack_realloc()` and not yet freed with
- * `rsa_stack_free()`. If the size is zero, `p` will not be freed and a
- * valid pointer with no usable storage will be returned.
- * @param[in] p Pointer to an area of memory to reallocate.
- * @param[in] sz Current size of the area of memory in bytes.
- * @param[in] n New size of the area of memory in bytes.
- * @return On success, returns a pointer to the first byte of allocated memory.
- * This pointer must be passed to `rsa_stack_free()`. On failure, returns a
- * null pointer.
- */
-RS_API void *rsa_stack_realloc(void *p, size_t sz, size_t n);
-
-/**
- * Checks whether `p` is owned by this stack allocator.
- * @param[in] p Pointer to an area of memory.
- * @return `1` if `p` is owned by this stack allocator, `0` otherwise.
- */
-RS_API int rsa_stack_owns(void *p);
-
-/**
- * Deallocates the space previously allocated by `rsa_stack_alloc()` or
- * `rsa_stack_realloc()`. If the pointer is null, the function does nothing.
- * The behavior is undefined if the same pointer is freed more than once.
- * @param[in] p Pointer to the memory to deallocate.
- * @param[in] n Size of the memory.
- */
-RS_API void rsa_stack_free(void *p, size_t n);
-
-/*
- * ===============================================================
- *
- *                        DEFAULT ALLOCATOR
- *
- * ===============================================================
- */
-
-/**
- * Allocates bytes of uninitialized storage.
- *
- * @param[in] n Number of bytes.
- * @return On success, returns a pointer to the first byte of allocated memory.
- * This pointer must be passed to `rs_free`. On failure, returns a null
- * pointer.
- */
-RS_API void *rsa_alloc(size_t n);
-
-/**
- * Reallocates the given area of memory. It must have been previously allocated
- * with `rsa_alloc()` or `rsa_realloc()` and not yet freed with `rsa_free()`.
- *
- * @param[in] p Pointer to an area of memory to reallocate.
- * @param[in] sz Current size of the area of memory in bytes.
- * @param[in] n New size of the area of memory in bytes.
- * @return On success, returns a pointer to the first byte of allocated memory.
- * This pointer must be passed to `rsa_free()`. On failure, returns a null
- * pointer.
- */
-RS_API void *rsa_realloc(void *p, size_t sz, size_t n);
-
-/**
- * Deallocates the space previously allocated by `rsa_alloc()` or
- * `rsa_realloc()`. If the pointer is null, the function does nothing.
- * The behavior is undefined if the same pointer is freed more than once.
- *
- * @param[in] p Pointer to the memory to deallocate.
- * @param[in] n Size of the memory.
- */
-RS_API void rsa_free(void *p, size_t n);
-
-/*
- * ===============================================================
- *
  *                   CONSTRUCTION & DESTRUCTION
  *
  * ===============================================================
@@ -848,7 +727,7 @@ RS_API void rs_free(rapidstring *s)
 	RS_ASSERT_RS(s);
 
 	if (RS_HEAP_LIKELY(rs_is_heap(s)))
-		RS_FREE(s->heap.buffer, s->heap.capacity + 1);
+		RS_FREE(s->heap.buffer);
 }
 
 /*
@@ -1086,7 +965,7 @@ RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t n)
 {
 	/* Manual free as using rs_free creates an additional branch. */
 	if (RS_HEAP_LIKELY(rs_is_heap(s)))
-		RS_FREE(s->heap.buffer, s->heap.capacity + 1);
+		RS_FREE(s->heap.buffer);
 	else
 		s->heap.flag = RS_HEAP_FLAG;
 
@@ -1148,7 +1027,7 @@ RS_API void rs_resize_w(rapidstring *s, size_t n, char c)
 
 RS_API void rs_heap_init(rapidstring *s, size_t n)
 {
-	s->heap.buffer = (char*)RS_ALLOC(n + 1);
+	s->heap.buffer = (char*)RS_MALLOC(n + 1);
 
 	RS_ASSERT_PTR(s->heap.buffer);
 
@@ -1179,8 +1058,7 @@ RS_API void rs_stack_to_heap_g(rapidstring *s, size_t n)
 
 RS_API void rs_realloc(rapidstring *s, size_t n)
 {
-	s->heap.buffer = (char*)RS_REALLOC(s->heap.buffer,
-					   s->heap.capacity + 1, n + 1);
+	s->heap.buffer = (char*)RS_REALLOC(s->heap.buffer, n + 1);
 
 	RS_ASSERT_PTR(s->heap.buffer);
 
@@ -1191,132 +1069,6 @@ RS_API void rs_grow_heap(rapidstring *s, size_t n)
 {
 	if (RS_UNLIKELY(s->heap.capacity < n))
 		rs_realloc(s, n * RS_GROWTH_FACTOR);
-}
-
-/*
- * ===============================================================
- *
- *                         STACK ALLOCATOR
- *
- * ===============================================================
- */
-
-RS_API int rsa_stack_can_alloc(size_t n)
-{
-	const unsigned char *end = rsa_stack.buff + RSA_STACK_SIZE;
-	return n <= (size_t)(end - rsa_stack.ptr);
-}
-
-RS_API void *rsa_stack_alloc(size_t n)
-{
-	void *tmp;
-
-	if (RS_UNLIKELY(!rsa_stack_can_alloc(n)))
-		return NULL;
-
-	tmp = rsa_stack.ptr;
-	rsa_stack.ptr += n;
-	return tmp;
-}
-
-RS_API void *rsa_stack_realloc(void *p, size_t sz, size_t n)
-{
-	unsigned char *end;
-	int is_end;
-
-	if (RS_UNLIKELY(!p))
-		return rsa_stack_alloc(n);
-
-	assert(rsa_stack_owns(p));
-
-	end = rsa_stack.ptr - sz;
-	is_end = (unsigned char*)p == end;
-
-	if (RS_LIKELY(is_end && (sz > n || rsa_stack_can_alloc(n - sz)))) {
-		rsa_stack.ptr = end + n;
-		return p;
-	} else {
-		void *buff = rsa_stack_alloc(n);
-
-		if (!buff)
-			return NULL;
-
-		memcpy(buff, p, sz);
-		return buff;
-	}
-}
-
-RS_API int rsa_stack_owns(void *p)
-{
-	unsigned char *ptr;
-
-	RS_ASSERT_PTR(p);
-
-	ptr = (unsigned char*)p;
-
-	return ptr >= rsa_stack.buff &&
-	       ptr < rsa_stack.buff + RSA_STACK_SIZE;
-}
-
-RS_API void rsa_stack_free(void *p, size_t n)
-{
-	unsigned char *ptr;
-
-	if (RS_UNLIKELY(!p))
-		return;
-
-	ptr = (unsigned char*)p;
-
-	if (RS_LIKELY(n + ptr == rsa_stack.ptr))
-		rsa_stack.ptr = ptr;
-}
-
-/*
- * ===============================================================
- *
- *                        DEFAULT ALLOCATOR
- *
- * ===============================================================
- */
-
-RS_API void *rsa_alloc(size_t n)
-{
-	void *p = rsa_stack_alloc(n);
-
-	if (!p)
-		return malloc(n);
-
-	return p;
-}
-
-RS_API void *rsa_realloc(void *p, size_t sz, size_t n)
-{
-	if (rsa_stack_owns(p)) {
-		void *buff;
-
-		if (rsa_stack_realloc(p, sz, n))
-			return p;
-
-		buff = malloc(n);
-
-		if (!buff)
-			return NULL;
-
-		memcpy(buff, p, sz);
-		rsa_stack_free(p, sz);
-		return buff;
-	} else {
-		return realloc(p, n);
-	}
-}
-
-RS_API void rsa_free(void *p, size_t n)
-{
-	if (rsa_stack_owns(p)) {
-		rsa_stack_free(p, n);
-	} else {
-		free(p);
-	}
 }
 
 #endif /* !RAPID_STRING_H_962AB5F800398A34 */
