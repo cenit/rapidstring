@@ -56,8 +56,6 @@
  *
  * @todo Make "Intended for internal use." a warning in Doxygen.
  *
- * @todo Make the stack allocator thread safe with RSA_THREADSAFE defined.
- *
  * @todo Make all functions properly link in documentation.
  *
  * @todo Make sure all std::string methods are added (if applicable).
@@ -118,8 +116,8 @@
   #define RS_GCC_VERSION (0)
 #endif
 
+/* GCC version 2.96 required for branch prediction expectation. */
 #if RS_GCC_VERSION > 29600
-  /* GCC version 2.96 required for branch prediction expectation. */
   #define RS_EXPECT(expr, val) __builtin_expect((expr), val)
 #else
   #define RS_EXPECT(expr, val) (expr)
@@ -153,10 +151,10 @@ typedef struct { void *a; size_t b; } rs_align_dummy;
 
 #if RS_C11
   #define RS_ALIGNMENT (_Alignof(rs_align_dummy))
-#elif defined(_MSC_VER)
-  #define RS_ALIGNMENT (__alignof(rs_align_dummy))
 #elif defined(__GNUC__)
   #define RS_ALIGNMENT (__alignof__(rs_align_dummy))
+#elif defined(_MSC_VER)
+  #define RS_ALIGNMENT (__alignof(rs_align_dummy))
 #else
   /*
    * No other way to find the alignment than assuming structs are aligned
@@ -168,9 +166,8 @@ typedef struct { void *a; size_t b; } rs_align_dummy;
 #endif
 
 /**
- * @brief Struct that stores the heap data.
+ * @brief A struct that stores the heap data.
  *
- * A struct that stores the heap data and a flag with explicit alignment.
  * Accessing packed data structures incurs a performance penalty, therefore the
  * alignment will be used to allow for a larger stack string.
  */
@@ -178,55 +175,48 @@ typedef struct {
 	/**
 	 * @brief Buffer of a heap string.
 	 *
-	 * The buffer of a heap string allocated using `RS_MALLOC` or
-	 * `RS_REALLOC`. This buffer may be manually freed by directly calling
-	 * `RS_FREE(s->buffer, s->capacity + 1)`. Doing so will avoid a flag
-	 * check. The additional one is for the null terminator, which is
-	 * subtracted upon initial allocation.
+	 * Allocated using `RS_MALLOC` or `RS_REALLOC`. This buffer may be
+	 * manually freed by directly calling `RS_FREE(s->buffer)`. Doing so
+	 * will avoid the heap flag check. The additional one is for the null
+	 * terminator, which is subtracted upon initial allocation.
 	 */
 	char *buffer;
 	/**
-	 * @brief Size of a heap string.
+	 * @brief Number of characters in a heap string.
 	 *
-	 * The number of characters in a heap string. The null terminator is
-	 * not included.
+	 * The null terminator is not included.
 	 */
 	size_t size;
 	/**
 	 * @brief Capacity of a heap string.
 	 *
-	 * The capacity of a heap string. The null terminator is not included.
+	 * The null terminator is not included.
 	 */
 	size_t capacity;
 	/**
 	 * @brief Alignnment of a heap string.
 	 *
-	 * An explicit alignment to ensure `flag` and `left` are stored in the
-	 * same location.
+	 * Ensures `flag` and `left` are stored in the same location.
 	 */
 	unsigned char align[RS_ALIGNMENT - 1];
 	/**
 	 * @brief Flag of the rapidstring union.
 	 *
-	 * The following flag is used to store the state of the union as well
-	 * as the remaining capacity of the stack string. They may be shared as
-	 * the capacity of a stack string will always be smaller than
-	 * `RS_HEAP_FLAG`, which guarentees unambiguity between the two states.
+	 * The following is used to store the state of the union as well as the
+	 * remaining capacity of the stack string. They may be shared as the
+	 * capacity of a stack string will always be smaller than
+	 * #RS_HEAP_FLAG, which guarentees unambiguity between the two states.
 	 */
 	unsigned char flag;
 } rs_heap;
 
 /**
  * @brief Capacity of a stack string.
- *
- * The maximum capacity of a stack string.
  */
 #define RS_STACK_CAPACITY (sizeof(rs_heap) - 1)
 
 /**
  * @brief Struct that stores the stack data.
- *
- * A struct that stores the stack buffer and capacity left.
  */
 typedef struct {
 	/**
@@ -239,9 +229,8 @@ typedef struct {
 	/**
 	 * @brief The capacity left in the buffer of a stack string.
 	 *
-	 * The capacity left in the buffer of stack string. Once the stack
-	 * string runs out of space, zero will be written to this member,
-	 * effectively becoming the null terminator.
+	 * Once the stack string runs out of space, zero will be written to
+	 * this member, effectively becoming the null terminator.
 	 */
 	unsigned char left;
 } rs_stack;
@@ -260,14 +249,10 @@ typedef struct {
 typedef union {
 	/**
 	 * @brief Stack state of the rapidstring union.
-	 *
-	 * The stack state of the rapidstring union.
 	 */
 	rs_stack stack;
 	/**
 	 * @brief Heap state of the rapidstring union.
-	 *
-	 * The heap state of the rapidstring union.
 	 */
 	rs_heap heap;
 } rapidstring;
@@ -306,13 +291,15 @@ enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
  */
 
 /**
- * Initializes a string.
+ * @brief Initializes a string.
+ *
  * @param[out] s The string to initialize.
  */
 RS_API void rs_init(rapidstring *s);
 
 /**
- * Initializes a string with a character array.
+ * @brief Initializes a string with a character array.
+ *
  * Identicle to `rs_init_w_n(s, input, strlen(input)`.
  * @param[out] s A string to initialize.
  * @param[in] input The input used to initialize the string.
@@ -320,7 +307,8 @@ RS_API void rs_init(rapidstring *s);
 RS_API void rs_init_w(rapidstring *s, const char *input);
 
 /**
- * Initializes a string with a character array.
+ * @brief Initializes a string with a character array.
+ *
  * @param[out] s A string to initialize.
  * @param[in] input The input used to initialize the string.
  * @param[in] n The length of the input.
@@ -328,31 +316,33 @@ RS_API void rs_init_w(rapidstring *s, const char *input);
 RS_API void rs_init_w_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Initializes a string with an initial capacity.
+ * @brief Initializes a string with an initial capacity.
+ *
  * @param[out] s A string to initialize.
  * @param[in] n The new initial capacity of the string.
  */
 RS_API void rs_init_w_cap(rapidstring *s, size_t n);
 
 /**
- * Initializes a string with another string.
+ * @brief Initializes a string with another string.
+ *
  * @param[out] s A string to initialize.
  * @param[in] input The input string used to initialize `s`.
  */
 RS_API void rs_init_w_rs(rapidstring *s, const rapidstring *input);
 
 /**
- * Frees a string. The string is in an invalid state after
- * freeing. You must call `rs_init(s)` if you wish to reuse the same
- * string after freeing.
+ * @brief Frees a string.
  *
- * A jump may be avoided by directly calling
- * `RS_FREE(s->heap.buffer, s->heap.capacity + 1);` if the string is known to
- * be on the heap. The additional one is for the null terminator, which is
- * subtracted upon initial allocation.
+ * The string is in an invalid state after freeing. You must call `rs_init(s)`
+ * if you wish to reuse the same string after freeing.
  *
- * Calling this fuction is unecessary if the string size is always smaller
- * or equal to #RS_STACK_CAPACITY.
+ * A jump may be avoided by directly calling `RS_FREE(s->heap.buffer);` if the
+ * string is known to be on the heap. The additional one is for the null
+ * terminator, which is subtracted upon initial allocation.
+ *
+ * Calling this fuction is unecessary if the string size is always smaller or
+ * equal to #RS_STACK_CAPACITY.
  *
  * @param[in] s The string to free.
  */
@@ -367,17 +357,26 @@ RS_API void rs_free(rapidstring *s);
  */
 
 /**
- * Copies characters to a stack string, overwriting any existing data. The
- * input length must be smaller or equal to #RS_STACK_CAPACITY.
+ * @brief Copies characters to a stack string.
+ *
+ * Overwrites any existing data. The input length must be smaller or equal to
+ * #RS_STACK_CAPACITY. If it is not, the behavior is undefined. If this is
+ * inconvenient for your usage, use rs_cpy().
+ *
  * Identicle to `rs_stack_cpy_n(s, input, strlen(input))`.
+ *
  * @param[in,out] s An intialized stack string.
  * @param[in] input the input to assign to the stack string.
  */
 RS_API void rs_stack_cpy(rapidstring *s, const char *input);
 
 /**
- * Copies characters to a stack string, overwriting any existing data. The
- * input length must be smaller or equal to #RS_STACK_CAPACITY.
+ * @brief Copies characters to a stack string.
+ *
+ * Overwrites any existing data. The input length must be smaller or equal to
+ * #RS_STACK_CAPACITY. If it is not, the behavior is undefined. If this is
+ * inconvenient for your usage, use rs_cpy().
+ *
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to assign to the stack string.
  * @param[in] n The length of the input.
@@ -385,17 +384,26 @@ RS_API void rs_stack_cpy(rapidstring *s, const char *input);
 RS_API void rs_stack_cpy_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Copies characters to a heap string, overwriting any existing data. The input
- * length must be smaller or equal to the string's capacity. 
+ * @brief Copies characters to a heap string.
+ *
+ * Overwrites any existing data. The input length must be smaller or equal to
+ * the string's capacity. If it is not, the behavior is undefined. If this is
+ * inconvenient for your usage, use rs_cpy().
+ *
  * Identicle to `rs_heap_cpy_n(s, input, strlen(input))`.
+ *
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to assign to the heap string.
  */
 RS_API void rs_heap_cpy(rapidstring *s, const char *input);
 
 /**
- * Copies characters to a heap string, overwriting any existing data. The input
- * length must be smaller or equal to the string's capacity.
+ * @brief Copies characters to a heap string.
+ *
+ * Overwrites any existing data. The input length must be smaller or equal to
+ * the string's capacity. If it is not, the behavior is undefined. If this is
+ * inconvenient for your usage, use rs_cpy().
+ *
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to assign to the heap string.
  * @param[in] n The length of the input.
@@ -403,15 +411,22 @@ RS_API void rs_heap_cpy(rapidstring *s, const char *input);
 RS_API void rs_heap_cpy_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Copies characters to a string, overwriting any existing data.
+ * @brief Copies characters to a string.
+ *
+ * Overwrites any existing data.
+ *
  * Identicle to `rs_cpy_n(s, input, strlen(input))`.
+ *
  * @param[in,out] s An initialized string.
  * @param[in] input The input to assign to the string.
  */
 RS_API void rs_cpy(rapidstring *s, const char *input);
 
 /**
- * Copies characters to a string, overwriting any existing data.
+ * @brief Copies characters to a string.
+ *
+ * Overwrites any existing data.
+ *
  * @param[in,out] s An initialized string.
  * @param[in] input The input to assign to the string.
  * @param[in] n The length of the input.
@@ -419,34 +434,14 @@ RS_API void rs_cpy(rapidstring *s, const char *input);
 RS_API void rs_cpy_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Copies characters from a string to another string, overwriting any existing
- * data.
- * @param[in, out] s An initialized string.
+ * @brief Copies characters from a string to another string.
+ *
+ * Overwrites any existing data.
+ *
+ * @param[in,out] s An initialized string.
  * @param[in] input The input string used to initialize `s`.
  */
 RS_API void rs_cpy_rs(rapidstring *s, const rapidstring *input);
-
-/*
- * ===============================================================
- *
- *                         ELEMENT ACCESS
- *
- * ===============================================================
- */
-
-/**
- * Access the buffer.
- * @param[in] s An initialized string.
- * @returns The buffer.
- */
-RS_API char *rs_data(rapidstring *s);
-
-/**
- * Access the buffer.
- * @param[in] s An initialized string.
- * @returns The buffer.
- */
-RS_API const char *rs_data_c(const rapidstring *s);
 
 /*
  * ===============================================================
@@ -457,62 +452,71 @@ RS_API const char *rs_data_c(const rapidstring *s);
  */
 
 /**
- * Checks whether a string is empty.
+ * @brief Checks whether a string is empty.
+ *
  * @param[in] s An initialized string.
  * @returns `1` if the string is empty, `0` otherwise.
  */
 RS_API int rs_empty(const rapidstring *s);
 
 /**
- * Returns the length of a stack string.
+ * @brief Returns the length of a stack string.
+ *
  * @param[in] s An initialized stack string.
  * @returns The stack string length.
  */
 RS_API size_t rs_stack_len(const rapidstring *s);
 
 /**
- * Returns the length of a heap string.
+ * @brief Returns the length of a heap string.
+ *
  * @param[in] s An initialized heap string.
  * @returns The heap string length.
  */
 RS_API size_t rs_heap_len(const rapidstring *s);
 
 /**
- * Returns the length.
+ * @brief Returns the length.
+ *
  * @param[in] s An initialized string.
  * @returns The string length.
  */
 RS_API size_t rs_len(const rapidstring *s);
 
 /**
- * Returns the capacity.
+ * @brief Returns the capacity.
+ *
  * @param[in] s An initialized string.
  * @returns The string capacity.
  */
 RS_API size_t rs_capacity(const rapidstring *s);
 
 /**
- * Reserves capacity.
+ * @brief Reserves capacity.
+ *
  * @param[in,out] s An initialized string.
  * @param[in] n The capacity to reserve.
  */
 RS_API void rs_reserve(rapidstring *s, size_t n);
 
 /**
- * Frees all unused memory.
+ * @brief Frees all unused memory.
+ *
  * @param[in,out] s An intialized string.
  */
 RS_API void rs_shrink_to_fit(rapidstring *s);
 
 /**
- * Checks whether a string is on the heap.
+ * @brief Checks whether a string is on the heap.
+ *
  * @param[in] s An initialized string.
  * @returns `1` if the string is on the heap, `0` otherwise.
  */
 RS_API int rs_is_heap(const rapidstring *s);
 
 /**
- * Checks whether a string is on the stack.
+ * @brief Checks whether a string is on the stack.
+ *
  * @param[in] s An initialized string.
  * @returns `1` if the string is on the stack, `0` otherwise.
  */
@@ -527,15 +531,42 @@ RS_API int rs_is_stack(const rapidstring *s);
  */
 
 /**
- * Appends characters to a stack string.
+ * @brief Access the buffer.
+ *
+ * @param[in] s An initialized string.
+ * @returns The buffer.
+ */
+RS_API char *rs_data(rapidstring *s);
+
+/**
+ * @brief Access the buffer.
+ *
+ * @param[in] s An initialized string.
+ * @returns The buffer.
+ */
+RS_API const char *rs_data_c(const rapidstring *s);
+
+/**
+ * @brief Appends characters to a stack string.
+ *
+ * The input length must be smaller or equal to the remaining capacity of `s`.
+ * If it is not, the behavior is undefined. If this is inconvenient for your
+ * usage, use rs_cat().
+ *
  * Identicle to `rs_stack_cat_n(s, input, strlen(input))`.
+ *
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to append.
  */
 RS_API void rs_stack_cat(rapidstring *s, const char *input);
 
 /**
- * Appends characters to a stack string.
+ * @brief Appends characters to a stack string.
+ *
+ * The input length must be smaller or equal to the remaining capacity of `s`.
+ * If it is not, the behavior is undefined. If this is inconvenient for your
+ * usage, use rs_cat().
+ *
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to append.
  * @param[in] n The length of the input.
@@ -543,15 +574,26 @@ RS_API void rs_stack_cat(rapidstring *s, const char *input);
 RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Appends characters to a heap string.
+ * @brief Appends characters to a heap string.
+ *
+ * The input length must be smaller or equal to the remaining capacity of `s`.
+ * If it is not, the behavior is undefined. If this is inconvenient for your
+ * usage, use rs_cat().
+ *
  * Identicle to `rs_heap_cat_n(s, input, strlen(input))`.
+ *
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to append.
  */
 RS_API void rs_heap_cat(rapidstring *s, const char *input);
 
 /**
- * Appends characters to a heap string.
+ * @brief Appends characters to a heap string.
+ *
+ * The input length must be smaller or equal to the remaining capacity of `s`.
+ * If it is not, the behavior is undefined. If this is inconvenient for your
+ * usage, use rs_cat().
+ *
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to append.
  * @param[in] n The length of the input.
@@ -559,15 +601,18 @@ RS_API void rs_heap_cat(rapidstring *s, const char *input);
 RS_API void rs_heap_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Appends characters to a string.
- * denticle to `rs_cat_n(s, input, strlen(input))`.
+ * @brief Appends characters to a string.
+ *
+ * Identicle to `rs_cat_n(s, input, strlen(input))`.
+ *
  * @param[in,out] s An initialized  string.
  * @param[in] input The input to append.
  */
 RS_API void rs_cat(rapidstring *s, const char *input);
 
 /**
- * Appends characters to a string.
+ * @brief Appends characters to a string.
+ *
  * @param[in,out] s An initialized  string.
  * @param[in] input The input to append.
  * @param[in] n The length of the input.
@@ -575,24 +620,32 @@ RS_API void rs_cat(rapidstring *s, const char *input);
 RS_API void rs_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * Appends a string to another string.
+ * @brief Appends a string to another string.
+ *
  * @param[in,out] s An initialized string.
  * @param[in] input The input to append.
  */
 RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
 
 /**
- * Steals a buffer allocated on the heap. The buffer must either be allocated
- * with `RS_MALLOC`/`RS_REALLOC`, or must be manually freed.
- * Identicle to `rs_steal_n(s, buffer, strlen(buffer))
+ * @brief Steals a buffer allocated on the heap.
+ *
+ * The buffer must either be allocated with `RS_MALLOC`/`RS_REALLOC`, or must
+ * be manually freed.
+ *
+ * Identicle to `rs_steal_n(s, buffer, strlen(buffer))`.
+ *
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
  */
 RS_API void rs_steal(rapidstring *s, char *buffer);
 
 /**
- * Steals a buffer allocated on the heap. The buffer must either be allocated
- * with `RS_MALLOC`/`RS_REALLOC`, or must be manually freed.
+ * @brief Steals a buffer allocated on the heap.
+ *
+ * The buffer must either be allocated with `RS_MALLOC`/`RS_REALLOC`, or must
+ * be manually freed.
+ *
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
  * @param[in] cap The capacity of the buffer.
@@ -600,29 +653,36 @@ RS_API void rs_steal(rapidstring *s, char *buffer);
 RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t cap);
 
 /**
- * Resizes a stack string. The new size must be smaller than
- * #RS_STACK_CAPACITY.
+ * @brief Resizes a stack string.
+ *
+ * The new size must be smaller than #RS_STACK_CAPACITY.
+ *
  * @param[in,out] s An initialized stack string.
  * @param[in] n The new size.
  */
 RS_API void rs_stack_resize(rapidstring *s, size_t n);
 
 /**
- * Resizes a heap string. The new size must be smaller than `s->heap.capacity`.
+ * @brief Resizes a heap string.
+ *
+ * The new size must be smaller than the string's capacity.
+ *
  * @param[in,out] s An initialized heap string.
  * @param[in] n The new size.
  */
 RS_API void rs_heap_resize(rapidstring *s, size_t n);
 
 /**
- * Resizes a string.
+ * @brief Resizes a string.
+ *
  * @param[in,out] s An initialized string.
  * @param[in] n The new size.
  */
 RS_API void rs_resize(rapidstring *s, size_t n);
 
 /**
- * Resizes a string with a filler character.
+ * @brief Resizes a string with a filler character.
+ *
  * @param[in,out] s An initialized string.
  * @param[in] n The new size.
  * @param[in] c The filler character.
@@ -638,46 +698,66 @@ RS_API void rs_resize_w(rapidstring *s, size_t n, char c);
  */
 
 /**
- * Initializes the heap. Intended for internal use.
+ * @brief Initializes the heap.
+ *
+ * Intended for internal use.
+ *
  * @param[out] s A string to initialize.
  * @param[in] n The heap capacity.
  */
 RS_API void rs_heap_init(rapidstring *s, size_t n);
 
 /**
- * Initializes the heap with growth. Intended for internal use.
+ * @brief Initializes the heap with growth.
+ *
+ * Intended for internal use.
+ *
  * Identicle to `rs_heap_init(s, n * RS_GROWTH_FACTOR)`.
+ *
  * @param[out] s A string to initialize.
  * @param[in] n The heap capacity.
  */
 RS_API void rs_heap_init_g(rapidstring *s, size_t n);
 
 /**
- * Moves a stack string to the heap. Intended for internal use.
+ * @brief Moves a stack string to the heap.
+ *
+ * Intended for internal use.
+ *
  * @param[in,out] s An initialized stack string.
  * @param[in] n The heap capacity.
  */
 RS_API void rs_stack_to_heap(rapidstring *s, size_t n);
 
 /**
- * Moves a stack string to the heap with growth. Intended for internal use.
+ * @brief Move a stack string to the heap with growth.
+ *
+ * Intended for internal use.
+ *
  * Identicle to `rs_stack_to_heap(s, n * RS_GROWTH_FACTOR)`.
+ *
  * @param[in,out] s An initialized stack string.
  * @param[in] n The heap capacity.
  */
 RS_API void rs_stack_to_heap_g(rapidstring *s, size_t n);
 
 /**
- * Reallocates the heap buffer. This method may grow or shrink the heap
- * capacity. The size will remain the same, even if the new capacity is smaller
- * than the current size. Intended for internal use.
+ * @brief Reallocates the heap buffer.
+ *
+ * This method may grow or shrink the heap capacity. The size will remain the
+ * same, even if the new capacity is smaller than the current size. Intended
+ * for internal use.
+ *
  * @param[in,out] s An initialized heap string.
  * @param[in] n The new heap capacity.
  */
 RS_API void rs_realloc(rapidstring *s, size_t n);
 
 /**
- * Allocates growth for a heap string. Intended for internal use.
+ * @brief Allocates growth for a heap string.
+ *
+ * Intended for internal use.
+ *
  * @param[in,out] s An initialized heap string.
  * @param[in] n The new heap capacity.
  */
@@ -798,28 +878,6 @@ RS_API void rs_cpy_rs(rapidstring *s, const rapidstring *input)
 /*
  * ===============================================================
  *
- *                         ELEMENT ACCESS
- *
- * ===============================================================
- */
-
-RS_API char *rs_data(rapidstring *s)
-{
-	return (char*)rs_data_c(s);
-}
-
-RS_API const char *rs_data_c(const rapidstring *s)
-{
-	RS_ASSERT_RS(s);
-
-	return rs_is_heap(s) ?
-		s->heap.buffer :
-		s->stack.buffer;
-}
-
-/*
- * ===============================================================
- *
  *                            CAPACITY
  *
  * ===============================================================
@@ -893,6 +951,20 @@ RS_API int rs_is_stack(const rapidstring *s)
  *
  * ===============================================================
  */
+
+RS_API char *rs_data(rapidstring *s)
+{
+	return (char*)rs_data_c(s);
+}
+
+RS_API const char *rs_data_c(const rapidstring *s)
+{
+	RS_ASSERT_RS(s);
+
+	return rs_is_heap(s) ?
+		s->heap.buffer :
+		s->stack.buffer;
+}
 
 RS_API void rs_stack_cat(rapidstring *s, const char *input)
 {
