@@ -84,12 +84,12 @@ Data Fields</h2></td></tr>
 <tr class="memitem:af66462c6d85924b4dd5c7c6a7bdc628c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__heap.html#af66462c6d85924b4dd5c7c6a7bdc628c">capacity</a></td></tr>
 <tr class="memdesc:af66462c6d85924b4dd5c7c6a7bdc628c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a heap string.  <a href="#af66462c6d85924b4dd5c7c6a7bdc628c">More...</a><br /></td></tr>
 <tr class="separator:af66462c6d85924b4dd5c7c6a7bdc628c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa434711a7335220a54a60f83fe27a88d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__heap.html#aa434711a7335220a54a60f83fe27a88d">align</a> [RS_ALIGNMENT - 1]</td></tr>
-<tr class="memdesc:aa434711a7335220a54a60f83fe27a88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alignnment of a heap string.  <a href="#aa434711a7335220a54a60f83fe27a88d">More...</a><br /></td></tr>
-<tr class="separator:aa434711a7335220a54a60f83fe27a88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d5db030bd52a055ed9b2afd545b0a9e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__heap.html#a1d5db030bd52a055ed9b2afd545b0a9e">flag</a></td></tr>
-<tr class="memdesc:a1d5db030bd52a055ed9b2afd545b0a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag of the rapidstring union.  <a href="#a1d5db030bd52a055ed9b2afd545b0a9e">More...</a><br /></td></tr>
-<tr class="separator:a1d5db030bd52a055ed9b2afd545b0a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb2b59a711e2a187ed829ae71dcc575f"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__heap.html#acb2b59a711e2a187ed829ae71dcc575f">align</a> [RS_ALIGNMENT - 1]</td></tr>
+<tr class="memdesc:acb2b59a711e2a187ed829ae71dcc575f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alignnment of a heap string.  <a href="#acb2b59a711e2a187ed829ae71dcc575f">More...</a><br /></td></tr>
+<tr class="separator:acb2b59a711e2a187ed829ae71dcc575f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f0fea6a675aa9cb4e9db49d65a4a2b"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrs__heap.html#a92f0fea6a675aa9cb4e9db49d65a4a2b">flag</a></td></tr>
+<tr class="memdesc:a92f0fea6a675aa9cb4e9db49d65a4a2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag of the rapidstring union.  <a href="#a92f0fea6a675aa9cb4e9db49d65a4a2b">More...</a><br /></td></tr>
+<tr class="separator:a92f0fea6a675aa9cb4e9db49d65a4a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A struct that stores the heap data and a flag with explicit alignment. Accessing packed data structures incurs a performance penalty, therefore the alignment will be used to allow for a larger stack string. </p>
@@ -105,7 +105,7 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>The buffer of a heap string allocated using <code>RS_ALLOC</code> or <code>RS_REALLOC</code>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;buffer, s-&gt;capacity + 1)</code>. Doing so will avoid a flag check. The additional one is for the null terminator, which is subtracted upon initial allocation. </p>
+<p>The buffer of a heap string allocated using <code>RS_MALLOC</code> or <code>RS_REALLOC</code>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;buffer, s-&gt;capacity + 1)</code>. Doing so will avoid a flag check. The additional one is for the null terminator, which is subtracted upon initial allocation. </p>
 
 </div>
 </div>
@@ -139,14 +139,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="aa434711a7335220a54a60f83fe27a88d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa434711a7335220a54a60f83fe27a88d">&#9670;&nbsp;</a></span>align</h2>
+<a id="acb2b59a711e2a187ed829ae71dcc575f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb2b59a711e2a187ed829ae71dcc575f">&#9670;&nbsp;</a></span>align</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t rs_heap::align[RS_ALIGNMENT - 1]</td>
+          <td class="memname">unsigned char rs_heap::align[RS_ALIGNMENT - 1]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -154,14 +154,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a1d5db030bd52a055ed9b2afd545b0a9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d5db030bd52a055ed9b2afd545b0a9e">&#9670;&nbsp;</a></span>flag</h2>
+<a id="a92f0fea6a675aa9cb4e9db49d65a4a2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92f0fea6a675aa9cb4e9db49d65a4a2b">&#9670;&nbsp;</a></span>flag</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t rs_heap::flag</td>
+          <td class="memname">unsigned char rs_heap::flag</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -175,7 +175,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 23 2018 12:53:32 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 26 2018 11:36:00 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
