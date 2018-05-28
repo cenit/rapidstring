@@ -27,8 +27,8 @@ file = open('include/rapidstring.h', 'r+')
 lines = [line for line in file]
 elems = OrderedDict()
 
-for i in range(0, len(lines)):
-	if lines[i].startswith(' * =') and not lines[i + 1].startswith(' */'):
+for i, line in enumerate(lines):
+	if line.startswith(' * =') and not lines[i + 1].startswith(' */'):
 		name = lines[i + 2].replace('*', ' ').strip()
 
 		if name in elems:
@@ -41,11 +41,11 @@ pos = 1
 
 for key, value in elems.items():
 	toc += ' * ' + str(pos) + '. ' + key + '\n'
-	toc += ' * - Declarations:	line ' + str(value[0]) + '\n'
+	toc += ' * - Declarations:\tline ' + str(value[0]) + '\n'
 
 	if len(value) == 2:
-		toc += ' * - Defintions:	line ' + str(value[1]) + '\n'
-	
+		toc += ' * - Defintions:\tline ' + str(value[1]) + '\n'
+
 	toc += ' *\n'
 
 	pos += 1

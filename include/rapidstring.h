@@ -14,24 +14,24 @@
  * - Declarations:	line 77
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 289
- * - Defintions:	line 770
+ * - Declarations:	line 288
+ * - Defintions:	line 769
  *
  * 3. ASSIGNMENT
- * - Declarations:	line 355
- * - Defintions:	line 816
+ * - Declarations:	line 354
+ * - Defintions:	line 815
  *
  * 4. CAPACITY
- * - Declarations:	line 450
- * - Defintions:	line 882
+ * - Declarations:	line 449
+ * - Defintions:	line 881
  *
  * 5. MODIFIERS
- * - Declarations:	line 529
- * - Defintions:	line 951
+ * - Declarations:	line 528
+ * - Defintions:	line 950
  *
  * 6. HEAP OPERATIONS
- * - Declarations:	line 696
- * - Defintions:	line 1095
+ * - Declarations:	line 695
+ * - Defintions:	line 1094
  */
 
 /**
