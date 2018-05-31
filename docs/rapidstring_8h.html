@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>rapid_string: rapidstring.h File Reference</title>
+<title>rapidstring: rapidstring.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">rapid_string
+   <div id="projectname">rapidstring
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">A fast string library.</div>
@@ -97,9 +97,8 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a0495945a8b4d277ce859668172a5a920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a0495945a8b4d277ce859668172a5a920">RS_VERSION_MAJOR</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a0495945a8b4d277ce859668172a5a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab93be554f576e050c48d50986ade7dd"><td class="memItemLeft" align="right" valign="top"><a id="aab93be554f576e050c48d50986ade7dd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td></tr>
-<tr class="memdesc:aab93be554f576e050c48d50986ade7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a stack string. <br /></td></tr>
+<tr class="memitem:aab93be554f576e050c48d50986ade7dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td></tr>
+<tr class="memdesc:aab93be554f576e050c48d50986ade7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a stack string.  <a href="#aab93be554f576e050c48d50986ade7dd">More...</a><br /></td></tr>
 <tr class="separator:aab93be554f576e050c48d50986ade7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af90863ca72d60da08071272c477e20b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#af90863ca72d60da08071272c477e20b3">RS_DATA_SIZE</a>(f,  s,  input)</td></tr>
 <tr class="memdesc:af90863ca72d60da08071272c477e20b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pass the string data and size to a function.  <a href="#af90863ca72d60da08071272c477e20b3">More...</a><br /></td></tr>
@@ -251,13 +250,30 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Add complexity, briefs and versions to all function documentation.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Documentation for macros and properly link all references.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Make "Intended for internal use." a warning in Doxygen.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Make all functions properly link in documentation.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Make sure all std::string methods are added (if applicable).</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Create rs_search, rs_erase, rs_substring.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>int return values with errno for malloc failure.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Add coveralls. </dd></dl>
+
+</div>
+</div>
+<a id="aab93be554f576e050c48d50986ade7dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab93be554f576e050c48d50986ade7dd">&#9670;&nbsp;</a></span>RS_STACK_CAPACITY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RS_STACK_CAPACITY&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Capacity of a stack string. </p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -292,9 +308,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));           \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a>(input));         \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_af4084b46c8635801205207de1d36a8bf"><div class="ttname"><a href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a></div><div class="ttdeci">RS_API int rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:930</div></div>
-<div class="ttc" id="rapidstring_8h_html_a7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:893</div></div>
-<div class="ttc" id="rapidstring_8h_html_a22be1338ac718365a274735e19815570"><div class="ttname"><a href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:886</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));           \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a>(input));         \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_af4084b46c8635801205207de1d36a8bf"><div class="ttname"><a href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a></div><div class="ttdeci">RS_API int rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1101</div></div>
+<div class="ttc" id="rapidstring_8h_html_a7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1064</div></div>
+<div class="ttc" id="rapidstring_8h_html_a22be1338ac718365a274735e19815570"><div class="ttname"><a href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1057</div></div>
 </div><!-- fragment -->
 <p>Pass the string data and size to a function. </p>
 <p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. Intended for internal use.</p>
@@ -302,10 +318,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A function. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to forward the function. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to forward the function.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -329,10 +346,12 @@ Functions</h2></td></tr>
 <p>Initializes a string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>The string to initialize. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>The string to initialize.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -366,10 +385,12 @@ Functions</h2></td></tr>
 <p>Identicle to <code>rs_init_w_n(s, input, strlen(input)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input used to initialize the string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input used to initialize the string.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -410,10 +431,13 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input used to initialize the string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -444,13 +468,18 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initializes a string with an initial capacity. </p>
+<p>An allocation will always occur, even if <br />
+ is smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new initial capacity of the string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new initial capacity of the string.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -484,10 +513,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize <code>s</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize .</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -513,10 +544,11 @@ Functions</h2></td></tr>
 <p>Calling this fuction is unecessary if the string size is always smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string to free. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string to free.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -552,10 +584,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>the input to assign to the stack string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>the input to assign to the stack string.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -597,10 +631,13 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -636,10 +673,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the heap string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the heap string.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -681,10 +720,13 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -720,10 +762,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the string.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -765,10 +809,13 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -803,10 +850,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize <code>s</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize .</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -833,7 +882,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is empty, <code>0</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is empty, <code>0</code> otherwise.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -860,7 +911,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The stack string length. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The stack string length.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -887,7 +940,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The heap string length. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The heap string length.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -914,7 +969,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The string length. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The string length.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -941,7 +998,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The string capacity. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The string capacity.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -975,10 +1034,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The capacity to reserve. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The capacity to reserve.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1001,10 +1063,12 @@ Functions</h2></td></tr>
 <p>Frees all unused memory. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized string. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized string.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1031,7 +1095,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is on the heap, <code>0</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is on the heap, <code>0</code> otherwise.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1058,7 +1124,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is on the stack, <code>0</code> otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is on the stack, <code>0</code> otherwise.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1085,7 +1153,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The buffer. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The buffer.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1112,7 +1182,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The buffer. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The buffer.</dd></dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1143,15 +1215,17 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Appends characters to a stack string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of <code>s</code>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>The input length must be smaller or equal to the remaining capacity of . If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
 <p>Identicle to <code>rs_stack_cat_n(s, input, strlen(input))</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1188,15 +1262,18 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Appends characters to a stack string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of <code>s</code>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>The input length must be smaller or equal to the remaining capacity of . If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1227,15 +1304,17 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Appends characters to a heap string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of <code>s</code>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>The input length must be smaller or equal to the remaining capacity of . If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
 <p>Identicle to <code>rs_heap_cat_n(s, input, strlen(input))</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1272,15 +1351,18 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Appends characters to a heap string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of <code>s</code>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>The input length must be smaller or equal to the remaining capacity of . If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of .</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1315,10 +1397,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1359,10 +1443,13 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1396,10 +1483,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1435,10 +1524,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in the length of .</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1480,10 +1571,12 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cap</td><td>The capacity of the buffer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cap</td><td>The capacity of the buffer.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Constant.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1518,10 +1611,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1556,10 +1652,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1593,10 +1692,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1637,10 +1739,13 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new size. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The filler character. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The filler character.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Linear in <br />
+.</p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1675,10 +1780,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1714,10 +1820,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1752,10 +1859,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1791,10 +1899,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The heap capacity.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1829,10 +1938,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new heap capacity. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new heap capacity.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -1867,17 +1977,18 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new heap capacity. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The new heap capacity.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 26 2018 18:14:07 for rapid_string by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 30 2018 15:39:16 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

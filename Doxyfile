@@ -1,5 +1,5 @@
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = rapid_string
+PROJECT_NAME           = rapidstring
 PROJECT_NUMBER         = 0.1.0
 PROJECT_BRIEF          = "A fast string library."
 PROJECT_LOGO           =
