@@ -41,6 +41,7 @@ script:
 
 after_success:
 - if (( GCOV == 1 )); then
+  cd ../../../../..;
   coveralls -b build -r ./ -E ".*CMakeFiles.*" --exclude benchmark --exclude test --gcov-options "\-lp";
   fi
 
