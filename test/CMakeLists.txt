@@ -44,6 +44,7 @@ if (RS_COVERAGE)
 		PRIVATE
 			-fprofile-arcs
 			-ftest-coverage
+			-Wno-unused-function
 	)
 	target_link_libraries(rapidstring_test
 		PRIVATE
