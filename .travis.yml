@@ -1,3 +1,4 @@
+sudo: true
 language: cpp
 
 matrix:
@@ -40,7 +41,7 @@ script:
 
 after_success:
 - if [[ $BUILD == Coveralls ]]; then
-  coveralls --gcov ../../../../../include/rapidstring.h;
+  coveralls -b build -r ./ -E ".*CMakeFiles.*" --exclude benchmark --exclude test --gcov-options "\-lp";
   fi
 
 env:
