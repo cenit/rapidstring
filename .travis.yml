@@ -36,9 +36,6 @@ before_install:
 script:
 - make
 - ./test/rapidstring_test
-- cd test/CMakeFiles/rapidstring_test.dir/src
-- ls
-- if [[ $CC == gcc-7 ]]; then gcov *.gcno; fi
 
 after_success:
 - if [[ $CC == gcc-7 ]]; then
