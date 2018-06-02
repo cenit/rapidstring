@@ -39,7 +39,7 @@ script:
 
 after_success:
 - if [[ $CC == gcc-7 ]]; then
-  cd ../../../../..;
+  cd ..;
   coveralls  -b build -r ./ -E ".*CMakeFiles.*" --exclude benchmark  --exclude test --gcov-options "\-lp";
   fi
 
