@@ -12,7 +12,7 @@ matrix:
           packages:
             - g++-7
       env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && BUILD=Coverage"
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
     - os: linux
       compiler: clang
@@ -23,7 +23,7 @@ matrix:
           packages:
             - clang-5.0
       env:
-        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0 && BUILD=Debug"
+        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
 
 before_install:
 - eval "${MATRIX_EVAL}"
@@ -31,7 +31,7 @@ before_install:
 - git submodule update --init --recursive
 - mkdir build
 - cd build
-- cmake .. -DCMAKE_BUILD_TYPE=$BUILD -DENABLE_GCOV=1 
+- cmake .. -DENABLE_GCOV=1 
 
 script:
 - make
