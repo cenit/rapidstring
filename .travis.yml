@@ -12,7 +12,7 @@ matrix:
           packages:
             - g++-7
       env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && GCOV=1"
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && BUILD=Debug"
 
     - os: linux
       compiler: clang
@@ -23,7 +23,7 @@ matrix:
           packages:
             - clang-5.0
       env:
-        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0 && GCOV=0"
+        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0 && BUILD=Debug"
 
 before_install:
 - eval "${MATRIX_EVAL}"
@@ -31,18 +31,19 @@ before_install:
 - git submodule update --init --recursive
 - mkdir build
 - cd build
-- cmake .. -DENABLE_GCOV=$GCOV -DCOVERAGE=1
+- cmake .. -DCMAKE_BUILD_TYPE=$BUILD -DCOVERAGE=1 -DENABLE_GCOV=1 
 
 script:
 - make
 - ./test/rapidstring_test
 - cd test/CMakeFiles/rapidstring_test.dir/src
-- if (( GCOV == 1 )) ; then gcov *.gcno; fi
+- ls
+- if [[ $CC == gcc-7 ]]; then gcov *.gcno; fi
 
 after_success:
-- if (( GCOV == 1 )); then
+- if [[ $CC == gcc-7 ]]; then
   cd ../../../../..;
-  coveralls -b build -r ./ -E ".*CMakeFiles.*" --exclude benchmark --exclude test --gcov-options "\-lp";
+  coveralls  -b build -r ./ -E ".*CMakeFiles.*" --exclude benchmark  --exclude test --gcov-options "\-lp";
   fi
 
 env:
