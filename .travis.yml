@@ -40,7 +40,7 @@ script:
 after_success:
 - if [[ $CC == gcc-7 ]]; then
   cd ..;
-  coveralls  -b build -r ./ -E ".*CMakeFiles.*" --exclude benchmark  --exclude test --gcov-options "\-lp";
+  coveralls  -b build -r ./ -i include/rapidstring.h --gcov-options "\-lp";
   fi
 
 env:

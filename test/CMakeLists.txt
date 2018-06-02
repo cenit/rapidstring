@@ -35,7 +35,6 @@ target_include_directories(rapidstring_test
 )
 
 if (RS_COVERAGE)
-	message(WARNING ${CMAKE_BUILD_TYPE})
 	target_compile_definitions(rapidstring_test
 		PRIVATE
 			RS_NOINLINE
