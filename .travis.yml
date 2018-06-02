@@ -31,7 +31,7 @@ before_install:
 - git submodule update --init --recursive
 - mkdir build
 - cd build
-- cmake .. -DCMAKE_BUILD_TYPE=$BUILD -DCOVERAGE=1 -DENABLE_GCOV=1 
+- cmake .. -DCMAKE_BUILD_TYPE=$BUILD -DENABLE_GCOV=1 
 
 script:
 - make
