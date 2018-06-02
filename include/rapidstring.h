@@ -130,6 +130,9 @@
   #define RC_C11 (0)
 #endif
 
+#ifdef RS_NOINLINE
+  #define RS_API static
+#elif
 /* GCC version 3.1 required for the always inline attribute. */
 #if RS_GCC_VERION > 30100
   #define RS_API static __inline__ __attribute__((always_inline))

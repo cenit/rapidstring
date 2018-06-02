@@ -35,12 +35,16 @@ target_include_directories(rapidstring_test
 )
 
 if (RS_COVERAGE)
+	message(WARNING ${CMAKE_BUILD_TYPE})
+	target_compile_definitions(rapidstring_test
+		PRIVATE
+			RS_NOINLINE
+	)
 	target_compile_options(rapidstring_test
 		PRIVATE
 			-fprofile-arcs
 			-ftest-coverage
 	)
-
 	target_link_libraries(rapidstring_test
 		PRIVATE
 			-lgcov
