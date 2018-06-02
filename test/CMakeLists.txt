@@ -43,8 +43,6 @@ if (RS_COVERAGE)
 
 	target_link_libraries(rapidstring_test
 		PRIVATE
-			-fprofile-arcs
-			-ftest-coverage
 			-lgcov
 	)
 endif()
