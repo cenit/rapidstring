@@ -13,6 +13,9 @@ matrix:
             - g++-7
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && RS_COVERAGE=1"
+      after_success:
+        - coveralls  -b build -r ./ -i include/rapidstring.h --gcov-options
+	  "\-lp"
 
     - os: linux
       compiler: clang
@@ -36,12 +39,6 @@ before_install:
 script:
 - make
 - ./test/rapidstring_test
-
-after_success:
-- if [[ $CC == gcc-7 ]]; then
-  cd ..;
-  coveralls  -b build -r ./ -i include/rapidstring.h --gcov-options "\-lp";
-  fi
 
 env:
   matrix:
