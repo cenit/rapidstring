@@ -1,9 +1,10 @@
 image:
   - Visual Studio 2017
 
-configuration:
-  - Debug
-  - Release
+environment:
+  matrix:
+    - configuration: Debug
+    - configuration: Release
 
 build:
   project: C:\Projects\rapidstring\build\rapidstring.sln
