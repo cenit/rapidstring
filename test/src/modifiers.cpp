@@ -52,11 +52,17 @@ TEST_CASE("steal with capacity")
 {
 	constexpr std::uint8_t size{ 100 };
 	constexpr std::uint8_t usable_size{ size - 1 };
+
+	// Filler data to be freed before the buffer is stolen.
+	const std::string first{
+		"The things we love destroy us every time, lad. Remember that."
+	};
+
 	auto buffer = static_cast<char*>(RS_MALLOC(size));
 	std::memset(buffer, 'a', size);
 
 	rapidstring s;
-	rs_init(&s);
+	rs_init_w(&s, first.data());
 
 	rs_steal_n(&s, buffer, size);
 
