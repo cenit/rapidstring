@@ -10,7 +10,7 @@ add_executable(rapidstring_test
 
 # TODO: some test for ansi compliance
 
-set_property(TARGET rapidstring_test PROPERTY CXX_STANDARD 11)
+target_compile_features(rapidstring_test PRIVATE cxx_auto_type cxx_constexpr)
 target_compile_warnings(rapidstring_test)
 target_include_directories(rapidstring_test
 	PRIVATE
