@@ -11,27 +11,27 @@
  *       TABLE OF CONTENTS
  *
  * 1. STRUCTURES & MACROS
- * - Declarations:	line 77
+ * - Declarations:	line 81
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 288
- * - Defintions:	line 769
+ * - Declarations:	line 316
+ * - Defintions:	line 958
  *
  * 3. ASSIGNMENT
- * - Declarations:	line 354
- * - Defintions:	line 815
+ * - Declarations:	line 407
+ * - Defintions:	line 1004
  *
  * 4. CAPACITY
- * - Declarations:	line 449
- * - Defintions:	line 881
+ * - Declarations:	line 530
+ * - Defintions:	line 1070
  *
  * 5. MODIFIERS
- * - Declarations:	line 528
- * - Defintions:	line 950
+ * - Declarations:	line 645
+ * - Defintions:	line 1139
  *
  * 6. HEAP OPERATIONS
- * - Declarations:	line 695
- * - Defintions:	line 1094
+ * - Declarations:	line 872
+ * - Defintions:	line 1290
  */
 
 /**
