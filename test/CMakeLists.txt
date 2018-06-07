@@ -1,10 +1,11 @@
 project(rapidstring_test LANGUAGES CXX)
 add_executable(rapidstring_test
-	src/access.cpp
-	src/assign.cpp
-	src/append.cpp
+	src/capacity.cpp
+	src/concat.cpp
 	src/construct.cpp
+	src/copy.cpp
 	src/main.cpp
+	src/modifiers.cpp
 )
 
 # TODO: some test for ansi compliance

@@ -60,7 +60,11 @@
  *
  * @todo int return values with errno for malloc failure.
  *
- * @todo Add coveralls.
+ * @todo Var args for cat functions.
+ *
+ * @todo Fail on warning for doxygen.
+ *
+ * @todo Add benchmark compilation to CI.
  */
 
 #include <assert.h> /* assert() */
@@ -131,7 +135,14 @@
 #endif
 
 #ifdef RS_NOINLINE
-  #define RS_API static
+  /* GCC version 3.1 required for the no inline attribute. */
+  #if RS_GCC_VERION > 30100
+    #define RS_API static __attribute__((noinline))
+  #elif defined(_MSC_VER)
+    #define RS_API static __declspec(noinline)
+  #else
+    #define RS_API static
+  #endif
 /* GCC version 3.1 required for the always inline attribute. */
 #elif RS_GCC_VERION > 30100
   #define RS_API static __inline__ __attribute__((always_inline))
@@ -651,7 +662,7 @@ RS_API char *rs_data(rapidstring *s);
 RS_API const char *rs_data_c(const rapidstring *s);
 
 /**
- * @brief Appends characters to a stack string.
+ * @brief Concatenates characters to a stack string.
  *
  * The input length must be smaller or equal to the remaining capacity of @s.
  * If it is not, the behavior is undefined. If this is inconvenient for your
@@ -660,7 +671,7 @@ RS_API const char *rs_data_c(const rapidstring *s);
  * Identicle to `rs_stack_cat_n(s, input, strlen(input))`.
  *
  * @param[in,out] s An initialized stack string.
- * @param[in] input The input to append.
+ * @param[in] input The input to concatenate.
  *
  * @complexity Linear in the length of @input.
  *
@@ -669,14 +680,14 @@ RS_API const char *rs_data_c(const rapidstring *s);
 RS_API void rs_stack_cat(rapidstring *s, const char *input);
 
 /**
- * @brief Appends characters to a stack string.
+ * @brief Concatenates characters to a stack string.
  *
  * The input length must be smaller or equal to the remaining capacity of @s.
  * If it is not, the behavior is undefined. If this is inconvenient for your
  * usage, use rs_cat().
  *
  * @param[in,out] s An initialized stack string.
- * @param[in] input The input to append.
+ * @param[in] input The input to concatenate.
  * @param[in] n The length of the input.
  *
  * @complexity Linear in @n.
@@ -686,7 +697,7 @@ RS_API void rs_stack_cat(rapidstring *s, const char *input);
 RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * @brief Appends characters to a heap string.
+ * @brief Concatenates characters to a heap string.
  *
  * The input length must be smaller or equal to the remaining capacity of @s.
  * If it is not, the behavior is undefined. If this is inconvenient for your
@@ -695,7 +706,7 @@ RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n);
  * Identicle to `rs_heap_cat_n(s, input, strlen(input))`.
  *
  * @param[in,out] s An initialized heap string.
- * @param[in] input The input to append.
+ * @param[in] input The input to concatenate.
  *
  * @complexity Linear in the length of @input.
  *
@@ -704,14 +715,14 @@ RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n);
 RS_API void rs_heap_cat(rapidstring *s, const char *input);
 
 /**
- * @brief Appends characters to a heap string.
+ * @brief Concatenates characters to a heap string.
  *
  * The input length must be smaller or equal to the remaining capacity of @s.
  * If it is not, the behavior is undefined. If this is inconvenient for your
  * usage, use rs_cat().
  *
  * @param[in,out] s An initialized heap string.
- * @param[in] input The input to append.
+ * @param[in] input The input to concatenate.
  * @param[in] n The length of @input.
  *
  * @complexity Linear in @n.
@@ -721,12 +732,12 @@ RS_API void rs_heap_cat(rapidstring *s, const char *input);
 RS_API void rs_heap_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * @brief Appends characters to a string.
+ * @brief Concatenates characters to a string.
  *
  * Identicle to `rs_cat_n(s, input, strlen(input))`.
  *
  * @param[in,out] s An initialized  string.
- * @param[in] input The input to append.
+ * @param[in] input The input to concatenate.
  *
  * @complexity Linear in the length of @input.
  *
@@ -735,10 +746,10 @@ RS_API void rs_heap_cat_n(rapidstring *s, const char *input, size_t n);
 RS_API void rs_cat(rapidstring *s, const char *input);
 
 /**
- * @brief Appends characters to a string.
+ * @brief Concatenates characters to a string.
  *
  * @param[in,out] s An initialized  string.
- * @param[in] input The input to append.
+ * @param[in] input The input to concatenate.
  * @param[in] n The length of the input.
  *
  * @complexity Linear in @n.
@@ -748,10 +759,10 @@ RS_API void rs_cat(rapidstring *s, const char *input);
 RS_API void rs_cat_n(rapidstring *s, const char *input, size_t n);
 
 /**
- * @brief Appends a string to another string.
+ * @brief Concatenates a string to another string.
  *
  * @param[in,out] s An initialized string.
- * @param[in] input The input to append.
+ * @param[in] input The input to concatenate.
  *
  * @complexity Linear in the length of @input.
  *
@@ -1199,11 +1210,13 @@ RS_API void rs_steal(rapidstring *s, char *buffer)
 {
 	RS_ASSERT_PTR(buffer);
 
-	rs_steal_n(s, buffer, strlen(buffer));
+	rs_steal_n(s, buffer, strlen(buffer) + 1);
 }
 
 RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t n)
 {
+	size_t sz;
+
 	/* Manual free as using rs_free creates an additional branch. */
 	if (RS_HEAP_LIKELY(rs_is_heap(s)))
 		RS_FREE(s->heap.buffer);
@@ -1211,14 +1224,17 @@ RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t n)
 		s->heap.flag = RS_HEAP_FLAG;
 
 	s->heap.buffer = buffer;
-	s->heap.size = n;
-	s->heap.capacity = n;
+
+	sz = n - 1;
+
+	s->heap.capacity = sz;
+	rs_heap_resize(s, sz);
 }
 
 RS_API void rs_stack_resize(rapidstring *s, size_t n)
 {
 	assert(RS_STACK_CAPACITY >= n);
-	
+
 	s->stack.buffer[n] = '\0';
 	s->stack.left = (unsigned char)(RS_STACK_CAPACITY - n);
 }
@@ -1238,7 +1254,7 @@ RS_API void rs_resize(rapidstring *s, size_t n)
 		if (RS_HEAP_LIKELY(rs_is_heap(s)))
 			rs_reserve(s, n);
 		else
-			rs_heap_init(s, n);
+			rs_stack_to_heap(s, n);
 
 		rs_heap_resize(s, n);
 	} else {
@@ -1248,12 +1264,12 @@ RS_API void rs_resize(rapidstring *s, size_t n)
 
 RS_API void rs_resize_w(rapidstring *s, size_t n, char c)
 {
-	size_t sz = rs_len(s);
+	const size_t sz = rs_len(s);
 
 	rs_resize(s, n);
 
 	if (RS_LIKELY(sz < n)) {
-		size_t diff = n - sz;
+		const size_t diff = n - sz;
 		memset(rs_data(s) + sz, c, diff);
 	}
 }

@@ -19,7 +19,7 @@ TEST_CASE("Stack construction")
 
 	rapidstring s3;
 	rs_init_w(&s3, second.data());
-	
+
 	CMP_STR(&s3, second);
 
 	rs_free(&s1);
@@ -33,7 +33,7 @@ TEST_CASE("Heap construction")
 
 	rapidstring s;
 	rs_init_w(&s, first.data());
-	
+
 	CMP_STR(&s, first);
 
 	rs_free(&s);
@@ -41,7 +41,7 @@ TEST_CASE("Heap construction")
 
 TEST_CASE("Capacity construction")
 {
-	constexpr const std::size_t cap{ 100 };
+	constexpr std::size_t cap{ 100 };
 	rapidstring s;
 	rs_init_w_cap(&s, cap);
 

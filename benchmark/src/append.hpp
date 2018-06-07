@@ -29,13 +29,13 @@ inline void rs_cat(benchmark::State& state)
 	}
 }
 
-inline void rs_reserve_append(benchmark::State& state) 
+inline void rs_reserve_append(benchmark::State& state)
 {
 	for (auto _ : state) {
 		rapidstring s;
 		rs_init_w_cap(&s, CAT_STR_LEN * CAT_COUNT);
 
-		/* 
+		/*
 		 * The heap concatenation function may be used as we are sure
 		 * the string will always be on the heap AND we are sure we have
 		 * enough capacity.

@@ -6,7 +6,7 @@
 #include <cstddef>
 #include <string>
 
-constexpr const std::size_t resize_count{ 1000 };
+constexpr std::size_t resize_count{ 1000 };
 
 inline void rs_resize(benchmark::State& state)
 {
