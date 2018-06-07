@@ -90,13 +90,16 @@ Data Structures</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that stores the stack data.  <a href="structrs__stack.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionrapidstring.html">rapidstring</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union that stores a rapidstring.  <a href="unionrapidstring.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Union that stores a <a class="el" href="unionrapidstring.html" title="Union that stores a rapidstring. ">rapidstring</a>.  <a href="unionrapidstring.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a0495945a8b4d277ce859668172a5a920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a0495945a8b4d277ce859668172a5a920">RS_VERSION_MAJOR</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a0495945a8b4d277ce859668172a5a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad868e846186b15629b1a1e47b7e1bb09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09">RS_HEAP_FLAG</a>&#160;&#160;&#160;(0xFF)</td></tr>
+<tr class="memdesc:ad868e846186b15629b1a1e47b7e1bb09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Heap flag of a <a class="el" href="unionrapidstring.html" title="Union that stores a rapidstring. ">rapidstring</a>.  <a href="#ad868e846186b15629b1a1e47b7e1bb09">More...</a><br /></td></tr>
+<tr class="separator:ad868e846186b15629b1a1e47b7e1bb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab93be554f576e050c48d50986ade7dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd">RS_STACK_CAPACITY</a>&#160;&#160;&#160;(sizeof(<a class="el" href="structrs__heap.html">rs_heap</a>) - 1)</td></tr>
 <tr class="memdesc:aab93be554f576e050c48d50986ade7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Capacity of a stack string.  <a href="#aab93be554f576e050c48d50986ade7dd">More...</a><br /></td></tr>
 <tr class="separator:aab93be554f576e050c48d50986ade7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,25 +182,25 @@ Functions</h2></td></tr>
 <tr class="memdesc:a2a8b393470e8a187eb0cb33daec1ba99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the buffer.  <a href="#a2a8b393470e8a187eb0cb33daec1ba99">More...</a><br /></td></tr>
 <tr class="separator:a2a8b393470e8a187eb0cb33daec1ba99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e03de3338b44aba2c8197048909ed05"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a9e03de3338b44aba2c8197048909ed05">rs_stack_cat</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
-<tr class="memdesc:a9e03de3338b44aba2c8197048909ed05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a stack string.  <a href="#a9e03de3338b44aba2c8197048909ed05">More...</a><br /></td></tr>
+<tr class="memdesc:a9e03de3338b44aba2c8197048909ed05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a stack string.  <a href="#a9e03de3338b44aba2c8197048909ed05">More...</a><br /></td></tr>
 <tr class="separator:a9e03de3338b44aba2c8197048909ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f75c1238c47dd464de855fe42feb6cb"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a8f75c1238c47dd464de855fe42feb6cb">rs_stack_cat_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
-<tr class="memdesc:a8f75c1238c47dd464de855fe42feb6cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a stack string.  <a href="#a8f75c1238c47dd464de855fe42feb6cb">More...</a><br /></td></tr>
+<tr class="memdesc:a8f75c1238c47dd464de855fe42feb6cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a stack string.  <a href="#a8f75c1238c47dd464de855fe42feb6cb">More...</a><br /></td></tr>
 <tr class="separator:a8f75c1238c47dd464de855fe42feb6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc2ac543ace715306e6a2ad80527cf5"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#aabc2ac543ace715306e6a2ad80527cf5">rs_heap_cat</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
-<tr class="memdesc:aabc2ac543ace715306e6a2ad80527cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a heap string.  <a href="#aabc2ac543ace715306e6a2ad80527cf5">More...</a><br /></td></tr>
+<tr class="memdesc:aabc2ac543ace715306e6a2ad80527cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a heap string.  <a href="#aabc2ac543ace715306e6a2ad80527cf5">More...</a><br /></td></tr>
 <tr class="separator:aabc2ac543ace715306e6a2ad80527cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0ee60fdd29b623d6479d157b49a2216"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac0ee60fdd29b623d6479d157b49a2216">rs_heap_cat_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
-<tr class="memdesc:ac0ee60fdd29b623d6479d157b49a2216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a heap string.  <a href="#ac0ee60fdd29b623d6479d157b49a2216">More...</a><br /></td></tr>
+<tr class="memdesc:ac0ee60fdd29b623d6479d157b49a2216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a heap string.  <a href="#ac0ee60fdd29b623d6479d157b49a2216">More...</a><br /></td></tr>
 <tr class="separator:ac0ee60fdd29b623d6479d157b49a2216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1169844bc281a312bfa7eda471fd01e"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e">rs_cat</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
-<tr class="memdesc:ae1169844bc281a312bfa7eda471fd01e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a string.  <a href="#ae1169844bc281a312bfa7eda471fd01e">More...</a><br /></td></tr>
+<tr class="memdesc:ae1169844bc281a312bfa7eda471fd01e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a string.  <a href="#ae1169844bc281a312bfa7eda471fd01e">More...</a><br /></td></tr>
 <tr class="separator:ae1169844bc281a312bfa7eda471fd01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f21b87365cabcf251f484ce7725767d"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#a1f21b87365cabcf251f484ce7725767d">rs_cat_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
-<tr class="memdesc:a1f21b87365cabcf251f484ce7725767d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends characters to a string.  <a href="#a1f21b87365cabcf251f484ce7725767d">More...</a><br /></td></tr>
+<tr class="memdesc:a1f21b87365cabcf251f484ce7725767d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a string.  <a href="#a1f21b87365cabcf251f484ce7725767d">More...</a><br /></td></tr>
 <tr class="separator:a1f21b87365cabcf251f484ce7725767d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe58107d229b34534f7e38c9bd211fbf"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#afe58107d229b34534f7e38c9bd211fbf">rs_cat_rs</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const <a class="el" href="unionrapidstring.html">rapidstring</a> *input)</td></tr>
-<tr class="memdesc:afe58107d229b34534f7e38c9bd211fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends a string to another string.  <a href="#afe58107d229b34534f7e38c9bd211fbf">More...</a><br /></td></tr>
+<tr class="memdesc:afe58107d229b34534f7e38c9bd211fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates a string to another string.  <a href="#afe58107d229b34534f7e38c9bd211fbf">More...</a><br /></td></tr>
 <tr class="separator:afe58107d229b34534f7e38c9bd211fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac874aba4870a2f06aef1193c5b460e9a"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rapidstring_8h.html#ac874aba4870a2f06aef1193c5b460e9a">rs_steal</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, char *buffer)</td></tr>
 <tr class="memdesc:ac874aba4870a2f06aef1193c5b460e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steals a buffer allocated on the heap.  <a href="#ac874aba4870a2f06aef1193c5b460e9a">More...</a><br /></td></tr>
@@ -256,7 +259,25 @@ Functions</h2></td></tr>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Make sure all std::string methods are added (if applicable).</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Create rs_search, rs_erase, rs_substring.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>int return values with errno for malloc failure.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Add coveralls. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Var args for cat functions.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Add benchmark compilation to CI. </dd></dl>
+
+</div>
+</div>
+<a id="ad868e846186b15629b1a1e47b7e1bb09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad868e846186b15629b1a1e47b7e1bb09">&#9670;&nbsp;</a></span>RS_HEAP_FLAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RS_HEAP_FLAG&#160;&#160;&#160;(0xFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Heap flag of a <a class="el" href="unionrapidstring.html" title="Union that stores a rapidstring. ">rapidstring</a>. </p>
+<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
 </div>
@@ -308,9 +329,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));           \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a>(input));         \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_af4084b46c8635801205207de1d36a8bf"><div class="ttname"><a href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a></div><div class="ttdeci">RS_API int rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1101</div></div>
-<div class="ttc" id="rapidstring_8h_html_a7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1064</div></div>
-<div class="ttc" id="rapidstring_8h_html_a22be1338ac718365a274735e19815570"><div class="ttname"><a href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1057</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));           \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a>(input));         \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_af4084b46c8635801205207de1d36a8bf"><div class="ttname"><a href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a></div><div class="ttdeci">RS_API int rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1153</div></div>
+<div class="ttc" id="rapidstring_8h_html_a7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1116</div></div>
+<div class="ttc" id="rapidstring_8h_html_a22be1338ac718365a274735e19815570"><div class="ttname"><a href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1109</div></div>
 </div><!-- fragment -->
 <p>Pass the string data and size to a function. </p>
 <p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. Intended for internal use.</p>
@@ -350,7 +371,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -389,7 +410,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -435,8 +456,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -468,8 +488,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initializes a string with an initial capacity. </p>
-<p>An allocation will always occur, even if <br />
- is smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>.</p>
+<p>An allocation will always occur, even if <em>n</em> is smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
@@ -477,8 +496,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -513,11 +531,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize .</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize <em>s</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -588,7 +606,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -631,12 +649,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of <em>input</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -677,7 +694,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -720,12 +737,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of <em>input</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -766,7 +782,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -809,12 +825,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to the string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of <em>input</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -850,11 +865,11 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize .</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input string used to initialize <em>s</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -883,7 +898,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is empty, <code>0</code> otherwise.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -912,7 +927,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The stack string length.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -941,7 +956,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The heap string length.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -970,7 +985,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The string length.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -999,7 +1014,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The string capacity.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1038,8 +1053,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1067,7 +1081,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1096,7 +1110,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is on the heap, <code>0</code> otherwise.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1125,7 +1139,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>1</code> if the string is on the stack, <code>0</code> otherwise.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1154,7 +1168,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The buffer.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1183,7 +1197,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The buffer.</dd></dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1214,17 +1228,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Appends characters to a stack string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of . If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>Concatenates characters to a stack string. </p>
+<p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
 <p>Identicle to <code>rs_stack_cat_n(s, input, strlen(input))</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1261,18 +1275,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Appends characters to a stack string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of . If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>Concatenates characters to a stack string. </p>
+<p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of <em>input</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1303,17 +1316,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Appends characters to a heap string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of . If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>Concatenates characters to a heap string. </p>
+<p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
 <p>Identicle to <code>rs_heap_cat_n(s, input, strlen(input))</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1350,18 +1363,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Appends characters to a heap string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of . If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Appends characters to a string. ">rs_cat()</a>.</p>
+<p>Concatenates characters to a heap string. </p>
+<p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of .</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of <em>input</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1392,16 +1404,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Appends characters to a string. </p>
+<p>Concatenates characters to a string. </p>
 <p>Identicle to <code>rs_cat_n(s, input, strlen(input))</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1438,17 +1450,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Appends characters to a string. </p>
+<p>Concatenates characters to a string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of the input.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The length of <em>input</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1479,15 +1490,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Appends a string to another string. </p>
+<p>Concatenates a string to another string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to append.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1528,7 +1539,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in the length of .</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>buffer</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1571,11 +1582,11 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cap</td><td>The capacity of the buffer.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cap</td><td>The capacity of <em>buffer</em>.</td></tr>
   </table>
   </dd>
 </dl>
-<p>Constant.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1615,8 +1626,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1656,8 +1666,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1696,8 +1705,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1743,8 +1751,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Linear in <br />
-.</p>
+<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -1988,7 +1995,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 30 2018 15:39:16 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 7 2018 16:16:14 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

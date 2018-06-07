@@ -21,6 +21,7 @@ var searchData=
   ['rs_5fheap_5fcat_5fn',['rs_heap_cat_n',['../rapidstring_8h.html#ac0ee60fdd29b623d6479d157b49a2216',1,'rapidstring.h']]],
   ['rs_5fheap_5fcpy',['rs_heap_cpy',['../rapidstring_8h.html#a5196aa53485071b3f38c5bd7e6ba36fa',1,'rapidstring.h']]],
   ['rs_5fheap_5fcpy_5fn',['rs_heap_cpy_n',['../rapidstring_8h.html#a3ab150e9c7dee1d8148b8bacd597af5c',1,'rapidstring.h']]],
+  ['rs_5fheap_5fflag',['RS_HEAP_FLAG',['../rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09',1,'rapidstring.h']]],
   ['rs_5fheap_5finit',['rs_heap_init',['../rapidstring_8h.html#a29fa9c48fd7ec11b3f49900eaf864aff',1,'rapidstring.h']]],
   ['rs_5fheap_5finit_5fg',['rs_heap_init_g',['../rapidstring_8h.html#ad3ce381460faf265904071a89ebdf51c',1,'rapidstring.h']]],
   ['rs_5fheap_5flen',['rs_heap_len',['../rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b',1,'rapidstring.h']]],

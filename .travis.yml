@@ -31,7 +31,7 @@ before_install:
 - git submodule update --init --recursive
 - mkdir build
 - cd build
-- cmake .. -DRS_COVERAGE=$RS_COVERAGE
+- cmake .. -DRS_COVERAGE=$RS_COVERAGE -Werror=dev
 
 script:
 - make

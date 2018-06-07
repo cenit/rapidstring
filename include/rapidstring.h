@@ -62,9 +62,9 @@
  *
  * @todo Var args for cat functions.
  *
- * @todo Fail on warning for doxygen.
- *
  * @todo Add benchmark compilation to CI.
+ *
+ * @todo Generate man pages and install them.
  */
 
 #include <assert.h> /* assert() */
@@ -97,6 +97,11 @@
   #define RS_FREE free
 #endif
 
+/**
+ * @brief Heap flag of a #rapidstring.
+ *
+ * @since 1.0.0
+ */
 #define RS_HEAP_FLAG (0xFF)
 
 #define RS_ASSERT_PTR(ptr) do { assert(ptr != NULL); } while (0)
@@ -207,7 +212,7 @@ typedef struct {
 	/**
 	 * @brief Alignnment of a heap string.
 	 *
-	 * Ensures @flag and @left are stored in the same location.
+	 * Ensures @a flag and @a left are stored in the same location.
 	 */
 	unsigned char align[RS_ALIGNMENT - 1];
 	/**
@@ -251,7 +256,7 @@ typedef struct {
 } rs_stack;
 
 /**
- * @brief Union that stores a rapidstring.
+ * @brief Union that stores a #rapidstring.
  *
  * All API methods are prefixed with `rs_heap_x()` or `rs_stack_x()`. These
  * methods are to be used only when a string is guarenteed to be in either
@@ -264,11 +269,11 @@ typedef struct {
  */
 typedef union {
 	/**
-	 * @brief Stack state of the rapidstring union.
+	 * @brief Stack state of the #rapidstring union.
 	 */
 	rs_stack stack;
 	/**
-	 * @brief Heap state of the rapidstring union.
+	 * @brief Heap state of the #rapidstring union.
 	 */
 	rs_heap heap;
 } rapidstring;
@@ -326,7 +331,7 @@ RS_API void rs_init(rapidstring *s);
  * @param[out] s A string to initialize.
  * @param[in] input The input used to initialize the string.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -339,7 +344,7 @@ RS_API void rs_init_w(rapidstring *s, const char *input);
  * @param[in] input The input used to initialize the string.
  * @param[in] n The length of the input.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -348,13 +353,13 @@ RS_API void rs_init_w_n(rapidstring *s, const char *input, size_t n);
 /**
  * @brief Initializes a string with an initial capacity.
  *
- * An allocation will always occur, even if @n is smaller or equal to
+ * An allocation will always occur, even if @a n is smaller or equal to
  * #RS_STACK_CAPACITY.
  *
  * @param[out] s A string to initialize.
  * @param[in] n The new initial capacity of the string.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -364,9 +369,9 @@ RS_API void rs_init_w_cap(rapidstring *s, size_t n);
  * @brief Initializes a string with another string.
  *
  * @param[out] s A string to initialize.
- * @param[in] input The input string used to initialize @s.
+ * @param[in] input The input string used to initialize @a s.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -411,7 +416,7 @@ RS_API void rs_free(rapidstring *s);
  * @param[in,out] s An intialized stack string.
  * @param[in] input the input to assign to the stack string.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -426,9 +431,9 @@ RS_API void rs_stack_cpy(rapidstring *s, const char *input);
  *
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to assign to the stack string.
- * @param[in] n The length of the input.
+ * @param[in] n The length of @a input.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -446,7 +451,7 @@ RS_API void rs_stack_cpy_n(rapidstring *s, const char *input, size_t n);
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to assign to the heap string.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -461,9 +466,9 @@ RS_API void rs_heap_cpy(rapidstring *s, const char *input);
  *
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to assign to the heap string.
- * @param[in] n The length of the input.
+ * @param[in] n The length of @a input.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -479,7 +484,7 @@ RS_API void rs_heap_cpy_n(rapidstring *s, const char *input, size_t n);
  * @param[in,out] s An initialized string.
  * @param[in] input The input to assign to the string.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -492,9 +497,9 @@ RS_API void rs_cpy(rapidstring *s, const char *input);
  *
  * @param[in,out] s An initialized string.
  * @param[in] input The input to assign to the string.
- * @param[in] n The length of the input.
+ * @param[in] n The length of @a input.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -506,9 +511,9 @@ RS_API void rs_cpy_n(rapidstring *s, const char *input, size_t n);
  * Overwrites any existing data.
  *
  * @param[in,out] s An initialized string.
- * @param[in] input The input string used to initialize @s.
+ * @param[in] input The input string used to initialize @a s.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -588,7 +593,7 @@ RS_API size_t rs_capacity(const rapidstring *s);
  * @param[in,out] s An initialized string.
  * @param[in] n The capacity to reserve.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -664,7 +669,7 @@ RS_API const char *rs_data_c(const rapidstring *s);
 /**
  * @brief Concatenates characters to a stack string.
  *
- * The input length must be smaller or equal to the remaining capacity of @s.
+ * The input length must be smaller or equal to the remaining capacity of @a s.
  * If it is not, the behavior is undefined. If this is inconvenient for your
  * usage, use rs_cat().
  *
@@ -673,7 +678,7 @@ RS_API const char *rs_data_c(const rapidstring *s);
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to concatenate.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -682,15 +687,15 @@ RS_API void rs_stack_cat(rapidstring *s, const char *input);
 /**
  * @brief Concatenates characters to a stack string.
  *
- * The input length must be smaller or equal to the remaining capacity of @s.
+ * The input length must be smaller or equal to the remaining capacity of @a s.
  * If it is not, the behavior is undefined. If this is inconvenient for your
  * usage, use rs_cat().
  *
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to concatenate.
- * @param[in] n The length of the input.
+ * @param[in] n The length of @a input.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -699,7 +704,7 @@ RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n);
 /**
  * @brief Concatenates characters to a heap string.
  *
- * The input length must be smaller or equal to the remaining capacity of @s.
+ * The input length must be smaller or equal to the remaining capacity of @a s.
  * If it is not, the behavior is undefined. If this is inconvenient for your
  * usage, use rs_cat().
  *
@@ -708,7 +713,7 @@ RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n);
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to concatenate.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -717,15 +722,15 @@ RS_API void rs_heap_cat(rapidstring *s, const char *input);
 /**
  * @brief Concatenates characters to a heap string.
  *
- * The input length must be smaller or equal to the remaining capacity of @s.
+ * The input length must be smaller or equal to the remaining capacity of @a s.
  * If it is not, the behavior is undefined. If this is inconvenient for your
  * usage, use rs_cat().
  *
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to concatenate.
- * @param[in] n The length of @input.
+ * @param[in] n The length of @a input.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -739,7 +744,7 @@ RS_API void rs_heap_cat_n(rapidstring *s, const char *input, size_t n);
  * @param[in,out] s An initialized  string.
  * @param[in] input The input to concatenate.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -750,9 +755,9 @@ RS_API void rs_cat(rapidstring *s, const char *input);
  *
  * @param[in,out] s An initialized  string.
  * @param[in] input The input to concatenate.
- * @param[in] n The length of the input.
+ * @param[in] n The length of @a input.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -764,7 +769,7 @@ RS_API void rs_cat_n(rapidstring *s, const char *input, size_t n);
  * @param[in,out] s An initialized string.
  * @param[in] input The input to concatenate.
  *
- * @complexity Linear in the length of @input.
+ * @complexity Linear in the length of @a input.
  *
  * @since 1.0.0
  */
@@ -781,7 +786,7 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
  *
- * @complexity Linear in the length of @buffer.
+ * @complexity Linear in the length of @a buffer.
  *
  * @since 1.0.0
  */
@@ -795,7 +800,7 @@ RS_API void rs_steal(rapidstring *s, char *buffer);
  *
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
- * @param[in] cap The capacity of the buffer.
+ * @param[in] cap The capacity of @a buffer.
  *
  * @complexity Constant.
  *
@@ -811,7 +816,7 @@ RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t cap);
  * @param[in,out] s An initialized stack string.
  * @param[in] n The new size.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -825,7 +830,7 @@ RS_API void rs_stack_resize(rapidstring *s, size_t n);
  * @param[in,out] s An initialized heap string.
  * @param[in] n The new size.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -837,7 +842,7 @@ RS_API void rs_heap_resize(rapidstring *s, size_t n);
  * @param[in,out] s An initialized string.
  * @param[in] n The new size.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
@@ -850,7 +855,7 @@ RS_API void rs_resize(rapidstring *s, size_t n);
  * @param[in] n The new size.
  * @param[in] c The filler character.
  *
- * @complexity Linear in @n.
+ * @complexity Linear in @a n.
  *
  * @since 1.0.0
  */
