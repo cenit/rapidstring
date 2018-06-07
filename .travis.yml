@@ -14,7 +14,7 @@ matrix:
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && RS_COVERAGE=1"
       after_success:
-        - coveralls  -b build -r ./ -i include/rapidstring.h --gcov-options "\-lp"
+        - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
 
     - os: linux
       compiler: clang
