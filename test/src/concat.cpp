@@ -7,7 +7,7 @@ TEST_CASE("Unsafe stack concatenation")
 {
 	const std::string first{ "El's " };
 	const std::string second{ " bitchin'." };
-	const auto sum{ first + second };
+	const std::string sum{ first + second };
 
 	rapidstring s;
 	rs_init(&s);
@@ -27,7 +27,7 @@ TEST_CASE("Stack concatenation")
 {
 	const std::string first{ "Friends don't" };
 	const std::string second{ " lie." };
-	const auto sum{ first + second };
+	const std::string sum{ first + second };
 
 	rapidstring s;
 	rs_init(&s);
@@ -72,7 +72,7 @@ TEST_CASE("Unsafe heap concatenation")
 	const std::string second{
 		"Why are you keeping this curiosity door locked?"
 	};
-	const auto sum{ first + second };
+	const std::string sum{ first + second };
 
 	rapidstring s;
 	rs_init_w_cap(&s, sum.size());
@@ -96,7 +96,7 @@ TEST_CASE("Heap concatenation")
 	const std::string second{
 		"squeezed your tiny bladder with her mind."
 	};
-	const auto sum{ first + second };
+	const std::string sum{ first + second };
 
 	rapidstring s;
 	rs_init(&s);
@@ -116,7 +116,7 @@ TEST_CASE("String concatenation")
 {
 	const std::string first{ "If anyone asks where I am, " };
 	const std::string second{ "I've left the country." };
-	const auto sum{ first + second };
+	const std::string sum{ first + second };
 
 	rapidstring s1;
 	rs_init_w(&s1, first.data());
