@@ -1,16 +1,12 @@
 image:
   - Visual Studio 2017
 
-environment:
-  matrix:
-    - configuration: Debug
-    - configuration: Release
+configuration:
+  - Debug
+  - Release
 
 build:
   project: C:\Projects\rapidstring\build\rapidstring.sln
-
-environment:
-  additional_flags: "/permissive- /std:c++latest /utf-8"
 
 install:
   - git submodule update --init --recursive
