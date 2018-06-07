@@ -15,9 +15,3 @@ before_build:
   - mkdir build
   - cd build
   - cmake .. -G "Visual Studio 15 2017 Win64" -Werror=dev
-
-for:
-  - configuration: Debug
-    test_script:
-      - cd C:\Projects\rapidstring\build\test\Debug
-      - .\rapidstring_test.exe
