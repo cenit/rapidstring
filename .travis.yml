@@ -1,31 +1,43 @@
 sudo: true
 language: cpp
 
+# TODO: compiler: X needed?
 matrix:
   include:
     - os: linux
       compiler: gcc
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
-            - g++-7
+            - g++
       env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && RS_COVERAGE=1"
+        - MATRIX_EVAL="CC=gcc && CXX=g++ && COVERAGE=1 && TYPE=Debug"
       after_success:
         - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
+
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          packages:
+            - g++
+      env:
+        - MATRIX_EVAL="CC=gcc && CXX=g++ && TYPE=Release"
 
     - os: linux
       compiler: clang
       addons:
         apt:
-          sources:
-            - llvm-toolchain-trusty-5.0
           packages:
-            - clang-5.0
+            - clang
       env:
-        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0 && RS_COVERAGE=0"
+        - MATRIX_EVAL="CC=clang && CXX=clang++ && TYPE=Release"
+
+    - os: osx
+      osx_image: xcode8
+      compiler: clang
+      env:
+        - MATRIX_EVAL="CC=clang && CXX=clang++ && TYPE=Release"
 
 before_install:
 - eval "${MATRIX_EVAL}"
@@ -33,7 +45,7 @@ before_install:
 - git submodule update --init --recursive
 - mkdir build
 - cd build
-- cmake .. -DRS_COVERAGE=$RS_COVERAGE -Werror=dev
+- cmake .. -Werror=dev -DRS_COVERAGE=$COVERAGE -DCMAKE_BUILD_TYPE=$TYPE
 
 script:
 - make
