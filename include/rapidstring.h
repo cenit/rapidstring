@@ -42,6 +42,10 @@
 /**
  * @mainpage rapidstring
  * The documentation of the rapidstring library.
+ *
+ * @copyright Copyright © 2018 John Boyer.
+ * @author <a href="https://github.com/boyerjohn">John Boyer</a>
+ * @version 0.1.0
  */
 
 #ifndef RAPIDSTRING_H_962AB5F800398A34
