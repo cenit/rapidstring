@@ -19,19 +19,19 @@
  *
  * 3. COPYING
  * - Declarations:	line 476
- * - Defintions:	line 1110
+ * - Defintions:	line 1112
  *
  * 4. CAPACITY
  * - Declarations:	line 607
- * - Defintions:	line 1177
+ * - Defintions:	line 1179
  *
  * 5. MODIFIERS
  * - Declarations:	line 728
- * - Defintions:	line 1242
+ * - Defintions:	line 1244
  *
  * 6. HEAP OPERATIONS
  * - Declarations:	line 969
- * - Defintions:	line 1391
+ * - Defintions:	line 1394
  */
 
 /**
@@ -1071,6 +1071,8 @@ RS_API void rs_init(rapidstring *s)
 
 RS_API void rs_init_w(rapidstring *s, const char *input)
 {
+	assert(input != NULL);
+
 	rs_init_w_n(s, input, strlen(input));
 }
 
@@ -1331,6 +1333,7 @@ RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t n)
 
 	s->heap.buffer = buffer;
 
+	/* The capacity and size do not include the null terminator. */
 	sz = n - 1;
 
 	s->heap.capacity = sz;
