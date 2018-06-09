@@ -2,6 +2,7 @@ sudo: true
 language: cpp
 
 # TODO: compiler: X needed?
+# TODO: specific versions for gcc and clang
 matrix:
   include:
     - os: linux

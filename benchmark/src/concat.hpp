@@ -29,7 +29,7 @@ inline void rs_cat(benchmark::State& state)
 	}
 }
 
-inline void rs_reserve_append(benchmark::State& state)
+inline void rs_reserve_concat(benchmark::State& state)
 {
 	for (auto _ : state) {
 		rapidstring s;
@@ -48,7 +48,7 @@ inline void rs_reserve_append(benchmark::State& state)
 	}
 }
 
-inline void std_reserve_append(benchmark::State& state)
+inline void std_reserve_concat(benchmark::State& state)
 {
 	for (auto _ : state) {
 		std::string s;
@@ -61,7 +61,7 @@ inline void std_reserve_append(benchmark::State& state)
 	}
 }
 
-inline void std_append(benchmark::State& state)
+inline void std_concat(benchmark::State& state)
 {
 	for (auto _ : state) {
 		std::string s;

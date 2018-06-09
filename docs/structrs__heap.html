@@ -66,7 +66,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">rs_heap Struct Reference</div>  </div>
+<div class="title">rs_heap Struct Reference<div class="ingroups"><a class="el" href="group__structures.html">Structures &amp; macros</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -94,6 +94,7 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Struct that stores the heap data. </p>
 <p>Accessing packed data structures incurs a performance penalty, therefore the alignment will be used to allow for a larger stack string.</p>
+<dl class="section warning"><dt>Warning</dt><dd>Intended for internal use.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a34aedcbed9cd7d78b491b631661b2f44"></a>
@@ -109,7 +110,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Buffer of a heap string. </p>
-<p>Allocated using <code>RS_MALLOC</code> or <code>RS_REALLOC</code>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;heap.buffer)</code>. Doing so will avoid the heap flag check. </p>
+<p>Allocated using <a class="el" href="group__structures.html#ga22279156cdc026ab7c46b3d998159924" title="Allocation macro. ">RS_MALLOC()</a> or <a class="el" href="group__structures.html#ga78dc589aac4383a54ea851e9115aec0b" title="Reallocation macro. ">RS_REALLOC()</a>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;heap.buffer)</code>. Doing so will avoid the heap flag check. </p>
 
 </div>
 </div>
@@ -177,7 +178,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Flag of the rapidstring union. </p>
-<p>The following is used to store the state of the union as well as the remaining capacity of the stack string. They may be shared as the capacity of a stack string will always be smaller than <a class="el" href="rapidstring_8h.html#ad868e846186b15629b1a1e47b7e1bb09" title="Heap flag of a rapidstring. ">RS_HEAP_FLAG</a>, which guarentees unambiguity between the two states. </p>
+<p>The following is used to store the state of the union as well as the remaining capacity of the stack string. They may be shared as the capacity of a stack string will always be smaller than <a class="el" href="group__structures.html#gad868e846186b15629b1a1e47b7e1bb09" title="Heap flag of a rapidstring. ">RS_HEAP_FLAG</a>, which guarentees unambiguity between the two states. </p>
 
 </div>
 </div>
@@ -187,7 +188,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 9 2018 09:42:17 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 9 2018 11:38:42 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

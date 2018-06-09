@@ -11,27 +11,27 @@
  *       TABLE OF CONTENTS
  *
  * 1. STRUCTURES & MACROS
- * - Declarations:	line 81
+ * - Declarations:	line 77
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 316
- * - Defintions:	line 958
+ * - Declarations:	line 385
+ * - Defintions:	line 1072
  *
- * 3. ASSIGNMENT
- * - Declarations:	line 407
- * - Defintions:	line 1004
+ * 3. COPYING
+ * - Declarations:	line 484
+ * - Defintions:	line 1118
  *
  * 4. CAPACITY
- * - Declarations:	line 530
- * - Defintions:	line 1070
+ * - Declarations:	line 615
+ * - Defintions:	line 1185
  *
  * 5. MODIFIERS
- * - Declarations:	line 645
- * - Defintions:	line 1139
+ * - Declarations:	line 736
+ * - Defintions:	line 1250
  *
  * 6. HEAP OPERATIONS
- * - Declarations:	line 872
- * - Defintions:	line 1290
+ * - Declarations:	line 977
+ * - Defintions:	line 1399
  */
 
 /**
@@ -42,10 +42,6 @@
 /**
  * @mainpage rapidstring
  * The documentation of the rapidstring library.
- *
- * @copyright Copyright © 2018 John Boyer.
- * @author <a href="https://github.com/boyerjohn">John Boyer</a>
- * @version 0.1.0
  */
 
 #ifndef RAPIDSTRING_H_962AB5F800398A34
@@ -53,8 +49,6 @@
 
 /**
  * @todo Documentation for macros and properly link all references.
- *
- * @todo Make "Intended for internal use." a warning in Doxygen.
  *
  * @todo Make all functions properly link in documentation.
  *
@@ -67,8 +61,6 @@
  * @todo Var args for cat functions.
  *
  * @todo Generate man pages and install them.
- *
- * @todo Create a .clang-format.
  */
 
 #include <assert.h> /* assert() */
@@ -82,105 +74,171 @@
  * ===============================================================
  */
 
+/**
+ * @defgroup structures Structures & macros
+ * Structure and macro definitions.
+ * @{
+ */
+
+/** @brief Major version of the rapidstring library. */
 #define RS_VERSION_MAJOR 0
+
+/** @brief Minor version of the rapidstring library. */
 #define RS_VERSION_MINOR 1
+
+/** @brief Patch version of the rapidstring library. */
 #define RS_VERSION_PATCH 0
 
 #ifndef RS_GROWTH_FACTOR
-  #define RS_GROWTH_FACTOR (2)
+/**
+   * @brief String growth factor macro.
+   *
+   * A string's capacity will be increased by this factor every time it runs out
+   * of space. Redefine this macro depending on your application's needs.
+   *
+   * @since 1.0.0
+   */
+#define RS_GROWTH_FACTOR (2)
 #endif
 
 #ifndef RS_AVERAGE_SIZE
-  #define RS_AVERAGE_SIZE (50)
+/**
+   * @brief Average string size macro.
+   *
+   * This macro is used to help the branch predictor. If you specify that your
+   * application's average string size is `8`, the branches will be optimized
+   * for stack strings. The same would occur for heap strings if a large size
+   * is provided.
+   *
+   * @since 1.0.0
+   */
+#define RS_AVERAGE_SIZE (50)
 #endif
 
 #if !defined(RS_MALLOC) && !defined(RS_REALLOC) && !defined(RS_FREE)
-  #include <stdlib.h>
-  #define RS_MALLOC malloc
-  #define RS_REALLOC realloc
-  #define RS_FREE free
+#include <stdlib.h>
+
+/**
+   * @brief Allocation macro.
+   *
+   * If this macro is redefined, RS_REALLOC() and RS_FREE() must be aswell.
+   *
+   * @since 1.0.0
+   */
+#define RS_MALLOC malloc
+
+/**
+   * @brief Reallocation macro.
+   *
+   * If this macro is redefined, RS_MALLOC() and RS_FREE() must be aswell.
+   *
+   * @since 1.0.0
+   */
+#define RS_REALLOC realloc
+
+/**
+   * @brief Deallocation macro.
+   *
+   * If this macro is redefined, RS_MALLOC() and RS_REALLOC() must be aswell.
+   *
+   * @since 1.0.0
+   */
+#define RS_FREE free
 #endif
 
 /**
  * @brief Heap flag of a #rapidstring.
  *
+ * @warning Intended for internal use.
+ *
  * @since 1.0.0
  */
 #define RS_HEAP_FLAG (0xFF)
 
-#define RS_ASSERT_PTR(ptr) do { assert(ptr != NULL); } while (0)
-#define RS_ASSERT_RS(s) do {					\
-	RS_ASSERT_PTR(s);					\
-	assert(s->heap.flag == RS_HEAP_FLAG ||			\
-	       s->heap.flag <= RS_STACK_CAPACITY);		\
-} while (0)
-#define RS_ASSERT_HEAP(s) do { assert(rs_is_heap(s)); } while (0)
-#define RS_ASSERT_STACK(s) do { assert(rs_is_stack(s)); } while (0)
+#define RS_ASSERT_PTR(ptr)           \
+	do {                         \
+		assert(ptr != NULL); \
+	} while (0)
+#define RS_ASSERT_RS(s)                                    \
+	do {                                               \
+		RS_ASSERT_PTR(s);                          \
+		assert(s->heap.flag == RS_HEAP_FLAG ||     \
+		       s->heap.flag <= RS_STACK_CAPACITY); \
+	} while (0)
+#define RS_ASSERT_HEAP(s)              \
+	do {                           \
+		assert(rs_is_heap(s)); \
+	} while (0)
+#define RS_ASSERT_STACK(s)              \
+	do {                            \
+		assert(rs_is_stack(s)); \
+	} while (0)
 
 #ifdef __GNUC__
-  #define RS_GCC_VERSION (__GNUC__ * 10000 +		\
-			  __GNUC_MINOR__ * 100 +	\
-			  __GNUC_PATCHLEVEL__)
+#define RS_GCC_VERSION \
+	(__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 #else
-  #define RS_GCC_VERSION (0)
+#define RS_GCC_VERSION (0)
 #endif
 
 /* GCC version 2.96 required for branch prediction expectation. */
 #if RS_GCC_VERSION > 29600
-  #define RS_EXPECT(expr, val) __builtin_expect((expr), val)
+#define RS_EXPECT(expr, val) __builtin_expect(expr, val)
 #else
-  #define RS_EXPECT(expr, val) (expr)
+#define RS_EXPECT(expr, val) (expr)
 #endif
 
 #define RS_LIKELY(expr) RS_EXPECT(expr, 1)
 #define RS_UNLIKELY(expr) RS_EXPECT(expr, 0)
 
 #ifdef __STDC_VERSION__
-  #define RS_C99 (__STDC_VERSION__ >= 199901L)
-  #define RS_C11 (__STDC_VERSION__ >= 201112L)
+#define RS_C99 (__STDC_VERSION__ >= 199901L)
+#define RS_C11 (__STDC_VERSION__ >= 201112L)
 #else
-  #define RS_C99 (0)
-  #define RC_C11 (0)
+#define RS_C99 (0)
+#define RC_C11 (0)
 #endif
 
 #ifdef RS_NOINLINE
-  /* GCC version 3.1 required for the no inline attribute. */
-  #if RS_GCC_VERION > 30100
-    #define RS_API static __attribute__((noinline))
-  #elif defined(_MSC_VER)
-    #define RS_API static __declspec(noinline)
-  #else
-    #define RS_API static
-  #endif
+/* GCC version 3.1 required for the no inline attribute. */
+#if RS_GCC_VERION > 30100
+#define RS_API static __attribute__((noinline))
+#elif defined(_MSC_VER)
+#define RS_API static __declspec(noinline)
+#else
+#define RS_API static
+#endif
 /* GCC version 3.1 required for the always inline attribute. */
 #elif RS_GCC_VERION > 30100
-  #define RS_API static __inline__ __attribute__((always_inline))
+#define RS_API static __inline__ __attribute__((always_inline))
 #elif defined(__GNUC__)
-  #define RS_API static __inline__
+#define RS_API static __inline__
 #elif defined(_MSC_VER)
-  #define RS_API static __forceinline
+#define RS_API static __forceinline
 #elif RS_C99
-  #define RS_API static inline
+#define RS_API static inline
 #else
-  #define RS_API static
+#define RS_API static
 #endif
 
-typedef struct { void *a; size_t b; } rs_align_dummy;
+typedef struct {
+	void *pointer;
+	size_t size;
+} rs_align_dummy;
 
 #if RS_C11
-  #define RS_ALIGNMENT (_Alignof(rs_align_dummy))
+#define RS_ALIGNMENT (_Alignof(rs_align_dummy))
 #elif defined(__GNUC__)
-  #define RS_ALIGNMENT (__alignof__(rs_align_dummy))
+#define RS_ALIGNMENT (__alignof__(rs_align_dummy))
 #elif defined(_MSC_VER)
-  #define RS_ALIGNMENT (__alignof(rs_align_dummy))
+#define RS_ALIGNMENT (__alignof(rs_align_dummy))
 #else
-  /*
-   * No other way to find the alignment than assuming structs are aligned
-   * by the largest member.
-   */
-  #define RS_ALIGNMENT (sizeof(void*) > sizeof(size_t) ?	\
-			       sizeof(void*) :			\
-			       sizeof(size_t))
+/*
+ * No other way to find the alignment than assuming structs are aligned
+ * by the largest member.
+ */
+#define RS_ALIGNMENT \
+	(sizeof(void *) > sizeof(size_t) ? sizeof(void *) : sizeof(size_t))
 #endif
 
 /**
@@ -189,13 +247,15 @@ typedef struct { void *a; size_t b; } rs_align_dummy;
  * Accessing packed data structures incurs a performance penalty, therefore the
  * alignment will be used to allow for a larger stack string.
  *
+ * @warning Intended for internal use.
+ *
  * @since 1.0.0
  */
 typedef struct {
 	/**
 	 * @brief Buffer of a heap string.
 	 *
-	 * Allocated using `RS_MALLOC` or `RS_REALLOC`. This buffer may be
+	 * Allocated using RS_MALLOC() or RS_REALLOC(). This buffer may be
 	 * manually freed by directly calling `RS_FREE(s->heap.buffer)`. Doing
 	 * so will avoid the heap flag check.
 	 */
@@ -239,6 +299,8 @@ typedef struct {
 /**
  * @brief Struct that stores the stack data.
  *
+ * @warning Intended for internal use.
+ *
  * @since 1.0.0
  */
 typedef struct {
@@ -261,11 +323,11 @@ typedef struct {
 /**
  * @brief Union that stores a #rapidstring.
  *
- * All API methods are prefixed with `rs_heap_x()` or `rs_stack_x()`. These
- * methods are to be used only when a string is guarenteed to be in either
- * state, as mismatching these methods results in undefined behavior. There
- * will always be the `rs_x()` alternative which automatically handles the
- * state of the string. These methods should be used if optimization isn't a
+ * Some API functions are prefixed with `rs_heap_x()` or `rs_stack_x()`. These
+ * functions are to be used only when a string is guarenteed to be in either
+ * state, as mismatching these functions results in undefined behavior. There
+ * will always be the `rs_x()` alternative which automatically handles the state
+ * of the string. These functions should be used if optimization isn't a
  * necessity or if strings have highly variable sizes.
  *
  * @since 1.0.0
@@ -292,21 +354,25 @@ enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
  *
  * Forwards the buffer and size of a string to the provided function.
  * Retrieving both the buffer and the size of a string requires a flag check,
- * which would result in an additional branch if not done manually. Intended
- * for internal use.
+ * which would result in an additional branch if not done manually.
  *
  * @param[in] f A function.
  * @param[in,out] s An initialized string.
  * @param[in] input The input to forward the function.
  *
+ * @warning Intended for internal use.
+ *
  * @since 1.0.0
  */
-#define RS_DATA_SIZE(f, s, input) do {					\
-	if (RS_HEAP_LIKELY(rs_is_heap(input)))				\
-		f(s, input->heap.buffer, rs_heap_len(input));		\
-	else								\
-		f(s, input->stack.buffer, rs_stack_len(input));		\
-} while (0)
+#define RS_DATA_SIZE(f, s, input)                                       \
+	do {                                                            \
+		if (RS_HEAP_LIKELY(rs_is_heap(input)))                  \
+			f(s, input->heap.buffer, rs_heap_len(input));   \
+		else                                                    \
+			f(s, input->stack.buffer, rs_stack_len(input)); \
+	} while (0)
+
+/** @} */
 
 /*
  * ===============================================================
@@ -314,6 +380,12 @@ enum { RS_HEAP_LIKELY_V = RS_AVERAGE_SIZE > RS_STACK_CAPACITY };
  *                   CONSTRUCTION & DESTRUCTION
  *
  * ===============================================================
+ */
+
+/**
+ * @defgroup construction Construction & destruction
+ * Functions that initialize and free strings.
+ * @{
  */
 
 /**
@@ -399,12 +471,20 @@ RS_API void rs_init_w_rs(rapidstring *s, const rapidstring *input);
  */
 RS_API void rs_free(rapidstring *s);
 
+/** @} */
+
 /*
  * ===============================================================
  *
- *                           ASSIGNMENT
+ *                             COPYING
  *
  * ===============================================================
+ */
+
+/**
+ * @defgroup copying Copying
+ * Functions that copy data into a string.
+ * @{
  */
 
 /**
@@ -522,12 +602,20 @@ RS_API void rs_cpy_n(rapidstring *s, const char *input, size_t n);
  */
 RS_API void rs_cpy_rs(rapidstring *s, const rapidstring *input);
 
+/** @} */
+
 /*
  * ===============================================================
  *
  *                            CAPACITY
  *
  * ===============================================================
+ */
+
+/**
+ * @defgroup capacity Capacity
+ * Functions related to the capacity of a string.
+ * @{
  */
 
 /**
@@ -540,7 +628,7 @@ RS_API void rs_cpy_rs(rapidstring *s, const rapidstring *input);
  *
  * @since 1.0.0
  */
-RS_API int rs_empty(const rapidstring *s);
+RS_API unsigned char rs_empty(const rapidstring *s);
 
 /**
  * @brief Returns the length of a stack string.
@@ -607,8 +695,6 @@ RS_API void rs_reserve(rapidstring *s, size_t n);
  *
  * @param[in,out] s An intialized string.
  *
- * @complexity Constant.
- *
  * @since 1.0.0
  */
 RS_API void rs_shrink_to_fit(rapidstring *s);
@@ -623,7 +709,7 @@ RS_API void rs_shrink_to_fit(rapidstring *s);
  *
  * @since 1.0.0
  */
-RS_API int rs_is_heap(const rapidstring *s);
+RS_API unsigned char rs_is_heap(const rapidstring *s);
 
 /**
  * @brief Checks whether a string is on the stack.
@@ -635,7 +721,9 @@ RS_API int rs_is_heap(const rapidstring *s);
  *
  * @since 1.0.0
  */
-RS_API int rs_is_stack(const rapidstring *s);
+RS_API unsigned char rs_is_stack(const rapidstring *s);
+
+/** @} */
 
 /*
  * ===============================================================
@@ -643,6 +731,12 @@ RS_API int rs_is_stack(const rapidstring *s);
  *                            MODIFIERS
  *
  * ===============================================================
+ */
+
+/**
+ * @defgroup modifiers Modifiers
+ * Modifier functions such as concatenation, stealing and resizing.
+ * @{
  */
 
 /**
@@ -658,10 +752,10 @@ RS_API int rs_is_stack(const rapidstring *s);
 RS_API char *rs_data(rapidstring *s);
 
 /**
- * @brief Access the buffer.
+ * @brief Access the readonly buffer.
  *
  * @param[in] s An initialized string.
- * @returns The buffer.
+ * @returns The readonly buffer.
  *
  * @complexity Constant.
  *
@@ -781,8 +875,8 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
 /**
  * @brief Steals a buffer allocated on the heap.
  *
- * The buffer must either be allocated with `RS_MALLOC`/`RS_REALLOC`, or must
- * be manually freed.
+ * The buffer must either be allocated with RS_MALLOC() or RS_REALLOC(), or it
+ * must be manually freed.
  *
  * Identicle to rs_steal_n() with `strlen() + 1`.
  *
@@ -798,8 +892,8 @@ RS_API void rs_steal(rapidstring *s, char *buffer);
 /**
  * @brief Steals a buffer allocated on the heap.
  *
- * The buffer must either be allocated with `RS_MALLOC`/`RS_REALLOC`, or must
- * be manually freed.
+ * The buffer must either be allocated with RS_MALLOC() or RS_REALLOC(), or it
+ * must be manually freed without calling rs_free().
  *
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
@@ -814,7 +908,8 @@ RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t cap);
 /**
  * @brief Resizes a stack string.
  *
- * The new size must be smaller than #RS_STACK_CAPACITY.
+ * The new size must be smaller than #RS_STACK_CAPACITY. If this is inconvenient
+ * for your usage, use rs_resize().
  *
  * @param[in,out] s An initialized stack string.
  * @param[in] n The new size.
@@ -828,7 +923,8 @@ RS_API void rs_stack_resize(rapidstring *s, size_t n);
 /**
  * @brief Resizes a heap string.
  *
- * The new size must be smaller than the string's capacity.
+ * The new size must be smaller than the string's capacity. If this is
+ * inconvenient for your usage, use rs_resize().
  *
  * @param[in,out] s An initialized heap string.
  * @param[in] n The new size.
@@ -841,6 +937,10 @@ RS_API void rs_heap_resize(rapidstring *s, size_t n);
 
 /**
  * @brief Resizes a string.
+ *
+ * If the string size increases, the new characters will not be initialized.
+ * This will leave the end of your string with garbage. If this is inconvenient
+ * for your usage, use rs_resize_w().
  *
  * @param[in,out] s An initialized string.
  * @param[in] n The new size.
@@ -864,6 +964,8 @@ RS_API void rs_resize(rapidstring *s, size_t n);
  */
 RS_API void rs_resize_w(rapidstring *s, size_t n, char c);
 
+/** @} */
+
 /*
  * ===============================================================
  *
@@ -873,12 +975,18 @@ RS_API void rs_resize_w(rapidstring *s, size_t n, char c);
  */
 
 /**
+ * @defgroup heap Heap operations
+ * Heap functions intended for internal use.
+ * @{
+ */
+
+/**
  * @brief Initializes the heap.
- *
- * Intended for internal use.
  *
  * @param[out] s A string to initialize.
  * @param[in] n The heap capacity.
+ *
+ * @warning Intended for internal use.
  *
  * @since 1.0.0
  */
@@ -887,12 +995,12 @@ RS_API void rs_heap_init(rapidstring *s, size_t n);
 /**
  * @brief Initializes the heap with growth.
  *
- * Intended for internal use.
- *
  * Identicle to `rs_heap_init(s, n * RS_GROWTH_FACTOR)`.
  *
  * @param[out] s A string to initialize.
  * @param[in] n The heap capacity.
+ *
+ * @warning Intended for internal use.
  *
  * @since 1.0.0
  */
@@ -901,10 +1009,10 @@ RS_API void rs_heap_init_g(rapidstring *s, size_t n);
 /**
  * @brief Moves a stack string to the heap.
  *
- * Intended for internal use.
- *
  * @param[in,out] s An initialized stack string.
  * @param[in] n The heap capacity.
+ *
+ * @warning Intended for internal use.
  *
  * @since 1.0.0
  */
@@ -913,12 +1021,12 @@ RS_API void rs_stack_to_heap(rapidstring *s, size_t n);
 /**
  * @brief Move a stack string to the heap with growth.
  *
- * Intended for internal use.
- *
  * Identicle to `rs_stack_to_heap(s, n * RS_GROWTH_FACTOR)`.
  *
  * @param[in,out] s An initialized stack string.
  * @param[in] n The heap capacity.
+ *
+ * @warning Intended for internal use.
  *
  * @since 1.0.0
  */
@@ -927,12 +1035,13 @@ RS_API void rs_stack_to_heap_g(rapidstring *s, size_t n);
 /**
  * @brief Reallocates the heap buffer.
  *
- * This method may grow or shrink the heap capacity. The size will remain the
- * same, even if the new capacity is smaller than the current size. Intended
- * for internal use.
+ * Grows or shrinks the heap capacity. The size will remain the same, even if
+ * the new capacity is smaller than the current size.
  *
  * @param[in,out] s An initialized heap string.
  * @param[in] n The new heap capacity.
+ *
+ * @warning Intended for internal use.
  *
  * @since 1.0.0
  */
@@ -941,14 +1050,16 @@ RS_API void rs_realloc(rapidstring *s, size_t n);
 /**
  * @brief Allocates growth for a heap string.
  *
- * Intended for internal use.
- *
  * @param[in,out] s An initialized heap string.
  * @param[in] n The new heap capacity.
+ *
+ * @warning Intended for internal use.
  *
  * @since 1.0.0
  */
 RS_API void rs_grow_heap(rapidstring *s, size_t n);
+
+/** @} */
 
 /*
  * ===============================================================
@@ -999,7 +1110,7 @@ RS_API void rs_free(rapidstring *s)
 /*
  * ===============================================================
  *
- *                           ASSIGNMENT
+ *                             COPYING
  *
  * ===============================================================
  */
@@ -1071,7 +1182,7 @@ RS_API void rs_cpy_rs(rapidstring *s, const rapidstring *input)
  * ===============================================================
  */
 
-RS_API int rs_empty(const rapidstring *s)
+RS_API unsigned char rs_empty(const rapidstring *s)
 {
 	return rs_len(s) == 0;
 }
@@ -1092,16 +1203,12 @@ RS_API size_t rs_heap_len(const rapidstring *s)
 
 RS_API size_t rs_len(const rapidstring *s)
 {
-	return rs_is_heap(s) ?
-		rs_heap_len(s) :
-		rs_stack_len(s);
+	return rs_is_heap(s) ? rs_heap_len(s) : rs_stack_len(s);
 }
 
 RS_API size_t rs_capacity(const rapidstring *s)
 {
-	return rs_is_heap(s) ?
-		s->heap.capacity :
-		RS_STACK_CAPACITY;
+	return rs_is_heap(s) ? s->heap.capacity : RS_STACK_CAPACITY;
 }
 
 RS_API void rs_reserve(rapidstring *s, size_t n)
@@ -1120,14 +1227,14 @@ RS_API void rs_shrink_to_fit(rapidstring *s)
 		rs_realloc(s, rs_heap_len(s));
 }
 
-RS_API int rs_is_heap(const rapidstring *s)
+RS_API unsigned char rs_is_heap(const rapidstring *s)
 {
 	RS_ASSERT_RS(s);
 
 	return s->heap.flag == RS_HEAP_FLAG;
 }
 
-RS_API int rs_is_stack(const rapidstring *s)
+RS_API unsigned char rs_is_stack(const rapidstring *s)
 {
 	return !rs_is_heap(s);
 }
@@ -1142,16 +1249,14 @@ RS_API int rs_is_stack(const rapidstring *s)
 
 RS_API char *rs_data(rapidstring *s)
 {
-	return (char*)rs_data_c(s);
+	return (char *)rs_data_c(s);
 }
 
 RS_API const char *rs_data_c(const rapidstring *s)
 {
 	RS_ASSERT_RS(s);
 
-	return rs_is_heap(s) ?
-		s->heap.buffer :
-		s->stack.buffer;
+	return rs_is_heap(s) ? s->heap.buffer : s->stack.buffer;
 }
 
 RS_API void rs_stack_cat(rapidstring *s, const char *input)
@@ -1293,7 +1398,7 @@ RS_API void rs_resize_w(rapidstring *s, size_t n, char c)
 
 RS_API void rs_heap_init(rapidstring *s, size_t n)
 {
-	s->heap.buffer = (char*)RS_MALLOC(n + 1);
+	s->heap.buffer = (char *)RS_MALLOC(n + 1);
 
 	RS_ASSERT_PTR(s->heap.buffer);
 
@@ -1324,7 +1429,7 @@ RS_API void rs_stack_to_heap_g(rapidstring *s, size_t n)
 
 RS_API void rs_realloc(rapidstring *s, size_t n)
 {
-	s->heap.buffer = (char*)RS_REALLOC(s->heap.buffer, n + 1);
+	s->heap.buffer = (char *)RS_REALLOC(s->heap.buffer, n + 1);
 
 	RS_ASSERT_PTR(s->heap.buffer);
 

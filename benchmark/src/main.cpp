@@ -1,4 +1,4 @@
-#include "append.hpp"
+#include "concat.hpp"
 #include "construct.hpp"
 #include "resize.hpp"
 #include <benchmark/benchmark.h>
@@ -8,10 +8,10 @@
 
 // Concatenation
 BENCHMARK(rs_cat);
-BENCHMARK(std_append);
+BENCHMARK(std_concat);
 
-BENCHMARK(rs_reserve_append);
-BENCHMARK(std_reserve_append);
+BENCHMARK(rs_reserve_concat);
+BENCHMARK(std_reserve_concat);
 
 // Construction
 BENCHMARK(rs_12_byte_construct);
