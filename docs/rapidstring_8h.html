@@ -260,7 +260,8 @@ Functions</h2></td></tr>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Create rs_search, rs_erase, rs_substring.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>int return values with errno for malloc failure.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Var args for cat functions.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Add benchmark compilation to CI. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Generate man pages and install them.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Create a .clang-format. </dd></dl>
 
 </div>
 </div>
@@ -329,9 +330,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));           \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a>(input));         \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_af4084b46c8635801205207de1d36a8bf"><div class="ttname"><a href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a></div><div class="ttdeci">RS_API int rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1153</div></div>
-<div class="ttc" id="rapidstring_8h_html_a7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1116</div></div>
-<div class="ttc" id="rapidstring_8h_html_a22be1338ac718365a274735e19815570"><div class="ttname"><a href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1109</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                    \</div><div class="line">        if (RS_HEAP_LIKELY(<a class="code" href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a>(input)))                          \</div><div class="line">                f(s, input-&gt;heap.buffer, <a class="code" href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));           \</div><div class="line">        else                                                            \</div><div class="line">                f(s, input-&gt;stack.buffer, <a class="code" href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a>(input));         \</div><div class="line">} <span class="keywordflow">while</span> (0)</div><div class="ttc" id="rapidstring_8h_html_af4084b46c8635801205207de1d36a8bf"><div class="ttname"><a href="rapidstring_8h.html#af4084b46c8635801205207de1d36a8bf">rs_is_heap</a></div><div class="ttdeci">RS_API int rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1159</div></div>
+<div class="ttc" id="rapidstring_8h_html_a7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="rapidstring_8h.html#a7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1122</div></div>
+<div class="ttc" id="rapidstring_8h_html_a22be1338ac718365a274735e19815570"><div class="ttname"><a href="rapidstring_8h.html#a22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1115</div></div>
 </div><!-- fragment -->
 <p>Pass the string data and size to a function. </p>
 <p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually. Intended for internal use.</p>
@@ -403,7 +404,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initializes a string with a character array. </p>
-<p>Identicle to <code>rs_init_w_n(s, input, strlen(input)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Identicle to <a class="el" href="rapidstring_8h.html#a88465c26b9a3b5317ea6c352afb7cbe9" title="Initializes a string with a character array. ">rs_init_w_n()</a> with <code>strlen()</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string to initialize. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input used to initialize the string.</td></tr>
@@ -557,8 +559,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Frees a string. </p>
-<p>The string is in an invalid state after freeing. You must call <code>rs_init(s)</code> if you wish to reuse the same string after freeing.</p>
-<p>A jump may be avoided by directly calling <code>RS_FREE(s-&gt;heap.buffer);</code> if the string is known to be on the heap. The additional one is for the null terminator, which is subtracted upon initial allocation.</p>
+<p>The string is in an invalid state after freeing. You must call <a class="el" href="rapidstring_8h.html#ade25dc46a543d6c55e920b8116ef6e24" title="Initializes a string. ">rs_init()</a> if you wish to reuse the same string.</p>
+<p>A jump may be avoided by directly calling <code>RS_FREE(s-&gt;heap.buffer)</code> if the string is known to be on the heap.</p>
 <p>Calling this fuction is unecessary if the string size is always smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -598,7 +600,7 @@ Functions</h2></td></tr>
 
 <p>Copies characters to a stack string. </p>
 <p>Overwrites any existing data. The input length must be smaller or equal to <a class="el" href="rapidstring_8h.html#aab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#a61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</p>
-<p>Identicle to <code>rs_stack_cpy_n(s, input, strlen(input))</code>.</p>
+<p>Identicle to <a class="el" href="rapidstring_8h.html#a4f60dbd30b414b8bf8c3a6ba4488dfb6" title="Copies characters to a stack string. ">rs_stack_cpy_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized stack string. </td></tr>
@@ -686,7 +688,7 @@ Functions</h2></td></tr>
 
 <p>Copies characters to a heap string. </p>
 <p>Overwrites any existing data. The input length must be smaller or equal to the string's capacity. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#a61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</p>
-<p>Identicle to <code>rs_heap_cpy_n(s, input, strlen(input))</code>.</p>
+<p>Identicle to <a class="el" href="rapidstring_8h.html#a3ab150e9c7dee1d8148b8bacd597af5c" title="Copies characters to a heap string. ">rs_heap_cpy_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
@@ -774,7 +776,7 @@ Functions</h2></td></tr>
 
 <p>Copies characters to a string. </p>
 <p>Overwrites any existing data.</p>
-<p>Identicle to <code>rs_cpy_n(s, input, strlen(input))</code>.</p>
+<p>Identicle to <a class="el" href="rapidstring_8h.html#a14dc058514612893e8ff8fefc7089ac5" title="Copies characters to a string. ">rs_cpy_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
@@ -1230,7 +1232,7 @@ Functions</h2></td></tr>
 
 <p>Concatenates characters to a stack string. </p>
 <p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
-<p>Identicle to <code>rs_stack_cat_n(s, input, strlen(input))</code>.</p>
+<p>Identicle to <a class="el" href="rapidstring_8h.html#a8f75c1238c47dd464de855fe42feb6cb" title="Concatenates characters to a stack string. ">rs_stack_cat_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
@@ -1318,7 +1320,7 @@ Functions</h2></td></tr>
 
 <p>Concatenates characters to a heap string. </p>
 <p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="rapidstring_8h.html#ae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
-<p>Identicle to <code>rs_heap_cat_n(s, input, strlen(input))</code>.</p>
+<p>Identicle to <a class="el" href="rapidstring_8h.html#ac0ee60fdd29b623d6479d157b49a2216" title="Concatenates characters to a heap string. ">rs_heap_cat_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
@@ -1405,7 +1407,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Concatenates characters to a string. </p>
-<p>Identicle to <code>rs_cat_n(s, input, strlen(input))</code>.</p>
+<p>Identicle to <a class="el" href="rapidstring_8h.html#a1f21b87365cabcf251f484ce7725767d" title="Concatenates characters to a string. ">rs_cat_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
@@ -1531,7 +1533,7 @@ Functions</h2></td></tr>
 
 <p>Steals a buffer allocated on the heap. </p>
 <p>The buffer must either be allocated with <code>RS_MALLOC</code>/<code>RS_REALLOC</code>, or must be manually freed.</p>
-<p>Identicle to <code>rs_steal_n(s, buffer, strlen(buffer))</code>.</p>
+<p>Identicle to <a class="el" href="rapidstring_8h.html#a4008b54e0b5b993775213cdf3a21f9b6" title="Steals a buffer allocated on the heap. ">rs_steal_n()</a> with <code>strlen() + 1</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
@@ -1995,7 +1997,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 7 2018 16:16:14 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 9 2018 09:42:17 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

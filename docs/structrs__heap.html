@@ -109,7 +109,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Buffer of a heap string. </p>
-<p>Allocated using <code>RS_MALLOC</code> or <code>RS_REALLOC</code>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;buffer)</code>. Doing so will avoid the heap flag check. The additional one is for the null terminator, which is subtracted upon initial allocation. </p>
+<p>Allocated using <code>RS_MALLOC</code> or <code>RS_REALLOC</code>. This buffer may be manually freed by directly calling <code>RS_FREE(s-&gt;heap.buffer)</code>. Doing so will avoid the heap flag check. </p>
 
 </div>
 </div>
@@ -187,7 +187,7 @@ Data Fields</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 7 2018 16:16:14 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 9 2018 09:42:17 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

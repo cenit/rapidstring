@@ -42,10 +42,14 @@
 /**
  * @mainpage rapidstring
  * The documentation of the rapidstring library.
+ *
+ * @copyright Copyright © 2018 John Boyer.
+ * @author <a href="https://github.com/boyerjohn">John Boyer</a>
+ * @version 0.1.0
  */
 
-#ifndef RAPID_STRING_H_962AB5F800398A34
-#define RAPID_STRING_H_962AB5F800398A34
+#ifndef RAPIDSTRING_H_962AB5F800398A34
+#define RAPIDSTRING_H_962AB5F800398A34
 
 /**
  * @todo Documentation for macros and properly link all references.
@@ -62,9 +66,9 @@
  *
  * @todo Var args for cat functions.
  *
- * @todo Add benchmark compilation to CI.
- *
  * @todo Generate man pages and install them.
+ *
+ * @todo Create a .clang-format.
  */
 
 #include <assert.h> /* assert() */
@@ -192,9 +196,8 @@ typedef struct {
 	 * @brief Buffer of a heap string.
 	 *
 	 * Allocated using `RS_MALLOC` or `RS_REALLOC`. This buffer may be
-	 * manually freed by directly calling `RS_FREE(s->buffer)`. Doing so
-	 * will avoid the heap flag check. The additional one is for the null
-	 * terminator, which is subtracted upon initial allocation.
+	 * manually freed by directly calling `RS_FREE(s->heap.buffer)`. Doing
+	 * so will avoid the heap flag check.
 	 */
 	char *buffer;
 	/**
@@ -327,7 +330,8 @@ RS_API void rs_init(rapidstring *s);
 /**
  * @brief Initializes a string with a character array.
  *
- * Identicle to `rs_init_w_n(s, input, strlen(input)`.
+ * Identicle to rs_init_w_n() with `strlen()`.
+ *
  * @param[out] s A string to initialize.
  * @param[in] input The input used to initialize the string.
  *
@@ -380,12 +384,11 @@ RS_API void rs_init_w_rs(rapidstring *s, const rapidstring *input);
 /**
  * @brief Frees a string.
  *
- * The string is in an invalid state after freeing. You must call `rs_init(s)`
- * if you wish to reuse the same string after freeing.
+ * The string is in an invalid state after freeing. You must call rs_init() if
+ * you wish to reuse the same string.
  *
- * A jump may be avoided by directly calling `RS_FREE(s->heap.buffer);` if the
- * string is known to be on the heap. The additional one is for the null
- * terminator, which is subtracted upon initial allocation.
+ * A jump may be avoided by directly calling `RS_FREE(s->heap.buffer)` if the
+ * string is known to be on the heap.
  *
  * Calling this fuction is unecessary if the string size is always smaller or
  * equal to #RS_STACK_CAPACITY.
@@ -411,7 +414,7 @@ RS_API void rs_free(rapidstring *s);
  * #RS_STACK_CAPACITY. If it is not, the behavior is undefined. If this is
  * inconvenient for your usage, use rs_cpy().
  *
- * Identicle to `rs_stack_cpy_n(s, input, strlen(input))`.
+ * Identicle to rs_stack_cpy_n() with `strlen()`.
  *
  * @param[in,out] s An intialized stack string.
  * @param[in] input the input to assign to the stack string.
@@ -446,7 +449,7 @@ RS_API void rs_stack_cpy_n(rapidstring *s, const char *input, size_t n);
  * the string's capacity. If it is not, the behavior is undefined. If this is
  * inconvenient for your usage, use rs_cpy().
  *
- * Identicle to `rs_heap_cpy_n(s, input, strlen(input))`.
+ * Identicle to rs_heap_cpy_n() with `strlen()`.
  *
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to assign to the heap string.
@@ -479,7 +482,7 @@ RS_API void rs_heap_cpy_n(rapidstring *s, const char *input, size_t n);
  *
  * Overwrites any existing data.
  *
- * Identicle to `rs_cpy_n(s, input, strlen(input))`.
+ * Identicle to rs_cpy_n() with `strlen()`.
  *
  * @param[in,out] s An initialized string.
  * @param[in] input The input to assign to the string.
@@ -673,7 +676,7 @@ RS_API const char *rs_data_c(const rapidstring *s);
  * If it is not, the behavior is undefined. If this is inconvenient for your
  * usage, use rs_cat().
  *
- * Identicle to `rs_stack_cat_n(s, input, strlen(input))`.
+ * Identicle to rs_stack_cat_n() with `strlen()`.
  *
  * @param[in,out] s An initialized stack string.
  * @param[in] input The input to concatenate.
@@ -708,7 +711,7 @@ RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n);
  * If it is not, the behavior is undefined. If this is inconvenient for your
  * usage, use rs_cat().
  *
- * Identicle to `rs_heap_cat_n(s, input, strlen(input))`.
+ * Identicle to rs_heap_cat_n() with `strlen()`.
  *
  * @param[in,out] s An initialized heap string.
  * @param[in] input The input to concatenate.
@@ -739,7 +742,7 @@ RS_API void rs_heap_cat_n(rapidstring *s, const char *input, size_t n);
 /**
  * @brief Concatenates characters to a string.
  *
- * Identicle to `rs_cat_n(s, input, strlen(input))`.
+ * Identicle to rs_cat_n() with `strlen()`.
  *
  * @param[in,out] s An initialized  string.
  * @param[in] input The input to concatenate.
@@ -781,7 +784,7 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
  * The buffer must either be allocated with `RS_MALLOC`/`RS_REALLOC`, or must
  * be manually freed.
  *
- * Identicle to `rs_steal_n(s, buffer, strlen(buffer))`.
+ * Identicle to rs_steal_n() with `strlen() + 1`.
  *
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
@@ -1042,7 +1045,8 @@ RS_API void rs_cpy(rapidstring *s, const char *input)
 	rs_cpy_n(s, input, strlen(input));
 }
 
-RS_API void rs_cpy_n(rapidstring *s, const char *input, size_t n) {
+RS_API void rs_cpy_n(rapidstring *s, const char *input, size_t n)
+{
 	if (RS_HEAP_LIKELY(rs_is_heap(s))) {
 		rs_grow_heap(s, n);
 		rs_heap_cpy_n(s, input, n);
@@ -1333,4 +1337,4 @@ RS_API void rs_grow_heap(rapidstring *s, size_t n)
 		rs_realloc(s, n * RS_GROWTH_FACTOR);
 }
 
-#endif /* !RAPID_STRING_H_962AB5F800398A34 */
+#endif /* !RAPIDSTRING_H_962AB5F800398A34 */

@@ -11,7 +11,7 @@ add_executable(rapidstring_benchmark
 set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "Disable benchmark tests" FORCE)
 add_subdirectory(lib/benchmark)
 
-set_property(TARGET rapidstring_benchmark PROPERTY CXX_STANDARD 11)
+target_compile_standard(rapidstring_benchmark 11)
 target_compile_warnings(rapidstring_benchmark)
 target_include_directories(rapidstring_benchmark
 	PRIVATE
