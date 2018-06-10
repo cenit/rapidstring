@@ -13,8 +13,7 @@ matrix:
       env:
         - MATRIX_EVAL="CXX=g++-4.8 && COVERAGE=1 && TYPE=Debug"
       after_success:
-        - pip install --upgrade pip
-        - pip install cpp-coveralls
+        - pip install --user cpp-coveralls
         - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
 
     - os: linux
