@@ -1,4 +1,4 @@
-// TODO: test suites convering reserve, and all others
+// TODO: finish all themes in tests
 
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>

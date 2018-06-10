@@ -9,7 +9,7 @@
 #define STR_24 ("123456789012345678901234")
 #define STR_48 ("123456789012345678901234567890123456789012345678")
 
-inline void rs_12_byte_construct(benchmark::State& state)
+inline void rs_12_byte_construct(benchmark::State &state)
 {
 	rapidstring s;
 
@@ -26,13 +26,13 @@ inline void rs_12_byte_construct(benchmark::State& state)
 	benchmark::DoNotOptimize(s);
 }
 
-inline void std_12_byte_construct(benchmark::State& state)
+inline void std_12_byte_construct(benchmark::State &state)
 {
 	for (auto _ : state)
 		benchmark::DoNotOptimize(std::string{ STR_12, 12 });
 }
 
-inline void rs_24_byte_construct(benchmark::State& state)
+inline void rs_24_byte_construct(benchmark::State &state)
 {
 	rapidstring s;
 
@@ -49,13 +49,13 @@ inline void rs_24_byte_construct(benchmark::State& state)
 	benchmark::DoNotOptimize(s);
 }
 
-inline void std_24_byte_construct(benchmark::State& state)
+inline void std_24_byte_construct(benchmark::State &state)
 {
 	for (auto _ : state)
 		benchmark::DoNotOptimize(std::string{ STR_24, 24 });
 }
 
-inline void rs_48_byte_construct(benchmark::State& state)
+inline void rs_48_byte_construct(benchmark::State &state)
 {
 	rapidstring s;
 
@@ -72,7 +72,7 @@ inline void rs_48_byte_construct(benchmark::State& state)
 	benchmark::DoNotOptimize(s);
 }
 
-inline void std_48_byte_construct(benchmark::State& state)
+inline void std_48_byte_construct(benchmark::State &state)
 {
 	for (auto _ : state)
 		benchmark::DoNotOptimize(std::string{ STR_48, 48 });

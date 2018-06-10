@@ -8,7 +8,7 @@
 
 constexpr std::size_t resize_count{ 1000 };
 
-inline void rs_resize(benchmark::State& state)
+inline void rs_resize(benchmark::State &state)
 {
 	for (auto _ : state) {
 		rapidstring s;
@@ -19,7 +19,7 @@ inline void rs_resize(benchmark::State& state)
 	}
 }
 
-inline void std_resize(benchmark::State& state)
+inline void std_resize(benchmark::State &state)
 {
 	for (auto _ : state) {
 		std::string s;

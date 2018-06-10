@@ -90,12 +90,8 @@ TEST_CASE("Unsafe heap concatenation")
 
 TEST_CASE("Heap concatenation")
 {
-	const std::string first{
-		"Our friend has superpowers, and she "
-	};
-	const std::string second{
-		"squeezed your tiny bladder with her mind."
-	};
+	const std::string first{ "Our friend has superpowers, and she " };
+	const std::string second{ "squeezed your tiny bladder with her mind." };
 	const std::string sum{ first + second };
 
 	rapidstring s;

@@ -52,8 +52,8 @@ matrix:
 
 before_install:
 - git submodule update --init --recursive
-- eval "${MATRIX_EVAL}"
 - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update; fi
+- eval "${MATRIX_EVAL}"
 - if [[ -z $TYPE ]]; then TYPE=Release; fi
 - mkdir build && cd build
 - cmake .. -Werror=dev -DRS_COVERAGE=$COVERAGE -DCMAKE_BUILD_TYPE=$TYPE

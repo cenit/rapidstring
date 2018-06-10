@@ -58,7 +58,7 @@ TEST_CASE("steal with capacity")
 		"The things we love destroy us every time, lad. Remember that."
 	};
 
-	auto buffer = static_cast<char*>(RS_MALLOC(size));
+	auto buffer = static_cast<char *>(RS_MALLOC(size));
 	std::memset(buffer, 'a', size);
 
 	rapidstring s;
