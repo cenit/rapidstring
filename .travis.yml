@@ -13,7 +13,9 @@ matrix:
           packages:
             - g++-4.8
       env:
-        - MATRIX_EVAL="CXX=g++-4.8 && COVERAGE=1 && TYPE=Debug"
+        - >
+          MATRIX_EVAL="CXX=g++-4.8 && COVERAGE=1 && TYPE=Debug &&
+          pip install cpp-coveralls"
       after_success:
         - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
 
@@ -46,20 +48,23 @@ matrix:
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew update && brew upgrade gcc@4.9 cmake && CXX=g++-4.9"
+        - >
+          MATRIX_EVAL="brew update && brew upgrade cmake &&
+          brew install gcc@4.9 && CXX=g++-4.9"
 
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew update && brew upgrade gcc cmake && CXX=g++-7"
+        - >
+          MATRIX_EVAL="brew update && brew install gcc && brew update cmake &&
+          CXX=g++-7"
 
 before_install:
-- eval "${MATRIX_EVAL}"
-- pip install --user cpp-coveralls
 - git submodule update --init --recursive
-- mkdir build
-- cd build
-- if [ -z "$TYPE" ]; then TYPE=Release; fi
+- eval "${MATRIX_EVAL}"
+- if [[ $TRAVIS_OS_NAME == osx ]]; then brew update; fi
+- if [[ -z $TYPE ]]; then TYPE=Release; fi
+- mkdir build && cd build
 - cmake .. -Werror=dev -DRS_COVERAGE=$COVERAGE -DCMAKE_BUILD_TYPE=$TYPE
 
 script:
