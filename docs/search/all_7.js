@@ -15,7 +15,7 @@ var searchData=
   ['rs_5fdata_5fc',['rs_data_c',['../group__modifiers.html#ga2a8b393470e8a187eb0cb33daec1ba99',1,'rapidstring.h']]],
   ['rs_5fdata_5fsize',['RS_DATA_SIZE',['../group__structures.html#gaf90863ca72d60da08071272c477e20b3',1,'rapidstring.h']]],
   ['rs_5fempty',['rs_empty',['../group__capacity.html#ga6e7df616bf4c4617339966d51ed16092',1,'rapidstring.h']]],
-  ['rs_5ffree',['rs_free',['../group__construction.html#ga2ee30cbfa5ef6215c0383db1ed9f2260',1,'rs_free(rapidstring *s):&#160;rapidstring.h'],['../group__structures.html#gaadbca3e5f15f1d660f5d0363d3a6bed9',1,'RS_FREE():&#160;rapidstring.h']]],
+  ['rs_5ffree',['RS_FREE',['../group__structures.html#gaadbca3e5f15f1d660f5d0363d3a6bed9',1,'RS_FREE():&#160;rapidstring.h'],['../group__construction.html#ga2ee30cbfa5ef6215c0383db1ed9f2260',1,'rs_free(rapidstring *s):&#160;rapidstring.h']]],
   ['rs_5fgrow_5fheap',['rs_grow_heap',['../group__heap.html#ga8c47c048cc6ea5ea0e73faf1efc9ea81',1,'rapidstring.h']]],
   ['rs_5fgrowth_5ffactor',['RS_GROWTH_FACTOR',['../group__structures.html#ga2e7465ffe80028e3eb1b5505d1682e03',1,'rapidstring.h']]],
   ['rs_5fheap',['rs_heap',['../structrs__heap.html',1,'']]],

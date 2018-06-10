@@ -6,39 +6,52 @@ language: cpp
 matrix:
   include:
     - os: linux
-      compiler: gcc
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
-            - g++
+            - g++-4.7
       env:
-        - MATRIX_EVAL="CC=gcc && CXX=g++ && COVERAGE=1 && TYPE=Debug"
+        - MATRIX_EVAL="CXX=g++-4.7 && COVERAGE=1 && TYPE=Debug"
       after_success:
         - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
 
     - os: linux
-      compiler: gcc
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
-            - g++
+            - g++-7
       env:
-        - MATRIX_EVAL="CC=gcc && CXX=g++ && TYPE=Release"
+        - MATRIX_EVAL="CXX=g++-7 && TYPE=Release"
 
     - os: linux
-      compiler: clang
-      addons:
+	  addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.3
           packages:
-            - clang
+            - clang-3.3
       env:
-        - MATRIX_EVAL="CC=clang && CXX=clang++ && TYPE=Release"
+        - MATRIX_EVAL="CXX=clang++-3.3 && TYPE=Release"
 
     - os: osx
       osx_image: xcode8
-      compiler: clang
       env:
-        - MATRIX_EVAL="CC=clang && CXX=clang++ && TYPE=Release"
+        - MATRIX_EVAL="brew install cmake && CXX=clang++ && TYPE=Release"
+
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc49 cmake && CXX=g++-4.9 && TYPE=Release"
+
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc cmake && CXX=g++-7 && TYPE=Release"
 
 before_install:
 - eval "${MATRIX_EVAL}"

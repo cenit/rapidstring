@@ -145,6 +145,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The buffer.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -174,6 +175,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The readonly buffer.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -206,8 +208,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Concatenates characters to a stack string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
-<p>Identicle to <a class="el" href="group__modifiers.html#ga8f75c1238c47dd464de855fe42feb6cb" title="Concatenates characters to a stack string. ">rs_stack_cat_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
@@ -215,6 +215,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Identicle to <a class="el" href="group__modifiers.html#ga8f75c1238c47dd464de855fe42feb6cb" title="Concatenates characters to a stack string. ">rs_stack_cat_n()</a> with <code>strlen()</code>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -253,7 +256,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Concatenates characters to a stack string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
@@ -262,6 +264,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -294,8 +298,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Concatenates characters to a heap string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
-<p>Identicle to <a class="el" href="group__modifiers.html#gac0ee60fdd29b623d6479d157b49a2216" title="Concatenates characters to a heap string. ">rs_heap_cat_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
@@ -303,6 +305,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Identicle to <a class="el" href="group__modifiers.html#gac0ee60fdd29b623d6479d157b49a2216" title="Concatenates characters to a heap string. ">rs_heap_cat_n()</a> with <code>strlen()</code>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -341,7 +346,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Concatenates characters to a heap string. </p>
-<p>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If it is not, the behavior is undefined. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
@@ -350,6 +354,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -382,7 +388,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Concatenates characters to a string. </p>
-<p>Identicle to <a class="el" href="group__modifiers.html#ga1f21b87365cabcf251f484ce7725767d" title="Concatenates characters to a string. ">rs_cat_n()</a> with <code>strlen()</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
@@ -390,6 +395,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Identicle to <a class="el" href="group__modifiers.html#ga1f21b87365cabcf251f484ce7725767d" title="Concatenates characters to a string. ">rs_cat_n()</a> with <code>strlen()</code>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>When the length of <em>input</em> is greater than the remaining capacity of <em>s</em>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -436,6 +443,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Allocation</dt><dd>When <em>n</em> is greater than the remaining capacity of <em>s</em>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -475,6 +483,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Allocation</dt><dd>When the length of <em>input</em> is greater than the remaining capacity of <em>s</em>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -508,7 +517,6 @@ Functions</h2></td></tr>
 
 <p>Steals a buffer allocated on the heap. </p>
 <p>The buffer must either be allocated with <a class="el" href="group__structures.html#ga22279156cdc026ab7c46b3d998159924" title="Allocation macro. ">RS_MALLOC()</a> or <a class="el" href="group__structures.html#ga78dc589aac4383a54ea851e9115aec0b" title="Reallocation macro. ">RS_REALLOC()</a>, or it must be manually freed.</p>
-<p>Identicle to <a class="el" href="group__modifiers.html#ga4008b54e0b5b993775213cdf3a21f9b6" title="Steals a buffer allocated on the heap. ">rs_steal_n()</a> with <code>strlen() + 1</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
@@ -516,6 +524,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Identicle to <a class="el" href="group__modifiers.html#ga4008b54e0b5b993775213cdf3a21f9b6" title="Steals a buffer allocated on the heap. ">rs_steal_n()</a> with <code>strlen() + 1</code>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>buffer</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -554,7 +564,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Steals a buffer allocated on the heap. </p>
-<p>The buffer must either be allocated with <a class="el" href="group__structures.html#ga22279156cdc026ab7c46b3d998159924" title="Allocation macro. ">RS_MALLOC()</a> or <a class="el" href="group__structures.html#ga78dc589aac4383a54ea851e9115aec0b" title="Reallocation macro. ">RS_REALLOC()</a>, or it must be manually freed without calling <a class="el" href="group__construction.html#ga2ee30cbfa5ef6215c0383db1ed9f2260" title="Frees a string. ">rs_free()</a>.</p>
+<p>The buffer must either be allocated with <a class="el" href="group__structures.html#ga22279156cdc026ab7c46b3d998159924" title="Allocation macro. ">RS_MALLOC()</a> or <a class="el" href="group__structures.html#ga78dc589aac4383a54ea851e9115aec0b" title="Reallocation macro. ">RS_REALLOC()</a>, or it must be manually freed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
@@ -563,6 +573,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -595,7 +606,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Resizes a stack string. </p>
-<p>The new size must be smaller than <a class="el" href="group__structures.html#gaab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga1fd70f6744252ecd221761a5fa80c7ee" title="Resizes a string. ">rs_resize()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
@@ -603,6 +613,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>The new size must be smaller or equal to <a class="el" href="group__structures.html#gaab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga1fd70f6744252ecd221761a5fa80c7ee" title="Resizes a string. ">rs_resize()</a>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -635,7 +647,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Resizes a heap string. </p>
-<p>The new size must be smaller than the string's capacity. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga1fd70f6744252ecd221761a5fa80c7ee" title="Resizes a string. ">rs_resize()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
@@ -643,6 +654,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>The new size must be smaller or equal to the capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga1fd70f6744252ecd221761a5fa80c7ee" title="Resizes a string. ">rs_resize()</a>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -675,7 +688,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Resizes a string. </p>
-<p>If the string size increases, the new characters will not be initialized. This will leave the end of your string with garbage. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga724ca013c26ce841df618baf90501068" title="Resizes a string with a filler character. ">rs_resize_w()</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
@@ -683,6 +695,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>If the string size increases, the new characters will not be initialized. This will leave the end of your string with garbage. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga724ca013c26ce841df618baf90501068" title="Resizes a string with a filler character. ">rs_resize_w()</a>.</dd></dl>
+<dl class="section user"><dt>Allocation</dt><dd>When <em>n</em> is greater than the capacity of <em>s</em>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -729,6 +743,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Allocation</dt><dd>When <em>n</em> is greater than the capacity of <em>s</em>.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
@@ -737,7 +752,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 9 2018 11:43:49 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 10 2018 12:27:15 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -16,7 +16,3 @@ function(target_compile_warnings target)
 		)
 	endif()
 endfunction()
-
-function(target_compile_standard target standard)
-	set_property(TARGET rapidstring_test PROPERTY CXX_STANDARD ${standard})
-endfunction()

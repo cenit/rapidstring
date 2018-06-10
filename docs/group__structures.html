@@ -100,7 +100,7 @@ Macros</h2></td></tr>
 <tr class="memitem:ga2e7465ffe80028e3eb1b5505d1682e03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga2e7465ffe80028e3eb1b5505d1682e03">RS_GROWTH_FACTOR</a>&#160;&#160;&#160;(2)</td></tr>
 <tr class="memdesc:ga2e7465ffe80028e3eb1b5505d1682e03"><td class="mdescLeft">&#160;</td><td class="mdescRight">String growth factor macro.  <a href="#ga2e7465ffe80028e3eb1b5505d1682e03">More...</a><br /></td></tr>
 <tr class="separator:ga2e7465ffe80028e3eb1b5505d1682e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga07b42af34e7ba37594bb7622c607a454"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga07b42af34e7ba37594bb7622c607a454">RS_AVERAGE_SIZE</a>&#160;&#160;&#160;(50)</td></tr>
+<tr class="memitem:ga07b42af34e7ba37594bb7622c607a454"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga07b42af34e7ba37594bb7622c607a454">RS_AVERAGE_SIZE</a>&#160;&#160;&#160;(20)</td></tr>
 <tr class="memdesc:ga07b42af34e7ba37594bb7622c607a454"><td class="mdescLeft">&#160;</td><td class="mdescRight">Average string size macro.  <a href="#ga07b42af34e7ba37594bb7622c607a454">More...</a><br /></td></tr>
 <tr class="separator:ga07b42af34e7ba37594bb7622c607a454"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga22279156cdc026ab7c46b3d998159924"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga22279156cdc026ab7c46b3d998159924">RS_MALLOC</a>&#160;&#160;&#160;malloc</td></tr>
@@ -128,8 +128,7 @@ Macros</h2></td></tr>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Make sure all std::string methods are added (if applicable).</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Create rs_search, rs_erase, rs_substring.</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>int return values with errno for malloc failure.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Var args for cat functions.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Generate man pages and install them. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Generate man pages and install them. </dd></dl>
 <p>Structure and macro definitions. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga2e7465ffe80028e3eb1b5505d1682e03"></a>
@@ -157,7 +156,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_AVERAGE_SIZE&#160;&#160;&#160;(50)</td>
+          <td class="memname">#define RS_AVERAGE_SIZE&#160;&#160;&#160;(20)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -288,9 +287,9 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                                            \</div><div class="line">                if (RS_HEAP_LIKELY(<a class="code" href="group__capacity.html#ga3ae362467ab8c9ae440c1d062d6a4399">rs_is_heap</a>(input)))                  \</div><div class="line">                        f(s, input-&gt;heap.buffer, <a class="code" href="group__capacity.html#ga7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));   \</div><div class="line">                else                                                    \</div><div class="line">                        f(s, input-&gt;stack.buffer, <a class="code" href="group__capacity.html#ga22be1338ac718365a274735e19815570">rs_stack_len</a>(input)); \</div><div class="line">        } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="group__capacity_html_ga22be1338ac718365a274735e19815570"><div class="ttname"><a href="group__capacity.html#ga22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1229</div></div>
-<div class="ttc" id="group__capacity_html_ga3ae362467ab8c9ae440c1d062d6a4399"><div class="ttname"><a href="group__capacity.html#ga3ae362467ab8c9ae440c1d062d6a4399">rs_is_heap</a></div><div class="ttdeci">RS_API unsigned char rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1269</div></div>
-<div class="ttc" id="group__capacity_html_ga7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="group__capacity.html#ga7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1236</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                                            \</div><div class="line">                if (RS_HEAP_LIKELY(<a class="code" href="group__capacity.html#ga3ae362467ab8c9ae440c1d062d6a4399">rs_is_heap</a>(input)))                  \</div><div class="line">                        f(s, input-&gt;heap.buffer, <a class="code" href="group__capacity.html#ga7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));   \</div><div class="line">                else                                                    \</div><div class="line">                        f(s, input-&gt;stack.buffer, <a class="code" href="group__capacity.html#ga22be1338ac718365a274735e19815570">rs_stack_len</a>(input)); \</div><div class="line">        } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="group__capacity_html_ga22be1338ac718365a274735e19815570"><div class="ttname"><a href="group__capacity.html#ga22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1345</div></div>
+<div class="ttc" id="group__capacity_html_ga3ae362467ab8c9ae440c1d062d6a4399"><div class="ttname"><a href="group__capacity.html#ga3ae362467ab8c9ae440c1d062d6a4399">rs_is_heap</a></div><div class="ttdeci">RS_API unsigned char rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1385</div></div>
+<div class="ttc" id="group__capacity_html_ga7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="group__capacity.html#ga7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1352</div></div>
 </div><!-- fragment -->
 <p>Pass the string data and size to a function. </p>
 <p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually.</p>
@@ -310,7 +309,7 @@ Macros</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 9 2018 11:43:49 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 10 2018 12:27:15 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

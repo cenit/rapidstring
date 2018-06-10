@@ -10,7 +10,7 @@ add_executable(rapidstring_test
 
 # TODO: some test for ansi compliance
 
-target_compile_standard(rapidstring_test 11)
+target_compile_features(rapidstring_test PRIVATE cxx_std_11)
 target_compile_warnings(rapidstring_test)
 target_include_directories(rapidstring_test
 	PRIVATE
