@@ -394,7 +394,7 @@ RS_API void rs_init(rapidstring *s);
  * @brief Initializes a string with a character array.
  *
  * @param[out] s A string to initialize.
- * @param[in] input The input used to initialize the string.
+ * @param[in] input The input used to initialize @a s.
  *
  * @note Identicle to rs_init_w_n() with `strlen()`.
  *
@@ -410,7 +410,7 @@ RS_API void rs_init_w(rapidstring *s, const char *input);
  * @brief Initializes a string with a character array.
  *
  * @param[out] s A string to initialize.
- * @param[in] input The input used to initialize the string.
+ * @param[in] input The input used to initialize @a s.
  * @param[in] n The length of the input.
  *
  * @allocation When @a n is greater than #RS_STACK_CAPACITY.
@@ -425,7 +425,7 @@ RS_API void rs_init_w_n(rapidstring *s, const char *input, size_t n);
  * @brief Initializes a string with an initial capacity.
  *
  * @param[out] s A string to initialize.
- * @param[in] n The new initial capacity of the string.
+ * @param[in] n The new initial capacity of @a s.
  *
  * @allocation Always.
  *
@@ -491,7 +491,7 @@ RS_API void rs_free(rapidstring *s);
  * Overwrites any existing data.
  *
  * @param[in,out] s An intialized stack string.
- * @param[in] input the input to assign to the stack string.
+ * @param[in] input The input to assign to @a s.
  *
  * @warning The input length must be smaller or equal to #RS_STACK_CAPACITY. If
  * this is inconvenient for your usage, use rs_cpy().
@@ -512,7 +512,7 @@ RS_API void rs_stack_cpy(rapidstring *s, const char *input);
  * Overwrites any existing data.
  *
  * @param[in,out] s An initialized stack string.
- * @param[in] input The input to assign to the stack string.
+ * @param[in] input The input to assign to @a s.
  * @param[in] n The length of @a input.
  *
  * @warning The input length must be smaller or equal to #RS_STACK_CAPACITY. If
@@ -532,7 +532,7 @@ RS_API void rs_stack_cpy_n(rapidstring *s, const char *input, size_t n);
  * Overwrites any existing data.
  *
  * @param[in,out] s An initialized heap string.
- * @param[in] input The input to assign to the heap string.
+ * @param[in] input The input to assign to @a s.
  *
  * @warning The input length must be smaller or equal to the capacity of @a s.
  * If this is inconvenient for your usage, use rs_cpy().
@@ -553,7 +553,7 @@ RS_API void rs_heap_cpy(rapidstring *s, const char *input);
  * Overwrites any existing data.
  *
  * @param[in,out] s An initialized heap string.
- * @param[in] input The input to assign to the heap string.
+ * @param[in] input The input to assign to @a s.
  * @param[in] n The length of @a input.
  *
  * @warning The input length must be smaller or equal to the capacity of @a s.
@@ -573,7 +573,7 @@ RS_API void rs_heap_cpy_n(rapidstring *s, const char *input, size_t n);
  * Overwrites any existing data.
  *
  * @param[in,out] s An initialized string.
- * @param[in] input The input to assign to the string.
+ * @param[in] input The input to assign to @a s.
  *
  * @note Identicle to rs_cpy_n() with `strlen()`.
  *
@@ -591,7 +591,7 @@ RS_API void rs_cpy(rapidstring *s, const char *input);
  * Overwrites any existing data.
  *
  * @param[in,out] s An initialized string.
- * @param[in] input The input to assign to the string.
+ * @param[in] input The input to assign to @a s.
  * @param[in] n The length of @a input.
  *
  * @allocation When @a n is greater than #RS_STACK_CAPACITY.
@@ -733,7 +733,7 @@ RS_API void rs_shrink_to_fit(rapidstring *s);
  * @brief Checks whether a string is on the heap.
  *
  * @param[in] s An initialized string.
- * @returns `1` if the string is on the heap, `0` otherwise.
+ * @returns `1` if @a s is on the heap, `0` otherwise.
  *
  * @allocation Never.
  *
@@ -747,7 +747,7 @@ RS_API unsigned char rs_is_heap(const rapidstring *s);
  * @brief Checks whether a string is on the stack.
  *
  * @param[in] s An initialized string.
- * @returns `1` if the string is on the stack, `0` otherwise.
+ * @returns `1` if @a s is on the stack, `0` otherwise.
  *
  * @allocation Never.
  *
@@ -1000,7 +1000,7 @@ RS_API void rs_heap_resize(rapidstring *s, size_t n);
  * @param[in] n The new size.
  *
  * @warning If the string size increases, the new characters will not be
- * initialized. This will leave the end of your string with garbage. If this is
+ * initialized. This will leave the end of @a s with garbage. If this is
  * inconvenient for your usage, use rs_resize_w().
  *
  * @allocation When @a n is greater than the capacity of @a s.
