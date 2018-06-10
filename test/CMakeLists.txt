@@ -9,14 +9,10 @@ add_executable(rapidstring_test
 )
 
 # TODO: some test for ansi compliance
-
+add_subdirectory(lib/Catch2)
+target_link_libraries(rapidstring_test rapidstring Catch2::Catch)
 target_compile_features(rapidstring_test PRIVATE cxx_std_11)
 target_compile_warnings(rapidstring_test)
-target_include_directories(rapidstring_test
-	PRIVATE
-		../include
-		lib/Catch2/single_include
-)
 
 if (RS_COVERAGE)
 	target_compile_definitions(rapidstring_test PRIVATE RS_NOINLINE)

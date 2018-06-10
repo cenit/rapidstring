@@ -3,10 +3,6 @@ image:
 
 configuration:
   - Debug
-  - Release
-
-environment:
-  GENERATOR: "Visual Studio 15 2017 Win64"
 
 build:
   project: C:\Projects\rapidstring\build\rapidstring.sln
@@ -17,7 +13,7 @@ install:
 before_build:
   - mkdir build
   - cd build
-  - cmake .. -G "%GENERATOR%" -Werror=dev -DCMAKE_BUILD_TYPE=%CONFIGURATION%
+  - cmake .. -G "Visual Studio 15 2017 Win64" -Werror=dev
 
 test_script:
   - cd C:\Projects\rapidstring\build\test\%CONFIGURATION%

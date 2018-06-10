@@ -11,7 +11,7 @@ matrix:
           packages:
             - g++-4.8
       env:
-        - MATRIX_EVAL="CXX=g++-4.8 && COVERAGE=1 && TYPE=Debug"
+        - MATRIX_EVAL="CXX=g++-4.8 && COVERAGE=1"
       after_success:
         - pip install --user cpp-coveralls
         - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
@@ -51,9 +51,8 @@ before_install:
 - git submodule update --init --recursive
 - if [[ $TRAVIS_OS_NAME == osx ]]; then brew update; fi
 - eval "${MATRIX_EVAL}"
-- if [[ -z $TYPE ]]; then TYPE=Release; fi
 - mkdir build && cd build
-- cmake .. -Werror=dev -DRS_COVERAGE=$COVERAGE -DCMAKE_BUILD_TYPE=$TYPE
+- cmake .. -Werror=dev -DRS_COVERAGE=$COVERAGE
 
 script:
 - make -j 4

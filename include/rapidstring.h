@@ -52,15 +52,9 @@
 #define RAPIDSTRING_H_962AB5F800398A34
 
 /**
- * @todo Documentation for macros and properly link all references.
- *
- * @todo Make all functions properly link in documentation.
- *
  * @todo Make sure all std::string methods are added (if applicable).
  *
  * @todo Create rs_search, rs_erase, rs_substring.
- *
- * @todo int return values with errno for malloc failure.
  *
  * @todo Generate man pages and install them.
  */
@@ -82,13 +76,25 @@
  * @{
  */
 
-/** @brief Major version of the rapidstring library. */
+/**
+ * @brief Major version of the rapidstring library.
+ *
+ * @since 1.0.0
+ */
 #define RS_VERSION_MAJOR 0
 
-/** @brief Minor version of the rapidstring library. */
+/**
+ * @brief Minor version of the rapidstring library.
+ *
+ * @since 1.0.0
+ */
 #define RS_VERSION_MINOR 1
 
-/** @brief Patch version of the rapidstring library. */
+/**
+ * @brief Patch version of the rapidstring library.
+ *
+ * @since 1.0.0
+ */
 #define RS_VERSION_PATCH 0
 
 #ifndef RS_GROWTH_FACTOR
