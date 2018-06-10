@@ -28,7 +28,7 @@ matrix:
         - MATRIX_EVAL="CXX=g++-7 && TYPE=Release"
 
     - os: linux
-	  addons:
+      addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
