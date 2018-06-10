@@ -11,9 +11,9 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-4.7
+            - g++-4.8
       env:
-        - MATRIX_EVAL="CXX=g++-4.7 && COVERAGE=1 && TYPE=Debug"
+        - MATRIX_EVAL="CXX=g++-4.8 && COVERAGE=1 && TYPE=Debug"
       after_success:
         - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
 
@@ -41,17 +41,17 @@ matrix:
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew update && brew install cmake && CXX=clang++"
+        - MATRIX_EVAL="brew update && brew upgrade cmake && CXX=clang++"
 
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew update && brew install gcc@4.9 cmake && CXX=g++-4.9"
+        - MATRIX_EVAL="brew update && brew upgrade gcc@4.9 cmake && CXX=g++-4.9"
 
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew update && brew install gcc cmake && CXX=g++-7"
+        - MATRIX_EVAL="brew update && brew upgrade gcc cmake && CXX=g++-7"
 
 before_install:
 - eval "${MATRIX_EVAL}"
