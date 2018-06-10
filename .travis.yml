@@ -25,33 +25,33 @@ matrix:
           packages:
             - g++-7
       env:
-        - MATRIX_EVAL="CXX=g++-7 && TYPE=Release"
+        - MATRIX_EVAL="CXX=g++-7"
 
     - os: linux
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.3
+            - llvm-toolchain-precise-3.6
           packages:
-            - clang-3.3
+            - clang-3.6
       env:
-        - MATRIX_EVAL="CXX=clang++-3.3 && TYPE=Release"
+        - MATRIX_EVAL="CXX=clang++-3.6"
 
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew install cmake && CXX=clang++ && TYPE=Release"
+        - MATRIX_EVAL="brew update && brew install cmake && CXX=clang++"
 
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew install gcc49 cmake && CXX=g++-4.9 && TYPE=Release"
+        - MATRIX_EVAL="brew update && brew install gcc@4.9 cmake && CXX=g++-4.9"
 
     - os: osx
       osx_image: xcode8
       env:
-        - MATRIX_EVAL="brew install gcc cmake && CXX=g++-7 && TYPE=Release"
+        - MATRIX_EVAL="brew update && brew install gcc cmake && CXX=g++-7"
 
 before_install:
 - eval "${MATRIX_EVAL}"
@@ -59,6 +59,7 @@ before_install:
 - git submodule update --init --recursive
 - mkdir build
 - cd build
+- if [ -z "$TYPE" ]; then TYPE=Release; fi
 - cmake .. -Werror=dev -DRS_COVERAGE=$COVERAGE -DCMAKE_BUILD_TYPE=$TYPE
 
 script:
