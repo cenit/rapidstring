@@ -191,22 +191,19 @@
 
 #ifdef RS_NOINLINE
 /* GCC version 3.1 required for the no inline attribute. */
-#if RS_GCC_VERION > 30100
+#if RS_GCC_VERSION > 30100
 #define RS_API static __attribute__((noinline))
 #elif defined(_MSC_VER)
 #define RS_API static __declspec(noinline)
 #else
 #define RS_API static
 #endif
-/* GCC version 3.1 required for the always inline attribute. */
-#elif RS_GCC_VERION > 30100
-#define RS_API static __inline__ __attribute__((always_inline))
+#elif RS_C99
+#define RS_API static inline
 #elif defined(__GNUC__)
 #define RS_API static __inline__
 #elif defined(_MSC_VER)
 #define RS_API static __forceinline
-#elif RS_C99
-#define RS_API static inline
 #else
 #define RS_API static
 #endif
@@ -323,13 +320,9 @@ typedef struct {
  * @since 1.0.0
  */
 typedef union {
-	/**
-	 * @brief Stack state of the #rapidstring union.
-	 */
+	/** @brief Stack state of the #rapidstring union. */
 	rs_stack stack;
-	/**
-	 * @brief Heap state of the #rapidstring union.
-	 */
+	/** @brief Heap state of the #rapidstring union. */
 	rs_heap heap;
 } rapidstring;
 
