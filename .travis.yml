@@ -11,10 +11,7 @@ matrix:
           packages:
             - g++-4.8
       env:
-        - MATRIX_EVAL="CXX=g++-4.8 && COVERAGE=1"
-      after_success:
-        - pip install --user cpp-coveralls
-        - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
+        - MATRIX_EVAL="CXX=g++-4.8"
 
     - os: linux
       addons:
@@ -24,7 +21,10 @@ matrix:
           packages:
             - g++-7
       env:
-        - MATRIX_EVAL="CXX=g++-7"
+        - MATRIX_EVAL="CXX=g++-7 && COVERAGE=1"
+      after_success:
+        - pip install --user cpp-coveralls
+        - coveralls  -b ./ -r .. -i include/rapidstring.h --gcov-options "\-lp"
 
     - os: linux
       addons:
