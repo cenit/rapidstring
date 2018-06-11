@@ -16,7 +16,7 @@ target_compile_warnings(rapidstring_test)
 
 if(RS_COVERAGE)
 	target_compile_definitions(rapidstring_test PRIVATE RS_NOINLINE)
-	target_link_libraries(rapidstring_test PRIVATE lgcov)
+	target_link_libraries(rapidstring_test PRIVATE gcov)
 	target_compile_options(rapidstring_test
 		PRIVATE
 			-fprofile-arcs
