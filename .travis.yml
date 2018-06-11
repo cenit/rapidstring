@@ -57,9 +57,9 @@ before_install:
 script:
 - make -j 4
 - if (( VALGRIND == 1 )); then
-  valgrind --leak-check=yes --error-exitcode=1 ./test/rapidstring_test
+  valgrind --leak-check=yes --error-exitcode=1 ./test/rapidstring_test;
   else
-  ./test/rapidstring_test
+  ./test/rapidstring_test;
   fi
 
 env:
