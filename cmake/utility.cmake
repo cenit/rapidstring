@@ -1,5 +1,5 @@
 function(target_compile_warnings target)
-	if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+	if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 		target_compile_options(rapidstring_test
 			PRIVATE
 				/W4
