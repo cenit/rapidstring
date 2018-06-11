@@ -9,9 +9,9 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-4.8
+            - ['g++-4.8', 'valgrind']
       env:
-        - MATRIX_EVAL="CXX=g++-4.8"
+        - MATRIX_EVAL="CXX=g++-4.8 && VALGRIND=1"
 
     - os: linux
       addons:
@@ -56,7 +56,11 @@ before_install:
 
 script:
 - make -j 4
-- ./test/rapidstring_test
+- if (( VALGRIND == 1 )); then
+  valgrind --leak-check=yes --error-exitcode=1 ./test/rapidstring_test
+  else
+  ./test/rapidstring_test
+  fi
 
 env:
   matrix:
