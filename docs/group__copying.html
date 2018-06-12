@@ -72,15 +72,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga9bfebfb83d0674dc36d60b2480d7a380"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__copying.html#ga9bfebfb83d0674dc36d60b2480d7a380">rs_stack_cpy</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
-<tr class="memdesc:ga9bfebfb83d0674dc36d60b2480d7a380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a stack string.  <a href="#ga9bfebfb83d0674dc36d60b2480d7a380">More...</a><br /></td></tr>
-<tr class="separator:ga9bfebfb83d0674dc36d60b2480d7a380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4f60dbd30b414b8bf8c3a6ba4488dfb6"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__copying.html#ga4f60dbd30b414b8bf8c3a6ba4488dfb6">rs_stack_cpy_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
 <tr class="memdesc:ga4f60dbd30b414b8bf8c3a6ba4488dfb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a stack string.  <a href="#ga4f60dbd30b414b8bf8c3a6ba4488dfb6">More...</a><br /></td></tr>
 <tr class="separator:ga4f60dbd30b414b8bf8c3a6ba4488dfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5196aa53485071b3f38c5bd7e6ba36fa"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__copying.html#ga5196aa53485071b3f38c5bd7e6ba36fa">rs_heap_cpy</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
-<tr class="memdesc:ga5196aa53485071b3f38c5bd7e6ba36fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a heap string.  <a href="#ga5196aa53485071b3f38c5bd7e6ba36fa">More...</a><br /></td></tr>
-<tr class="separator:ga5196aa53485071b3f38c5bd7e6ba36fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3ab150e9c7dee1d8148b8bacd597af5c"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__copying.html#ga3ab150e9c7dee1d8148b8bacd597af5c">rs_heap_cpy_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
 <tr class="memdesc:ga3ab150e9c7dee1d8148b8bacd597af5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies characters to a heap string.  <a href="#ga3ab150e9c7dee1d8148b8bacd597af5c">More...</a><br /></td></tr>
 <tr class="separator:ga3ab150e9c7dee1d8148b8bacd597af5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,49 +91,6 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions that copy data into a string. </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga9bfebfb83d0674dc36d60b2480d7a380"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9bfebfb83d0674dc36d60b2480d7a380">&#9670;&nbsp;</a></span>rs_stack_cpy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">RS_API void rs_stack_cpy </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>input</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Copies characters to a stack string. </p>
-<p>Overwrites any existing data.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An intialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to <em>s</em>.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to <a class="el" href="group__structures.html#gaab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. If this is inconvenient for your usage, use <a class="el" href="group__copying.html#ga61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Identicle to <a class="el" href="group__copying.html#ga4f60dbd30b414b8bf8c3a6ba4488dfb6" title="Copies characters to a stack string. ">rs_stack_cpy_n()</a> with <code>strlen()</code>.</dd></dl>
-<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
-
-</div>
-</div>
 <a id="ga4f60dbd30b414b8bf8c3a6ba4488dfb6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga4f60dbd30b414b8bf8c3a6ba4488dfb6">&#9670;&nbsp;</a></span>rs_stack_cpy_n()</h2>
 
@@ -185,49 +136,6 @@ Functions</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to <a class="el" href="group__structures.html#gaab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. If this is inconvenient for your usage, use <a class="el" href="group__copying.html#ga61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</dd></dl>
 <dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
-
-</div>
-</div>
-<a id="ga5196aa53485071b3f38c5bd7e6ba36fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5196aa53485071b3f38c5bd7e6ba36fa">&#9670;&nbsp;</a></span>rs_heap_cpy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">RS_API void rs_heap_cpy </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>input</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Copies characters to a heap string. </p>
-<p>Overwrites any existing data.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to assign to <em>s</em>.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to the capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__copying.html#ga61a6d328ac8b8383d80d532ecb695956" title="Copies characters to a string. ">rs_cpy()</a>.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Identicle to <a class="el" href="group__copying.html#ga3ab150e9c7dee1d8148b8bacd597af5c" title="Copies characters to a heap string. ">rs_heap_cpy_n()</a> with <code>strlen()</code>.</dd></dl>
-<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -415,7 +323,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 10 2018 18:02:24 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 11 2018 21:21:24 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

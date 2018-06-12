@@ -78,15 +78,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga2a8b393470e8a187eb0cb33daec1ba99"><td class="memItemLeft" align="right" valign="top">RS_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga2a8b393470e8a187eb0cb33daec1ba99">rs_data_c</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
 <tr class="memdesc:ga2a8b393470e8a187eb0cb33daec1ba99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the readonly buffer.  <a href="#ga2a8b393470e8a187eb0cb33daec1ba99">More...</a><br /></td></tr>
 <tr class="separator:ga2a8b393470e8a187eb0cb33daec1ba99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9e03de3338b44aba2c8197048909ed05"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga9e03de3338b44aba2c8197048909ed05">rs_stack_cat</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
-<tr class="memdesc:ga9e03de3338b44aba2c8197048909ed05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a stack string.  <a href="#ga9e03de3338b44aba2c8197048909ed05">More...</a><br /></td></tr>
-<tr class="separator:ga9e03de3338b44aba2c8197048909ed05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8f75c1238c47dd464de855fe42feb6cb"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga8f75c1238c47dd464de855fe42feb6cb">rs_stack_cat_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
 <tr class="memdesc:ga8f75c1238c47dd464de855fe42feb6cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a stack string.  <a href="#ga8f75c1238c47dd464de855fe42feb6cb">More...</a><br /></td></tr>
 <tr class="separator:ga8f75c1238c47dd464de855fe42feb6cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaabc2ac543ace715306e6a2ad80527cf5"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#gaabc2ac543ace715306e6a2ad80527cf5">rs_heap_cat</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input)</td></tr>
-<tr class="memdesc:gaabc2ac543ace715306e6a2ad80527cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a heap string.  <a href="#gaabc2ac543ace715306e6a2ad80527cf5">More...</a><br /></td></tr>
-<tr class="separator:gaabc2ac543ace715306e6a2ad80527cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac0ee60fdd29b623d6479d157b49a2216"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#gac0ee60fdd29b623d6479d157b49a2216">rs_heap_cat_n</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const char *input, size_t n)</td></tr>
 <tr class="memdesc:gac0ee60fdd29b623d6479d157b49a2216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates characters to a heap string.  <a href="#gac0ee60fdd29b623d6479d157b49a2216">More...</a><br /></td></tr>
 <tr class="separator:gac0ee60fdd29b623d6479d157b49a2216"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,48 +175,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga9e03de3338b44aba2c8197048909ed05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9e03de3338b44aba2c8197048909ed05">&#9670;&nbsp;</a></span>rs_stack_cat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">RS_API void rs_stack_cat </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>input</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Concatenates characters to a stack string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized stack string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Identicle to <a class="el" href="group__modifiers.html#ga8f75c1238c47dd464de855fe42feb6cb" title="Concatenates characters to a stack string. ">rs_stack_cat_n()</a> with <code>strlen()</code>.</dd></dl>
-<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
-
-</div>
-</div>
 <a id="ga8f75c1238c47dd464de855fe42feb6cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8f75c1238c47dd464de855fe42feb6cb">&#9670;&nbsp;</a></span>rs_stack_cat_n()</h2>
 
@@ -267,48 +219,6 @@ Functions</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</dd></dl>
 <dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
-
-</div>
-</div>
-<a id="gaabc2ac543ace715306e6a2ad80527cf5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaabc2ac543ace715306e6a2ad80527cf5">&#9670;&nbsp;</a></span>rs_heap_cat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">RS_API void rs_heap_cat </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="unionrapidstring.html">rapidstring</a> *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>input</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Concatenates characters to a heap string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized heap string. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">input</td><td>The input to concatenate.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section warning"><dt>Warning</dt><dd>The input length must be smaller or equal to the remaining capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#gae1169844bc281a312bfa7eda471fd01e" title="Concatenates characters to a string. ">rs_cat()</a>.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Identicle to <a class="el" href="group__modifiers.html#gac0ee60fdd29b623d6479d157b49a2216" title="Concatenates characters to a heap string. ">rs_heap_cat_n()</a> with <code>strlen()</code>.</dd></dl>
-<dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>input</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -752,7 +662,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 10 2018 18:02:24 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 11 2018 21:21:24 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
