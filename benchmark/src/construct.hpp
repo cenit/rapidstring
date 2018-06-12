@@ -78,4 +78,4 @@ inline void std_48_byte_construct(benchmark::State &state)
 		benchmark::DoNotOptimize(std::string{ STR_48, 48 });
 }
 
-#endif // !CONSTRUCT_HPP_7DFD4B503BE48168
+#endif /* !CONSTRUCT_HPP_7DFD4B503BE48168 */

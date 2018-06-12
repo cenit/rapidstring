@@ -73,4 +73,4 @@ inline void std_concat(benchmark::State &state)
 	}
 }
 
-#endif // !CONCAT_HPP_23EF09BE616AE9A8
+#endif /* !CONCAT_HPP_23EF09BE616AE9A8 */

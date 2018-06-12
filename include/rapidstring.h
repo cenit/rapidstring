@@ -850,25 +850,6 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
  *
  * @param[in,out] s An initialized string.
  * @param[in] buffer The buffer to steal.
- *
- * @note Identicle to rs_steal_n() with `strlen() + 1`.
- *
- * @allocation Never.
- *
- * @complexity Linear in the length of @a buffer.
- *
- * @since 1.0.0
- */
-RS_API void rs_steal(rapidstring *s, char *buffer);
-
-/**
- * @brief Steals a buffer allocated on the heap.
- *
- * The buffer must either be allocated with RS_MALLOC() or RS_REALLOC(), or it
- * must be manually freed.
- *
- * @param[in,out] s An initialized string.
- * @param[in] buffer The buffer to steal.
  * @param[in] cap The capacity of @a buffer.
  *
  * @allocation Never.
@@ -1286,13 +1267,6 @@ RS_API void rs_cat_n(rapidstring *s, const char *input, size_t n)
 RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input)
 {
 	RS_DATA_SIZE(rs_cat_n, s, input);
-}
-
-RS_API void rs_steal(rapidstring *s, char *buffer)
-{
-	assert(buffer != NULL);
-
-	rs_steal_n(s, buffer, strlen(buffer) + 1);
 }
 
 RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t n)

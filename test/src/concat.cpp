@@ -1,7 +1,7 @@
 #include "utility.hpp"
 #include <string>
 
-// Theme: Stranger Things.
+/* Theme: Stranger Things. */
 
 TEST_CASE("Stack concatenation")
 {

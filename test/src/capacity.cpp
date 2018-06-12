@@ -1,7 +1,7 @@
 #include "utility.hpp"
 #include <string>
 
-// Theme: Harry Potter.
+/* Theme: Harry Potter. */
 
 TEST_CASE("empty stack")
 {

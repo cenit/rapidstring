@@ -2,7 +2,7 @@
 #include <cstring>
 #include <string>
 
-// Theme: Game of Thrones.
+/* Theme: Game of Thrones. */
 
 TEST_CASE("data")
 {
@@ -24,36 +24,12 @@ TEST_CASE("data")
 	rs_free(&s2);
 }
 
-TEST_CASE("steal")
-{
-	const std::string first{
-		"When the snows fall and the white winds blow, the lone wolf "
-		"dies but the pack survives."
-	};
-
-	rapidstring s1;
-	rs_init_w(&s1, first.data());
-
-	rapidstring s2;
-	rs_init(&s2);
-
-	rs_steal(&s2, rs_data(&s1));
-
-	CMP_STR(&s2, first);
-
-	/*
-	 * Only the second string is freed as it stole the first string's
-	 * buffer.
-	 */
-	rs_free(&s2);
-}
-
 TEST_CASE("steal with capacity")
 {
 	constexpr std::uint8_t size{ 100 };
 	constexpr std::uint8_t usable_size{ size - 1 };
 
-	// Filler data to be freed before the buffer is stolen.
+	/* Filler data to be freed before the buffer is stolen. */
 	const std::string first{
 		"The things we love destroy us every time, lad. Remember that."
 	};

@@ -28,4 +28,4 @@ inline void std_resize(benchmark::State &state)
 	}
 }
 
-#endif // !RESIZE_HPP_0339C33297A54DF5
+#endif /* !RESIZE_HPP_0339C33297A54DF5 */
