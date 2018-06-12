@@ -5,8 +5,7 @@ target_include_directories(rapidstring INTERFACE include)
 
 include(${CMAKE_SOURCE_DIR}/cmake/utility.cmake)
 
-# TODO: installation?
-# TODO: build docs
+# TODO: Installation.
 
 add_subdirectory(test)
 add_subdirectory(benchmark)

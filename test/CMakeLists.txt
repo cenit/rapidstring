@@ -8,7 +8,6 @@ add_executable(rapidstring_test
 	src/modifiers.cpp
 )
 
-# TODO: some test for ansi compliance
 add_subdirectory(lib/Catch2)
 target_link_libraries(rapidstring_test PRIVATE rapidstring Catch2::Catch)
 target_compile_features(rapidstring_test PRIVATE cxx_std_11)

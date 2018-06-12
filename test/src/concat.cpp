@@ -3,26 +3,6 @@
 
 // Theme: Stranger Things.
 
-TEST_CASE("Unsafe stack concatenation")
-{
-	const std::string first{ "El's " };
-	const std::string second{ " bitchin'." };
-	const std::string sum{ first + second };
-
-	rapidstring s;
-	rs_init(&s);
-
-	rs_stack_cat(&s, first.data());
-
-	CMP_STR(&s, first);
-
-	rs_stack_cat(&s, second.data());
-
-	CMP_STR(&s, sum);
-
-	rs_free(&s);
-}
-
 TEST_CASE("Stack concatenation")
 {
 	const std::string first{ "Friends don't" };
@@ -57,31 +37,6 @@ TEST_CASE("Stack and heap concatenation")
 	CMP_STR(&s, first);
 
 	rs_cat(&s, second.data());
-
-	CMP_STR(&s, sum);
-
-	rs_free(&s);
-}
-
-TEST_CASE("Unsafe heap concatenation")
-{
-	const std::string first{
-		"You always say we should never stop being curious, "
-		"to always open any curiosity door we find. "
-	};
-	const std::string second{
-		"Why are you keeping this curiosity door locked?"
-	};
-	const std::string sum{ first + second };
-
-	rapidstring s;
-	rs_init_w_cap(&s, sum.size());
-
-	rs_heap_cat(&s, first.data());
-
-	CMP_STR(&s, first);
-
-	rs_heap_cat(&s, second.data());
 
 	CMP_STR(&s, sum);
 
