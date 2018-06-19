@@ -1,6 +1,5 @@
 #include "utility.hpp"
 #include <cstddef>
-#include <string>
 
 TEST_CASE("Stack construction")
 {
@@ -10,17 +9,17 @@ TEST_CASE("Stack construction")
 	rapidstring s1;
 	rs_init(&s1);
 
-	CMP_STR(&s1, first);
+	validate_rapidstring(&s1, first);
 
 	rapidstring s2;
 	rs_init(&s2);
 
-	CMP_STR(&s2, first);
+	validate_rapidstring(&s2, first);
 
 	rapidstring s3;
 	rs_init_w(&s3, second.data());
 
-	CMP_STR(&s3, second);
+	validate_rapidstring(&s3, second);
 
 	rs_free(&s1);
 	rs_free(&s2);
@@ -34,7 +33,7 @@ TEST_CASE("Heap construction")
 	rapidstring s;
 	rs_init_w(&s, first.data());
 
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }
@@ -60,13 +59,13 @@ TEST_CASE("rapidstring construction")
 	rs_init_w(&s1, first.data());
 	rs_init_w_rs(&s2, &s1);
 
-	CMP_STR(&s2, first);
+	validate_rapidstring(&s2, first);
 
 	rapidstring s3, s4;
 	rs_init_w(&s3, second.data());
 	rs_init_w_rs(&s4, &s3);
 
-	CMP_STR(&s4, second);
+	validate_rapidstring(&s4, second);
 
 	rs_free(&s4);
 	rs_free(&s3);

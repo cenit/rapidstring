@@ -1,8 +1,16 @@
 #include "utility.hpp"
+#include <cstddef>
 #include <cstring>
-#include <string>
 
 /* Theme: Game of Thrones. */
+
+void validate_steal(const rapidstring *s, const char *buffer, std::size_t size)
+{
+	REQUIRE(rs_capacity(s) == size);
+	REQUIRE(rs_len(s) == size);
+	REQUIRE(rs_data_c(s)[rs_len(s)] == '\0');
+	REQUIRE(std::strcmp(rs_data_c(s), buffer) == 0);
+}
 
 TEST_CASE("data")
 {
@@ -24,10 +32,25 @@ TEST_CASE("data")
 	rs_free(&s2);
 }
 
+TEST_CASE("steal")
+{
+	constexpr std::size_t size{ 100 };
+
+	auto buffer = static_cast<char *>(RS_MALLOC(size));
+	std::memset(buffer, 'a', size);
+
+	rapidstring s;
+	rs_init(&s);
+	rs_steal(&s, buffer, size);
+
+	validate_steal(&s, buffer, size - 1);
+
+	rs_free(&s);
+}
+
 TEST_CASE("steal with capacity")
 {
-	constexpr std::uint8_t size{ 100 };
-	constexpr std::uint8_t usable_size{ size - 1 };
+	constexpr std::size_t size{ 100 };
 
 	/* Filler data to be freed before the buffer is stolen. */
 	const std::string first{
@@ -39,20 +62,16 @@ TEST_CASE("steal with capacity")
 
 	rapidstring s;
 	rs_init_w(&s, first.data());
+	rs_steal(&s, buffer, size);
 
-	rs_steal_n(&s, buffer, size);
-
-	REQUIRE(rs_capacity(&s) == usable_size);
-	REQUIRE(rs_len(&s) == usable_size);
-	REQUIRE(rs_data_c(&s)[rs_len(&s)] == '\0');
-	REQUIRE(std::strcmp(rs_data_c(&s), buffer) == 0);
+	validate_steal(&s, buffer, size - 1);
 
 	rs_free(&s);
 }
 
 TEST_CASE("resize stack")
 {
-	constexpr std::uint8_t size{ 15 };
+	constexpr std::size_t size{ 15 };
 	std::string first{ "is" };
 
 	rapidstring s;
@@ -61,14 +80,14 @@ TEST_CASE("resize stack")
 	rs_resize_w(&s, size, 'a');
 	first.resize(size, 'a');
 
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }
 
 TEST_CASE("resize stack to heap")
 {
-	constexpr std::uint8_t size{ 100 };
+	constexpr std::size_t size{ 100 };
 	std::string first{ "is" };
 
 	rapidstring s;
@@ -77,14 +96,14 @@ TEST_CASE("resize stack to heap")
 	rs_resize_w(&s, size, 'a');
 	first.resize(size, 'a');
 
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }
 
 TEST_CASE("resize heap")
 {
-	constexpr std::uint8_t size{ 200 };
+	constexpr std::size_t size{ 200 };
 	std::string first{
 		"Why is it that when one man builds a wall, the next man "
 		"immediately needs to know what's on the other side?"
@@ -96,7 +115,7 @@ TEST_CASE("resize heap")
 	rs_resize_w(&s, size, 'a');
 	first.resize(size, 'a');
 
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }

@@ -1,5 +1,5 @@
 #include "utility.hpp"
-#include <string>
+#include <cstddef>
 
 /* Theme: Harry Potter. */
 
@@ -37,7 +37,7 @@ TEST_CASE("empty heap")
 
 TEST_CASE("reserve stack to heap")
 {
-	constexpr std::uint8_t cap{ 100 };
+	constexpr std::size_t cap{ 100 };
 	const std::string first{ "Bloody hell!" };
 
 	rapidstring s;
@@ -46,7 +46,7 @@ TEST_CASE("reserve stack to heap")
 	rs_reserve(&s, cap);
 
 	REQUIRE(rs_capacity(&s) >= cap);
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }
@@ -66,7 +66,7 @@ TEST_CASE("reserve grow heap")
 	rs_reserve(&s, cap);
 
 	REQUIRE(rs_capacity(&s) >= cap);
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }
@@ -80,7 +80,7 @@ TEST_CASE("shrink to fit stack")
 
 	rs_shrink_to_fit(&s);
 
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }
@@ -98,7 +98,7 @@ TEST_CASE("shrink to fit heap")
 
 	rs_shrink_to_fit(&s);
 
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }

@@ -852,13 +852,15 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
  * @param[in] buffer The buffer to steal.
  * @param[in] cap The capacity of @a buffer.
  *
+ * @note A null terminator will be written to the last element of the buffer.
+ *
  * @allocation Never.
  *
  * @complexity Constant.
  *
  * @since 1.0.0
  */
-RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t cap);
+RS_API void rs_steal(rapidstring *s, char *buffer, size_t cap);
 
 /**
  * @brief Resizes a stack string.
@@ -1269,7 +1271,7 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input)
 	RS_DATA_SIZE(rs_cat_n, s, input);
 }
 
-RS_API void rs_steal_n(rapidstring *s, char *buffer, size_t n)
+RS_API void rs_steal(rapidstring *s, char *buffer, size_t n)
 {
 	size_t sz;
 

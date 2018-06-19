@@ -1,5 +1,4 @@
 #include "utility.hpp"
-#include <string>
 
 TEST_CASE("Stack and heap copying")
 {
@@ -10,11 +9,11 @@ TEST_CASE("Stack and heap copying")
 	rs_init(&s);
 	rs_cpy(&s, first.data());
 
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_cpy(&s, second.data());
 
-	CMP_STR(&s, second);
+	validate_rapidstring(&s, second);
 
 	rs_free(&s);
 }
@@ -28,7 +27,7 @@ TEST_CASE("Heap growth copying")
 
 	rs_cpy(&s, first.data());
 
-	CMP_STR(&s, first);
+	validate_rapidstring(&s, first);
 
 	rs_free(&s);
 }
@@ -45,7 +44,7 @@ TEST_CASE("String copying")
 
 	rs_cpy_rs(&s1, &s2);
 
-	CMP_STR(&s1, first);
+	validate_rapidstring(&s1, first);
 
 	rs_free(&s1);
 	rs_free(&s2);
