@@ -11,27 +11,27 @@
  *       TABLE OF CONTENTS
  *
  * 1. STRUCTURES & MACROS
- * - Declarations:	line 73
+ * - Declarations:	line 65
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 374
- * - Defintions:	line 1047
+ * - Declarations:	line 366
+ * - Defintions:	line 1041
  *
  * 3. COPYING
- * - Declarations:	line 482
- * - Defintions:	line 1095
+ * - Declarations:	line 474
+ * - Defintions:	line 1089
  *
  * 4. CAPACITY
- * - Declarations:	line 589
- * - Defintions:	line 1148
+ * - Declarations:	line 581
+ * - Defintions:	line 1142
  *
  * 5. MODIFIERS
- * - Declarations:	line 728
- * - Defintions:	line 1213
+ * - Declarations:	line 720
+ * - Defintions:	line 1207
  *
  * 6. HEAP OPERATIONS
- * - Declarations:	line 940
- * - Defintions:	line 1342
+ * - Declarations:	line 934
+ * - Defintions:	line 1336
  */
 
 /**
@@ -50,14 +50,6 @@
 
 #ifndef RAPIDSTRING_H_962AB5F800398A34
 #define RAPIDSTRING_H_962AB5F800398A34
-
-/**
- * @todo Make sure all std::string methods are added (if applicable).
- *
- * @todo Create rs_search, rs_erase, rs_substring.
- *
- * @todo Generate man pages and install them.
- */
 
 #include <assert.h> /* assert() */
 #include <string.h> /* memcpy() */

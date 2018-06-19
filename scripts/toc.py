@@ -1,6 +1,7 @@
 from collections import OrderedDict
 
-# TODO: allow this method to be run from any working directory.
+# TODO: Allow this method to be run from any working directory.
+# TODO: Don't require this to be ran twice if a section is removed.
 
 header = '''/*
  * rapidstring - A fast string library.
