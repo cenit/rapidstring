@@ -3,9 +3,6 @@
 #include "resize.hpp"
 #include <benchmark/benchmark.h>
 
-/* TODO: add fbstring to benchmarks. */
-/* TODO: add intel compiler to benchmarks. */
-
 /* Concatenation. */
 BENCHMARK(rs_cat);
 BENCHMARK(std_concat);

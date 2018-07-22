@@ -15,6 +15,10 @@ inline void create_rapidstring(rapidstring *s, const char *buff, std::size_t sz)
 {
 	rs_init_w_n(s, buff, sz);
 
+	/*
+	 * Clang will optimize everything away if this isn't present. However, it
+	 * also drastically slows down GCC.
+	 */
 #ifdef __clang__
 	benchmark::DoNotOptimize(s);
 #endif
