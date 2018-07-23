@@ -101,7 +101,7 @@ printf("%u", rs_len(&s)); /* 15 */
 puts(rs_data(&s)); /* long $MUaaaaaaa */
 ```
 
-If you wish to resize a string without a filler character, you may do so with `rs_resize` which is considerably faster.
+If you wish to resize a string without a filler character, you may do so with `rs_resize` which is considerably faster but it leaves garbage in the place of the new characters.
 
 ### Capacity
 ```c
