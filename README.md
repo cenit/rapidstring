@@ -7,7 +7,7 @@
 </div>
 
 ## rapidstring
-rapidstring is maybe the fastest string library written in ANSI C. Here are some of the features:
+rapidstring is maybe the fastest string library ever written in ANSI C. Here are some of the features:
 
 - **Highly performant**. Every aspect of the library was first considered from a performance perspective, and it shows. The [current benchmarks](https://github.com/boyerjohn/rapidstring/tree/master/benchmark) outperform the standard string implementations of GCC, Clang, MSVC and ICC by a factor of two or more in most tests.
 
