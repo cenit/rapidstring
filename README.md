@@ -6,8 +6,17 @@
 	<a href="https://github.com/boyerjohn/rapidstring/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a>
 </div>
 
-## rapidstring
-rapidstring is maybe the fastest string library ever written in ANSI C. Here are some of the features:
+- [Features](#features)
+- [Examples](#examples)
+  - [Construction](#construction)
+  - [Assignment](#assigment)
+  - [Concatenation](#concatenation)
+  - [Resizing](#resizing)
+- [Why maybe?](#why-maybe)
+- [Build](#build)
+
+## Features
+`rapidstring` is maybe the fastest string library ever written in ANSI C. Here are some of the features:
 
 - **Highly performant**. Every aspect of the library was first considered from a performance perspective, and it shows. The [current benchmarks](https://github.com/boyerjohn/rapidstring/tree/master/benchmark) outperform the standard string implementations of GCC, Clang, MSVC and ICC by a factor of two or more in most tests.
 
@@ -89,3 +98,13 @@ puts(rs_data(&s)); /* "long $MUaaaaaaa" */
 
 ## Why maybe?
 All of the current benchmarks in this repository outperform the standard string implementations typically by a factor of two or more. However, these implementations are subject to change at any moment, the benchmarks may be inaccurate, certain factors might not be considered, etc. If you believe a benchmark is incorrect or misleading, by all means I encourage you to create an issue/pull request. I am continuously striving to improve `rapidstring`'s performance and I will do my best to ensure the benchmarks accurately represent its efficiency as a library.
+
+## Build
+To build the project, the following must be run:
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+The test and benchmark executables will be in their respective folders.
