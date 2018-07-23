@@ -22,7 +22,9 @@
 - **Vigorous testing**. The library has 100% unit test coverage with valgrind memory leak checks. All tests are ran on GCC, Clang and MSVC in the continous integration builds to ensure the library is always up to par.
 
 ## Why maybe?
-All of the current benchmarks in this repository outperform the standard string implementations typically by a factor of two or more. However, these implementations are subject to change at any moment, the benchmarks may be inaccurate, certain factors might not be considered, etc. If you believe a benchmark is incorrect or misleading, by all means I encourage you to create an issue/pull request. I am continuously striving to improve `rapidstring`'s performance and I will do my best to ensure the benchmarks accurately represent its efficiency as a library.
+All of the current benchmarks in this repository outperform the standard string implementations typically by a factor of two or more. However, these implementations are subject to change at any moment, the benchmarks may be inaccurate, certain factors might not be considered, etc.
+
+If you believe a benchmark is incorrect or misleading, by all means I encourage you to create an issue/pull request. I am continuously striving to improve `rapidstring`'s performance and I will do my best to ensure the benchmarks accurately represent its efficiency as a library.
 
 ## Examples
 
