@@ -113,11 +113,13 @@ printf("%u", rs_len(&s)); /* 0 */
 printf("%u", rs_is_heap(&s)); /* 1 */
 
 rs_shrink_to_fit(&s);
-
 printf("%u", rs_capacity(&s)); /* 0 */
+
+rs_reserve(&s, 50);
+printf("%u", rs_capacity(&s)); /* 50 */
 ```
 
-In order to allow for the string's capacity to grow at a faster rate, the macro `RS_GROWTH_FACTOR` may be redefined. The default is `2`, meaning the capacity is doubled every time the string runs out of space.
+In order to allow the string's capacity to grow at a faster rate, the macro `RS_GROWTH_FACTOR` may be redefined. The default is `2`, meaning the capacity is doubled every time the string runs out of space.
 
 ## Build
 To build the project, the following must be run:
