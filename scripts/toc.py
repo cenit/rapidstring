@@ -4,7 +4,7 @@ from collections import OrderedDict
 # TODO: Don't require this to be ran twice if a section is removed.
 
 header = '''/*
- * rapidstring - A fast string library.
+ * rapidstring - Maybe the fastest string library.
  * version 0.1.0
  * https://github.com/boyerjohn/rapidstring
  *

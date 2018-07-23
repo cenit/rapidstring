@@ -1,5 +1,5 @@
 /*
- * rapidstring - A fast string library.
+ * rapidstring - Maybe the fastest string library.
  * version 0.1.0
  * https://github.com/boyerjohn/rapidstring
  *
