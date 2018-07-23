@@ -150,6 +150,7 @@
 #define RS_FREE free
 #endif
 
+#ifndef RS_HEAP_FLAG
 /**
  * @brief Heap flag of a #rapidstring.
  *
@@ -158,6 +159,7 @@
  * @since 1.0.0
  */
 #define RS_HEAP_FLAG (0xFF)
+#endif
 
 #define RS_ASSERT_RS(s)                                    \
 	do {                                               \
@@ -215,7 +217,10 @@ typedef struct {
 	size_t size;
 } rs_align_dummy;
 
-#if RS_C11
+#ifdef RS_STACK_CAPACITY
+enum { PRE_HEAP_ALIGN_SZ = sizeof(size_t) * 2 + sizeof(void *) - 1 };
+#define RS_ALIGNMENT (RS_STACK_CAPACITY - PRE_HEAP_ALIGN_SZ)
+#elif RS_C11
 #define RS_ALIGNMENT (_Alignof(rs_align_dummy))
 #elif defined(__GNUC__)
 #define RS_ALIGNMENT (__alignof__(rs_align_dummy))
@@ -278,12 +283,14 @@ typedef struct {
 	unsigned char flag;
 } rs_heap;
 
+#ifndef RS_STACK_CAPACITY
 /**
  * @brief Capacity of a stack string.
  *
  * @since 1.0.0
  */
 #define RS_STACK_CAPACITY (sizeof(rs_heap) - 1)
+#endif
 
 /**
  * @brief Struct that stores the stack data.

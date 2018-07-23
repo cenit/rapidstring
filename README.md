@@ -17,7 +17,7 @@
 
 - **Extensive documentation**. All functions are [thoroughly documented](https://boyerjohn.github.io/rapidstring/) with information on its parameters, the complexity, whether it allocates, when it allocates and more.
 
-- **Configurable**. The internal implementation of `rapidstring` is very open. All internal functions and macros are documented to allow the utmost leeway to the user. Nearly all the internal macros such as the allocations functions, the growth multipliers or the inling settings may be redefined by the user.
+- **Configurable**. The internal implementation of `rapidstring` is very open. All internal functions and macros are documented to allow the utmost leeway to the user. Nearly all the internal macros such as the allocations functions, the stack capacity, the growth multiplier or the inling settings may be redefined by the user.
 
 - **Vigorous testing**. The library has 100% unit test coverage with valgrind memory leak checks. All tests are ran on GCC, Clang and MSVC in the continous integration builds to ensure the library is always up to par.
 
@@ -85,7 +85,7 @@ rs_cat_rs(&s1, &s2);
 puts(rs_data(&s1)); /* Hello World! */
 ```
 
-It is unnecessary to call `rs_free()` if you are sure the string length will always remain under `RS_STACK_CAPACITY`.
+It is unnecessary to call `rs_free()` if you are sure the string length will always remain under `RS_STACK_CAPACITY`. This macro may be redefined to suit your application's needs.
 
 ### Resizing
 ```c
