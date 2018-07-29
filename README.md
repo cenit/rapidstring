@@ -144,4 +144,4 @@ cd build
 cmake ..
 cmake --build .
 ```
-The test and benchmark executables will be in their respective folders.
+The build will default to debug mode. To compile in release mode, pass this flag `-DCMAKE_BUILD_TYPE=Release` to the cmake generation command. The test and benchmark executables will be in their respective folders.
