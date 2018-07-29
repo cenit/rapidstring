@@ -137,6 +137,8 @@ Erasing from the first element with the length of the string is identicle to cal
 ## Build
 To build the project, the following must be run:
 ```bash
+git clone --recurse-submodules https://github.com/boyerjohn/rapidstring
+cd rapidstring
 mkdir build
 cd build
 cmake ..
