@@ -287,6 +287,10 @@ typedef struct {
 /**
  * @brief Capacity of a stack string.
  *
+ * @warning This may not be redefined to lower than 16 bytes on x86
+ * architectures or 32 bytes on x86_64 architectures. This is because the
+ * remaining size of a stack string must be aligned with the heap flag.
+ *
  * @since 1.0.0
  */
 #define RS_STACK_CAPACITY (sizeof(rs_heap) - 1)
