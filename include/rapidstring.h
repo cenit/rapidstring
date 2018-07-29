@@ -14,24 +14,24 @@
  * - Declarations:	line 69
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 377
- * - Defintions:	line 1136
+ * - Declarations:	line 381
+ * - Defintions:	line 1140
  *
  * 3. COPYING
- * - Declarations:	line 485
- * - Defintions:	line 1183
+ * - Declarations:	line 489
+ * - Defintions:	line 1187
  *
  * 4. CAPACITY
- * - Declarations:	line 592
- * - Defintions:	line 1236
+ * - Declarations:	line 596
+ * - Defintions:	line 1240
  *
  * 5. MODIFIERS
- * - Declarations:	line 731
- * - Defintions:	line 1301
+ * - Declarations:	line 735
+ * - Defintions:	line 1305
  *
  * 6. HEAP OPERATIONS
- * - Declarations:	line 1029
- * - Defintions:	line 1481
+ * - Declarations:	line 1033
+ * - Defintions:	line 1487
  */
 
 /**
