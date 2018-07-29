@@ -1384,9 +1384,9 @@ RS_API void rs_stack_erase(rapidstring *s, size_t index, size_t n)
 	assert(index <= stack_len);
 	assert(n <= stack_len - index);
 
-	memcpy(s->stack.buffer + index, s->stack.buffer + total,
-	       stack_len - total);
-	rs_stack_resize(s, stack_len - n);
+	memmove(s->stack.buffer + index, s->stack.buffer + total,
+		stack_len - total + 1);
+	s->stack.left += (unsigned char)(n);
 }
 
 RS_API void rs_heap_erase(rapidstring *s, size_t index, size_t n)
@@ -1398,9 +1398,9 @@ RS_API void rs_heap_erase(rapidstring *s, size_t index, size_t n)
 	assert(index <= heap_len);
 	assert(n <= heap_len - index);
 
-	memcpy(s->heap.buffer + index, s->heap.buffer + total,
-	       heap_len - total);
-	rs_heap_resize(s, heap_len - n);
+	memmove(s->heap.buffer + index, s->heap.buffer + total,
+		heap_len - total + 1);
+	s->heap.size -= n;
 }
 
 RS_API void rs_erase(rapidstring *s, size_t index, size_t n)
