@@ -38,7 +38,7 @@ rapidstring s1, s2, s3, s4;
 /* Empty string. */
 rs_init(&s1);
 
-/* Initialized with a value. */
+/* Initialize with a value. */
 rs_init_w(&s2, "Hello World!");
 
 /* Specify the length to speed it up. */
@@ -66,7 +66,6 @@ puts(rs_data(&s1)); /* Blimey! */
 rs_cpy_n(&s1, "Jiminy Cricket!", 15);
 rs_cpy_rs(&s2, &s1);
 
-puts(rs_data(&s1)); /* Jiminy Cricket! */
 puts(rs_data(&s2)); /* Jiminy Cricket! */
 ```
 

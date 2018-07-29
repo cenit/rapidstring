@@ -1,6 +1,6 @@
 /*
  * rapidstring - Maybe the fastest string library ever.
- * version 0.1.0
+ * version 1.0.0
  * https://github.com/boyerjohn/rapidstring
  *
  * Licensed under the MIT License <http://opensource.org/licenses/MIT>.
@@ -77,14 +77,14 @@
  *
  * @since 1.0.0
  */
-#define RS_VERSION_MAJOR 0
+#define RS_VERSION_MAJOR 1
 
 /**
  * @brief Minor version of the rapidstring library.
  *
  * @since 1.0.0
  */
-#define RS_VERSION_MINOR 1
+#define RS_VERSION_MINOR 0
 
 /**
  * @brief Patch version of the rapidstring library.

@@ -6,7 +6,7 @@ from collections import OrderedDict
 
 header = '''/*
  * rapidstring - Maybe the fastest string library ever.
- * version 0.1.0
+ * version 1.0.0
  * https://github.com/boyerjohn/rapidstring
  *
  * Licensed under the MIT License <http://opensource.org/licenses/MIT>.
