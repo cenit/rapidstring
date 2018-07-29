@@ -46,7 +46,7 @@ TEST_CASE("reserve stack to heap")
 	rs_reserve(&s, cap);
 
 	REQUIRE(rs_cap(&s) >= cap);
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_free(&s);
 }
@@ -66,7 +66,7 @@ TEST_CASE("reserve grow heap")
 	rs_reserve(&s, cap);
 
 	REQUIRE(rs_cap(&s) >= cap);
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_free(&s);
 }
@@ -80,7 +80,7 @@ TEST_CASE("shrink to fit stack")
 
 	rs_shrink_to_fit(&s);
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_free(&s);
 }
@@ -98,7 +98,7 @@ TEST_CASE("shrink to fit heap")
 
 	rs_shrink_to_fit(&s);
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_free(&s);
 }

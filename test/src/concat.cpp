@@ -12,11 +12,11 @@ TEST_CASE("Stack concatenation")
 
 	rs_cat(&s, first.data());
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_cat(&s, second.data());
 
-	validate_rapidstring(&s, first + second);
+	VALIDATE_RS(&s, first + second);
 
 	rs_free(&s);
 }
@@ -31,11 +31,11 @@ TEST_CASE("Stack and heap concatenation")
 
 	rs_cat(&s, first.data());
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_cat(&s, second.data());
 
-	validate_rapidstring(&s, first + second);
+	VALIDATE_RS(&s, first + second);
 
 	rs_free(&s);
 }
@@ -50,11 +50,11 @@ TEST_CASE("Heap concatenation")
 
 	rs_cat(&s, first.data());
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_cat(&s, second.data());
 
-	validate_rapidstring(&s, first + second);
+	VALIDATE_RS(&s, first + second);
 
 	rs_free(&s);
 }
@@ -72,7 +72,7 @@ TEST_CASE("String concatenation")
 
 	rs_cat_rs(&s1, &s2);
 
-	validate_rapidstring(&s1, first + second);
+	VALIDATE_RS(&s1, first + second);
 
 	rs_free(&s1);
 	rs_free(&s2);

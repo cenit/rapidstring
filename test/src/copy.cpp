@@ -9,11 +9,11 @@ TEST_CASE("Stack and heap copying")
 	rs_init(&s);
 	rs_cpy(&s, first.data());
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_cpy(&s, second.data());
 
-	validate_rapidstring(&s, second);
+	VALIDATE_RS(&s, second);
 
 	rs_free(&s);
 }
@@ -27,7 +27,7 @@ TEST_CASE("Heap growth copying")
 
 	rs_cpy(&s, first.data());
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_free(&s);
 }
@@ -44,7 +44,7 @@ TEST_CASE("String copying")
 
 	rs_cpy_rs(&s1, &s2);
 
-	validate_rapidstring(&s1, first);
+	VALIDATE_RS(&s1, first);
 
 	rs_free(&s1);
 	rs_free(&s2);

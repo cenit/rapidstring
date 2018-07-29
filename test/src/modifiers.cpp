@@ -43,7 +43,7 @@ TEST_CASE("resize stack")
 	rs_resize_w(&s, size, 'a');
 	first.resize(size, 'a');
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_free(&s);
 }
@@ -59,7 +59,7 @@ TEST_CASE("resize stack to heap")
 	rs_resize_w(&s, size, 'a');
 	first.resize(size, 'a');
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_free(&s);
 }
@@ -108,29 +108,29 @@ template <typename F> void test_erase(std::string cmp, F functor)
 	rapidstring s;
 	rs_init_w(&s, cmp.data());
 	rs_erase(&s, 0, 0);
-	validate_rapidstring(&s, cmp);
+	VALIDATE_RS(&s, cmp);
 
 	functor(&s, 0, 2);
 	cmp.erase(0, 2);
-	validate_rapidstring(&s, cmp);
+	VALIDATE_RS(&s, cmp);
 
 	cmp = original;
 	rs_cpy(&s, cmp.data());
 	functor(&s, 2, 2);
 	cmp.erase(2, 2);
-	validate_rapidstring(&s, cmp);
+	VALIDATE_RS(&s, cmp);
 
 	cmp = original;
 	rs_cpy(&s, cmp.data());
 	rs_erase(&s, 2, cmp.size() - 2);
 	cmp.erase(2, cmp.size() - 2);
-	validate_rapidstring(&s, cmp);
+	VALIDATE_RS(&s, cmp);
 
 	cmp = original;
 	rs_cpy(&s, cmp.data());
 	rs_erase(&s, 0, cmp.size());
 	cmp.erase(0, cmp.size());
-	validate_rapidstring(&s, cmp);
+	VALIDATE_RS(&s, cmp);
 
 	rs_free(&s);
 }
@@ -155,19 +155,19 @@ TEST_CASE("clear")
 	rapidstring s;
 	rs_init_w(&s, first.data());
 	rs_stack_clear(&s);
-	validate_rapidstring(&s, empty);
+	VALIDATE_RS(&s, empty);
 
 	rs_cpy(&s, first.data());
 	rs_clear(&s);
-	validate_rapidstring(&s, empty);
+	VALIDATE_RS(&s, empty);
 
 	rs_cpy(&s, second.data());
 	rs_heap_clear(&s);
-	validate_rapidstring(&s, empty);
+	VALIDATE_RS(&s, empty);
 
 	rs_cpy(&s, second.data());
 	rs_clear(&s);
-	validate_rapidstring(&s, empty);
+	VALIDATE_RS(&s, empty);
 
 	rs_free(&s);
 }
@@ -186,7 +186,7 @@ TEST_CASE("resize heap")
 	rs_resize_w(&s, size, 'a');
 	first.resize(size, 'a');
 
-	validate_rapidstring(&s, first);
+	VALIDATE_RS(&s, first);
 
 	rs_free(&s);
 }
