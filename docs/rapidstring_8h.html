@@ -176,9 +176,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gabcade1a0d73af43d1ed13ad16a3fd224"><td class="memItemLeft" align="right" valign="top">RS_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__capacity.html#gabcade1a0d73af43d1ed13ad16a3fd224">rs_len</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
 <tr class="memdesc:gabcade1a0d73af43d1ed13ad16a3fd224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length.  <a href="group__capacity.html#gabcade1a0d73af43d1ed13ad16a3fd224">More...</a><br /></td></tr>
 <tr class="separator:gabcade1a0d73af43d1ed13ad16a3fd224"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga835921e3cd41522852fcf80a4d4e349b"><td class="memItemLeft" align="right" valign="top">RS_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__capacity.html#ga835921e3cd41522852fcf80a4d4e349b">rs_capacity</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
-<tr class="memdesc:ga835921e3cd41522852fcf80a4d4e349b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the capacity.  <a href="group__capacity.html#ga835921e3cd41522852fcf80a4d4e349b">More...</a><br /></td></tr>
-<tr class="separator:ga835921e3cd41522852fcf80a4d4e349b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6022ae9dd30b194e0e2d32895269574e"><td class="memItemLeft" align="right" valign="top">RS_API size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__capacity.html#ga6022ae9dd30b194e0e2d32895269574e">rs_cap</a> (const <a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:ga6022ae9dd30b194e0e2d32895269574e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the capacity.  <a href="group__capacity.html#ga6022ae9dd30b194e0e2d32895269574e">More...</a><br /></td></tr>
+<tr class="separator:ga6022ae9dd30b194e0e2d32895269574e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf65839adc77ee2becc87814aa1eee6a1"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__capacity.html#gaf65839adc77ee2becc87814aa1eee6a1">rs_reserve</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
 <tr class="memdesc:gaf65839adc77ee2becc87814aa1eee6a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserves capacity.  <a href="group__capacity.html#gaf65839adc77ee2becc87814aa1eee6a1">More...</a><br /></td></tr>
 <tr class="separator:gaf65839adc77ee2becc87814aa1eee6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +215,24 @@ Functions</h2></td></tr>
 <tr class="memitem:ga786a235f6e1dc8acdc4490210831ccab"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga786a235f6e1dc8acdc4490210831ccab">rs_steal</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, char *buffer, size_t cap)</td></tr>
 <tr class="memdesc:ga786a235f6e1dc8acdc4490210831ccab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steals a buffer allocated on the heap.  <a href="group__modifiers.html#ga786a235f6e1dc8acdc4490210831ccab">More...</a><br /></td></tr>
 <tr class="separator:ga786a235f6e1dc8acdc4490210831ccab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga703c34b6b6fd080d1cbb3e7bab4fd779"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga703c34b6b6fd080d1cbb3e7bab4fd779">rs_stack_erase</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t index, size_t n)</td></tr>
+<tr class="memdesc:ga703c34b6b6fd080d1cbb3e7bab4fd779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified characters from a stack string.  <a href="group__modifiers.html#ga703c34b6b6fd080d1cbb3e7bab4fd779">More...</a><br /></td></tr>
+<tr class="separator:ga703c34b6b6fd080d1cbb3e7bab4fd779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65e43b7283484af35d51d858a354e29d"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga65e43b7283484af35d51d858a354e29d">rs_heap_erase</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t index, size_t n)</td></tr>
+<tr class="memdesc:ga65e43b7283484af35d51d858a354e29d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified characters from a heap string.  <a href="group__modifiers.html#ga65e43b7283484af35d51d858a354e29d">More...</a><br /></td></tr>
+<tr class="separator:ga65e43b7283484af35d51d858a354e29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4618a550618aca0f7087ac5ce2aebb5a"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga4618a550618aca0f7087ac5ce2aebb5a">rs_erase</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t index, size_t n)</td></tr>
+<tr class="memdesc:ga4618a550618aca0f7087ac5ce2aebb5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified characters from a string.  <a href="group__modifiers.html#ga4618a550618aca0f7087ac5ce2aebb5a">More...</a><br /></td></tr>
+<tr class="separator:ga4618a550618aca0f7087ac5ce2aebb5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga23dced8c37846c00dc41793185bf77e2"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga23dced8c37846c00dc41793185bf77e2">rs_stack_clear</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:ga23dced8c37846c00dc41793185bf77e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all characters from a stack string.  <a href="group__modifiers.html#ga23dced8c37846c00dc41793185bf77e2">More...</a><br /></td></tr>
+<tr class="separator:ga23dced8c37846c00dc41793185bf77e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50a4a9db9375019944bd36a4691f4d3a"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga50a4a9db9375019944bd36a4691f4d3a">rs_heap_clear</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:ga50a4a9db9375019944bd36a4691f4d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all characters from a heap string.  <a href="group__modifiers.html#ga50a4a9db9375019944bd36a4691f4d3a">More...</a><br /></td></tr>
+<tr class="separator:ga50a4a9db9375019944bd36a4691f4d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ef98b0bcceb6deb247e844a5858d478"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga4ef98b0bcceb6deb247e844a5858d478">rs_clear</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s)</td></tr>
+<tr class="memdesc:ga4ef98b0bcceb6deb247e844a5858d478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all characters from a string.  <a href="group__modifiers.html#ga4ef98b0bcceb6deb247e844a5858d478">More...</a><br /></td></tr>
+<tr class="separator:ga4ef98b0bcceb6deb247e844a5858d478"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga11078701a24a08651a1b65e1081f8ea0"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga11078701a24a08651a1b65e1081f8ea0">rs_stack_resize</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t n)</td></tr>
 <tr class="memdesc:ga11078701a24a08651a1b65e1081f8ea0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resizes a stack string.  <a href="group__modifiers.html#ga11078701a24a08651a1b65e1081f8ea0">More...</a><br /></td></tr>
 <tr class="separator:ga11078701a24a08651a1b65e1081f8ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -251,7 +269,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 22 2018 19:41:52 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 29 2018 11:56:52 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -119,7 +119,7 @@ rs_reserve(&s, 50);
 printf("%u", rs_cap(&s)); /* 50 */
 ```
 
-In order to allow the string's capacity to grow at a faster rate, the macro `RS_GROWTH_FACTOR` may be redefined. The default is `2`, meaning the capacity is doubled every time the string runs out of space.
+In order to allow the string's capacity to grow at a faster rate, the macro `RS_GROWTH_FACTOR` may be redefined. The default is `2`, meaning the capacity is doubled every time the string runs out of space. Furthermore, intializing a string with a capacity will always allocate on the heap.
 
 ### Erasing
 ```c
@@ -129,7 +129,7 @@ rs_init_w(&s, "Blasphemy!");
 rs_erase(&s, 0, 2);
 puts(rs_data(&s)); /* asphemy! */
 
-rs_clear(&s, 0, 2);
+rs_clear(&s);
 printf("%u", rs_len(&s)); /* 0 */
 ```
 

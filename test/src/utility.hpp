@@ -9,6 +9,7 @@
 	do {                                                     \
 		const auto cmp_str = cmp;                        \
 		REQUIRE(rs_len(s) == cmp_str.length());          \
+		REQUIRE(rs_data_c(s)[rs_len(s)] == '\0');        \
 		REQUIRE(rs_data_c(s) == cmp_str);                \
                                                                  \
 		if (rs_is_heap(s))                               \
