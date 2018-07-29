@@ -45,7 +45,7 @@ TEST_CASE("Capacity construction")
 	rs_init_w_cap(&s, cap);
 
 	REQUIRE(rs_is_heap(&s));
-	REQUIRE(rs_capacity(&s) >= cap);
+	REQUIRE(rs_cap(&s) >= cap);
 
 	rs_free(&s);
 }

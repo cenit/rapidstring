@@ -6,7 +6,7 @@
 
 void validate_steal(const rapidstring *s, const char *buffer, std::size_t size)
 {
-	REQUIRE(rs_capacity(s) == size);
+	REQUIRE(rs_cap(s) == size);
 	REQUIRE(rs_len(s) == size);
 	REQUIRE(rs_data_c(s)[rs_len(s)] == '\0');
 	REQUIRE(std::strcmp(rs_data_c(s), buffer) == 0);
@@ -30,6 +30,38 @@ TEST_CASE("data")
 
 	rs_free(&s1);
 	rs_free(&s2);
+}
+
+TEST_CASE("resize stack")
+{
+	constexpr std::size_t size{ 15 };
+	std::string first{ "is" };
+
+	rapidstring s;
+	rs_init_w(&s, first.data());
+
+	rs_resize_w(&s, size, 'a');
+	first.resize(size, 'a');
+
+	validate_rapidstring(&s, first);
+
+	rs_free(&s);
+}
+
+TEST_CASE("resize stack to heap")
+{
+	constexpr std::size_t size{ 100 };
+	std::string first{ "coming" };
+
+	rapidstring s;
+	rs_init_w(&s, first.data());
+
+	rs_resize_w(&s, size, 'a');
+	first.resize(size, 'a');
+
+	validate_rapidstring(&s, first);
+
+	rs_free(&s);
 }
 
 TEST_CASE("steal")
@@ -69,34 +101,73 @@ TEST_CASE("steal with capacity")
 	rs_free(&s);
 }
 
-TEST_CASE("resize stack")
+template <typename F> void test_erase(std::string cmp, F functor)
 {
-	constexpr std::size_t size{ 15 };
-	std::string first{ "is" };
+	const std::string original{ cmp };
 
 	rapidstring s;
-	rs_init_w(&s, first.data());
+	rs_init_w(&s, cmp.data());
+	rs_erase(&s, 0, 0);
+	validate_rapidstring(&s, cmp);
 
-	rs_resize_w(&s, size, 'a');
-	first.resize(size, 'a');
+	functor(&s, 0, 2);
+	cmp.erase(0, 2);
+	validate_rapidstring(&s, cmp);
 
-	validate_rapidstring(&s, first);
+	cmp = original;
+	rs_cpy(&s, cmp.data());
+	functor(&s, 2, 2);
+	cmp.erase(2, 2);
+	validate_rapidstring(&s, cmp);
+
+	cmp = original;
+	rs_cpy(&s, cmp.data());
+	rs_erase(&s, 2, cmp.size() - 2);
+	cmp.erase(2, cmp.size() - 2);
+	validate_rapidstring(&s, cmp);
+
+	cmp = original;
+	rs_cpy(&s, cmp.data());
+	rs_erase(&s, 0, cmp.size());
+	cmp.erase(0, cmp.size());
+	validate_rapidstring(&s, cmp);
 
 	rs_free(&s);
 }
 
-TEST_CASE("resize stack to heap")
+TEST_CASE("erase")
 {
-	constexpr std::size_t size{ 100 };
-	std::string first{ "is" };
+	test_erase("Tyrion", rs_stack_erase);
+	test_erase(
+		"Power resides where men believe it resides. No more and no less.",
+		rs_heap_erase);
+}
+
+TEST_CASE("clear")
+{
+	const std::string first{ "GOT" };
+	const std::string second{
+		"Love is poison. A sweet poison, yes, but it will kill you all the "
+		"same."
+	};
+	const std::string empty;
 
 	rapidstring s;
 	rs_init_w(&s, first.data());
+	rs_stack_clear(&s);
+	validate_rapidstring(&s, empty);
 
-	rs_resize_w(&s, size, 'a');
-	first.resize(size, 'a');
+	rs_cpy(&s, first.data());
+	rs_clear(&s);
+	validate_rapidstring(&s, empty);
 
-	validate_rapidstring(&s, first);
+	rs_cpy(&s, second.data());
+	rs_heap_clear(&s);
+	validate_rapidstring(&s, empty);
+
+	rs_cpy(&s, second.data());
+	rs_clear(&s);
+	validate_rapidstring(&s, empty);
 
 	rs_free(&s);
 }

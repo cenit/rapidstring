@@ -45,7 +45,7 @@ TEST_CASE("reserve stack to heap")
 
 	rs_reserve(&s, cap);
 
-	REQUIRE(rs_capacity(&s) >= cap);
+	REQUIRE(rs_cap(&s) >= cap);
 	validate_rapidstring(&s, first);
 
 	rs_free(&s);
@@ -65,7 +65,7 @@ TEST_CASE("reserve grow heap")
 
 	rs_reserve(&s, cap);
 
-	REQUIRE(rs_capacity(&s) >= cap);
+	REQUIRE(rs_cap(&s) >= cap);
 	validate_rapidstring(&s, first);
 
 	rs_free(&s);

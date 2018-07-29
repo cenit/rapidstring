@@ -663,7 +663,7 @@ RS_API size_t rs_len(const rapidstring *s);
  *
  * @since 1.0.0
  */
-RS_API size_t rs_capacity(const rapidstring *s);
+RS_API size_t rs_cap(const rapidstring *s);
 
 /**
  * @brief Reserves capacity.
@@ -866,9 +866,93 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
 RS_API void rs_steal(rapidstring *s, char *buffer, size_t cap);
 
 /**
- * @brief Resizes a stack string.
+ * @brief Removes the specified characters from a stack string.
  *
  * @param[in,out] s An initialized stack string.
+ * @param[in] index The index of the first character to remove.
+ * @param[in] n The number of characters to remove.
+ *
+ * @allocation Never.
+ *
+ * @complexity Linear in the length of @a s minus @a index.
+ *
+ * @since 1.0.0
+ */
+RS_API void rs_stack_erase(rapidstring *s, size_t index, size_t n);
+
+/**
+ * @brief Removes the specified characters from a heap string.
+ *
+ * @param[in,out] s An initialized heap string.
+ * @param[in] index The index of the first character to remove.
+ * @param[in] n The number of characters to remove.
+ *
+ * @allocation Never.
+ *
+ * @complexity Linear in the length of @a s minus @a index.
+ *
+ * @since 1.0.0
+ */
+RS_API void rs_heap_erase(rapidstring *s, size_t index, size_t n);
+
+/**
+ * @brief Removes the specified characters from a string.
+ *
+ * @param[in,out] s An initialized string.
+ * @param[in] index The index of the first character to remove.
+ * @param[in] n The number of characters to remove.
+ *
+ * @allocation Never.
+ *
+ * @complexity Linear in the length of @a s minus @a index.
+ *
+ * @since 1.0.0
+ */
+RS_API void rs_erase(rapidstring *s, size_t index, size_t n);
+
+/**
+ * @brief Removes all characters from a stack string.
+ *
+ * @param[out] s An initialized stack string.
+ *
+ * @allocation Never.
+ *
+ * @complexity Constant.
+ *
+ * @since 1.0.0
+ */
+RS_API void rs_stack_clear(rapidstring *s);
+
+/**
+ * @brief Removes all characters from a heap string.
+ *
+ * @param[in,out] s An initialized heap string.
+ *
+ * @allocation Never.
+ *
+ * @complexity Constant.
+ *
+ * @since 1.0.0
+ */
+RS_API void rs_heap_clear(rapidstring *s);
+
+/**
+ * @brief Removes all characters from a string.
+ *
+ * @param[in,out] s An initialized string.
+ *
+ * @allocation Never.
+ *
+ * @complexity Constant.
+ *
+ * @since 1.0.0
+ */
+RS_API void rs_clear(rapidstring *s);
+
+/**
+ * @brief Resizes a stack string.
+ *
+ * @param[out] s An initialized stack string.
  * @param[in] n The new size.
  *
  * @warning The new size must be smaller or equal to #RS_STACK_CAPACITY. If this
@@ -1053,8 +1137,7 @@ RS_API void rs_init(rapidstring *s)
 {
 	assert(s != NULL);
 
-	s->stack.buffer[0] = '\0';
-	s->stack.left = RS_STACK_CAPACITY;
+	rs_stack_resize(s, 0);
 }
 
 RS_API void rs_init_w(rapidstring *s, const char *input)
@@ -1174,7 +1257,7 @@ RS_API size_t rs_len(const rapidstring *s)
 	return rs_is_heap(s) ? rs_heap_len(s) : rs_stack_len(s);
 }
 
-RS_API size_t rs_capacity(const rapidstring *s)
+RS_API size_t rs_cap(const rapidstring *s)
 {
 	return rs_is_heap(s) ? s->heap.capacity : RS_STACK_CAPACITY;
 }
@@ -1229,14 +1312,13 @@ RS_API const char *rs_data_c(const rapidstring *s)
 
 RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n)
 {
-	size_t stack_size;
+	const size_t stack_len = rs_stack_len(s);
 
 	assert(input != NULL);
 	assert(RS_STACK_CAPACITY >= rs_stack_len(s) + n);
 
-	stack_size = rs_stack_len(s);
-	memcpy(s->stack.buffer + stack_size, input, n);
-	rs_stack_resize(s, stack_size + n);
+	memcpy(s->stack.buffer + stack_len, input, n);
+	rs_stack_resize(s, stack_len + n);
 }
 
 RS_API void rs_heap_cat_n(rapidstring *s, const char *input, size_t n)
@@ -1293,10 +1375,62 @@ RS_API void rs_steal(rapidstring *s, char *buffer, size_t n)
 	rs_heap_resize(s, sz);
 }
 
+RS_API void rs_stack_erase(rapidstring *s, size_t index, size_t n)
+{
+	const size_t total = index + n;
+	const size_t stack_len = rs_stack_len(s);
+
+	assert(rs_is_stack(s));
+	assert(index <= stack_len);
+	assert(n <= stack_len - index);
+
+	memcpy(s->stack.buffer + index, s->stack.buffer + total,
+	       stack_len - total);
+	rs_stack_resize(s, stack_len - n);
+}
+
+RS_API void rs_heap_erase(rapidstring *s, size_t index, size_t n)
+{
+	const size_t total = index + n;
+	const size_t heap_len = rs_heap_len(s);
+
+	assert(rs_is_heap(s));
+	assert(index <= heap_len);
+	assert(n <= heap_len - index);
+
+	memcpy(s->heap.buffer + index, s->heap.buffer + total,
+	       heap_len - total);
+	rs_heap_resize(s, heap_len - n);
+}
+
+RS_API void rs_erase(rapidstring *s, size_t index, size_t n)
+{
+	if (RS_HEAP_LIKELY(rs_is_heap(s)))
+		rs_heap_erase(s, index, n);
+	else
+		rs_stack_erase(s, index, n);
+}
+
+RS_API void rs_stack_clear(rapidstring *s)
+{
+	rs_stack_resize(s, 0);
+}
+
+RS_API void rs_heap_clear(rapidstring *s)
+{
+	rs_heap_resize(s, 0);
+}
+
+RS_API void rs_clear(rapidstring *s)
+{
+	if (RS_HEAP_LIKELY(rs_is_heap(s)))
+		rs_heap_clear(s);
+	else
+		rs_stack_clear(s);
+}
+
 RS_API void rs_stack_resize(rapidstring *s, size_t n)
 {
-	assert(RS_STACK_CAPACITY >= n);
-
 	s->stack.buffer[n] = '\0';
 	s->stack.left = (unsigned char)(RS_STACK_CAPACITY - n);
 }
@@ -1358,13 +1492,13 @@ RS_API void rs_heap_init_g(rapidstring *s, size_t n)
 
 RS_API void rs_stack_to_heap(rapidstring *s, size_t n)
 {
-	const size_t stack_size = rs_stack_len(s);
+	const size_t stack_len = rs_stack_len(s);
 
 	char tmp[RS_STACK_CAPACITY];
-	memcpy(tmp, s->stack.buffer, stack_size);
+	memcpy(tmp, s->stack.buffer, stack_len);
 
-	rs_heap_init(s, stack_size + n);
-	rs_heap_cpy_n(s, tmp, stack_size);
+	rs_heap_init(s, stack_len + n);
+	rs_heap_cpy_n(s, tmp, stack_len);
 }
 
 RS_API void rs_stack_to_heap_g(rapidstring *s, size_t n)

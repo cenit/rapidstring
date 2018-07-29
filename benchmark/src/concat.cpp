@@ -1,6 +1,3 @@
-#ifndef CONCAT_HPP_23EF09BE616AE9A8
-#define CONCAT_HPP_23EF09BE616AE9A8
-
 #include "rapidstring.h"
 #include <benchmark/benchmark.h>
 #include <cstddef>
@@ -16,7 +13,7 @@ constexpr std::size_t concat_size{ sizeof(concat_str) - 1 };
  * benchmarks bellow.
  */
 
-inline void rs_cat(benchmark::State &state)
+void rs_cat(benchmark::State &state)
 {
 	for (auto _ : state) {
 		rapidstring s;
@@ -30,7 +27,23 @@ inline void rs_cat(benchmark::State &state)
 	}
 }
 
-inline void rs_reserve_concat(benchmark::State &state)
+BENCHMARK(rs_cat);
+
+void std_concat(benchmark::State &state)
+{
+	for (auto _ : state) {
+		std::string s;
+
+		for (size_t i = 0; i < count; i++)
+			s.append(concat_str, concat_size);
+
+		benchmark::DoNotOptimize(s);
+	}
+}
+
+BENCHMARK(std_concat);
+
+void rs_reserve_concat(benchmark::State &state)
 {
 	for (auto _ : state) {
 		rapidstring s;
@@ -49,7 +62,9 @@ inline void rs_reserve_concat(benchmark::State &state)
 	}
 }
 
-inline void std_reserve_concat(benchmark::State &state)
+BENCHMARK(rs_reserve_concat);
+
+void std_reserve_concat(benchmark::State &state)
 {
 	for (auto _ : state) {
 		std::string s;
@@ -62,16 +77,4 @@ inline void std_reserve_concat(benchmark::State &state)
 	}
 }
 
-inline void std_concat(benchmark::State &state)
-{
-	for (auto _ : state) {
-		std::string s;
-
-		for (size_t i = 0; i < count; i++)
-			s.append(concat_str, concat_size);
-
-		benchmark::DoNotOptimize(s);
-	}
-}
-
-#endif /* !CONCAT_HPP_23EF09BE616AE9A8 */
+BENCHMARK(std_reserve_concat);

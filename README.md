@@ -11,7 +11,7 @@
 
 - **Highly performant**. Every aspect of the library was first considered from a performance perspective, and it shows. The [current benchmarks](https://github.com/boyerjohn/rapidstring/tree/master/benchmark) outperform the standard string implementations of GCC, Clang, MSVC and ICC by a factor of two or more in most tests.
 
-- **Trivial integration**. The entire library consists of a [single header file](https://github.com/boyerjohn/rapidstring/blob/master/include/rapidstring.h). The code is written in vanilla ANSI C that has been tested on all current compilers.
+- **Trivial integration**. The entire library consists of a [single header file](https://github.com/boyerjohn/rapidstring/blob/master/include/rapidstring.h). The code is written in vanilla ANSI C that has been tested on all current compilers. Furthermore, the code is entirely C++ compatible.
 
 - **Minimalistic design**. Out of the ~1,400 lines of code, less than 200 are used to implement the library functions, the rest being documentation. The library has the sole purpose of providing an efficient and reliable string library.
 
@@ -108,18 +108,32 @@ If you wish to resize a string without a filler character, you may do so with `r
 rapidstring s;
 rs_init_w_cap(&s, 100);
 
-printf("%u", rs_capacity(&s)); /* 100 */
+printf("%u", rs_cap(&s)); /* 100 */
 printf("%u", rs_len(&s)); /* 0 */
 printf("%u", rs_is_heap(&s)); /* 1 */
 
 rs_shrink_to_fit(&s);
-printf("%u", rs_capacity(&s)); /* 0 */
+printf("%u", rs_cap(&s)); /* 0 */
 
 rs_reserve(&s, 50);
-printf("%u", rs_capacity(&s)); /* 50 */
+printf("%u", rs_cap(&s)); /* 50 */
 ```
 
 In order to allow the string's capacity to grow at a faster rate, the macro `RS_GROWTH_FACTOR` may be redefined. The default is `2`, meaning the capacity is doubled every time the string runs out of space.
+
+### Erasing
+```c
+rapidstring s;
+rs_init_w(&s, "Blasphemy!");
+
+rs_erase(&s, 0, 2);
+puts(rs_data(&s)); /* asphemy! */
+
+rs_clear(&s, 0, 2);
+printf("%u", rs_len(&s)); /* 0 */
+```
+
+Erasing from the first element with the length of the string is identicle to calling `rs_clear()`, but the latter is marginally faster.
 
 ## Build
 To build the project, the following must be run:

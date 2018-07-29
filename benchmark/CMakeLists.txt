@@ -1,7 +1,10 @@
 project(rapidstring_benchmark LANGUAGES CXX)
 
 add_executable(rapidstring_benchmark
+	src/concat.cpp
+	src/construct.cpp
 	src/main.cpp
+	src/resize.cpp
 )
 
 set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "Disable benchmark tests" FORCE)

@@ -1,6 +1,3 @@
-#ifndef RESIZE_HPP_0339C33297A54DF5
-#define RESIZE_HPP_0339C33297A54DF5
-
 #include "rapidstring.h"
 #include <benchmark/benchmark.h>
 #include <cstddef>
@@ -8,7 +5,7 @@
 
 constexpr std::size_t resize_count{ 1000 };
 
-inline void rs_resize(benchmark::State &state)
+void rs_resize_test(benchmark::State &state)
 {
 	for (auto _ : state) {
 		rapidstring s;
@@ -19,7 +16,9 @@ inline void rs_resize(benchmark::State &state)
 	}
 }
 
-inline void std_resize(benchmark::State &state)
+BENCHMARK(rs_resize_test);
+
+void std_resize(benchmark::State &state)
 {
 	for (auto _ : state) {
 		std::string s;
@@ -28,4 +27,4 @@ inline void std_resize(benchmark::State &state)
 	}
 }
 
-#endif /* !RESIZE_HPP_0339C33297A54DF5 */
+BENCHMARK(std_resize);
