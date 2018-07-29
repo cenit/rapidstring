@@ -13,7 +13,7 @@
 
 - **Trivial integration**. The entire library consists of a [single header file](https://github.com/boyerjohn/rapidstring/blob/master/include/rapidstring.h). The code is written in vanilla ANSI C that has been tested on all current compilers. Furthermore, the code is entirely C++ compatible.
 
-- **Minimalistic design**. Out of the ~1,400 lines of code, less than 200 are used to implement the library functions, the rest being documentation. The library has the sole purpose of providing an efficient and reliable string library.
+- **Minimalistic design**. Out of the ~1,500 lines of code, only 200 are used to implement the library functions, the rest being documentation. The library has the sole purpose of providing an efficient and reliable string library.
 
 - **Extensive documentation**. All functions are [thoroughly documented](https://boyerjohn.github.io/rapidstring/) with information on its parameters, the complexity, whether it allocates, when it allocates and more.
 
