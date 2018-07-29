@@ -1431,6 +1431,8 @@ RS_API void rs_clear(rapidstring *s)
 
 RS_API void rs_stack_resize(rapidstring *s, size_t n)
 {
+	assert(RS_STACK_CAPACITY >= n);
+
 	s->stack.buffer[n] = '\0';
 	s->stack.left = (unsigned char)(RS_STACK_CAPACITY - n);
 }
