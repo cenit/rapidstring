@@ -3,6 +3,12 @@ This library is built for performance and efficiency. The `rapidstring`'s small 
 
 The following benchmarks were run on a 64 bit machine with an Intel Core i7-6700HQ @ 2.60GHz processor. CPU scaling was disabled and all nonessential processes were killed to avoid noise. All benchmarks measure the execution time in nanoseconds, therefore, **lower is better**.
 
+Compiler versions:
+- GCC 8.1.1
+- Clang 6.0
+- ICC 18.0
+- MSVC 14.1
+
 ## 100 string concatenations
 <div align="center"><img src="https://i.imgur.com/O8Wp5F4.png"/></div>
 
