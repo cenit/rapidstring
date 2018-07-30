@@ -85,10 +85,10 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga0495945a8b4d277ce859668172a5a920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga0495945a8b4d277ce859668172a5a920">RS_VERSION_MAJOR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:ga0495945a8b4d277ce859668172a5a920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga0495945a8b4d277ce859668172a5a920">RS_VERSION_MAJOR</a>&#160;&#160;&#160;1</td></tr>
 <tr class="memdesc:ga0495945a8b4d277ce859668172a5a920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Major version of the rapidstring library.  <a href="#ga0495945a8b4d277ce859668172a5a920">More...</a><br /></td></tr>
 <tr class="separator:ga0495945a8b4d277ce859668172a5a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3555d3dec5ce4e64b56d434700e5c144"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga3555d3dec5ce4e64b56d434700e5c144">RS_VERSION_MINOR</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:ga3555d3dec5ce4e64b56d434700e5c144"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga3555d3dec5ce4e64b56d434700e5c144">RS_VERSION_MINOR</a>&#160;&#160;&#160;0</td></tr>
 <tr class="memdesc:ga3555d3dec5ce4e64b56d434700e5c144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minor version of the rapidstring library.  <a href="#ga3555d3dec5ce4e64b56d434700e5c144">More...</a><br /></td></tr>
 <tr class="separator:ga3555d3dec5ce4e64b56d434700e5c144"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga660def17180690179acd492961f52516"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__structures.html#ga660def17180690179acd492961f52516">RS_VERSION_PATCH</a>&#160;&#160;&#160;0</td></tr>
@@ -129,7 +129,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_VERSION_MAJOR&#160;&#160;&#160;0</td>
+          <td class="memname">#define RS_VERSION_MAJOR&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -146,7 +146,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define RS_VERSION_MINOR&#160;&#160;&#160;1</td>
+          <td class="memname">#define RS_VERSION_MINOR&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -330,9 +330,9 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                                            \</div><div class="line">                if (RS_HEAP_LIKELY(<a class="code" href="group__capacity.html#ga3ae362467ab8c9ae440c1d062d6a4399">rs_is_heap</a>(input)))                  \</div><div class="line">                        f(s, input-&gt;heap.buffer, <a class="code" href="group__capacity.html#ga7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));   \</div><div class="line">                else                                                    \</div><div class="line">                        f(s, input-&gt;stack.buffer, <a class="code" href="group__capacity.html#ga22be1338ac718365a274735e19815570">rs_stack_len</a>(input)); \</div><div class="line">        } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="group__capacity_html_ga22be1338ac718365a274735e19815570"><div class="ttname"><a href="group__capacity.html#ga22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1325</div></div>
-<div class="ttc" id="group__capacity_html_ga3ae362467ab8c9ae440c1d062d6a4399"><div class="ttname"><a href="group__capacity.html#ga3ae362467ab8c9ae440c1d062d6a4399">rs_is_heap</a></div><div class="ttdeci">RS_API unsigned char rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1365</div></div>
-<div class="ttc" id="group__capacity_html_ga7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="group__capacity.html#ga7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1332</div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {                                                            \</div><div class="line">                if (RS_HEAP_LIKELY(<a class="code" href="group__capacity.html#ga3ae362467ab8c9ae440c1d062d6a4399">rs_is_heap</a>(input)))                  \</div><div class="line">                        f(s, input-&gt;heap.buffer, <a class="code" href="group__capacity.html#ga7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a>(input));   \</div><div class="line">                else                                                    \</div><div class="line">                        f(s, input-&gt;stack.buffer, <a class="code" href="group__capacity.html#ga22be1338ac718365a274735e19815570">rs_stack_len</a>(input)); \</div><div class="line">        } <span class="keywordflow">while</span> (0)</div><div class="ttc" id="group__capacity_html_ga22be1338ac718365a274735e19815570"><div class="ttname"><a href="group__capacity.html#ga22be1338ac718365a274735e19815570">rs_stack_len</a></div><div class="ttdeci">RS_API size_t rs_stack_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a stack string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1340</div></div>
+<div class="ttc" id="group__capacity_html_ga3ae362467ab8c9ae440c1d062d6a4399"><div class="ttname"><a href="group__capacity.html#ga3ae362467ab8c9ae440c1d062d6a4399">rs_is_heap</a></div><div class="ttdeci">RS_API unsigned char rs_is_heap(const rapidstring *s)</div><div class="ttdoc">Checks whether a string is on the heap. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1380</div></div>
+<div class="ttc" id="group__capacity_html_ga7d2125174cf16c71d9c66c7f1636fe6b"><div class="ttname"><a href="group__capacity.html#ga7d2125174cf16c71d9c66c7f1636fe6b">rs_heap_len</a></div><div class="ttdeci">RS_API size_t rs_heap_len(const rapidstring *s)</div><div class="ttdoc">Returns the length of a heap string. </div><div class="ttdef"><b>Definition:</b> rapidstring.h:1347</div></div>
 </div><!-- fragment -->
 <p>Pass the string data and size to a function. </p>
 <p>Forwards the buffer and size of a string to the provided function. Retrieving both the buffer and the size of a string requires a flag check, which would result in an additional branch if not done manually.</p>
@@ -352,7 +352,7 @@ Macros</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 29 2018 12:21:36 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 30 2018 09:22:42 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

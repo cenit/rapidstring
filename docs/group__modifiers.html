@@ -93,9 +93,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gafe58107d229b34534f7e38c9bd211fbf"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#gafe58107d229b34534f7e38c9bd211fbf">rs_cat_rs</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, const <a class="el" href="unionrapidstring.html">rapidstring</a> *input)</td></tr>
 <tr class="memdesc:gafe58107d229b34534f7e38c9bd211fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates a string to another string.  <a href="#gafe58107d229b34534f7e38c9bd211fbf">More...</a><br /></td></tr>
 <tr class="separator:gafe58107d229b34534f7e38c9bd211fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga786a235f6e1dc8acdc4490210831ccab"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga786a235f6e1dc8acdc4490210831ccab">rs_steal</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, char *buffer, size_t cap)</td></tr>
-<tr class="memdesc:ga786a235f6e1dc8acdc4490210831ccab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steals a buffer allocated on the heap.  <a href="#ga786a235f6e1dc8acdc4490210831ccab">More...</a><br /></td></tr>
-<tr class="separator:ga786a235f6e1dc8acdc4490210831ccab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0dac1847dbae7afa4867bc17ce0635df"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga0dac1847dbae7afa4867bc17ce0635df">rs_steal</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, char *buffer, size_t cap, size_t size)</td></tr>
+<tr class="memdesc:ga0dac1847dbae7afa4867bc17ce0635df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steals a buffer allocated on the heap.  <a href="#ga0dac1847dbae7afa4867bc17ce0635df">More...</a><br /></td></tr>
+<tr class="separator:ga0dac1847dbae7afa4867bc17ce0635df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga703c34b6b6fd080d1cbb3e7bab4fd779"><td class="memItemLeft" align="right" valign="top">RS_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__modifiers.html#ga703c34b6b6fd080d1cbb3e7bab4fd779">rs_stack_erase</a> (<a class="el" href="unionrapidstring.html">rapidstring</a> *s, size_t index, size_t n)</td></tr>
 <tr class="memdesc:ga703c34b6b6fd080d1cbb3e7bab4fd779"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified characters from a stack string.  <a href="#ga703c34b6b6fd080d1cbb3e7bab4fd779">More...</a><br /></td></tr>
 <tr class="separator:ga703c34b6b6fd080d1cbb3e7bab4fd779"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -414,8 +414,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga786a235f6e1dc8acdc4490210831ccab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga786a235f6e1dc8acdc4490210831ccab">&#9670;&nbsp;</a></span>rs_steal()</h2>
+<a id="ga0dac1847dbae7afa4867bc17ce0635df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0dac1847dbae7afa4867bc17ce0635df">&#9670;&nbsp;</a></span>rs_steal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -436,7 +436,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>cap</em>&#160;</td>
+          <td class="paramname"><em>cap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -450,9 +456,10 @@ Functions</h2></td></tr>
 <p>The buffer must either be allocated with <a class="el" href="group__structures.html#ga22279156cdc026ab7c46b3d998159924" title="Allocation macro. ">RS_MALLOC()</a> or <a class="el" href="group__structures.html#ga78dc589aac4383a54ea851e9115aec0b" title="Reallocation macro. ">RS_REALLOC()</a>, or it must be manually freed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>A string. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>The buffer to steal. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">cap</td><td>The capacity of <em>buffer</em>.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cap</td><td>The capacity of <em>buffer</em>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size of <em>buffer</em>.</td></tr>
   </table>
   </dd>
 </dl>
@@ -598,6 +605,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>If you wish to decrease the capacity of the string and keep the size the same, use <a class="el" href="group__capacity.html#gab53d82b53781f929819d71c66380d8f9" title="Frees all unused memory. ">rs_shrink_to_fit()</a>.</dd></dl>
 <dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Linear in the length of <em>s</em> minus <em>index</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
@@ -656,6 +664,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<p>The string will remain on the heap after being cleared. The capacity will remain the same.</p>
 <dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
 <dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
@@ -679,6 +688,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Removes all characters from a string. </p>
+<p>Heap strings will remain on the heap after being cleared. The capacity will remain the same.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>An initialized string.</td></tr>
@@ -727,7 +737,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>The new size must be smaller or equal to <a class="el" href="group__structures.html#gaab93be554f576e050c48d50986ade7dd" title="Capacity of a stack string. ">RS_STACK_CAPACITY</a>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga1fd70f6744252ecd221761a5fa80c7ee" title="Resizes a string. ">rs_resize()</a>.</dd></dl>
 <dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -768,7 +778,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>The new size must be smaller or equal to the capacity of <em>s</em>. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga1fd70f6744252ecd221761a5fa80c7ee" title="Resizes a string. ">rs_resize()</a>.</dd></dl>
 <dl class="section user"><dt>Allocation</dt><dd>Never.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -809,7 +819,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>If the string size increases, the new characters will not be initialized. This will leave the end of <em>s</em> with garbage. If this is inconvenient for your usage, use <a class="el" href="group__modifiers.html#ga724ca013c26ce841df618baf90501068" title="Resizes a string with a filler character. ">rs_resize_w()</a>.</dd></dl>
 <dl class="section user"><dt>Allocation</dt><dd>When <em>n</em> is greater than the capacity of <em>s</em>.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
+<dl class="section user"><dt>Complexity</dt><dd>Constant.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -856,7 +866,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section user"><dt>Allocation</dt><dd>When <em>n</em> is greater than the capacity of <em>s</em>.</dd></dl>
-<dl class="section user"><dt>Complexity</dt><dd>Linear in <em>n</em>.</dd></dl>
+<dl class="section user"><dt>Complexity</dt><dd>Constant if the length of <em>s</em> is greater than <em>n</em>. If not, linear in <em>n</em> minus the length of <em>s</em>.</dd></dl>
 <dl class="section since"><dt>Since</dt><dd>1.0.0 </dd></dl>
 
 </div>
@@ -864,7 +874,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 29 2018 12:21:36 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 30 2018 09:22:42 for rapidstring by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

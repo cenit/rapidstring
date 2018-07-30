@@ -54,7 +54,7 @@ var searchData=
   ['rs_5fstack_5fresize',['rs_stack_resize',['../group__modifiers.html#ga11078701a24a08651a1b65e1081f8ea0',1,'rapidstring.h']]],
   ['rs_5fstack_5fto_5fheap',['rs_stack_to_heap',['../group__heap.html#gac5009682bbc1cbd630361aa193b4ceef',1,'rapidstring.h']]],
   ['rs_5fstack_5fto_5fheap_5fg',['rs_stack_to_heap_g',['../group__heap.html#ga5c81289ef6835f5867b430d93c153ebc',1,'rapidstring.h']]],
-  ['rs_5fsteal',['rs_steal',['../group__modifiers.html#ga786a235f6e1dc8acdc4490210831ccab',1,'rapidstring.h']]],
+  ['rs_5fsteal',['rs_steal',['../group__modifiers.html#ga0dac1847dbae7afa4867bc17ce0635df',1,'rapidstring.h']]],
   ['rs_5fversion_5fmajor',['RS_VERSION_MAJOR',['../group__structures.html#ga0495945a8b4d277ce859668172a5a920',1,'rapidstring.h']]],
   ['rs_5fversion_5fminor',['RS_VERSION_MINOR',['../group__structures.html#ga3555d3dec5ce4e64b56d434700e5c144',1,'rapidstring.h']]],
   ['rs_5fversion_5fpatch',['RS_VERSION_PATCH',['../group__structures.html#ga660def17180690179acd492961f52516',1,'rapidstring.h']]]
