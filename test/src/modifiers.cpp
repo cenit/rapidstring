@@ -68,12 +68,12 @@ TEST_CASE("steal")
 {
 	constexpr std::size_t size{ 100 };
 
-	auto buffer = static_cast<char *>(RS_MALLOC(size));
+	const auto buffer = static_cast<char *>(RS_MALLOC(size));
 	std::memset(buffer, 'a', size);
 
 	rapidstring s;
 	rs_init(&s);
-	rs_steal(&s, buffer, size);
+	rs_steal(&s, buffer, size, size - 1);
 
 	validate_steal(&s, buffer, size - 1);
 
@@ -94,7 +94,7 @@ TEST_CASE("steal with capacity")
 
 	rapidstring s;
 	rs_init_w(&s, first.data());
-	rs_steal(&s, buffer, size);
+	rs_steal(&s, buffer, size, size - 1);
 
 	validate_steal(&s, buffer, size - 1);
 

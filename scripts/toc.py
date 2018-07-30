@@ -29,7 +29,7 @@ docs = '''/**
  *
  * @copyright Copyright © 2018 John Boyer.
  * @author <a href="https://github.com/boyerjohn">John Boyer</a>
- * @version 0.1.0
+ * @version 1.0.0
  */\n
 '''
 

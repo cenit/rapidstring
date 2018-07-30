@@ -14,24 +14,24 @@
  * - Declarations:	line 69
  *
  * 2. CONSTRUCTION & DESTRUCTION
- * - Declarations:	line 381
- * - Defintions:	line 1140
+ * - Declarations:	line 385
+ * - Defintions:	line 1155
  *
  * 3. COPYING
- * - Declarations:	line 489
- * - Defintions:	line 1187
+ * - Declarations:	line 493
+ * - Defintions:	line 1202
  *
  * 4. CAPACITY
- * - Declarations:	line 596
- * - Defintions:	line 1240
+ * - Declarations:	line 600
+ * - Defintions:	line 1255
  *
  * 5. MODIFIERS
- * - Declarations:	line 735
- * - Defintions:	line 1305
+ * - Declarations:	line 739
+ * - Defintions:	line 1320
  *
  * 6. HEAP OPERATIONS
- * - Declarations:	line 1033
- * - Defintions:	line 1487
+ * - Declarations:	line 1048
+ * - Defintions:	line 1495
  */
 
 /**
@@ -49,7 +49,7 @@
  *
  * @copyright Copyright © 2018 John Boyer.
  * @author <a href="https://github.com/boyerjohn">John Boyer</a>
- * @version 0.1.0
+ * @version 1.0.0
  */
 
 #ifndef RAPIDSTRING_H_962AB5F800398A34
@@ -218,6 +218,10 @@ typedef struct {
 } rs_align_dummy;
 
 #ifdef RS_STACK_CAPACITY
+/*
+ * This must be manually calculated as this defintion is used in the rs_heap
+ * struct itself. A classic Catch-22 situation.
+ */
 enum { PRE_HEAP_ALIGN_SZ = sizeof(size_t) * 2 + sizeof(void *) - 1 };
 #define RS_ALIGNMENT (RS_STACK_CAPACITY - PRE_HEAP_ALIGN_SZ)
 #elif RS_C11
@@ -855,9 +859,10 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
  * The buffer must either be allocated with RS_MALLOC() or RS_REALLOC(), or it
  * must be manually freed.
  *
- * @param[in,out] s An initialized string.
+ * @param[out] s A string.
  * @param[in] buffer The buffer to steal.
  * @param[in] cap The capacity of @a buffer.
+ * @param[in] size The size of @a buffer.
  *
  * @note A null terminator will be written to the last element of the buffer.
  *
@@ -867,7 +872,7 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input);
  *
  * @since 1.0.0
  */
-RS_API void rs_steal(rapidstring *s, char *buffer, size_t cap);
+RS_API void rs_steal(rapidstring *s, char *buffer, size_t cap, size_t size);
 
 /**
  * @brief Removes the specified characters from a stack string.
@@ -906,6 +911,9 @@ RS_API void rs_heap_erase(rapidstring *s, size_t index, size_t n);
  * @param[in] index The index of the first character to remove.
  * @param[in] n The number of characters to remove.
  *
+ * @note If you wish to decrease the capacity of the string and keep the size
+ * the same, use rs_shrink_to_fit().
+ *
  * @allocation Never.
  *
  * @complexity Linear in the length of @a s minus @a index.
@@ -932,6 +940,9 @@ RS_API void rs_stack_clear(rapidstring *s);
  *
  * @param[in,out] s An initialized heap string.
  *
+ * The string will remain on the heap after being cleared. The capacity will
+ * remain the same.
+ *
  * @allocation Never.
  *
  * @complexity Constant.
@@ -942,6 +953,9 @@ RS_API void rs_heap_clear(rapidstring *s);
 
 /**
  * @brief Removes all characters from a string.
+ *
+ * Heap strings will remain on the heap after being cleared. The capacity will
+ * remain the same.
  *
  * @param[in,out] s An initialized string.
  *
@@ -964,7 +978,7 @@ RS_API void rs_clear(rapidstring *s);
  *
  * @allocation Never.
  *
- * @complexity Linear in @a n.
+ * @complexity Constant.
  *
  * @since 1.0.0
  */
@@ -981,7 +995,7 @@ RS_API void rs_stack_resize(rapidstring *s, size_t n);
  *
  * @allocation Never.
  *
- * @complexity Linear in @a n.
+ * @complexity Constant.
  *
  * @since 1.0.0
  */
@@ -999,7 +1013,7 @@ RS_API void rs_heap_resize(rapidstring *s, size_t n);
  *
  * @allocation When @a n is greater than the capacity of @a s.
  *
- * @complexity Linear in @a n.
+ * @complexity Constant.
  *
  * @since 1.0.0
  */
@@ -1014,7 +1028,8 @@ RS_API void rs_resize(rapidstring *s, size_t n);
  *
  * @allocation When @a n is greater than the capacity of @a s.
  *
- * @complexity Linear in @a n.
+ * @complexity Constant if the length of @a s is greater than @a n. If not,
+ * linear in @a n minus the length of @a s.
  *
  * @since 1.0.0
  */
@@ -1304,14 +1319,14 @@ RS_API unsigned char rs_is_stack(const rapidstring *s)
 
 RS_API char *rs_data(rapidstring *s)
 {
-	return (char *)rs_data_c(s);
+	RS_ASSERT_RS(s);
+
+	return rs_is_heap(s) ? s->heap.buffer : s->stack.buffer;
 }
 
 RS_API const char *rs_data_c(const rapidstring *s)
 {
-	RS_ASSERT_RS(s);
-
-	return rs_is_heap(s) ? s->heap.buffer : s->stack.buffer;
+	return rs_data((rapidstring *)s);
 }
 
 RS_API void rs_stack_cat_n(rapidstring *s, const char *input, size_t n)
@@ -1360,23 +1375,16 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input)
 	RS_DATA_SIZE(rs_cat_n, s, input);
 }
 
-RS_API void rs_steal(rapidstring *s, char *buffer, size_t n)
+RS_API void rs_steal(rapidstring *s, char *buffer, size_t cap, size_t size)
 {
-	size_t sz;
+	assert(BUFFER != NULL);
+	assert(cap > size);
+	assert(cap >= 1);
 
-	/* Manual free as using rs_free creates an additional branch. */
-	if (RS_HEAP_LIKELY(rs_is_heap(s)))
-		RS_FREE(s->heap.buffer);
-	else
-		s->heap.flag = RS_HEAP_FLAG;
-
+	s->heap.flag = RS_HEAP_FLAG;
 	s->heap.buffer = buffer;
-
-	/* The capacity and size do not include the null terminator. */
-	sz = n - 1;
-
-	s->heap.capacity = sz;
-	rs_heap_resize(s, sz);
+	s->heap.capacity = cap - 1;
+	rs_heap_resize(s, size);
 }
 
 RS_API void rs_stack_erase(rapidstring *s, size_t index, size_t n)

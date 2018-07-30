@@ -48,10 +48,10 @@ rs_init_w_n(&s3, "Hello World!", 12);
 rs_init_w_rs(&s4, &s3);
 
 puts(rs_data(&s4)); /* Hello World! */
-printf("%u", rs_len(&s4)); /* 12 */
+printf("%zu", rs_len(&s4)); /* 12 */
 ```
 
-A common pattern in this library is the use of the `_n` suffix. This specifies that the function takes the size of the `const char*` provided, which avoids an unnecessary call to `strlen()`.
+A common pattern in this library is the use of the `_n` suffix. This specifies that the function takes the size of the `const char*` provided, which avoids an unnecessary call to `strlen()`. As for the `_w` suffix, this simply means "with".
 
 ### Assignment
 ```c
@@ -91,12 +91,12 @@ It is unnecessary to call `rs_free()` if you are sure the string length will alw
 rapidstring s;
 rs_init_w(&s, "long $MU");
 
-printf("%u", rs_len(&s)); /* 8 */
+printf("%zu", rs_len(&s)); /* 8 */
 
 /* Resize with 'a' as a filler character. */
 rs_resize_w(&s, 15, 'a');
 
-printf("%u", rs_len(&s)); /* 15 */
+printf("%zu", rs_len(&s)); /* 15 */
 puts(rs_data(&s)); /* long $MUaaaaaaa */
 ```
 
@@ -107,15 +107,15 @@ If you wish to resize a string without a filler character, you may do so with `r
 rapidstring s;
 rs_init_w_cap(&s, 100);
 
-printf("%u", rs_cap(&s)); /* 100 */
-printf("%u", rs_len(&s)); /* 0 */
-printf("%u", rs_is_heap(&s)); /* 1 */
+printf("%zu", rs_cap(&s)); /* 100 */
+printf("%zu", rs_len(&s)); /* 0 */
+printf("%zu", rs_is_heap(&s)); /* 1 */
 
 rs_shrink_to_fit(&s);
-printf("%u", rs_cap(&s)); /* 0 */
+printf("%zu", rs_cap(&s)); /* 0 */
 
 rs_reserve(&s, 50);
-printf("%u", rs_cap(&s)); /* 50 */
+printf("%zu", rs_cap(&s)); /* 50 */
 ```
 
 In order to allow the string's capacity to grow at a faster rate, the macro `RS_GROWTH_FACTOR` may be redefined. The default is `2`, meaning the capacity is doubled every time the string runs out of space. Furthermore, intializing a string with a capacity will always allocate on the heap.
@@ -129,7 +129,7 @@ rs_erase(&s, 0, 2);
 puts(rs_data(&s)); /* asphemy! */
 
 rs_clear(&s);
-printf("%u", rs_len(&s)); /* 0 */
+printf("%zu", rs_len(&s)); /* 0 */
 ```
 
 Erasing from the first element with the length of the string is identicle to calling `rs_clear()`, but the latter is marginally faster.
