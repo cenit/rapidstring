@@ -118,7 +118,7 @@ rs_reserve(&s, 50);
 printf("%zu", rs_cap(&s)); /* 50 */
 ```
 
-In order to allow the string's capacity to grow at a faster rate, the macro `RS_GROWTH_FACTOR` may be redefined. The default is `2`, meaning the capacity is doubled every time the string runs out of space. Furthermore, intializing a string with a capacity will always allocate on the heap.
+In order to allow the string's capacity to grow at a faster rate, the macro `RS_GROWTH_FACTOR` may be redefined. The default is `2`, meaning the capacity is doubled every time the string runs out of space.
 
 ### Erasing
 ```c

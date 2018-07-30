@@ -438,9 +438,7 @@ RS_API void rs_init_w_n(rapidstring *s, const char *input, size_t n);
  * @param[out] s A string to initialize.
  * @param[in] n The new initial capacity of @a s.
  *
- * @allocation Always.
- *
- * @complexity Linear in @a n.
+ * @allocation When @a n is greater than #RS_STACK_CAPACITY.
  *
  * @since 1.0.0
  */
@@ -1174,8 +1172,12 @@ RS_API void rs_init_w_n(rapidstring *s, const char *input, size_t n)
 
 RS_API void rs_init_w_cap(rapidstring *s, size_t n)
 {
-	rs_heap_init(s, n);
-	rs_heap_resize(s, 0);
+	if (RS_HEAP_LIKELY(n > RS_STACK_CAPACITY)) {
+		rs_heap_init(s, n);
+		rs_heap_resize(s, 0);
+	} else {
+		rs_init(s);
+	}
 }
 
 RS_API void rs_init_w_rs(rapidstring *s, const rapidstring *input)

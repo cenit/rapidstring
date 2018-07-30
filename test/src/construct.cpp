@@ -40,14 +40,21 @@ TEST_CASE("Heap construction")
 
 TEST_CASE("Capacity construction")
 {
-	constexpr std::size_t cap{ 100 };
-	rapidstring s;
-	rs_init_w_cap(&s, cap);
+	constexpr std::size_t big_cap{ 100 };
+	constexpr std::size_t small_cap{ 5 };
 
-	REQUIRE(rs_is_heap(&s));
-	REQUIRE(rs_cap(&s) >= cap);
+	rapidstring s1, s2;
+	rs_init_w_cap(&s1, big_cap);
+	rs_init_w_cap(&s2, small_cap);
 
-	rs_free(&s);
+	REQUIRE(rs_is_heap(&s1));
+	REQUIRE(rs_cap(&s1) >= big_cap);
+
+	REQUIRE(rs_is_stack(&s2));
+	REQUIRE(rs_cap(&s2) >= small_cap);
+
+	rs_free(&s1);
+	rs_free(&s2);
 }
 
 TEST_CASE("rapidstring construction")
