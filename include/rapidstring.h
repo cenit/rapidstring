@@ -1377,7 +1377,7 @@ RS_API void rs_cat_rs(rapidstring *s, const rapidstring *input)
 
 RS_API void rs_steal(rapidstring *s, char *buffer, size_t cap, size_t size)
 {
-	assert(BUFFER != NULL);
+	assert(buffer != NULL);
 	assert(cap > size);
 	assert(cap >= 1);
 
