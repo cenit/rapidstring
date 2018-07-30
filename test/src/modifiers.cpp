@@ -4,14 +4,6 @@
 
 /* Theme: Game of Thrones. */
 
-void validate_steal(const rapidstring *s, const char *buffer, std::size_t size)
-{
-	REQUIRE(rs_cap(s) == size);
-	REQUIRE(rs_len(s) == size);
-	REQUIRE(rs_data_c(s)[rs_len(s)] == '\0');
-	REQUIRE(std::strcmp(rs_data_c(s), buffer) == 0);
-}
-
 TEST_CASE("data")
 {
 	const std::string first{ "Winter" };
@@ -72,31 +64,13 @@ TEST_CASE("steal")
 	std::memset(buffer, 'a', size);
 
 	rapidstring s;
-	rs_init(&s);
 	rs_steal(&s, buffer, size, size - 1);
 
-	validate_steal(&s, buffer, size - 1);
-
-	rs_free(&s);
-}
-
-TEST_CASE("steal with capacity")
-{
-	constexpr std::size_t size{ 100 };
-
-	/* Filler data to be freed before the buffer is stolen. */
-	const std::string first{
-		"The things we love destroy us every time, lad. Remember that."
-	};
-
-	auto buffer = static_cast<char *>(RS_MALLOC(size));
-	std::memset(buffer, 'a', size);
-
-	rapidstring s;
-	rs_init_w(&s, first.data());
-	rs_steal(&s, buffer, size, size - 1);
-
-	validate_steal(&s, buffer, size - 1);
+	const auto sz = size - 1;
+	REQUIRE(rs_cap(&s) == sz);
+	REQUIRE(rs_len(&s) == sz);
+	REQUIRE(rs_data_c(&s)[rs_len(&s)] == '\0');
+	REQUIRE(std::strcmp(rs_data_c(&s), buffer) == 0);
 
 	rs_free(&s);
 }
